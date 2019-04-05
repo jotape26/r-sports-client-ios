@@ -7,14 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2493CA22CF6188E2C3C316D0 /* Pods_R_Sports.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B65479FD076CCAB8088A22E8 /* Pods_R_Sports.framework */; };
+		FA58A124224E9FF0007F9C72 /* QuadraDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA58A123224E9FF0007F9C72 /* QuadraDTO.swift */; };
 		FAD5D5E0224E8D3E00DD64DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5D5DF224E8D3E00DD64DB /* AppDelegate.swift */; };
 		FAD5D5E2224E8D3E00DD64DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5D5E1224E8D3E00DD64DB /* ViewController.swift */; };
 		FAD5D5E5224E8D3E00DD64DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAD5D5E3224E8D3E00DD64DB /* Main.storyboard */; };
 		FAD5D5E7224E8D4000DD64DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAD5D5E6224E8D4000DD64DB /* Assets.xcassets */; };
 		FAD5D5EA224E8D4000DD64DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAD5D5E8224E8D4000DD64DB /* LaunchScreen.storyboard */; };
+		FAD5D5F5224E997300DD64DB /* QuadrasCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5D5F3224E997300DD64DB /* QuadrasCell.swift */; };
+		FAD5D5F6224E997300DD64DB /* QuadrasCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD5D5F4224E997300DD64DB /* QuadrasCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		31CB746F0B068E0025D3944C /* Pods-R Sports.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-R Sports.debug.xcconfig"; path = "Target Support Files/Pods-R Sports/Pods-R Sports.debug.xcconfig"; sourceTree = "<group>"; };
+		3AF461584BB61DC77B4423B2 /* Pods-R Sports.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-R Sports.release.xcconfig"; path = "Target Support Files/Pods-R Sports/Pods-R Sports.release.xcconfig"; sourceTree = "<group>"; };
+		B65479FD076CCAB8088A22E8 /* Pods_R_Sports.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_R_Sports.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA58A123224E9FF0007F9C72 /* QuadraDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuadraDTO.swift; sourceTree = "<group>"; };
 		FAD5D5DC224E8D3E00DD64DB /* R Sports.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "R Sports.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAD5D5DF224E8D3E00DD64DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAD5D5E1224E8D3E00DD64DB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +30,8 @@
 		FAD5D5E6224E8D4000DD64DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAD5D5E9224E8D4000DD64DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FAD5D5EB224E8D4000DD64DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAD5D5F3224E997300DD64DB /* QuadrasCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuadrasCell.swift; sourceTree = "<group>"; };
+		FAD5D5F4224E997300DD64DB /* QuadrasCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuadrasCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +39,45 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2493CA22CF6188E2C3C316D0 /* Pods_R_Sports.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		39A3A98CD35E7D87282033DA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				31CB746F0B068E0025D3944C /* Pods-R Sports.debug.xcconfig */,
+				3AF461584BB61DC77B4423B2 /* Pods-R Sports.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F61559CBAEA772A1FE757D4F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B65479FD076CCAB8088A22E8 /* Pods_R_Sports.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA58A121224E9FDD007F9C72 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FA58A123224E9FF0007F9C72 /* QuadraDTO.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		FAD5D5D3224E8D3E00DD64DB = {
 			isa = PBXGroup;
 			children = (
 				FAD5D5DE224E8D3E00DD64DB /* R Sports */,
 				FAD5D5DD224E8D3E00DD64DB /* Products */,
+				39A3A98CD35E7D87282033DA /* Pods */,
+				F61559CBAEA772A1FE757D4F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,6 +92,8 @@
 		FAD5D5DE224E8D3E00DD64DB /* R Sports */ = {
 			isa = PBXGroup;
 			children = (
+				FA58A121224E9FDD007F9C72 /* Model */,
+				FAD5D5F1224E995700DD64DB /* Cells */,
 				FAD5D5DF224E8D3E00DD64DB /* AppDelegate.swift */,
 				FAD5D5E1224E8D3E00DD64DB /* ViewController.swift */,
 				FAD5D5E3224E8D3E00DD64DB /* Main.storyboard */,
@@ -64,6 +104,23 @@
 			path = "R Sports";
 			sourceTree = "<group>";
 		};
+		FAD5D5F1224E995700DD64DB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				FAD5D5F2224E995F00DD64DB /* QuadrasCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		FAD5D5F2224E995F00DD64DB /* QuadrasCell */ = {
+			isa = PBXGroup;
+			children = (
+				FAD5D5F3224E997300DD64DB /* QuadrasCell.swift */,
+				FAD5D5F4224E997300DD64DB /* QuadrasCell.xib */,
+			);
+			path = QuadrasCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +128,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FAD5D5EE224E8D4000DD64DB /* Build configuration list for PBXNativeTarget "R Sports" */;
 			buildPhases = (
+				7A2DA55074D92308DE21F001 /* [CP] Check Pods Manifest.lock */,
 				FAD5D5D8224E8D3E00DD64DB /* Sources */,
 				FAD5D5D9224E8D3E00DD64DB /* Frameworks */,
 				FAD5D5DA224E8D3E00DD64DB /* Resources */,
+				C2AFFBEB282DC13B9B02BC72 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,12 +182,60 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAD5D5EA224E8D4000DD64DB /* LaunchScreen.storyboard in Resources */,
+				FAD5D5F6224E997300DD64DB /* QuadrasCell.xib in Resources */,
 				FAD5D5E7224E8D4000DD64DB /* Assets.xcassets in Resources */,
 				FAD5D5E5224E8D3E00DD64DB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7A2DA55074D92308DE21F001 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-R Sports-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C2AFFBEB282DC13B9B02BC72 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-R Sports/Pods-R Sports-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RatingControl/RatingControl.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RatingControl.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-R Sports/Pods-R Sports-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FAD5D5D8224E8D3E00DD64DB /* Sources */ = {
@@ -137,6 +244,8 @@
 			files = (
 				FAD5D5E2224E8D3E00DD64DB /* ViewController.swift in Sources */,
 				FAD5D5E0224E8D3E00DD64DB /* AppDelegate.swift in Sources */,
+				FAD5D5F5224E997300DD64DB /* QuadrasCell.swift in Sources */,
+				FA58A124224E9FF0007F9C72 /* QuadraDTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +389,7 @@
 		};
 		FAD5D5EF224E8D4000DD64DB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31CB746F0B068E0025D3944C /* Pods-R Sports.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -297,6 +407,7 @@
 		};
 		FAD5D5F0224E8D4000DD64DB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3AF461584BB61DC77B4423B2 /* Pods-R Sports.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

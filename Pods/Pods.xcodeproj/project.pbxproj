@@ -1,0 +1,625 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		035BAC7AB21F53C520ABEBC9575B287C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		0B83B32CBBA2BF62039E9DCB66725563 /* Aliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EB89C7CB382A1B68A6104AF6FAED8B /* Aliases.swift */; };
+		20FBA61AE220B62B922DEB999A7BE8CA /* FloatRatingViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0197601F24EC36993735D41DB94C23A /* FloatRatingViewDelegate.swift */; };
+		4BCA8167C49EA3CCFA57366ECEF9D6B2 /* RatingControl+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460F0431A079DFAB15435A4428954D03 /* RatingControl+Helpers.swift */; };
+		595CEF3C812A0FE0B077BE596769BE65 /* Collection+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAF7FAC6DBEC59D25D4E4D03AD8DAAA /* Collection+UIImageView.swift */; };
+		5FDB16194CB54AB454B2BACE66863C91 /* Pods-R Sports-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 234921EBCDC8802A76855AFFF9429EAE /* Pods-R Sports-dummy.m */; };
+		79EB1174B8C624E9C94CB41295B82E61 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC25A37153659575B3548F351874CB5 /* RatingControl.swift */; };
+		A30D4A9369402231C226F75FA02DC3F5 /* RatingControl-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CBF702CC6F91FB17EA1B3B1403BEFB15 /* RatingControl-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AC27B3BC7971EB8D45376BEA5AD961D7 /* Pods-R Sports-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F1B51B3B11F9BA95120C8B750D7983C6 /* Pods-R Sports-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ADFA8335C6503F346C9843071768CBDB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		BDEC401279C6994492216E6234AD19FD /* RatingControl-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B33DEE215585D9A533F804D02268B82B /* RatingControl-dummy.m */; };
+		C357956AF8D41CB461CDB320A6E91BE0 /* ImageViewStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA7318CB678497B216693F1AECDAB9 /* ImageViewStorage.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AB8CC7BF9FCBCD632DE762E2D14BCD44 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 797BE513683F89822E6093C3DAE74310;
+			remoteInfo = RatingControl;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1D944603518459E480297BB2725D2660 /* RatingControl-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "RatingControl-Info.plist"; sourceTree = "<group>"; };
+		234921EBCDC8802A76855AFFF9429EAE /* Pods-R Sports-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-R Sports-dummy.m"; sourceTree = "<group>"; };
+		2B038B1E3BDD875AC1BB59CC35A9E50F /* RatingControl-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RatingControl-prefix.pch"; sourceTree = "<group>"; };
+		32BA7318CB678497B216693F1AECDAB9 /* ImageViewStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageViewStorage.swift; path = Source/ImageViewStorage.swift; sourceTree = "<group>"; };
+		377E4F48464384E9D35D8032817B4444 /* RatingControl.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = RatingControl.modulemap; sourceTree = "<group>"; };
+		460F0431A079DFAB15435A4428954D03 /* RatingControl+Helpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "RatingControl+Helpers.swift"; path = "Source/RatingControl+Helpers.swift"; sourceTree = "<group>"; };
+		46EB89C7CB382A1B68A6104AF6FAED8B /* Aliases.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Aliases.swift; path = Source/Deprecated/Aliases.swift; sourceTree = "<group>"; };
+		5F1E2020CC1636D1510738F01AFE48F5 /* RatingControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RatingControl.framework; path = RatingControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FAF7FAC6DBEC59D25D4E4D03AD8DAAA /* Collection+UIImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Collection+UIImageView.swift"; path = "Source/Collection+UIImageView.swift"; sourceTree = "<group>"; };
+		688992CE82D15922863DD13BF6F72AE9 /* Pods-R Sports-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-R Sports-acknowledgements.plist"; sourceTree = "<group>"; };
+		6CC25A37153659575B3548F351874CB5 /* RatingControl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RatingControl.swift; path = Source/RatingControl.swift; sourceTree = "<group>"; };
+		72A38D34CDCF24B083B96AAAC02614F6 /* Pods-R Sports.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-R Sports.debug.xcconfig"; sourceTree = "<group>"; };
+		80A0202B85FE80B27A14724F7B0CCE55 /* Pods-R Sports-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-R Sports-frameworks.sh"; sourceTree = "<group>"; };
+		9226336A30432E8FA0EC1BAA58C00C8F /* Pods-R Sports.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-R Sports.release.xcconfig"; sourceTree = "<group>"; };
+		9AC37275F8DA19478D1A4005E4481EEA /* Pods-R Sports-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-R Sports-Info.plist"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		B33DEE215585D9A533F804D02268B82B /* RatingControl-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RatingControl-dummy.m"; sourceTree = "<group>"; };
+		BD2E371EF40114C659C242A83839218A /* Pods-R Sports-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-R Sports-acknowledgements.markdown"; sourceTree = "<group>"; };
+		C3D2BF32C032D84B5C2969C1925F21A7 /* Pods_R_Sports.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_R_Sports.framework; path = "Pods-R Sports.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C99852526FEDB8DB831BF1BA18FC7B81 /* RatingControl.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RatingControl.xcconfig; sourceTree = "<group>"; };
+		CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		CBF702CC6F91FB17EA1B3B1403BEFB15 /* RatingControl-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RatingControl-umbrella.h"; sourceTree = "<group>"; };
+		D0197601F24EC36993735D41DB94C23A /* FloatRatingViewDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatRatingViewDelegate.swift; path = Source/Deprecated/FloatRatingViewDelegate.swift; sourceTree = "<group>"; };
+		F1B51B3B11F9BA95120C8B750D7983C6 /* Pods-R Sports-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-R Sports-umbrella.h"; sourceTree = "<group>"; };
+		FD6E4D9C18FD06F7517C5B7084FFC2F5 /* Pods-R Sports.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-R Sports.modulemap"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7D395639FF456727F81A50A4DE0267D0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				035BAC7AB21F53C520ABEBC9575B287C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		962834C914A3507C22A2C91B13E00515 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADFA8335C6503F346C9843071768CBDB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1A60864FC26A9DA4D8A0435664CD27A2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C3D2BF32C032D84B5C2969C1925F21A7 /* Pods_R_Sports.framework */,
+				5F1E2020CC1636D1510738F01AFE48F5 /* RatingControl.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2B1D32DCFB8DDE35108D1CDD56FC78CA /* RatingControl */ = {
+			isa = PBXGroup;
+			children = (
+				46EB89C7CB382A1B68A6104AF6FAED8B /* Aliases.swift */,
+				5FAF7FAC6DBEC59D25D4E4D03AD8DAAA /* Collection+UIImageView.swift */,
+				D0197601F24EC36993735D41DB94C23A /* FloatRatingViewDelegate.swift */,
+				32BA7318CB678497B216693F1AECDAB9 /* ImageViewStorage.swift */,
+				6CC25A37153659575B3548F351874CB5 /* RatingControl.swift */,
+				460F0431A079DFAB15435A4428954D03 /* RatingControl+Helpers.swift */,
+				919CAC49F11A1164DBA4B292FA01C8D3 /* Support Files */,
+			);
+			name = RatingControl;
+			path = RatingControl;
+			sourceTree = "<group>";
+		};
+		7DD00C741B3EB2B26D3E70D9A842117C /* Pods-R Sports */ = {
+			isa = PBXGroup;
+			children = (
+				FD6E4D9C18FD06F7517C5B7084FFC2F5 /* Pods-R Sports.modulemap */,
+				BD2E371EF40114C659C242A83839218A /* Pods-R Sports-acknowledgements.markdown */,
+				688992CE82D15922863DD13BF6F72AE9 /* Pods-R Sports-acknowledgements.plist */,
+				234921EBCDC8802A76855AFFF9429EAE /* Pods-R Sports-dummy.m */,
+				80A0202B85FE80B27A14724F7B0CCE55 /* Pods-R Sports-frameworks.sh */,
+				9AC37275F8DA19478D1A4005E4481EEA /* Pods-R Sports-Info.plist */,
+				F1B51B3B11F9BA95120C8B750D7983C6 /* Pods-R Sports-umbrella.h */,
+				72A38D34CDCF24B083B96AAAC02614F6 /* Pods-R Sports.debug.xcconfig */,
+				9226336A30432E8FA0EC1BAA58C00C8F /* Pods-R Sports.release.xcconfig */,
+			);
+			name = "Pods-R Sports";
+			path = "Target Support Files/Pods-R Sports";
+			sourceTree = "<group>";
+		};
+		919CAC49F11A1164DBA4B292FA01C8D3 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				377E4F48464384E9D35D8032817B4444 /* RatingControl.modulemap */,
+				C99852526FEDB8DB831BF1BA18FC7B81 /* RatingControl.xcconfig */,
+				B33DEE215585D9A533F804D02268B82B /* RatingControl-dummy.m */,
+				1D944603518459E480297BB2725D2660 /* RatingControl-Info.plist */,
+				2B038B1E3BDD875AC1BB59CC35A9E50F /* RatingControl-prefix.pch */,
+				CBF702CC6F91FB17EA1B3B1403BEFB15 /* RatingControl-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/RatingControl";
+			sourceTree = "<group>";
+		};
+		9B055D0CFEA43187E72B03DED11F5662 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		A7EBC1005FA6685C43CBBF76F89A719C /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				7DD00C741B3EB2B26D3E70D9A842117C /* Pods-R Sports */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		B836081737C9F75D761CE4A0B3832F47 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2B1D32DCFB8DDE35108D1CDD56FC78CA /* RatingControl */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				B836081737C9F75D761CE4A0B3832F47 /* Pods */,
+				1A60864FC26A9DA4D8A0435664CD27A2 /* Products */,
+				A7EBC1005FA6685C43CBBF76F89A719C /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9B055D0CFEA43187E72B03DED11F5662 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		1514C8424B7FD6015669A2DEA3C061F6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A30D4A9369402231C226F75FA02DC3F5 /* RatingControl-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCE10CA843A11D020F2857398B05AE57 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC27B3BC7971EB8D45376BEA5AD961D7 /* Pods-R Sports-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		3F7009CB9FC0613039334EC02A320E35 /* Pods-R Sports */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D84EAD3FC9C35EA1B5146A6E92971482 /* Build configuration list for PBXNativeTarget "Pods-R Sports" */;
+			buildPhases = (
+				BCE10CA843A11D020F2857398B05AE57 /* Headers */,
+				BFD511734B049A11C5093A485F179D94 /* Sources */,
+				962834C914A3507C22A2C91B13E00515 /* Frameworks */,
+				B3F7D35A0FC3A2E572CD336B8E176C1C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8805D4B01CFFCAD77F5A00600E428C49 /* PBXTargetDependency */,
+			);
+			name = "Pods-R Sports";
+			productName = "Pods-R Sports";
+			productReference = C3D2BF32C032D84B5C2969C1925F21A7 /* Pods_R_Sports.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		797BE513683F89822E6093C3DAE74310 /* RatingControl */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FBC5C5DAC5DCBBFFFBD720001345565E /* Build configuration list for PBXNativeTarget "RatingControl" */;
+			buildPhases = (
+				1514C8424B7FD6015669A2DEA3C061F6 /* Headers */,
+				8D6B790753F12A72E39B33124746A485 /* Sources */,
+				7D395639FF456727F81A50A4DE0267D0 /* Frameworks */,
+				1E416FD8612FBB731B748E78F78EDB8C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RatingControl;
+			productName = RatingControl;
+			productReference = 5F1E2020CC1636D1510738F01AFE48F5 /* RatingControl.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 1A60864FC26A9DA4D8A0435664CD27A2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3F7009CB9FC0613039334EC02A320E35 /* Pods-R Sports */,
+				797BE513683F89822E6093C3DAE74310 /* RatingControl */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1E416FD8612FBB731B748E78F78EDB8C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3F7D35A0FC3A2E572CD336B8E176C1C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D6B790753F12A72E39B33124746A485 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B83B32CBBA2BF62039E9DCB66725563 /* Aliases.swift in Sources */,
+				595CEF3C812A0FE0B077BE596769BE65 /* Collection+UIImageView.swift in Sources */,
+				20FBA61AE220B62B922DEB999A7BE8CA /* FloatRatingViewDelegate.swift in Sources */,
+				C357956AF8D41CB461CDB320A6E91BE0 /* ImageViewStorage.swift in Sources */,
+				4BCA8167C49EA3CCFA57366ECEF9D6B2 /* RatingControl+Helpers.swift in Sources */,
+				BDEC401279C6994492216E6234AD19FD /* RatingControl-dummy.m in Sources */,
+				79EB1174B8C624E9C94CB41295B82E61 /* RatingControl.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFD511734B049A11C5093A485F179D94 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FDB16194CB54AB454B2BACE66863C91 /* Pods-R Sports-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8805D4B01CFFCAD77F5A00600E428C49 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RatingControl;
+			target = 797BE513683F89822E6093C3DAE74310 /* RatingControl */;
+			targetProxy = AB8CC7BF9FCBCD632DE762E2D14BCD44 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		62287F2FD673BEA4D1BA4A3BACA96BC8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C99852526FEDB8DB831BF1BA18FC7B81 /* RatingControl.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/RatingControl/RatingControl-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RatingControl/RatingControl-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/RatingControl/RatingControl.modulemap";
+				PRODUCT_MODULE_NAME = RatingControl;
+				PRODUCT_NAME = RatingControl;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		75678F7B2F3DE185C3FA2F2DA73ADCE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C99852526FEDB8DB831BF1BA18FC7B81 /* RatingControl.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/RatingControl/RatingControl-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RatingControl/RatingControl-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/RatingControl/RatingControl.modulemap";
+				PRODUCT_MODULE_NAME = RatingControl;
+				PRODUCT_NAME = RatingControl;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		84A06F28E9E7D9EB0A9B476A8668FD60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		937307E3C5BF5C76F431634A1F79965F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 72A38D34CDCF24B083B96AAAC02614F6 /* Pods-R Sports.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-R Sports/Pods-R Sports-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-R Sports/Pods-R Sports.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B9BD05C3B2FC1177A0497B33AB00CE98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9226336A30432E8FA0EC1BAA58C00C8F /* Pods-R Sports.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-R Sports/Pods-R Sports-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-R Sports/Pods-R Sports.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D0FE574C7B3479C6425BC136AA57D8C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0FE574C7B3479C6425BC136AA57D8C2 /* Debug */,
+				84A06F28E9E7D9EB0A9B476A8668FD60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D84EAD3FC9C35EA1B5146A6E92971482 /* Build configuration list for PBXNativeTarget "Pods-R Sports" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				937307E3C5BF5C76F431634A1F79965F /* Debug */,
+				B9BD05C3B2FC1177A0497B33AB00CE98 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FBC5C5DAC5DCBBFFFBD720001345565E /* Build configuration list for PBXNativeTarget "RatingControl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75678F7B2F3DE185C3FA2F2DA73ADCE7 /* Debug */,
+				62287F2FD673BEA4D1BA4A3BACA96BC8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

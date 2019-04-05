@@ -1,0 +1,6 @@
+framework module RatingControl {
+  umbrella header "RatingControl-umbrella.h"
+
+  export *
+  module * { export * }
+}

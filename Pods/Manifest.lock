@@ -1,0 +1,16 @@
+PODS:
+  - RatingControl (4.0.1)
+
+DEPENDENCIES:
+  - RatingControl
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - RatingControl
+
+SPEC CHECKSUMS:
+  RatingControl: 25239c8c1c435baf7a510ee3afa7e6aaa1fe7a0d
+
+PODFILE CHECKSUM: 7445a5c01bf120b0510c21b6ca5596110f07bfbc
+
+COCOAPODS: 1.6.1
