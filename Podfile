@@ -7,5 +7,9 @@ target 'R Sports' do
 
   # Pods for R Sports
   pod 'RatingControl'
-
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Storage'
+  pod 'ObjectMapper'
 end
