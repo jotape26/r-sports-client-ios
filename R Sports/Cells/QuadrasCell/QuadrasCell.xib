@@ -30,20 +30,20 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome da Quadra" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6g-3m-QW6">
-                                <rect key="frame" x="116" y="8" width="544" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="116" y="8" width="109.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Endereco da Quadra" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0WP-52-lgi">
-                                <rect key="frame" x="116" y="36.5" width="544" height="88"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="116" y="33" width="544" height="91.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preço da Quadra : $$$$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Cx-EF-kV8">
-                                <rect key="frame" x="116" y="132.5" width="185" height="25"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="116" y="132.5" width="156" height="25"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -84,16 +84,23 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B1N-SP-r5s">
+                                <rect key="frame" x="660" y="8" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.97999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="MLC-QX-QrL" firstAttribute="leading" secondItem="cRz-5N-WAS" secondAttribute="leading" constant="8" id="135-i1-vUe"/>
-                            <constraint firstAttribute="trailing" secondItem="s6g-3m-QW6" secondAttribute="trailing" constant="8" id="753-bN-5QA"/>
                             <constraint firstAttribute="bottom" secondItem="KSX-tI-P2b" secondAttribute="bottom" constant="8" id="Bvk-In-gQd"/>
                             <constraint firstItem="0WP-52-lgi" firstAttribute="leading" secondItem="MLC-QX-QrL" secondAttribute="trailing" constant="8" id="Cgj-lU-av4"/>
                             <constraint firstAttribute="bottom" secondItem="MLC-QX-QrL" secondAttribute="bottom" constant="8" id="De3-gt-Ime"/>
+                            <constraint firstItem="B1N-SP-r5s" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="s6g-3m-QW6" secondAttribute="trailing" constant="16" id="DmL-Ga-4dP"/>
                             <constraint firstItem="s6g-3m-QW6" firstAttribute="leading" secondItem="MLC-QX-QrL" secondAttribute="trailing" constant="8" id="ERb-F6-aBO"/>
                             <constraint firstItem="ukg-YX-A6a" firstAttribute="centerY" secondItem="MLC-QX-QrL" secondAttribute="centerY" id="KtY-5S-yo0"/>
+                            <constraint firstItem="B1N-SP-r5s" firstAttribute="top" secondItem="cRz-5N-WAS" secondAttribute="top" constant="8" id="OUw-21-151"/>
                             <constraint firstItem="s6g-3m-QW6" firstAttribute="top" secondItem="cRz-5N-WAS" secondAttribute="top" constant="8" id="PJU-9O-6v4"/>
                             <constraint firstAttribute="trailing" secondItem="KSX-tI-P2b" secondAttribute="trailing" constant="8" id="Rei-yy-43F"/>
                             <constraint firstItem="3Cx-EF-kV8" firstAttribute="top" secondItem="0WP-52-lgi" secondAttribute="bottom" constant="8" id="WQS-Fz-LXs"/>
@@ -103,6 +110,7 @@
                             <constraint firstItem="KSX-tI-P2b" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3Cx-EF-kV8" secondAttribute="trailing" constant="16" id="n5W-DH-i2Z"/>
                             <constraint firstAttribute="trailing" secondItem="0WP-52-lgi" secondAttribute="trailing" constant="8" id="nDE-CV-L5G"/>
                             <constraint firstItem="MLC-QX-QrL" firstAttribute="top" secondItem="cRz-5N-WAS" secondAttribute="top" constant="8" id="nRS-wf-dAG"/>
+                            <constraint firstAttribute="trailing" secondItem="B1N-SP-r5s" secondAttribute="trailing" constant="8" id="qAD-po-67L"/>
                             <constraint firstItem="KSX-tI-P2b" firstAttribute="top" secondItem="0WP-52-lgi" secondAttribute="bottom" constant="8" id="qnQ-NA-ANU"/>
                             <constraint firstItem="3Cx-EF-kV8" firstAttribute="leading" secondItem="MLC-QX-QrL" secondAttribute="trailing" constant="8" id="tpn-wY-TB8"/>
                             <constraint firstItem="ukg-YX-A6a" firstAttribute="centerX" secondItem="MLC-QX-QrL" secondAttribute="centerX" id="x4x-t9-ph6"/>
@@ -121,6 +129,7 @@
                 <outlet property="borderView" destination="cRz-5N-WAS" id="NCy-tP-TUW"/>
                 <outlet property="imageLoader" destination="ukg-YX-A6a" id="Rbb-E5-eZM"/>
                 <outlet property="imgQuadra" destination="MLC-QX-QrL" id="kWE-6f-2rW"/>
+                <outlet property="lbDistancia" destination="B1N-SP-r5s" id="1oy-mU-9u3"/>
                 <outlet property="lbEnderecoQuadra" destination="0WP-52-lgi" id="ERJ-gc-CpO"/>
                 <outlet property="lbNomeQuadra" destination="s6g-3m-QW6" id="Wzm-Kx-xCk"/>
                 <outlet property="lbPrecoQuadra" destination="3Cx-EF-kV8" id="KLr-Qa-rX7"/>

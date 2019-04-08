@@ -7,21 +7,30 @@
 //
 
 import UIKit
+import CoreLocation
 
-class ListaQuadrasController: UIViewController {
+class ListaQuadrasController: UIViewController{
 
     @IBOutlet weak var quadrasTable: UITableView!
     
     var quadras = [QuadraDTO]()
+    private let locationManager = CLLocationManager()
+    var currentLocation : CLLocation? {
+        didSet {
+            self.quadrasTable.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        locationManager.delegate = self
         quadrasTable.register(UINib(nibName: "QuadrasCell", bundle: nil), forCellReuseIdentifier: "QuadrasCell")
         // Do any additional setup after loading the view.
         FirebaseService.retrieveCourts { (qDTO) in
             self.quadras = qDTO
-            self.quadrasTable.reloadData()
+            self.getLocation(after: {
+                self.currentLocation = self.locationManager.location
+            })
         }
     }
 
@@ -44,6 +53,13 @@ extension ListaQuadrasController: UITableViewDelegate, UITableViewDataSource {
         cell.ratingQuadra.rating = Double(current.rating ?? 0)
         
         cell.downloadImage(path: current.imagePath)
+        
+        if let distance = current.distance {
+            cell.lbDistancia.text = "\(distance.rounded())m"
+        } else {
+            cell.lbDistancia.text = nil
+        }
+        
     
         return cell
     }
@@ -51,7 +67,32 @@ extension ListaQuadrasController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 110.0
     }
-    
-    
 }
 
+extension ListaQuadrasController: CLLocationManagerDelegate {
+    
+    func getLocation(after: @escaping ()->()){
+        let status = CLLocationManager.authorizationStatus()
+        
+        switch status {
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+            break
+        case .denied, .restricted:
+            let alert = UIAlertController(title: "Location Services disabled", message: "Please enable Location Services in Settings", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(okAction)
+            
+            present(alert, animated: true, completion: nil)
+            return
+        case .authorizedAlways, .authorizedWhenInUse:
+            break
+        @unknown default:
+            return
+        }
+        
+        locationManager.delegate = self
+        locationManager.startUpdatingLocation()
+        after()
+    }
+}

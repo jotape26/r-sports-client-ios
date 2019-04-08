@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 import Cosmos
 
 class QuadrasCell: UITableViewCell {
@@ -16,6 +17,7 @@ class QuadrasCell: UITableViewCell {
     @IBOutlet weak var lbNomeQuadra: UILabel!
     @IBOutlet weak var lbEnderecoQuadra: UILabel!
     @IBOutlet weak var lbPrecoQuadra: UILabel!
+    @IBOutlet weak var lbDistancia: UILabel!
     @IBOutlet weak var ratingQuadra: CosmosView!
     @IBOutlet weak var imageLoader: UIActivityIndicatorView!
     
@@ -47,5 +49,33 @@ class QuadrasCell: UITableViewCell {
         
         imageLoader.stopAnimating()
     }
+    
+//    func getDistanceBetween(userLocation: CLLocation?, courtAddress: String?) {
+//        if let userLocation = userLocation, let courtAddress = courtAddress {
+//            let locationHelper = CLGeocoder()
+//            locationHelper.geocodeAddressString(courtAddress) { (marks, err) in
+//                if err != nil {
+//                    self.lbDistancia.text = nil
+//                }
+//
+//                if let mark = marks {
+//                    if !mark.isEmpty {
+//                        guard let courtLocation = mark.first?.location else {
+//                            self.lbDistancia.text = nil
+//                            return
+//                        }
+//                        let distance = userLocation.distance(from: courtLocation)
+//                        self.lbDistancia.text = "\(Int(distance))m"
+//                    } else {
+//                        self.lbDistancia.text = nil
+//                    }
+//                } else {
+//                    self.lbDistancia.text = nil
+//                }
+//            }
+//        } else {
+//            self.lbDistancia.text = nil
+//        }
+//    }
     
 }
