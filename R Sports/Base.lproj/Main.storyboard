@@ -44,7 +44,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2231" y="787"/>
+            <point key="canvasLocation" x="2231" y="797"/>
         </scene>
         <!--Item-->
         <scene sceneID="kSc-Ze-fvL">
@@ -58,12 +58,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="GBa-jd-SBE"/>
+                        <segue destination="eQY-4s-mfR" kind="relationship" relationship="rootViewController" id="TJI-hJ-Ght"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tVN-aG-Pcg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1234.4000000000001" y="786.65667166416802"/>
+            <point key="canvasLocation" x="399" y="797"/>
         </scene>
         <!--Auth Controller-->
         <scene sceneID="AF4-gY-MZl">
@@ -103,33 +103,39 @@
                         <viewLayoutGuide key="safeArea" id="5dM-Fg-kOw"/>
                     </view>
                     <connections>
-                        <outlet property="controllerView" destination="hk9-xh-a85" id="OHY-gG-YPd"/>
+                        <outlet property="controllerView" destination="OYn-4U-ffc" id="mNP-cj-AJa"/>
                         <outlet property="googleSignButton" destination="pSe-Kq-RnA" id="DWT-Am-2YZ"/>
-                        <segue destination="eQY-4s-mfR" kind="presentation" identifier="AuthToMainSegue" modalTransitionStyle="crossDissolve" id="gV3-jz-BJg"/>
+                        <segue destination="gtO-g8-Pw3" kind="presentation" identifier="AuthToMainSegue" modalTransitionStyle="crossDissolve" id="dgB-up-xgy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UYb-FH-uZ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-500" y="787"/>
+            <point key="canvasLocation" x="-503" y="797"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Controller-->
         <scene sceneID="yZo-e1-BJq">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="eQY-4s-mfR" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="eQY-4s-mfR" customClass="MainTabController" customModule="R_Sports" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="TWM-tv-Bfl"/>
+                    <navigationItem key="navigationItem" id="TWM-tv-Bfl">
+                        <barButtonItem key="leftBarButtonItem" title="Off" id="5Fg-rh-Hca">
+                            <connections>
+                                <action selector="testButton:" destination="eQY-4s-mfR" id="p3t-bj-qZz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Yft-ax-PeB">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="gtO-g8-Pw3" kind="relationship" relationship="viewControllers" id="egT-y1-Hrq"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="jLb-M2-EL0"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w4O-Wl-AVu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="409" y="787"/>
+            <point key="canvasLocation" x="1326" y="797"/>
         </scene>
     </scenes>
 </document>

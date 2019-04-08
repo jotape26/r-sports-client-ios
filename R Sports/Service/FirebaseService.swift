@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Firebase
 import FirebaseFirestore
+import GoogleSignIn
 
 class FirebaseService {
     
@@ -21,10 +22,24 @@ class FirebaseService {
             if err != nil {
                 complete(false)
                 return
+            }else if let result = result {
+                FirebaseService.createUserDatabaseReference(user: result.user)
+                complete(true)
             }
-            // User is signed in
-            // ...
-            complete(true)
+        }
+    }
+    
+    static func logoutUser(){
+        do {
+            try Auth.auth().signOut()
+            
+            let authVC = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! AuthController
+            authVC.modalTransitionStyle = .crossDissolve
+            
+            UIApplication.shared.keyWindow?.visibleViewController()?.present(authVC, animated: true, completion: nil)
+            
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
         }
     }
     
@@ -46,6 +61,14 @@ class FirebaseService {
                 success(quadras)
             }
         }
+    }
+    
+    static func createUserDatabaseReference(user: User){
+        
+        let userData : [String: Any] = ["nome" : user.displayName as Any,
+                                        "email" : user.email as Any]
+        
+        Firestore.firestore().collection("users").document(user.uid).setData(userData)
     }
     
     //MARK: - Storage Methods

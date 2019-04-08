@@ -11,6 +11,7 @@
 		FA07BB72225BBA73007AF2D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA07BB71225BBA73007AF2D0 /* Assets.xcassets */; };
 		FA07BB75225BBB60007AF2D0 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07BB74225BBB60007AF2D0 /* AuthController.swift */; };
 		FA07BB78225BC394007AF2D0 /* UIWindow+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07BB77225BC394007AF2D0 /* UIWindow+Extensions.swift */; };
+		FA07BB7C225BC7AF007AF2D0 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07BB7B225BC7AF007AF2D0 /* MainTabController.swift */; };
 		FA3EB7DA225AED5F00866125 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA3EB7D9225AED5F00866125 /* GoogleService-Info.plist */; };
 		FA3EB7DD225AEFA200866125 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3EB7DC225AEFA200866125 /* FirebaseService.swift */; };
 		FA58A124224E9FF0007F9C72 /* QuadraDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA58A123224E9FF0007F9C72 /* QuadraDTO.swift */; };
@@ -29,6 +30,7 @@
 		FA07BB71225BBA73007AF2D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA07BB74225BBB60007AF2D0 /* AuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
 		FA07BB77225BC394007AF2D0 /* UIWindow+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extensions.swift"; sourceTree = "<group>"; };
+		FA07BB7B225BC7AF007AF2D0 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		FA3EB7D9225AED5F00866125 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA3EB7DC225AEFA200866125 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		FA58A123224E9FF0007F9C72 /* QuadraDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuadraDTO.swift; sourceTree = "<group>"; };
@@ -74,8 +76,9 @@
 		FA07BB73225BBB39007AF2D0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FAD5D5E1224E8D3E00DD64DB /* ListaQuadrasController.swift */,
 				FA07BB74225BBB60007AF2D0 /* AuthController.swift */,
+				FAD5D5E1224E8D3E00DD64DB /* ListaQuadrasController.swift */,
+				FA07BB7B225BC7AF007AF2D0 /* MainTabController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -125,17 +128,17 @@
 		FAD5D5DE224E8D3E00DD64DB /* R Sports */ = {
 			isa = PBXGroup;
 			children = (
-				FA07BB76225BC383007AF2D0 /* Extensions */,
-				FA07BB73225BBB39007AF2D0 /* Controllers */,
-				FA3EB7DB225AEF9100866125 /* Service */,
-				FA58A121224E9FDD007F9C72 /* Model */,
-				FAD5D5F1224E995700DD64DB /* Cells */,
+				FA07BB71225BBA73007AF2D0 /* Assets.xcassets */,
 				FAD5D5DF224E8D3E00DD64DB /* AppDelegate.swift */,
-				FAD5D5E3224E8D3E00DD64DB /* Main.storyboard */,
-				FAD5D5E8224E8D4000DD64DB /* LaunchScreen.storyboard */,
 				FAD5D5EB224E8D4000DD64DB /* Info.plist */,
 				FA3EB7D9225AED5F00866125 /* GoogleService-Info.plist */,
-				FA07BB71225BBA73007AF2D0 /* Assets.xcassets */,
+				FAD5D5E8224E8D4000DD64DB /* LaunchScreen.storyboard */,
+				FAD5D5E3224E8D3E00DD64DB /* Main.storyboard */,
+				FAD5D5F1224E995700DD64DB /* Cells */,
+				FA07BB73225BBB39007AF2D0 /* Controllers */,
+				FA07BB76225BC383007AF2D0 /* Extensions */,
+				FA58A121224E9FDD007F9C72 /* Model */,
+				FA3EB7DB225AEF9100866125 /* Service */,
 			);
 			path = "R Sports";
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 			files = (
 				FAD5D5E2224E8D3E00DD64DB /* ListaQuadrasController.swift in Sources */,
 				FA07BB75225BBB60007AF2D0 /* AuthController.swift in Sources */,
+				FA07BB7C225BC7AF007AF2D0 /* MainTabController.swift in Sources */,
 				FA3EB7DD225AEFA200866125 /* FirebaseService.swift in Sources */,
 				FAD5D5E0224E8D3E00DD64DB /* AppDelegate.swift in Sources */,
 				FAD5D5F5224E997300DD64DB /* QuadrasCell.swift in Sources */,

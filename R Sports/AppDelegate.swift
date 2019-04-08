@@ -80,6 +80,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         // Perform any operations when the user disconnects from app here.
         // ...
+        let authVC = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! AuthController
+        authVC.modalTransitionStyle = .crossDissolve
+        
+        UIApplication.shared.keyWindow?.visibleViewController()?.present(authVC, animated: true, completion: nil)
     }
 
 
