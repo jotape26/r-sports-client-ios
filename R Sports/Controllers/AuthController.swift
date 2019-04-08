@@ -25,7 +25,9 @@ class AuthController: UIViewController, GIDSignInUIDelegate {
         if FirebaseService.getCurrentUser() != nil {
             performSegue(withIdentifier: "AuthToMainSegue", sender: nil)
         } else {
-            controllerView.isHidden = false
+            UIView.animate(withDuration: 0.5) {
+                self.controllerView.alpha = 1.0
+            }
         }
     }
 
