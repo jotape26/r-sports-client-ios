@@ -7,17 +7,25 @@
 //
 
 import UIKit
+import GoogleSignIn
 
-class AuthController: UIViewController {
+class AuthController: UIViewController, GIDSignInUIDelegate {
 
+    @IBOutlet weak var googleSignButton: GIDSignInButton!
+    @IBOutlet var controllerView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        GIDSignIn.sharedInstance().uiDelegate = self
+        googleSignButton.style = .wide
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if FirebaseService.getCurrentUser() == nil {
+        if FirebaseService.getCurrentUser() != nil {
             performSegue(withIdentifier: "AuthToMainSegue", sender: nil)
+        } else {
+            controllerView.isHidden = false
         }
     }
 

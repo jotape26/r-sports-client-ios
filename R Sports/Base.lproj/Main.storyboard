@@ -72,10 +72,39 @@
                     <view key="view" contentMode="scaleToFill" id="hk9-xh-a85">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OYn-4U-ffc">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pSe-Kq-RnA" customClass="GIDSignInButton">
+                                        <rect key="frame" x="4" y="298.5" width="367" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="FHx-Bl-NnF"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.7207707445" blue="0.04659230038" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="pSe-Kq-RnA" secondAttribute="trailing" constant="4" id="TOA-4p-bRK"/>
+                                    <constraint firstItem="pSe-Kq-RnA" firstAttribute="leading" secondItem="OYn-4U-ffc" secondAttribute="leading" constant="4" id="bhK-mh-EOR"/>
+                                    <constraint firstItem="pSe-Kq-RnA" firstAttribute="centerX" secondItem="OYn-4U-ffc" secondAttribute="centerX" id="pYY-qh-q0d"/>
+                                    <constraint firstItem="pSe-Kq-RnA" firstAttribute="centerY" secondItem="OYn-4U-ffc" secondAttribute="centerY" id="q4J-fb-K6b"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="0.078431372550000003" green="0.46274509800000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="5dM-Fg-kOw" firstAttribute="bottom" secondItem="OYn-4U-ffc" secondAttribute="bottom" id="f97-Yb-dxW"/>
+                            <constraint firstItem="5dM-Fg-kOw" firstAttribute="trailing" secondItem="OYn-4U-ffc" secondAttribute="trailing" id="hq3-vY-qtj"/>
+                            <constraint firstItem="OYn-4U-ffc" firstAttribute="leading" secondItem="5dM-Fg-kOw" secondAttribute="leading" id="ulE-XC-vCX"/>
+                            <constraint firstItem="OYn-4U-ffc" firstAttribute="top" secondItem="5dM-Fg-kOw" secondAttribute="top" id="w76-9y-uav"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="5dM-Fg-kOw"/>
                     </view>
                     <connections>
+                        <outlet property="controllerView" destination="hk9-xh-a85" id="OHY-gG-YPd"/>
+                        <outlet property="googleSignButton" destination="pSe-Kq-RnA" id="DWT-Am-2YZ"/>
                         <segue destination="eQY-4s-mfR" kind="presentation" identifier="AuthToMainSegue" modalTransitionStyle="crossDissolve" id="gV3-jz-BJg"/>
                     </connections>
                 </viewController>

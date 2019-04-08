@@ -15,6 +15,19 @@ class FirebaseService {
     
     //MARK: - Auth Methods
     
+    static func loginWith(credential: AuthCredential,
+                          complete: @escaping(Bool)->()) {
+        Auth.auth().signInAndRetrieveData(with: credential) { (result, err) in
+            if err != nil {
+                complete(false)
+                return
+            }
+            // User is signed in
+            // ...
+            complete(true)
+        }
+    }
+    
     static func getCurrentUser() -> User?{
         return Auth.auth().currentUser
     }
@@ -25,12 +38,12 @@ class FirebaseService {
             if let err = err {
                 print("Error getting documents: \(err)")
             } else if let snap = snap {
-                    var quadras : [QuadraDTO] = []
-                    for document in snap.documents {
-                        guard let quadra = try? QuadraDTO(JSON: document.data()) else { continue }
-                        quadras.append(quadra)
-                    }
-                    success(quadras)
+                var quadras : [QuadraDTO] = []
+                for document in snap.documents {
+                    guard let quadra = try? QuadraDTO(JSON: document.data()) else { continue }
+                    quadras.append(quadra)
+                }
+                success(quadras)
             }
         }
     }

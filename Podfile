@@ -7,9 +7,10 @@ target 'R Sports' do
 
   # Pods for R Sports
   pod 'Cosmos'
-  pod 'Firebase/Core'
   pod 'Firebase/Auth'
+  pod 'Firebase/Core'
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
+  pod 'GoogleSignIn'
   pod 'ObjectMapper'
 end
