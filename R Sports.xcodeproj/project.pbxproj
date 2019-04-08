@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2493CA22CF6188E2C3C316D0 /* Pods_R_Sports.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B65479FD076CCAB8088A22E8 /* Pods_R_Sports.framework */; };
 		FA07BB72225BBA73007AF2D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA07BB71225BBA73007AF2D0 /* Assets.xcassets */; };
+		FA07BB75225BBB60007AF2D0 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07BB74225BBB60007AF2D0 /* AuthController.swift */; };
 		FA3EB7DA225AED5F00866125 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA3EB7D9225AED5F00866125 /* GoogleService-Info.plist */; };
 		FA3EB7DD225AEFA200866125 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3EB7DC225AEFA200866125 /* FirebaseService.swift */; };
 		FA58A124224E9FF0007F9C72 /* QuadraDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA58A123224E9FF0007F9C72 /* QuadraDTO.swift */; };
@@ -25,6 +26,7 @@
 		3AF461584BB61DC77B4423B2 /* Pods-R Sports.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-R Sports.release.xcconfig"; path = "Target Support Files/Pods-R Sports/Pods-R Sports.release.xcconfig"; sourceTree = "<group>"; };
 		B65479FD076CCAB8088A22E8 /* Pods_R_Sports.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_R_Sports.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA07BB71225BBA73007AF2D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FA07BB74225BBB60007AF2D0 /* AuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
 		FA3EB7D9225AED5F00866125 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA3EB7DC225AEFA200866125 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		FA58A123224E9FF0007F9C72 /* QuadraDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuadraDTO.swift; sourceTree = "<group>"; };
@@ -67,6 +69,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FA07BB73225BBB39007AF2D0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FAD5D5E1224E8D3E00DD64DB /* ListaQuadrasController.swift */,
+				FA07BB74225BBB60007AF2D0 /* AuthController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		FA3EB7DB225AEF9100866125 /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -104,11 +115,11 @@
 		FAD5D5DE224E8D3E00DD64DB /* R Sports */ = {
 			isa = PBXGroup;
 			children = (
+				FA07BB73225BBB39007AF2D0 /* Controllers */,
 				FA3EB7DB225AEF9100866125 /* Service */,
 				FA58A121224E9FDD007F9C72 /* Model */,
 				FAD5D5F1224E995700DD64DB /* Cells */,
 				FAD5D5DF224E8D3E00DD64DB /* AppDelegate.swift */,
-				FAD5D5E1224E8D3E00DD64DB /* ListaQuadrasController.swift */,
 				FAD5D5E3224E8D3E00DD64DB /* Main.storyboard */,
 				FAD5D5E8224E8D4000DD64DB /* LaunchScreen.storyboard */,
 				FAD5D5EB224E8D4000DD64DB /* Info.plist */,
@@ -276,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAD5D5E2224E8D3E00DD64DB /* ListaQuadrasController.swift in Sources */,
+				FA07BB75225BBB60007AF2D0 /* AuthController.swift in Sources */,
 				FA3EB7DD225AEFA200866125 /* FirebaseService.swift in Sources */,
 				FAD5D5E0224E8D3E00DD64DB /* AppDelegate.swift in Sources */,
 				FAD5D5F5224E997300DD64DB /* QuadrasCell.swift in Sources */,

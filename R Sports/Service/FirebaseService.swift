@@ -13,6 +13,13 @@ import FirebaseFirestore
 
 class FirebaseService {
     
+    //MARK: - Auth Methods
+    
+    static func getCurrentUser() -> User?{
+        return Auth.auth().currentUser
+    }
+    
+    //MARK: - Firestore Methods
     static func retrieveCourts(success: @escaping ([QuadraDTO])->()){
         Firestore.firestore().collection("quadras").getDocuments { (snap, err) in
             if let err = err {
@@ -28,6 +35,7 @@ class FirebaseService {
         }
     }
     
+    //MARK: - Storage Methods
     static func getCourtImage(path: String,
                               success: @escaping(UIImage)->()){
         Storage.storage().reference(withPath: path).getData(maxSize: 1 * 2048 * 2048) { (data, err) in
