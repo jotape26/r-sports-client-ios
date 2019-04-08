@@ -12,15 +12,17 @@ import FirebaseFirestore
 
 class FirebaseService {
     
-    static func retrieveCourts(){
+    static func retrieveCourts(success: @escaping (QuadraDTO)->()){
         Firestore.firestore().collection("quadras").getDocuments { (snap, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 if let snap = snap {
+                    var quadras : [QuadraDTO] = []
                     for document in snap.documents {
-                        print("data: \(document.data())")
+                        quadras.append(QuadraDTO(JSON: document.data()))
                     }
+                    success(quadras)
                 }
             }
         }

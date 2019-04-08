@@ -7,17 +7,18 @@
 //
 
 import Foundation
+import ObjectMapper
 
-class QuadraDTO {
+class QuadraDTO : ImmutableMappable {
     var nome: String!
     var endereco: String!
     var rating: Double!
     var preco: Double!
     
-    init(nome: String, endereco: String, rating: Double, preco: Double) {
-        self.nome = nome
-        self.endereco = endereco
-        self.rating = rating
-        self.preco = preco
+    required init(map: Map) throws {
+        self.nome = try? map.value("nome")
+        self.endereco = try? map.value("endereco")
+        self.rating = try? map.value("rating")
+        self.preco = try? map.value("preco")
     }
 }
