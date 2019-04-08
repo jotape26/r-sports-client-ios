@@ -17,6 +17,9 @@ class MainTabController: UITabBarController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.title = tabBar.selectedItem?.title
+    }
 
     /*
     // MARK: - Navigation
@@ -31,4 +34,7 @@ class MainTabController: UITabBarController {
         FirebaseService.logoutUser()
     }
     
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        self.title = item.title
+    }
 }
