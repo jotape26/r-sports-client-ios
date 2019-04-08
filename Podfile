@@ -6,7 +6,7 @@ target 'R Sports' do
   use_frameworks!
 
   # Pods for R Sports
-  pod 'RatingControl'
+  pod 'Cosmos'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'

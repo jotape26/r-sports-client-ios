@@ -10,15 +10,17 @@ import Foundation
 import ObjectMapper
 
 class QuadraDTO : ImmutableMappable {
-    var nome: String!
-    var endereco: String!
-    var rating: Double!
-    var preco: Double!
+    var nome: String?
+    var endereco: String?
+    var rating: Double?
+    var preco: Double?
+    var imagePath: String?
     
     required init(map: Map) throws {
         self.nome = try? map.value("nome")
         self.endereco = try? map.value("endereco")
         self.rating = try? map.value("rating")
         self.preco = try? map.value("preco")
+        self.imagePath = try? map.value("imagemPath")
     }
 }
