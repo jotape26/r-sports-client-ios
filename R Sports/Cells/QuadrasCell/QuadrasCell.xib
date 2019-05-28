@@ -36,13 +36,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Endereco da Quadra" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0WP-52-lgi">
-                                <rect key="frame" x="116" y="33" width="544" height="91.5"/>
+                                <rect key="frame" x="116" y="33" width="544" height="99.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preço da Quadra : $$$$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Cx-EF-kV8">
-                                <rect key="frame" x="116" y="132.5" width="156" height="25"/>
+                                <rect key="frame" x="116" y="140.5" width="156" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -50,8 +50,8 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ukg-YX-A6a">
                                 <rect key="frame" x="48" y="73" width="20" height="20"/>
                             </activityIndicatorView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KSX-tI-P2b" customClass="CosmosView" customModule="Cosmos">
-                                <rect key="frame" x="535" y="132.5" width="125" height="25"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KSX-tI-P2b" customClass="CosmosView" customModule="Cosmos">
+                                <rect key="frame" x="535" y="140.5" width="125" height="17"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="minRating">
                                         <integer key="value" value="1"/>
@@ -91,7 +91,6 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.97999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="MLC-QX-QrL" firstAttribute="leading" secondItem="cRz-5N-WAS" secondAttribute="leading" constant="8" id="135-i1-vUe"/>
                             <constraint firstAttribute="bottom" secondItem="KSX-tI-P2b" secondAttribute="bottom" constant="8" id="Bvk-In-gQd"/>

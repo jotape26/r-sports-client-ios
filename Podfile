@@ -13,4 +13,5 @@ target 'R Sports' do
   pod 'Firebase/Storage'
   pod 'GoogleSignIn'
   pod 'ObjectMapper'
+  pod 'FSCalendar'
 end

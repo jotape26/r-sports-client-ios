@@ -15,6 +15,13 @@
 		FA3EB7DA225AED5F00866125 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA3EB7D9225AED5F00866125 /* GoogleService-Info.plist */; };
 		FA3EB7DD225AEFA200866125 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3EB7DC225AEFA200866125 /* FirebaseService.swift */; };
 		FA58A124224E9FF0007F9C72 /* QuadraDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA58A123224E9FF0007F9C72 /* QuadraDTO.swift */; };
+		FA905DE1229CB50C00F4D20E /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA905DE0229CB50C00F4D20E /* Date+Extensions.swift */; };
+		FA905DE3229CBA4200F4D20E /* PerfilController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA905DE2229CBA4200F4D20E /* PerfilController.swift */; };
+		FA905DE5229CBD7400F4D20E /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA905DE4229CBD7400F4D20E /* UserDTO.swift */; };
+		FA905DE7229CC44200F4D20E /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA905DE6229CC44200F4D20E /* UIImageView+Extensions.swift */; };
+		FAA49239229C99A200813E14 /* SharedSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA49238229C99A200813E14 /* SharedSession.swift */; };
+		FAA62193229CB04C00688353 /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA62192229CB04C00688353 /* DateCell.swift */; };
+		FAA62195229CB0D300688353 /* QuadraDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA62194229CB0D300688353 /* QuadraDetailController.swift */; };
 		FAD5D5E0224E8D3E00DD64DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5D5DF224E8D3E00DD64DB /* AppDelegate.swift */; };
 		FAD5D5E2224E8D3E00DD64DB /* ListaQuadrasController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5D5E1224E8D3E00DD64DB /* ListaQuadrasController.swift */; };
 		FAD5D5E5224E8D3E00DD64DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAD5D5E3224E8D3E00DD64DB /* Main.storyboard */; };
@@ -34,6 +41,13 @@
 		FA3EB7D9225AED5F00866125 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA3EB7DC225AEFA200866125 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		FA58A123224E9FF0007F9C72 /* QuadraDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuadraDTO.swift; sourceTree = "<group>"; };
+		FA905DE0229CB50C00F4D20E /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		FA905DE2229CBA4200F4D20E /* PerfilController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilController.swift; sourceTree = "<group>"; };
+		FA905DE4229CBD7400F4D20E /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
+		FA905DE6229CC44200F4D20E /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		FAA49238229C99A200813E14 /* SharedSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SharedSession.swift; path = Controllers/SharedSession.swift; sourceTree = "<group>"; };
+		FAA62192229CB04C00688353 /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
+		FAA62194229CB0D300688353 /* QuadraDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuadraDetailController.swift; sourceTree = "<group>"; };
 		FAD5D5DC224E8D3E00DD64DB /* R Sports.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "R Sports.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAD5D5DF224E8D3E00DD64DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAD5D5E1224E8D3E00DD64DB /* ListaQuadrasController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaQuadrasController.swift; sourceTree = "<group>"; };
@@ -79,6 +93,8 @@
 				FA07BB74225BBB60007AF2D0 /* AuthController.swift */,
 				FAD5D5E1224E8D3E00DD64DB /* ListaQuadrasController.swift */,
 				FA07BB7B225BC7AF007AF2D0 /* MainTabController.swift */,
+				FAA62194229CB0D300688353 /* QuadraDetailController.swift */,
+				FA905DE2229CBA4200F4D20E /* PerfilController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -87,6 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				FA07BB77225BC394007AF2D0 /* UIWindow+Extensions.swift */,
+				FA905DE0229CB50C00F4D20E /* Date+Extensions.swift */,
+				FA905DE6229CC44200F4D20E /* UIImageView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -103,8 +121,17 @@
 			isa = PBXGroup;
 			children = (
 				FA58A123224E9FF0007F9C72 /* QuadraDTO.swift */,
+				FA905DE4229CBD7400F4D20E /* UserDTO.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		FAA62191229CB03100688353 /* DateCell */ = {
+			isa = PBXGroup;
+			children = (
+				FAA62192229CB04C00688353 /* DateCell.swift */,
+			);
+			path = DateCell;
 			sourceTree = "<group>";
 		};
 		FAD5D5D3224E8D3E00DD64DB = {
@@ -129,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				FA07BB71225BBA73007AF2D0 /* Assets.xcassets */,
+				FAA49238229C99A200813E14 /* SharedSession.swift */,
 				FAD5D5DF224E8D3E00DD64DB /* AppDelegate.swift */,
 				FAD5D5EB224E8D4000DD64DB /* Info.plist */,
 				FA3EB7D9225AED5F00866125 /* GoogleService-Info.plist */,
@@ -146,6 +174,7 @@
 		FAD5D5F1224E995700DD64DB /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				FAA62191229CB03100688353 /* DateCell */,
 				FAD5D5F2224E995F00DD64DB /* QuadrasCell */,
 			);
 			path = Cells;
@@ -287,6 +316,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-R Sports/Pods-R Sports-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
+				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
@@ -303,6 +333,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
@@ -325,14 +356,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA905DE7229CC44200F4D20E /* UIImageView+Extensions.swift in Sources */,
 				FAD5D5E2224E8D3E00DD64DB /* ListaQuadrasController.swift in Sources */,
+				FAA62193229CB04C00688353 /* DateCell.swift in Sources */,
 				FA07BB75225BBB60007AF2D0 /* AuthController.swift in Sources */,
 				FA07BB7C225BC7AF007AF2D0 /* MainTabController.swift in Sources */,
 				FA3EB7DD225AEFA200866125 /* FirebaseService.swift in Sources */,
+				FA905DE1229CB50C00F4D20E /* Date+Extensions.swift in Sources */,
 				FAD5D5E0224E8D3E00DD64DB /* AppDelegate.swift in Sources */,
 				FAD5D5F5224E997300DD64DB /* QuadrasCell.swift in Sources */,
+				FAA49239229C99A200813E14 /* SharedSession.swift in Sources */,
 				FA07BB78225BC394007AF2D0 /* UIWindow+Extensions.swift in Sources */,
 				FA58A124224E9FF0007F9C72 /* QuadraDTO.swift in Sources */,
+				FAA62195229CB0D300688353 /* QuadraDetailController.swift in Sources */,
+				FA905DE5229CBD7400F4D20E /* UserDTO.swift in Sources */,
+				FA905DE3229CBA4200F4D20E /* PerfilController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

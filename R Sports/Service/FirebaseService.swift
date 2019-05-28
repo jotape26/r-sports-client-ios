@@ -48,14 +48,22 @@ class FirebaseService {
     }
     
     //MARK: - Firestore Methods
-    static func retrieveCourts(success: @escaping ([QuadraDTO])->()){
-        Firestore.firestore().collection("quadras").getDocuments { (snap, err) in
+    static func retrieveCourts(cidade: String?,
+                               success: @escaping ([QuadraDTO])->()){
+        
+        let request = Firestore.firestore().collection("quadras")
+        
+        if let cidade = cidade{
+            request.whereField("cidade", isGreaterThanOrEqualTo: cidade)
+        }
+        
+        request.getDocuments { (snap, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else if let snap = snap {
                 var quadras : [QuadraDTO] = []
                 for document in snap.documents {
-                    guard let quadra = try? QuadraDTO(JSON: document.data()) else { continue }
+                    guard let quadra = QuadraDTO(JSON: document.data()) else { continue }
                     quadras.append(quadra)
                 }
                 success(quadras)
@@ -69,6 +77,19 @@ class FirebaseService {
                                         "email" : user.email as Any]
         
         Firestore.firestore().collection("users").document(user.uid).setData(userData)
+    }
+    
+    static func retrieveUserDatabaseRef(uid: String,
+                                        success: @escaping(UserDTO)->()) {
+        Firestore.firestore().collection("users").document(uid).getDocument { (snap, err) in
+            if let err = err {
+                
+            } else {
+                guard let userData = snap?.data() else { return }
+                guard let user = UserDTO(JSON: userData) else { return }
+                success(user)
+            }
+        }
     }
     
     //MARK: - Storage Methods

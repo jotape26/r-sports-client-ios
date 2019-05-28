@@ -10,30 +10,32 @@ import UIKit
 import CoreLocation
 
 class ListaQuadrasController: UIViewController{
-
+    
     @IBOutlet weak var quadrasTable: UITableView!
     
     var quadras = [QuadraDTO]()
-    private let locationManager = CLLocationManager()
-    var currentLocation : CLLocation? {
-        didSet {
-            self.quadrasTable.reloadData()
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationManager.delegate = self
+        
         quadrasTable.register(UINib(nibName: "QuadrasCell", bundle: nil), forCellReuseIdentifier: "QuadrasCell")
         // Do any additional setup after loading the view.
-        FirebaseService.retrieveCourts { (qDTO) in
-            self.quadras = qDTO
-            self.getLocation(after: {
-                self.currentLocation = self.locationManager.location
-            })
+        
+        if let location = SharedSession.shared.currentLocation {
+            CLGeocoder().reverseGeocodeLocation(location) { (placemark, err) in
+                FirebaseService.retrieveCourts(cidade: placemark?.first?.locality) { (qDTO) in
+                    self.quadras = qDTO
+                    self.quadrasTable.reloadData()
+                }
+            }
+        } else {
+            FirebaseService.retrieveCourts(cidade: nil) { (qDTO) in
+                self.quadras = qDTO
+                self.quadrasTable.reloadData()
+            }
         }
+        
     }
-
 }
 
 extension ListaQuadrasController: UITableViewDelegate, UITableViewDataSource {
@@ -60,39 +62,17 @@ extension ListaQuadrasController: UITableViewDelegate, UITableViewDataSource {
             cell.lbDistancia.text = nil
         }
         
-    
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 110.0
     }
-}
-
-extension ListaQuadrasController: CLLocationManagerDelegate {
     
-    func getLocation(after: @escaping ()->()){
-        let status = CLLocationManager.authorizationStatus()
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         
-        switch status {
-        case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-            break
-        case .denied, .restricted:
-            let alert = UIAlertController(title: "Location Services disabled", message: "Please enable Location Services in Settings", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alert.addAction(okAction)
-            
-            present(alert, animated: true, completion: nil)
-            return
-        case .authorizedAlways, .authorizedWhenInUse:
-            break
-        @unknown default:
-            return
-        }
-        
-        locationManager.delegate = self
-        locationManager.startUpdatingLocation()
-        after()
+        performSegue(withIdentifier: "ListaToDetailsSegue", sender: nil)
     }
 }
