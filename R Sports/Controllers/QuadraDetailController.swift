@@ -28,6 +28,16 @@ class QuadraDetailController: UIViewController {
 
 extension QuadraDetailController: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        tsLb.text = date.description
+        
+        if date < Date() {
+            calendarView.select(Date(), scrollToDate: true)
+            calendarView.deselect(Date())
+        } else {
+            let df = DateFormatter()
+            df.dateFormat = "dd/MM/yyyy"
+            tsLb.text = df.string(from: date)
+        }
     }
+    
+    
 }
