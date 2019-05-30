@@ -33,6 +33,18 @@ class PerfilController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         userImage.setRounded()
+        txtIdade.setBottomBorder(withColor: UIColor.darkGray)
+        txtGenero.setBottomBorder(withColor: UIColor.darkGray)
+        
+        
+        let pick = UIPickerView()
+        txtGenero.inputView = UIPickerView()
+        
+        txtNome.setBottomBorder(withColor: UIColor.darkGray)
+        txtPosicao.setBottomBorder(withColor: UIColor.darkGray)
+        txtTotalJogos.setBottomBorder(withColor: UIColor.darkGray)
+        txtProcuraJogos.setBottomBorder(withColor: UIColor.darkGray)
+        txtCompetitividade.setBottomBorder(withColor: UIColor.darkGray)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -64,6 +76,10 @@ class PerfilController: UIViewController {
         
         txtCompetitividade.text = user?.competitivade
         
+    }
+    
+    @IBAction func testButton(_ sender: Any) {
+        FirebaseService.logoutUser()
     }
 
 }

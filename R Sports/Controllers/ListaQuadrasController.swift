@@ -36,6 +36,15 @@ class ListaQuadrasController: UIViewController{
         }
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? QuadraDetailController {
+            
+            guard let iPath = quadrasTable.indexPathForSelectedRow else { return }
+            
+            vc.selectedQuadra = quadras[iPath.row]
+        }
+    }
 }
 
 extension ListaQuadrasController: UITableViewDelegate, UITableViewDataSource {
@@ -51,10 +60,15 @@ extension ListaQuadrasController: UITableViewDelegate, UITableViewDataSource {
         
         cell.lbNomeQuadra.text = current.nome
         cell.lbEnderecoQuadra.text = current.endereco
-        cell.lbPrecoQuadra.text = "\(current.preco ?? 0.0)"
+
+        cell.lbPrecoQuadra.text = current.preco?.toCurrency()
+        
         cell.ratingQuadra.rating = Double(current.rating ?? 0)
         
-        cell.downloadImage(path: current.imagePath)
+        if var path = current.imagens?.first, let docID = current.documentID {
+            path = "imagensQuadras/\(docID)/\(path)"
+            cell.downloadImage(path: path)
+        }
         
         if let distance = current.distance {
             cell.lbDistancia.text = "\(distance.rounded())m"
@@ -71,8 +85,8 @@ extension ListaQuadrasController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
         performSegue(withIdentifier: "ListaToDetailsSegue", sender: nil)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

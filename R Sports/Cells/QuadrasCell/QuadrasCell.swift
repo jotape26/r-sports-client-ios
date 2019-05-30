@@ -39,7 +39,7 @@ class QuadrasCell: UITableViewCell {
         
         //Make Download Function
         
-        if let path = path {
+        if var path = path {
             FirebaseService.getCourtImage(path: path) { (courtImage) in
                 self.imgQuadra.image = courtImage
             }

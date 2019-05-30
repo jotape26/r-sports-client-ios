@@ -8,13 +8,14 @@
 
 import UIKit
 import FSCalendar
+import ImageSlideshow
+
 class QuadraDetailController: UIViewController {
     
     @IBOutlet weak var calendarView: FSCalendar!
-    @IBOutlet weak var tsLb: UILabel!
-    
+    @IBOutlet weak var imagensQuadra: ImageSlideshow!
+    var selectedQuadra: QuadraDTO!
     let refDate = Date()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +23,36 @@ class QuadraDetailController: UIViewController {
         // Do any additional setup after loading the view.
         calendarView.tintColor = SharedSession.shared.standardColor
         calendarView.select(nil)
+        
+        imagensQuadra.contentScaleMode = .scaleAspectFill
+        imagensQuadra.slideshowInterval = 5.0
+        
+        self.navigationItem.backBarButtonItem?.title = ""
+        self.navigationItem.title = selectedQuadra.nome
+        
+        var imagens = [UIImage]()
+        
+        selectedQuadra.imagens?.forEach({ (imageURL) in
+            guard let docID = selectedQuadra.documentID else { return }
+            let path = "imagensQuadras/\(docID)/\(imageURL)"
+            FirebaseService.getCourtImage(path: path, success: { (image) in
+                imagens.append(image)
+                
+                if imagens.count == self.selectedQuadra.imagens?.count {
+                    self.displayImages(images: imagens)
+                }
+            })
+        })
     }
     
+    func displayImages(images: [UIImage]){
+        var inputs = [InputSource]()
+        images.forEach { (image) in
+            inputs.append(ImageSource(image: image))
+        }
+        
+        imagensQuadra.setImageInputs(inputs)
+    }
 }
 
 extension QuadraDetailController: FSCalendarDelegate {
@@ -35,9 +64,6 @@ extension QuadraDetailController: FSCalendarDelegate {
         } else {
             let df = DateFormatter()
             df.dateFormat = "dd/MM/yyyy"
-            tsLb.text = df.string(from: date)
         }
     }
-    
-    
 }

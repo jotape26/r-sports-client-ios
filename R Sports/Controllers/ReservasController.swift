@@ -1,26 +1,21 @@
 //
-//  MainTabController.swift
+//  ReservasController.swift
 //  R Sports
 //
-//  Created by João Pedro Leite on 08/04/19.
+//  Created by João Leite on 28/05/19.
 //  Copyright © 2019 João Pedro Leite. All rights reserved.
 //
 
 import UIKit
-import GoogleSignIn
 
-class MainTabController: UITabBarController {
+class ReservasController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        selectedIndex = 1
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        self.title = tabBar.selectedItem?.title
-    }
 
     /*
     // MARK: - Navigation
@@ -31,8 +26,5 @@ class MainTabController: UITabBarController {
         // Pass the selected object to the new view controller.
     }
     */
-    
-    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        self.title = item.title
-    }
+
 }

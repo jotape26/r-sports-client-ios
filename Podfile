@@ -14,4 +14,7 @@ target 'R Sports' do
   pod 'GoogleSignIn'
   pod 'ObjectMapper'
   pod 'FSCalendar'
+  pod 'Alamofire'
+  pod 'ImageSlideshow'
+  pod 'ImageSlideshow/Alamofire'
 end
