@@ -23,9 +23,23 @@ class PerfilController: UIViewController {
     //Image
     @IBOutlet weak var userImage: UIImageView!
     
+    //Button
+    @IBOutlet weak var btnEdit: UIButton!
+    
+    let btnExit : UIBarButtonItem = {
+        let btn = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(testButton(_:)))
+        return btn
+    }()
+    
     var user: UserDTO? {
         didSet {
             updateValores()
+        }
+    }
+    
+    var editState = false {
+        didSet {
+            toggleEditState()
         }
     }
     
@@ -33,23 +47,33 @@ class PerfilController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         userImage.setRounded()
-        txtIdade.setBottomBorder(withColor: UIColor.darkGray)
-        txtGenero.setBottomBorder(withColor: UIColor.darkGray)
+        btnEdit.layer.cornerRadius = 5.0
         
+        toggleEditState()
         
-        let pick = UIPickerView()
-        txtGenero.inputView = UIPickerView()
+        txtIdade.setBottomBorder(withColor: UIColor.lightGray)
+        txtGenero.setBottomBorder(withColor: UIColor.lightGray)
+        txtNome.setBottomBorder(withColor: UIColor.lightGray)
+        txtPosicao.setBottomBorder(withColor: UIColor.lightGray)
+        txtTotalJogos.setBottomBorder(withColor: UIColor.lightGray)
+        txtProcuraJogos.setBottomBorder(withColor: UIColor.lightGray)
+        txtCompetitividade.setBottomBorder(withColor: UIColor.lightGray)
         
-        txtNome.setBottomBorder(withColor: UIColor.darkGray)
-        txtPosicao.setBottomBorder(withColor: UIColor.darkGray)
-        txtTotalJogos.setBottomBorder(withColor: UIColor.darkGray)
-        txtProcuraJogos.setBottomBorder(withColor: UIColor.darkGray)
-        txtCompetitividade.setBottomBorder(withColor: UIColor.darkGray)
+        self.navigationController?.topViewController?.navigationItem.setLeftBarButton(btnExit, animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         requestUserData()
     }
+    
+    func toggleEditState(){
+        txtNome.isEnabled = editState
+        txtPosicao.isEnabled = editState
+        txtTotalJogos.isEnabled = editState
+        txtProcuraJogos.isEnabled = editState
+        txtCompetitividade.isEnabled = editState
+    }
+    
     
     func requestUserData() {
         guard let user = Auth.auth().currentUser else { return }
@@ -78,7 +102,11 @@ class PerfilController: UIViewController {
         
     }
     
-    @IBAction func testButton(_ sender: Any) {
+    @IBAction func editBtnClick(_ sender: Any) {
+        editState = true
+    }
+    
+    @objc func testButton(_ sender: Any) {
         FirebaseService.logoutUser()
     }
 
