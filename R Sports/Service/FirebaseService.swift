@@ -57,8 +57,6 @@ class FirebaseService {
             request.whereField("cidade", isGreaterThanOrEqualTo: cidade)
         }
         
-        request.
-        
         request.getDocuments { (snap, err) in
             if let err = err {
                 print("Error getting documents: \(err)")

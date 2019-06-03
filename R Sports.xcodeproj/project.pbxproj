@@ -27,6 +27,8 @@
 		FA905DF4229E022E00F4D20E /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA905DF3229E022E00F4D20E /* Double+Extensions.swift */; };
 		FAA49239229C99A200813E14 /* SharedSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA49238229C99A200813E14 /* SharedSession.swift */; };
 		FAA62195229CB0D300688353 /* QuadraDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA62194229CB0D300688353 /* QuadraDetailController.swift */; };
+		FAD4D4C222A4AA4F008F10F7 /* ReservasCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD4D4C022A4AA4F008F10F7 /* ReservasCell.swift */; };
+		FAD4D4C322A4AA4F008F10F7 /* ReservasCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD4D4C122A4AA4F008F10F7 /* ReservasCell.xib */; };
 		FAD5D5E0224E8D3E00DD64DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5D5DF224E8D3E00DD64DB /* AppDelegate.swift */; };
 		FAD5D5E2224E8D3E00DD64DB /* ListaQuadrasController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5D5E1224E8D3E00DD64DB /* ListaQuadrasController.swift */; };
 		FAD5D5E5224E8D3E00DD64DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAD5D5E3224E8D3E00DD64DB /* Main.storyboard */; };
@@ -58,6 +60,8 @@
 		FA905DF3229E022E00F4D20E /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		FAA49238229C99A200813E14 /* SharedSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SharedSession.swift; path = Controllers/SharedSession.swift; sourceTree = "<group>"; };
 		FAA62194229CB0D300688353 /* QuadraDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuadraDetailController.swift; sourceTree = "<group>"; };
+		FAD4D4C022A4AA4F008F10F7 /* ReservasCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservasCell.swift; sourceTree = "<group>"; };
+		FAD4D4C122A4AA4F008F10F7 /* ReservasCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReservasCell.xib; sourceTree = "<group>"; };
 		FAD5D5DC224E8D3E00DD64DB /* R Sports.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "R Sports.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAD5D5DF224E8D3E00DD64DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAD5D5E1224E8D3E00DD64DB /* ListaQuadrasController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaQuadrasController.swift; sourceTree = "<group>"; };
@@ -149,6 +153,15 @@
 			path = CalendarCell;
 			sourceTree = "<group>";
 		};
+		FA905DF522A4AA0B00F4D20E /* ReservasCell */ = {
+			isa = PBXGroup;
+			children = (
+				FAD4D4C022A4AA4F008F10F7 /* ReservasCell.swift */,
+				FAD4D4C122A4AA4F008F10F7 /* ReservasCell.xib */,
+			);
+			path = ReservasCell;
+			sourceTree = "<group>";
+		};
 		FAD5D5D3224E8D3E00DD64DB = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +202,7 @@
 		FAD5D5F1224E995700DD64DB /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				FA905DF522A4AA0B00F4D20E /* ReservasCell */,
 				FA905DE8229DE4E800F4D20E /* CalendarCell */,
 				FAD5D5F2224E995F00DD64DB /* QuadrasCell */,
 			);
@@ -271,6 +285,7 @@
 				FAD5D5E5224E8D3E00DD64DB /* Main.storyboard in Resources */,
 				FA07BB72225BBA73007AF2D0 /* Assets.xcassets in Resources */,
 				FA905DEC229DE51D00F4D20E /* CalendarCell.xib in Resources */,
+				FAD4D4C322A4AA4F008F10F7 /* ReservasCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +401,7 @@
 				FA07BB7C225BC7AF007AF2D0 /* MainTabController.swift in Sources */,
 				FA905DEB229DE51D00F4D20E /* CalendarCell.swift in Sources */,
 				FA3EB7DD225AEFA200866125 /* FirebaseService.swift in Sources */,
+				FAD4D4C222A4AA4F008F10F7 /* ReservasCell.swift in Sources */,
 				FA905DE1229CB50C00F4D20E /* Date+Extensions.swift in Sources */,
 				FAD5D5E0224E8D3E00DD64DB /* AppDelegate.swift in Sources */,
 				FAD5D5F5224E997300DD64DB /* QuadrasCell.swift in Sources */,

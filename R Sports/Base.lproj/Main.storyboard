@@ -30,20 +30,46 @@
                                 </segments>
                                 <color key="tintColor" red="0.078431372550000003" green="0.46274509800000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8zu-fP-xOk">
+                                <rect key="frame" x="0.0" y="120" width="375" height="498"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="8zu-fP-xOk" firstAttribute="leading" secondItem="uco-w1-oho" secondAttribute="leading" id="1EH-xW-W8Z"/>
                             <constraint firstItem="Hk0-IZ-TSf" firstAttribute="leading" secondItem="uco-w1-oho" secondAttribute="leading" constant="16" id="ANF-Zl-zFB"/>
                             <constraint firstItem="Hk0-IZ-TSf" firstAttribute="top" secondItem="uco-w1-oho" secondAttribute="top" constant="10" id="AmO-BU-tRU"/>
+                            <constraint firstItem="uco-w1-oho" firstAttribute="trailing" secondItem="8zu-fP-xOk" secondAttribute="trailing" id="ibB-iF-gtE"/>
+                            <constraint firstItem="uco-w1-oho" firstAttribute="bottom" secondItem="8zu-fP-xOk" secondAttribute="bottom" id="ixA-A4-SDg"/>
+                            <constraint firstItem="8zu-fP-xOk" firstAttribute="top" secondItem="Hk0-IZ-TSf" secondAttribute="bottom" constant="16" id="xYG-Cs-Y6M"/>
                             <constraint firstItem="uco-w1-oho" firstAttribute="trailing" secondItem="Hk0-IZ-TSf" secondAttribute="trailing" constant="16" id="xsq-I7-unc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uco-w1-oho"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Reservas" image="reservasList" id="2Ch-Dd-wjp"/>
+                    <connections>
+                        <segue destination="Ds6-dk-3W0" kind="show" id="Jct-59-xoG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nZ7-z9-ghF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1297" y="112"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="069-9a-hAQ">
+            <objects>
+                <viewController id="Ds6-dk-3W0" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="u5E-T2-3t1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Kzk-WS-qJt"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="58J-bM-nJA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2086" y="112"/>
         </scene>
         <!--Quadras-->
         <scene sceneID="tne-QT-ifu">
