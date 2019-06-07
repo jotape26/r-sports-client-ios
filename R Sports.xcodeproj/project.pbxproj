@@ -17,6 +17,8 @@
 		FA8B55E522AAD989000BE939 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B55E422AAD989000BE939 /* MapController.swift */; };
 		FA8B55E822AAEAD4000BE939 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA8B55E722AAEAD4000BE939 /* Assets.xcassets */; };
 		FA8B55F422AAF6C1000BE939 /* CreditCardValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B55F322AAF6C1000BE939 /* CreditCardValidator.swift */; };
+		FA8B55F622AAF7E9000BE939 /* PagamentoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B55F522AAF7E9000BE939 /* PagamentoController.swift */; };
+		FA8B55F822AAF8D0000BE939 /* ConfirmacaoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B55F722AAF8D0000BE939 /* ConfirmacaoController.swift */; };
 		FA905DE1229CB50C00F4D20E /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA905DE0229CB50C00F4D20E /* Date+Extensions.swift */; };
 		FA905DE3229CBA4200F4D20E /* PerfilController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA905DE2229CBA4200F4D20E /* PerfilController.swift */; };
 		FA905DE5229CBD7400F4D20E /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA905DE4229CBD7400F4D20E /* UserDTO.swift */; };
@@ -52,6 +54,8 @@
 		FA8B55E422AAD989000BE939 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 		FA8B55E722AAEAD4000BE939 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA8B55F322AAF6C1000BE939 /* CreditCardValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardValidator.swift; sourceTree = "<group>"; };
+		FA8B55F522AAF7E9000BE939 /* PagamentoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagamentoController.swift; sourceTree = "<group>"; };
+		FA8B55F722AAF8D0000BE939 /* ConfirmacaoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmacaoController.swift; sourceTree = "<group>"; };
 		FA905DE0229CB50C00F4D20E /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		FA905DE2229CBA4200F4D20E /* PerfilController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilController.swift; sourceTree = "<group>"; };
 		FA905DE4229CBD7400F4D20E /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
@@ -115,6 +119,8 @@
 				FA905DE2229CBA4200F4D20E /* PerfilController.swift */,
 				FA905DF1229E004400F4D20E /* ReservasController.swift */,
 				FA8B55E422AAD989000BE939 /* MapController.swift */,
+				FA8B55F522AAF7E9000BE939 /* PagamentoController.swift */,
+				FA8B55F722AAF8D0000BE939 /* ConfirmacaoController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -413,6 +419,7 @@
 				FAD5D5E2224E8D3E00DD64DB /* ListaQuadrasController.swift in Sources */,
 				FA07BB75225BBB60007AF2D0 /* AuthController.swift in Sources */,
 				FA905DF0229DFB6500F4D20E /* UITextField+Extensions.swift in Sources */,
+				FA8B55F622AAF7E9000BE939 /* PagamentoController.swift in Sources */,
 				FA07BB7C225BC7AF007AF2D0 /* MainTabController.swift in Sources */,
 				FA905DEB229DE51D00F4D20E /* CalendarCell.swift in Sources */,
 				FA3EB7DD225AEFA200866125 /* FirebaseService.swift in Sources */,
@@ -426,6 +433,7 @@
 				FA58A124224E9FF0007F9C72 /* QuadraDTO.swift in Sources */,
 				FA8B55F422AAF6C1000BE939 /* CreditCardValidator.swift in Sources */,
 				FA905DEE229DFA5000F4D20E /* UIViewController+Extensions.swift in Sources */,
+				FA8B55F822AAF8D0000BE939 /* ConfirmacaoController.swift in Sources */,
 				FAA62195229CB0D300688353 /* QuadraDetailController.swift in Sources */,
 				FA905DE5229CBD7400F4D20E /* UserDTO.swift in Sources */,
 				FA905DE3229CBA4200F4D20E /* PerfilController.swift in Sources */,
