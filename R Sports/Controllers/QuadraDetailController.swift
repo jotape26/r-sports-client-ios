@@ -14,6 +14,8 @@ class QuadraDetailController: UIViewController {
     
     @IBOutlet weak var calendarView: FSCalendar!
     @IBOutlet weak var imagensQuadra: ImageSlideshow!
+    @IBOutlet weak var enderecoButton: UIButton!
+    
     var selectedQuadra: QuadraDTO!
     let refDate = Date()
     
@@ -31,6 +33,8 @@ class QuadraDetailController: UIViewController {
         self.navigationItem.title = selectedQuadra.nome
         
         var imagens = [UIImage]()
+        
+        enderecoButton.setTitle(selectedQuadra.endereco!, for: .normal)
         
         selectedQuadra.imagens?.forEach({ (imageURL) in
             guard let docID = selectedQuadra.documentID else { return }
@@ -52,6 +56,16 @@ class QuadraDetailController: UIViewController {
         }
         
         imagensQuadra.setImageInputs(inputs)
+    }
+    
+    @IBAction func enderecoBtnClick(_ sender: Any) {
+        performSegue(withIdentifier: "DetailToMapSegue", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? MapController {
+            vc.quadra = selectedQuadra
+        }
     }
 }
 
