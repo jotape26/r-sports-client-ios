@@ -509,6 +509,9 @@
                                         <state key="normal" title="Pagamento">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="RGg-jd-QWV" kind="show" id="ovr-du-b1j"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -672,6 +675,9 @@
                                 <state key="normal" title="Confirmar Pagamento">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="yco-qD-fyb" kind="show" id="psN-11-OfG"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -877,4 +883,8 @@
         <image name="reservasList" width="24" height="24"/>
         <image name="soccerGoal" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="w0w-70-LMF"/>
+        <segue reference="Tl2-f1-WzE"/>
+    </inferredMetricsTieBreakers>
 </document>

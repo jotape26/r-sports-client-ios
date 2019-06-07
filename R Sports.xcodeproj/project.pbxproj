@@ -16,8 +16,7 @@
 		FA58A124224E9FF0007F9C72 /* QuadraDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA58A123224E9FF0007F9C72 /* QuadraDTO.swift */; };
 		FA8B55E522AAD989000BE939 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B55E422AAD989000BE939 /* MapController.swift */; };
 		FA8B55E822AAEAD4000BE939 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA8B55E722AAEAD4000BE939 /* Assets.xcassets */; };
-		FA8B55EB22AAEF5A000BE939 /* CreditCardValidationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B55E922AAEF5A000BE939 /* CreditCardValidationType.swift */; };
-		FA8B55EC22AAEF5A000BE939 /* CreditCardValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B55EA22AAEF5A000BE939 /* CreditCardValidator.swift */; };
+		FA8B55F422AAF6C1000BE939 /* CreditCardValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B55F322AAF6C1000BE939 /* CreditCardValidator.swift */; };
 		FA905DE1229CB50C00F4D20E /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA905DE0229CB50C00F4D20E /* Date+Extensions.swift */; };
 		FA905DE3229CBA4200F4D20E /* PerfilController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA905DE2229CBA4200F4D20E /* PerfilController.swift */; };
 		FA905DE5229CBD7400F4D20E /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA905DE4229CBD7400F4D20E /* UserDTO.swift */; };
@@ -52,8 +51,7 @@
 		FA58A123224E9FF0007F9C72 /* QuadraDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuadraDTO.swift; sourceTree = "<group>"; };
 		FA8B55E422AAD989000BE939 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 		FA8B55E722AAEAD4000BE939 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		FA8B55E922AAEF5A000BE939 /* CreditCardValidationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardValidationType.swift; sourceTree = "<group>"; };
-		FA8B55EA22AAEF5A000BE939 /* CreditCardValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardValidator.swift; sourceTree = "<group>"; };
+		FA8B55F322AAF6C1000BE939 /* CreditCardValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardValidator.swift; sourceTree = "<group>"; };
 		FA905DE0229CB50C00F4D20E /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		FA905DE2229CBA4200F4D20E /* PerfilController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilController.swift; sourceTree = "<group>"; };
 		FA905DE4229CBD7400F4D20E /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
@@ -154,8 +152,7 @@
 		FA8B55E622AAE777000BE939 /* Custom Objects */ = {
 			isa = PBXGroup;
 			children = (
-				FA8B55E922AAEF5A000BE939 /* CreditCardValidationType.swift */,
-				FA8B55EA22AAEF5A000BE939 /* CreditCardValidator.swift */,
+				FA8B55F322AAF6C1000BE939 /* CreditCardValidator.swift */,
 			);
 			path = "Custom Objects";
 			sourceTree = "<group>";
@@ -422,13 +419,12 @@
 				FAD4D4C222A4AA4F008F10F7 /* ReservasCell.swift in Sources */,
 				FA905DE1229CB50C00F4D20E /* Date+Extensions.swift in Sources */,
 				FAD5D5E0224E8D3E00DD64DB /* AppDelegate.swift in Sources */,
-				FA8B55EC22AAEF5A000BE939 /* CreditCardValidator.swift in Sources */,
 				FAD5D5F5224E997300DD64DB /* QuadrasCell.swift in Sources */,
 				FAA49239229C99A200813E14 /* SharedSession.swift in Sources */,
 				FA07BB78225BC394007AF2D0 /* UIWindow+Extensions.swift in Sources */,
-				FA8B55EB22AAEF5A000BE939 /* CreditCardValidationType.swift in Sources */,
 				FA905DF4229E022E00F4D20E /* Double+Extensions.swift in Sources */,
 				FA58A124224E9FF0007F9C72 /* QuadraDTO.swift in Sources */,
+				FA8B55F422AAF6C1000BE939 /* CreditCardValidator.swift in Sources */,
 				FA905DEE229DFA5000F4D20E /* UIViewController+Extensions.swift in Sources */,
 				FAA62195229CB0D300688353 /* QuadraDetailController.swift in Sources */,
 				FA905DE5229CBD7400F4D20E /* UserDTO.swift in Sources */,

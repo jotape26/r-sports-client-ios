@@ -79,5 +79,7 @@ extension QuadraDetailController: FSCalendarDelegate {
             let df = DateFormatter()
             df.dateFormat = "dd/MM/yyyy"
         }
+        
+        performSegue(withIdentifier: "DetailToReserveSegue", sender: nil)
     }
 }
