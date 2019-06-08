@@ -78,7 +78,9 @@ class PerfilController: UIViewController {
     func requestUserData() {
         guard let user = Auth.auth().currentUser else { return }
         
-        userImage.downloadImage(from: user.photoURL!)
+        if let photoURL = user.photoURL {
+            userImage.downloadImage(from: photoURL)
+        }
         
         FirebaseService.retrieveUserDatabaseRef(uid: user.uid, success: { (refUser) in
             self.user = refUser
@@ -106,7 +108,7 @@ class PerfilController: UIViewController {
         editState = true
     }
     
-    @objc func testButton(_ sender: Any) {
+    @IBAction func testButton(_ sender: Any) {
         FirebaseService.logoutUser()
     }
 

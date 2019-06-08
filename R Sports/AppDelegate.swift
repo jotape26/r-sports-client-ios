@@ -8,10 +8,11 @@
 
 import UIKit
 import Firebase
-import GoogleSignIn
+import FirebaseMessaging
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
@@ -20,19 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         
-        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-        GIDSignIn.sharedInstance().delegate = self
-        
         SharedSession.shared.requestUserLocation()
+        Auth.auth().languageCode = Locale.current.languageCode
+        Messaging.messaging().delegate = self
         return true
-    }
-    
-    @available(iOS 9.0, *)
-    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
-        -> Bool {
-            return GIDSignIn.sharedInstance().handle(url,
-                                                     sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-                                                     annotation: [:])
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -56,37 +48,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    
-    //MARK: - Google Sign Methods
-    
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-        // ...
-        if error != nil {
-            // ...
-            return
-        }
-        
-        guard let authentication = user.authentication else { return }
-        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-                                                       accessToken: authentication.accessToken)
-        FirebaseService.loginWith(credential: credential) { (login) in
-            if login {
-                if let authVC = UIApplication.shared.keyWindow?.visibleViewController() as? AuthController {
-                    authVC.performSegue(withIdentifier: "AuthToMainSegue", sender: nil)
-                }
-            }
-        }
-    }
-    
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        // Perform any operations when the user disconnects from app here.
-        // ...
-        let authVC = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! AuthController
-        authVC.modalTransitionStyle = .crossDissolve
-        
-        UIApplication.shared.keyWindow?.visibleViewController()?.present(authVC, animated: true, completion: nil)
-    }
+}
 
-
+extension AppDelegate : MessagingDelegate {
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
+        print("Push token: \(token)")
+        
+        print(deviceToken.description)
+        if let uuid = UIDevice.current.identifierForVendor?.uuidString {
+            print(uuid)
+        }
+        Messaging.messaging().apnsToken = deviceToken
+        
+        UserDefaults.standard.setValue(token, forKey: "ApplicationIdentifier")
+        UserDefaults.standard.synchronize()
+    }
 }
 

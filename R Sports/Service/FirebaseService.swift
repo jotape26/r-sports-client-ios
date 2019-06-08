@@ -73,11 +73,7 @@ class FirebaseService {
     }
     
     static func createUserDatabaseReference(user: User){
-        
-        let userData : [String: Any] = ["nome" : user.displayName as Any,
-                                        "email" : user.email as Any]
-        
-        Firestore.firestore().collection("users").document(user.uid).setData(userData)
+        Firestore.firestore().collection("users").document(user.phoneNumber ?? "").setData([:])
     }
     
     static func retrieveUserDatabaseRef(uid: String,
