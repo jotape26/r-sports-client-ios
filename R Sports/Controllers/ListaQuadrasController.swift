@@ -21,15 +21,18 @@ class ListaQuadrasController: UIViewController{
         quadrasTable.register(UINib(nibName: "QuadrasCell", bundle: nil), forCellReuseIdentifier: "QuadrasCell")
         // Do any additional setup after loading the view.
         
+        self.view.startLoading()
         if let location = SharedSession.shared.currentLocation {
             CLGeocoder().reverseGeocodeLocation(location) { (placemark, err) in
                 FirebaseService.retrieveCourts(cidade: placemark?.first?.locality) { (qDTO) in
+                    self.view.stopLoading()
                     self.quadras = qDTO
                     self.quadrasTable.reloadData()
                 }
             }
         } else {
             FirebaseService.retrieveCourts(cidade: nil) { (qDTO) in
+                self.view.stopLoading()
                 self.quadras = qDTO
                 self.quadrasTable.reloadData()
             }

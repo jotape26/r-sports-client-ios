@@ -35,19 +35,21 @@ class QuadrasCell: UITableViewCell {
     }
     
     func downloadImage(path: String?) {
-        imageLoader.startAnimating()
+
         
         //Make Download Function
         
-        if var path = path {
-            FirebaseService.getCourtImage(path: path) { (courtImage) in
+        if let path = path {
+            imageLoader.startAnimating()
+            FirebaseService.getCourtImage(path: path, success: { (courtImage) in
                 self.imgQuadra.image = courtImage
-            }
+                self.imageLoader.stopAnimating()
+            }, failure: {
+                self.imageLoader.stopAnimating()
+            })
         } else {
             self.imgQuadra.image = nil
         }
-        
-        imageLoader.stopAnimating()
     }
     
 //    func getDistanceBetween(userLocation: CLLocation?, courtAddress: String?) {

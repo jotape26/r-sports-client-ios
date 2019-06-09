@@ -61,6 +61,8 @@ extension AppDelegate : MessagingDelegate {
         }
         Messaging.messaging().apnsToken = deviceToken
         
+        FirebaseService.setUserData(data: ["userNotificationToken" : token])
+        
         UserDefaults.standard.setValue(token, forKey: "ApplicationIdentifier")
         UserDefaults.standard.synchronize()
     }

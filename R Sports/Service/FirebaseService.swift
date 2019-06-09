@@ -73,7 +73,8 @@ class FirebaseService {
     }
     
     static func createUserDatabaseReference(user: User){
-        Firestore.firestore().collection("users").document(user.phoneNumber ?? "").setData([:])
+        guard let number = user.phoneNumber else { return }
+        Firestore.firestore().collection("users").document(number).setData([:])
     }
     
     static func retrieveUserDatabaseRef(uid: String,
@@ -89,9 +90,17 @@ class FirebaseService {
         }
     }
     
+    static func setUserData(data: [String: Any]) {
+        
+        guard let user = Auth.auth().currentUser else { return }
+        guard let number = user.phoneNumber else { return }
+        Firestore.firestore().collection("users").document(number).setData(data, merge: true)
+    }
+    
     //MARK: - Storage Methods
     static func getCourtImage(path: String,
-                              success: @escaping(UIImage)->()){
+                              success: @escaping(UIImage)->(),
+                              failure: @escaping()->()){
         Storage.storage().reference(withPath: path).getData(maxSize: 1 * 2048 * 2048) { (data, err) in
             if let err = err {
                 print("Error downloading image: \(err)")
@@ -100,6 +109,42 @@ class FirebaseService {
                     success(courtImage)
                 }
             }
+        }
+    }
+    
+    static func getUserImage(path: String,
+                              success: @escaping(UIImage)->(),
+                              failure: @escaping()->()){
+        Storage.storage().reference(withPath: path).getData(maxSize: 1 * 2048 * 2048) { (data, err) in
+            if let err = err {
+                print("Error downloading image: \(err)")
+            } else if let data = data {
+                if let userImage = UIImage(data: data) {
+                    success(userImage)
+                }
+            }
+        }
+    }
+    
+    static func saveUserImage(userImage: UIImage,
+                              success: @escaping()->(),
+                              failure: @escaping()->()) {
+        guard let user = Auth.auth().currentUser else { return }
+        guard let number = user.phoneNumber else { return }
+        guard let photoData = userImage.jpegData(compressionQuality: 1.0) else { return }
+        
+        Storage.storage().reference(withPath: "userImages/\(number)/profilePic.jpg").putData(photoData, metadata: nil) { metadata, error in
+            
+            guard let metadata = metadata else {
+                // Uh-oh, an error occurred!
+                failure()
+                return
+            }
+            
+            let userData : [String : Any] = ["userImage" : metadata.path ?? ""]
+            FirebaseService.setUserData(data: userData)
+            success()
+            
         }
     }
     

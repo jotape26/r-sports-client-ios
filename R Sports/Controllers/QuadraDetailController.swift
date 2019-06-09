@@ -36,6 +36,7 @@ class QuadraDetailController: UIViewController {
         
         enderecoButton.setTitle(selectedQuadra.endereco!, for: .normal)
         
+        imagensQuadra.startLoading()
         selectedQuadra.imagens?.forEach({ (imageURL) in
             guard let docID = selectedQuadra.documentID else { return }
             let path = "imagensQuadras/\(docID)/\(imageURL)"
@@ -45,7 +46,7 @@ class QuadraDetailController: UIViewController {
                 if imagens.count == self.selectedQuadra.imagens?.count {
                     self.displayImages(images: imagens)
                 }
-            })
+            }, failure: {})
         })
     }
     
@@ -56,6 +57,7 @@ class QuadraDetailController: UIViewController {
         }
         
         imagensQuadra.setImageInputs(inputs)
+        imagensQuadra.stopLoading()
     }
     
     @IBAction func enderecoBtnClick(_ sender: Any) {

@@ -26,11 +26,6 @@ class PerfilController: UIViewController {
     //Button
     @IBOutlet weak var btnEdit: UIButton!
     
-    let btnExit : UIBarButtonItem = {
-        let btn = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(testButton(_:)))
-        return btn
-    }()
-    
     var user: UserDTO? {
         didSet {
             updateValores()
@@ -58,8 +53,6 @@ class PerfilController: UIViewController {
         txtTotalJogos.setBottomBorder(withColor: UIColor.lightGray)
         txtProcuraJogos.setBottomBorder(withColor: UIColor.lightGray)
         txtCompetitividade.setBottomBorder(withColor: UIColor.lightGray)
-        
-        self.navigationController?.topViewController?.navigationItem.setLeftBarButton(btnExit, animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -77,17 +70,24 @@ class PerfilController: UIViewController {
     
     func requestUserData() {
         guard let user = Auth.auth().currentUser else { return }
+        guard let number = user.phoneNumber else { return }
         
-        if let photoURL = user.photoURL {
-            userImage.downloadImage(from: photoURL)
-        }
-        
-        FirebaseService.retrieveUserDatabaseRef(uid: user.uid, success: { (refUser) in
+        FirebaseService.retrieveUserDatabaseRef(uid: number, success: { (refUser) in
             self.user = refUser
         })
     }
     
     func updateValores(){
+        if let photoURL = user?.imagePath {
+            userImage.startLoading()
+            FirebaseService.getUserImage(path: photoURL, success: { (image) in
+                self.userImage.image = image
+                self.userImage.stopLoading()
+            }) {
+                self.userImage.stopLoading()
+            }
+        }
+        
         txtIdade.text = user?.idade?.description
         txtNome.text = user?.nome
         txtGenero.text = user?.genero

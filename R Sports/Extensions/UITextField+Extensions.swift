@@ -21,4 +21,22 @@ extension UITextField
         borderLine.backgroundColor = color
         self.addSubview(borderLine)
     }
+    
+    func formatToPhone() -> String {
+        if var phone = self.text {
+            phone = phone.replacingOccurrences(of: " ", with: "")
+            phone = phone.replacingOccurrences(of: "(", with: "")
+            phone = phone.replacingOccurrences(of: ")", with: "")
+            phone = phone.replacingOccurrences(of: "-", with: "")
+            return phone
+        }
+        return ""
+    }
+    
+    func setTextInvalid(){
+        UIView.animate(withDuration: 1) {
+            self.backgroundColor = .red
+            self.layoutIfNeeded()
+        }
+    }
 }

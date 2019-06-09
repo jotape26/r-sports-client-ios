@@ -14,9 +14,14 @@
 		FA2C1EE122AB7A8B0057131A /* MaskedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2C1EE022AB7A8B0057131A /* MaskedTextField.swift */; };
 		FA2C1EE322AC0A420057131A /* KapinField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2C1EE222AC0A420057131A /* KapinField.swift */; };
 		FA2C1EE522AC0A770057131A /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2C1EE422AC0A770057131A /* LoginController.swift */; };
+		FA2C1EE722AC5A840057131A /* OnboardingCreateAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2C1EE622AC5A840057131A /* OnboardingCreateAccountController.swift */; };
 		FA3EB7DA225AED5F00866125 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA3EB7D9225AED5F00866125 /* GoogleService-Info.plist */; };
 		FA3EB7DD225AEFA200866125 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3EB7DC225AEFA200866125 /* FirebaseService.swift */; };
 		FA58A124224E9FF0007F9C72 /* QuadraDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA58A123224E9FF0007F9C72 /* QuadraDTO.swift */; };
+		FA7CE8AE22AC5BAF007B84A7 /* PhoneService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7CE8AD22AC5BAF007B84A7 /* PhoneService.swift */; };
+		FA7CE8B022AC6894007B84A7 /* OnboardingIdentityInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7CE8AF22AC6894007B84A7 /* OnboardingIdentityInfoController.swift */; };
+		FA7CE8B222AC6D88007B84A7 /* OnboardingImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7CE8B122AC6D88007B84A7 /* OnboardingImageController.swift */; };
+		FA7CE8B422AC7342007B84A7 /* OnboardingPlaystyleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7CE8B322AC7342007B84A7 /* OnboardingPlaystyleController.swift */; };
 		FA8B55E522AAD989000BE939 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B55E422AAD989000BE939 /* MapController.swift */; };
 		FA8B55E822AAEAD4000BE939 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA8B55E722AAEAD4000BE939 /* Assets.xcassets */; };
 		FA8B55F422AAF6C1000BE939 /* CreditCardValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B55F322AAF6C1000BE939 /* CreditCardValidator.swift */; };
@@ -55,9 +60,14 @@
 		FA2C1EE022AB7A8B0057131A /* MaskedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskedTextField.swift; sourceTree = "<group>"; };
 		FA2C1EE222AC0A420057131A /* KapinField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KapinField.swift; sourceTree = "<group>"; };
 		FA2C1EE422AC0A770057131A /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		FA2C1EE622AC5A840057131A /* OnboardingCreateAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCreateAccountController.swift; sourceTree = "<group>"; };
 		FA3EB7D9225AED5F00866125 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA3EB7DC225AEFA200866125 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		FA58A123224E9FF0007F9C72 /* QuadraDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuadraDTO.swift; sourceTree = "<group>"; };
+		FA7CE8AD22AC5BAF007B84A7 /* PhoneService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneService.swift; sourceTree = "<group>"; };
+		FA7CE8AF22AC6894007B84A7 /* OnboardingIdentityInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingIdentityInfoController.swift; sourceTree = "<group>"; };
+		FA7CE8B122AC6D88007B84A7 /* OnboardingImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingImageController.swift; sourceTree = "<group>"; };
+		FA7CE8B322AC7342007B84A7 /* OnboardingPlaystyleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPlaystyleController.swift; sourceTree = "<group>"; };
 		FA8B55E422AAD989000BE939 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 		FA8B55E722AAEAD4000BE939 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA8B55F322AAF6C1000BE939 /* CreditCardValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardValidator.swift; sourceTree = "<group>"; };
@@ -129,6 +139,10 @@
 				FA8B55F522AAF7E9000BE939 /* PagamentoController.swift */,
 				FA8B55F722AAF8D0000BE939 /* ConfirmacaoController.swift */,
 				FA2C1EE422AC0A770057131A /* LoginController.swift */,
+				FA2C1EE622AC5A840057131A /* OnboardingCreateAccountController.swift */,
+				FA7CE8AF22AC6894007B84A7 /* OnboardingIdentityInfoController.swift */,
+				FA7CE8B122AC6D88007B84A7 /* OnboardingImageController.swift */,
+				FA7CE8B322AC7342007B84A7 /* OnboardingPlaystyleController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -150,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				FA3EB7DC225AEFA200866125 /* FirebaseService.swift */,
+				FA7CE8AD22AC5BAF007B84A7 /* PhoneService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -439,7 +454,10 @@
 				FA2C1EE122AB7A8B0057131A /* MaskedTextField.swift in Sources */,
 				FA8B55F622AAF7E9000BE939 /* PagamentoController.swift in Sources */,
 				FA07BB7C225BC7AF007AF2D0 /* MainTabController.swift in Sources */,
+				FA7CE8B222AC6D88007B84A7 /* OnboardingImageController.swift in Sources */,
 				FA905DEB229DE51D00F4D20E /* CalendarCell.swift in Sources */,
+				FA7CE8B422AC7342007B84A7 /* OnboardingPlaystyleController.swift in Sources */,
+				FA7CE8AE22AC5BAF007B84A7 /* PhoneService.swift in Sources */,
 				FA3EB7DD225AEFA200866125 /* FirebaseService.swift in Sources */,
 				FAD4D4C222A4AA4F008F10F7 /* ReservasCell.swift in Sources */,
 				FA905DE1229CB50C00F4D20E /* Date+Extensions.swift in Sources */,
@@ -447,6 +465,7 @@
 				FAD5D5F5224E997300DD64DB /* QuadrasCell.swift in Sources */,
 				FAA49239229C99A200813E14 /* SharedSession.swift in Sources */,
 				FA2C1EE322AC0A420057131A /* KapinField.swift in Sources */,
+				FA2C1EE722AC5A840057131A /* OnboardingCreateAccountController.swift in Sources */,
 				FA07BB78225BC394007AF2D0 /* UIWindow+Extensions.swift in Sources */,
 				FA905DF4229E022E00F4D20E /* Double+Extensions.swift in Sources */,
 				FA58A124224E9FF0007F9C72 /* QuadraDTO.swift in Sources */,
@@ -455,6 +474,7 @@
 				FA8B55F822AAF8D0000BE939 /* ConfirmacaoController.swift in Sources */,
 				FAA62195229CB0D300688353 /* QuadraDetailController.swift in Sources */,
 				FA905DE5229CBD7400F4D20E /* UserDTO.swift in Sources */,
+				FA7CE8B022AC6894007B84A7 /* OnboardingIdentityInfoController.swift in Sources */,
 				FA905DE3229CBA4200F4D20E /* PerfilController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
