@@ -14,6 +14,8 @@ class LoginController: UIViewController {
     @IBOutlet weak var txtCelNumber: SwiftMaskTextfield!
     @IBOutlet weak var txtPin: KAPinField!
     @IBOutlet weak var lblPin: UILabel!
+    @IBOutlet weak var btnConfirm: UIButton!
+    @IBOutlet weak var btnVoltar: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +24,8 @@ class LoginController: UIViewController {
         txtPin.properties.delegate = self
         txtPin.properties.numberOfCharacters = 6
         txtPin.reloadAppearance()
+        btnConfirm.layer.cornerRadius = 5.0
+        btnVoltar.layer.cornerRadius = 5.0
     }
     
     @IBAction func btnEntrarClick(_ sender: Any) {
@@ -44,8 +48,9 @@ class LoginController: UIViewController {
     }
     
     
-    
-    
+    @IBAction func btnVoltarClick(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
 extension LoginController: KAPinFieldDelegate {

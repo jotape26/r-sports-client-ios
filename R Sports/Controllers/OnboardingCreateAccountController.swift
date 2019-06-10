@@ -16,6 +16,7 @@ class OnboardingCreateAccountController: UIViewController {
     @IBOutlet weak var btnConfirmar: UIButton!
     @IBOutlet weak var labelPinHeight: NSLayoutConstraint!
     @IBOutlet weak var txtPinHeight: NSLayoutConstraint!
+    @IBOutlet weak var btnVoltar: UIButton!
     
     
     override func viewDidLoad() {
@@ -23,6 +24,7 @@ class OnboardingCreateAccountController: UIViewController {
 
         // Do any additional setup after loading the view.
         btnConfirmar.layer.cornerRadius = 5.0
+        btnVoltar.layer.cornerRadius = 5.0
         txtPin.properties.delegate = self
         txtPin.properties.numberOfCharacters = 6
         txtPin.reloadAppearance()
@@ -48,6 +50,9 @@ class OnboardingCreateAccountController: UIViewController {
                 self.view.stopLoading()
             }
     }
+    @IBAction func btnVoltarClick(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
 extension OnboardingCreateAccountController: KAPinFieldDelegate {
@@ -55,7 +60,7 @@ extension OnboardingCreateAccountController: KAPinFieldDelegate {
         self.view.startLoading()
         let verificationID = UserDefaults.standard.string(forKey: "authVerificationID") ?? ""
         let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID, verificationCode: code)
-        FirebaseService.loginWith(credential: credential) { (success) in
+        FirebaseService.loginWith(credential: credential, register: true) { (success) in
             if success {
                 self.view.stopLoading()
                 self.performSegue(withIdentifier: "CreateProfileSegue", sender: nil)

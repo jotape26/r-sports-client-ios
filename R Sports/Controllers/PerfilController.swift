@@ -56,6 +56,7 @@ class PerfilController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        self.view.startLoading()
         requestUserData()
     }
     
@@ -74,6 +75,7 @@ class PerfilController: UIViewController {
         
         FirebaseService.retrieveUserDatabaseRef(uid: number, success: { (refUser) in
             self.user = refUser
+            self.view.stopLoading()
         })
     }
     

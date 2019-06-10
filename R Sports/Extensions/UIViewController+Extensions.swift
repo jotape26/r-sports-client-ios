@@ -15,6 +15,26 @@ extension UIViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+    
+    func useGif() {
+        
+        let imageData = try? Data(contentsOf: Bundle.main.url(forResource: "app_joao", withExtension: "gif")!)
+        let advTimeGif = UIImage.gifImageWithData(imageData!)
+        let imageView2 = UIImageView(image: advTimeGif)
+        imageView2.frame = CGRect(x: self.view.frame.midX - 150, y: self.view.frame.midY - 150, width: 150.0, height: 150.0)
+        imageView2.tag = 99999
+        view.addSubview(imageView2)
+    }
+    
+    func stopGif() {
+        self.view.subviews.forEach { (view) in
+            if let view = view as? UIImageView {
+                if view.tag == 99999 {
+                    view.removeFromSuperview()
+                }
+            }
+        }
+    }
 }
 
 extension UIView {

@@ -17,6 +17,7 @@ class QuadraDTO : ImmutableMappable {
     var preco: Double?
     var imagens: [String]?
     var distance: Double?
+    var servicos : [String]?
     
     var documentID: String?
     
@@ -27,5 +28,6 @@ class QuadraDTO : ImmutableMappable {
         self.rating = try? map.value("rating")
         self.preco = try? map.value("preco")
         self.imagens = try? map.value("imagens")
+        self.servicos = try? map.value("servicos")
     }
 }

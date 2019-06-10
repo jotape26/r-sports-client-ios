@@ -17,13 +17,16 @@ class FirebaseService {
     //MARK: - Auth Methods
     
     static func loginWith(credential: AuthCredential,
+                          register: Bool = false,
                           complete: @escaping(Bool)->()) {
         Auth.auth().signInAndRetrieveData(with: credential) { (result, err) in
             if err != nil {
                 complete(false)
                 return
             }else if let result = result {
-                FirebaseService.createUserDatabaseReference(user: result.user)
+                if register {
+                    FirebaseService.createUserDatabaseReference(user: result.user)
+                }
                 complete(true)
             }
         }
@@ -97,6 +100,30 @@ class FirebaseService {
         Firestore.firestore().collection("users").document(number).setData(data, merge: true)
     }
     
+    static func getPlayerDetails(jogador: UserDTO,
+                                 found: @escaping(UserDTO)->(),
+                                 notFound: @escaping()->()) {
+        
+        Firestore.firestore().collection("users").document(jogador.telefone ?? "").getDocument { (snap, err) in
+            if err != nil {
+                notFound()
+            }
+            
+            guard let userData = snap?.data() else {
+                notFound()
+                return
+            }
+            
+            guard let user = UserDTO(JSON: userData) else {
+                notFound()
+                return
+            }
+            
+            jogador.nome = user.nome
+            found(jogador)
+        }
+    }
+    
     //MARK: - Storage Methods
     static func getCourtImage(path: String,
                               success: @escaping(UIImage)->(),
@@ -141,7 +168,7 @@ class FirebaseService {
                 return
             }
             
-            let userData : [String : Any] = ["userImage" : metadata.path ?? ""]
+            let userData : [String : Any] = [ProfileConstants.IMAGEPATH : metadata.path ?? ""]
             FirebaseService.setUserData(data: userData)
             success()
             

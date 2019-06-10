@@ -18,16 +18,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoWithBall" translatesAutoresizingMaskIntoConstraints="NO" id="djM-cO-O8M">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="soccer-wallpaper-1" translatesAutoresizingMaskIntoConstraints="NO" id="p2t-bi-EaD">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoWithBall" translatesAutoresizingMaskIntoConstraints="NO" id="Gju-Fv-j68">
                                 <rect key="frame" x="0.0" y="44" width="414" height="409"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.078431372550000003" green="0.46274509800000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="djM-cO-O8M" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="1El-BC-y9F"/>
-                            <constraint firstItem="djM-cO-O8M" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="EQ7-jy-DFV"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="djM-cO-O8M" secondAttribute="trailing" id="gEK-gF-pdn"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="centerY" secondItem="djM-cO-O8M" secondAttribute="bottom" id="xeF-0Y-nh4"/>
+                            <constraint firstItem="Gju-Fv-j68" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="9li-Qz-sZA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="p2t-bi-EaD" secondAttribute="trailing" id="HPE-oM-LA0"/>
+                            <constraint firstItem="Gju-Fv-j68" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cUf-ze-uIO"/>
+                            <constraint firstItem="p2t-bi-EaD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="d5i-bD-6hZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="centerY" secondItem="Gju-Fv-j68" secondAttribute="bottom" id="fSt-qY-iBn"/>
+                            <constraint firstItem="p2t-bi-EaD" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="l7X-T5-lAh"/>
+                            <constraint firstAttribute="bottom" secondItem="p2t-bi-EaD" secondAttribute="bottom" id="wPB-bO-c2x"/>
+                            <constraint firstItem="Gju-Fv-j68" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="zZe-4X-7y3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -39,5 +46,6 @@
     </scenes>
     <resources>
         <image name="logoWithBall" width="1080" height="1920"/>
+        <image name="soccer-wallpaper-1" width="1110" height="1796"/>
     </resources>
 </document>

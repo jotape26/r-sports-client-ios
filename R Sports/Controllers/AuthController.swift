@@ -19,8 +19,6 @@ class AuthController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-//        phoneText.delegate = self
-//        txtSMSCode.delegate = self
         btnLogin.layer.cornerRadius = 5.0
     }
     
@@ -29,7 +27,6 @@ class AuthController: UIViewController {
             performSegue(withIdentifier: "AuthToMainSegue", sender: nil)
         } else {
             UIView.animate(withDuration: 1.5) {
-                self.ballTrailing.constant = 100
                 self.view.layoutIfNeeded()
                 UIView.animate(withDuration: 0.5, animations: {
                     self.controllerView.alpha = 1.0

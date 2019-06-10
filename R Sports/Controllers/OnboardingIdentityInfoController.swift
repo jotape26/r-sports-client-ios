@@ -27,9 +27,9 @@ class OnboardingIdentityInfoController: UIViewController {
         
         if validateFields() {
             
-            let userData : [String : Any] = ["userName" : txtNome.text ?? "",
-                                             "userAge" : Int(txtIdade.text ?? "") ?? 0,
-                                             "userEmail" : txtEmail.text ?? ""]
+            let userData : [String : Any] = [ProfileConstants.NAME : txtNome.text ?? "",
+                                             ProfileConstants.AGE : Int(txtIdade.text ?? "") ?? 0,
+                                             ProfileConstants.EMAIL : txtEmail.text ?? ""]
             
             FirebaseService.setUserData(data: userData)
             performSegue(withIdentifier: "IdentityToPhotoSegue", sender: nil)

@@ -18,12 +18,19 @@
 		FA3EB7DA225AED5F00866125 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA3EB7D9225AED5F00866125 /* GoogleService-Info.plist */; };
 		FA3EB7DD225AEFA200866125 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3EB7DC225AEFA200866125 /* FirebaseService.swift */; };
 		FA58A124224E9FF0007F9C72 /* QuadraDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA58A123224E9FF0007F9C72 /* QuadraDTO.swift */; };
+		FA5A404222ADB4DB00E8FA8A /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5A404022ADB4DB00E8FA8A /* HeaderCell.swift */; };
+		FA5A404322ADB4DB00E8FA8A /* HeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA5A404122ADB4DB00E8FA8A /* HeaderCell.xib */; };
+		FA5A404622ADB90000E8FA8A /* EnderecoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5A404422ADB90000E8FA8A /* EnderecoCell.swift */; };
+		FA5A404722ADB90000E8FA8A /* EnderecoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA5A404522ADB90000E8FA8A /* EnderecoCell.xib */; };
+		FA5A404D22ADC35D00E8FA8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA5A404C22ADC35D00E8FA8A /* Assets.xcassets */; };
+		FA5A405122ADC77900E8FA8A /* CriarReservaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5A405022ADC77900E8FA8A /* CriarReservaController.swift */; };
+		FA5A405A22ADC90600E8FA8A /* JogadoresCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5A405822ADC90600E8FA8A /* JogadoresCell.swift */; };
+		FA5A405B22ADC90600E8FA8A /* JogadoresCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA5A405922ADC90600E8FA8A /* JogadoresCell.xib */; };
 		FA7CE8AE22AC5BAF007B84A7 /* PhoneService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7CE8AD22AC5BAF007B84A7 /* PhoneService.swift */; };
 		FA7CE8B022AC6894007B84A7 /* OnboardingIdentityInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7CE8AF22AC6894007B84A7 /* OnboardingIdentityInfoController.swift */; };
 		FA7CE8B222AC6D88007B84A7 /* OnboardingImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7CE8B122AC6D88007B84A7 /* OnboardingImageController.swift */; };
 		FA7CE8B422AC7342007B84A7 /* OnboardingPlaystyleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7CE8B322AC7342007B84A7 /* OnboardingPlaystyleController.swift */; };
 		FA8B55E522AAD989000BE939 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B55E422AAD989000BE939 /* MapController.swift */; };
-		FA8B55E822AAEAD4000BE939 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA8B55E722AAEAD4000BE939 /* Assets.xcassets */; };
 		FA8B55F422AAF6C1000BE939 /* CreditCardValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B55F322AAF6C1000BE939 /* CreditCardValidator.swift */; };
 		FA8B55F622AAF7E9000BE939 /* PagamentoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B55F522AAF7E9000BE939 /* PagamentoController.swift */; };
 		FA8B55F822AAF8D0000BE939 /* ConfirmacaoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B55F722AAF8D0000BE939 /* ConfirmacaoController.swift */; };
@@ -64,12 +71,19 @@
 		FA3EB7D9225AED5F00866125 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA3EB7DC225AEFA200866125 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		FA58A123224E9FF0007F9C72 /* QuadraDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuadraDTO.swift; sourceTree = "<group>"; };
+		FA5A404022ADB4DB00E8FA8A /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
+		FA5A404122ADB4DB00E8FA8A /* HeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderCell.xib; sourceTree = "<group>"; };
+		FA5A404422ADB90000E8FA8A /* EnderecoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnderecoCell.swift; sourceTree = "<group>"; };
+		FA5A404522ADB90000E8FA8A /* EnderecoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnderecoCell.xib; sourceTree = "<group>"; };
+		FA5A404C22ADC35D00E8FA8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FA5A405022ADC77900E8FA8A /* CriarReservaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriarReservaController.swift; sourceTree = "<group>"; };
+		FA5A405822ADC90600E8FA8A /* JogadoresCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JogadoresCell.swift; sourceTree = "<group>"; };
+		FA5A405922ADC90600E8FA8A /* JogadoresCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JogadoresCell.xib; sourceTree = "<group>"; };
 		FA7CE8AD22AC5BAF007B84A7 /* PhoneService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneService.swift; sourceTree = "<group>"; };
 		FA7CE8AF22AC6894007B84A7 /* OnboardingIdentityInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingIdentityInfoController.swift; sourceTree = "<group>"; };
 		FA7CE8B122AC6D88007B84A7 /* OnboardingImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingImageController.swift; sourceTree = "<group>"; };
 		FA7CE8B322AC7342007B84A7 /* OnboardingPlaystyleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPlaystyleController.swift; sourceTree = "<group>"; };
 		FA8B55E422AAD989000BE939 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
-		FA8B55E722AAEAD4000BE939 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA8B55F322AAF6C1000BE939 /* CreditCardValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardValidator.swift; sourceTree = "<group>"; };
 		FA8B55F522AAF7E9000BE939 /* PagamentoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagamentoController.swift; sourceTree = "<group>"; };
 		FA8B55F722AAF8D0000BE939 /* ConfirmacaoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmacaoController.swift; sourceTree = "<group>"; };
@@ -130,19 +144,20 @@
 			isa = PBXGroup;
 			children = (
 				FA07BB74225BBB60007AF2D0 /* AuthController.swift */,
-				FAD5D5E1224E8D3E00DD64DB /* ListaQuadrasController.swift */,
-				FA07BB7B225BC7AF007AF2D0 /* MainTabController.swift */,
-				FAA62194229CB0D300688353 /* QuadraDetailController.swift */,
-				FA905DE2229CBA4200F4D20E /* PerfilController.swift */,
-				FA905DF1229E004400F4D20E /* ReservasController.swift */,
-				FA8B55E422AAD989000BE939 /* MapController.swift */,
-				FA8B55F522AAF7E9000BE939 /* PagamentoController.swift */,
 				FA8B55F722AAF8D0000BE939 /* ConfirmacaoController.swift */,
+				FA5A405022ADC77900E8FA8A /* CriarReservaController.swift */,
+				FAD5D5E1224E8D3E00DD64DB /* ListaQuadrasController.swift */,
 				FA2C1EE422AC0A770057131A /* LoginController.swift */,
+				FA07BB7B225BC7AF007AF2D0 /* MainTabController.swift */,
+				FA8B55E422AAD989000BE939 /* MapController.swift */,
 				FA2C1EE622AC5A840057131A /* OnboardingCreateAccountController.swift */,
 				FA7CE8AF22AC6894007B84A7 /* OnboardingIdentityInfoController.swift */,
 				FA7CE8B122AC6D88007B84A7 /* OnboardingImageController.swift */,
 				FA7CE8B322AC7342007B84A7 /* OnboardingPlaystyleController.swift */,
+				FA8B55F522AAF7E9000BE939 /* PagamentoController.swift */,
+				FA905DE2229CBA4200F4D20E /* PerfilController.swift */,
+				FAA62194229CB0D300688353 /* QuadraDetailController.swift */,
+				FA905DF1229E004400F4D20E /* ReservasController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -150,12 +165,12 @@
 		FA07BB76225BC383007AF2D0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				FA07BB77225BC394007AF2D0 /* UIWindow+Extensions.swift */,
 				FA905DE0229CB50C00F4D20E /* Date+Extensions.swift */,
-				FA905DE6229CC44200F4D20E /* UIImageView+Extensions.swift */,
-				FA905DED229DFA5000F4D20E /* UIViewController+Extensions.swift */,
-				FA905DEF229DFB6500F4D20E /* UITextField+Extensions.swift */,
 				FA905DF3229E022E00F4D20E /* Double+Extensions.swift */,
+				FA905DE6229CC44200F4D20E /* UIImageView+Extensions.swift */,
+				FA905DEF229DFB6500F4D20E /* UITextField+Extensions.swift */,
+				FA905DED229DFA5000F4D20E /* UIViewController+Extensions.swift */,
+				FA07BB77225BC394007AF2D0 /* UIWindow+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -178,12 +193,39 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		FA5A405222ADC7A400E8FA8A /* EnderecoCell */ = {
+			isa = PBXGroup;
+			children = (
+				FA5A404422ADB90000E8FA8A /* EnderecoCell.swift */,
+				FA5A404522ADB90000E8FA8A /* EnderecoCell.xib */,
+			);
+			path = EnderecoCell;
+			sourceTree = "<group>";
+		};
+		FA5A405322ADC7AA00E8FA8A /* HeaderCell */ = {
+			isa = PBXGroup;
+			children = (
+				FA5A404022ADB4DB00E8FA8A /* HeaderCell.swift */,
+				FA5A404122ADB4DB00E8FA8A /* HeaderCell.xib */,
+			);
+			path = HeaderCell;
+			sourceTree = "<group>";
+		};
+		FA5A405522ADC8BA00E8FA8A /* JogadoresCell */ = {
+			isa = PBXGroup;
+			children = (
+				FA5A405822ADC90600E8FA8A /* JogadoresCell.swift */,
+				FA5A405922ADC90600E8FA8A /* JogadoresCell.xib */,
+			);
+			path = JogadoresCell;
+			sourceTree = "<group>";
+		};
 		FA8B55E622AAE777000BE939 /* Custom Objects */ = {
 			isa = PBXGroup;
 			children = (
 				FA8B55F322AAF6C1000BE939 /* CreditCardValidator.swift */,
-				FA2C1EE022AB7A8B0057131A /* MaskedTextField.swift */,
 				FA2C1EE222AC0A420057131A /* KapinField.swift */,
+				FA2C1EE022AB7A8B0057131A /* MaskedTextField.swift */,
 			);
 			path = "Custom Objects";
 			sourceTree = "<group>";
@@ -210,9 +252,9 @@
 			isa = PBXGroup;
 			children = (
 				FAD5D5DE224E8D3E00DD64DB /* R Sports */,
-				FAD5D5DD224E8D3E00DD64DB /* Products */,
-				39A3A98CD35E7D87282033DA /* Pods */,
 				F61559CBAEA772A1FE757D4F /* Frameworks */,
+				39A3A98CD35E7D87282033DA /* Pods */,
+				FAD5D5DD224E8D3E00DD64DB /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -228,7 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				FA2C1EDF22AB13AE0057131A /* R Sports.entitlements */,
-				FA8B55E722AAEAD4000BE939 /* Assets.xcassets */,
+				FA5A404C22ADC35D00E8FA8A /* Assets.xcassets */,
 				FAA49238229C99A200813E14 /* SharedSession.swift */,
 				FAD5D5DF224E8D3E00DD64DB /* AppDelegate.swift */,
 				FAD5D5EB224E8D4000DD64DB /* Info.plist */,
@@ -248,9 +290,12 @@
 		FAD5D5F1224E995700DD64DB /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				FA905DF522A4AA0B00F4D20E /* ReservasCell */,
+				FA5A405522ADC8BA00E8FA8A /* JogadoresCell */,
 				FA905DE8229DE4E800F4D20E /* CalendarCell */,
+				FA5A405222ADC7A400E8FA8A /* EnderecoCell */,
+				FA5A405322ADC7AA00E8FA8A /* HeaderCell */,
 				FAD5D5F2224E995F00DD64DB /* QuadrasCell */,
+				FA905DF522A4AA0B00F4D20E /* ReservasCell */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -330,13 +375,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA5A404D22ADC35D00E8FA8A /* Assets.xcassets in Resources */,
+				FA5A404322ADB4DB00E8FA8A /* HeaderCell.xib in Resources */,
 				FAD5D5EA224E8D4000DD64DB /* LaunchScreen.storyboard in Resources */,
 				FAD5D5F6224E997300DD64DB /* QuadrasCell.xib in Resources */,
 				FA3EB7DA225AED5F00866125 /* GoogleService-Info.plist in Resources */,
 				FAD5D5E5224E8D3E00DD64DB /* Main.storyboard in Resources */,
-				FA8B55E822AAEAD4000BE939 /* Assets.xcassets in Resources */,
+				FA5A405B22ADC90600E8FA8A /* JogadoresCell.xib in Resources */,
 				FA905DEC229DE51D00F4D20E /* CalendarCell.xib in Resources */,
 				FAD4D4C322A4AA4F008F10F7 /* ReservasCell.xib in Resources */,
+				FA5A404722ADB90000E8FA8A /* EnderecoCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,10 +504,12 @@
 				FA07BB7C225BC7AF007AF2D0 /* MainTabController.swift in Sources */,
 				FA7CE8B222AC6D88007B84A7 /* OnboardingImageController.swift in Sources */,
 				FA905DEB229DE51D00F4D20E /* CalendarCell.swift in Sources */,
+				FA5A405A22ADC90600E8FA8A /* JogadoresCell.swift in Sources */,
 				FA7CE8B422AC7342007B84A7 /* OnboardingPlaystyleController.swift in Sources */,
 				FA7CE8AE22AC5BAF007B84A7 /* PhoneService.swift in Sources */,
 				FA3EB7DD225AEFA200866125 /* FirebaseService.swift in Sources */,
 				FAD4D4C222A4AA4F008F10F7 /* ReservasCell.swift in Sources */,
+				FA5A404622ADB90000E8FA8A /* EnderecoCell.swift in Sources */,
 				FA905DE1229CB50C00F4D20E /* Date+Extensions.swift in Sources */,
 				FAD5D5E0224E8D3E00DD64DB /* AppDelegate.swift in Sources */,
 				FAD5D5F5224E997300DD64DB /* QuadrasCell.swift in Sources */,
@@ -475,6 +525,8 @@
 				FAA62195229CB0D300688353 /* QuadraDetailController.swift in Sources */,
 				FA905DE5229CBD7400F4D20E /* UserDTO.swift in Sources */,
 				FA7CE8B022AC6894007B84A7 /* OnboardingIdentityInfoController.swift in Sources */,
+				FA5A405122ADC77900E8FA8A /* CriarReservaController.swift in Sources */,
+				FA5A404222ADB4DB00E8FA8A /* HeaderCell.swift in Sources */,
 				FA905DE3229CBA4200F4D20E /* PerfilController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
