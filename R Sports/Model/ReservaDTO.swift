@@ -35,4 +35,20 @@ class ReservaDTO {
     func setData(data: Date) {
         self.data = data
     }
+    
+    func getExportData() {
+        var exportData : [String : Any] = ["quadra" : quadra.documentID,
+                                           "data" : data]
+        
+        var jogadorData = [[String : Any]]()
+        jogadores.forEach { (jogador) in
+            jogadorData.append(["telefone" : jogador.telefone,
+                                    "nome" : jogador.nome,
+                         "statusPagamento" : false])
+        }
+        
+        exportData.updateValue(jogadorData, forKey: ["jogadores"])
+        
+    }
+    
 }

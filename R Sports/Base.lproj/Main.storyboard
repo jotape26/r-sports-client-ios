@@ -517,35 +517,35 @@
                                                         </constraints>
                                                     </stackView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N3m-8R-XSD">
-                                                        <rect key="frame" x="85.5" y="0.0" width="5" height="130"/>
+                                                        <rect key="frame" x="85.5" y="0.0" width="1" height="130"/>
                                                         <color key="backgroundColor" red="0.060284684040000001" green="0.3637206691" blue="0.2629516992" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="5" id="9tL-H3-7lE"/>
+                                                            <constraint firstAttribute="width" constant="1" id="9tL-H3-7lE"/>
                                                         </constraints>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="71z-H0-GFn">
-                                                        <rect key="frame" x="95.5" y="0.0" width="247.5" height="130"/>
+                                                        <rect key="frame" x="91.5" y="0.0" width="251.5" height="130"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quadra" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iSC-IU-bYF">
-                                                                <rect key="frame" x="0.0" y="0.0" width="247.5" height="32.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="251.5" height="32.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Endereço" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gc4-Xq-po1">
-                                                                <rect key="frame" x="0.0" y="32.5" width="247.5" height="32.5"/>
+                                                                <rect key="frame" x="0.0" y="32.5" width="251.5" height="32.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Selecione um Horario" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eae-Mj-ibi">
-                                                                <rect key="frame" x="0.0" y="65" width="247.5" height="32.5"/>
+                                                                <rect key="frame" x="0.0" y="65" width="251.5" height="32.5"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Valor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lOP-8n-XBw">
-                                                                <rect key="frame" x="0.0" y="97.5" width="247.5" height="32.5"/>
+                                                                <rect key="frame" x="0.0" y="97.5" width="251.5" height="32.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
