@@ -18,4 +18,5 @@ target 'R Sports' do
   pod 'Alamofire'
   pod 'ImageSlideshow'
   pod 'ImageSlideshow/Alamofire'
+  pod 'Geofirestore' 
 end

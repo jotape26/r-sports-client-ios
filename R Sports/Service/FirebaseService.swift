@@ -10,7 +10,9 @@ import Foundation
 import UIKit
 import Firebase
 import FirebaseFirestore
+import Geofirestore
 import GoogleSignIn
+import CoreLocation
 
 class FirebaseService {
     
@@ -51,27 +53,32 @@ class FirebaseService {
     }
     
     //MARK: - Firestore Methods
-    static func retrieveCourts(cidade: String?,
-                               success: @escaping ([QuadraDTO])->()){
+    static func retrieveCourts(userLocation: CLLocation,
+                               success: @escaping (QuadraDTO)->()){
         
         let request = Firestore.firestore().collection("quadras")
+        let geoRequest = GeoFirestore(collectionRef: request)
+
+//        geoRequest.setLocation(geopoint: GeoPoint(latitude: -23.563699, longitude: -46.653650), forDocumentWithID: "qRni4BOLsd4ueGkq6ohm") { (error) in
+//            if let error = error {
+//                print("An error occured: \(error)")
+//            } else {
+//                print("Saved location successfully!")
+//            }
+//        }
         
-        if let cidade = cidade{
-            request.whereField("cidade", isGreaterThanOrEqualTo: cidade)
-        }
-        
-        request.getDocuments { (snap, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else if let snap = snap {
-                var quadras : [QuadraDTO] = []
-                for document in snap.documents {
-                    guard let quadra = QuadraDTO(JSON: document.data()) else { continue }
-                    quadra.documentID = document.documentID
-                    quadras.append(quadra)
+        _ = geoRequest.query(withCenter: userLocation, radius: 10.0).observe(.documentEntered) { (key, _) in
+            request.document(key!).getDocument(completion: { (snap, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else if let snap = snap {
+                    if let doc = snap.data() {
+                        guard let quadra = QuadraDTO(JSON: doc) else { return }
+                        quadra.documentID = key!
+                        success(quadra)
+                    }
                 }
-                success(quadras)
-            }
+            })
         }
     }
     
@@ -83,7 +90,7 @@ class FirebaseService {
     static func retrieveUserDatabaseRef(uid: String,
                                         success: @escaping(UserDTO)->()) {
         Firestore.firestore().collection("users").document(uid).getDocument { (snap, err) in
-            if let err = err {
+            if err != nil {
                 
             } else {
                 guard let userData = snap?.data() else { return }

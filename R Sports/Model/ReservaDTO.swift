@@ -47,7 +47,7 @@ class ReservaDTO {
                          "statusPagamento" : false])
         }
         
-        exportData.updateValue(jogadorData, forKey: ["jogadores"])
+        exportData.updateValue(jogadorData, forKey: "jogadores")
         
     }
     

@@ -23,18 +23,19 @@ class ListaQuadrasController: UIViewController{
         
         self.view.startLoading()
         if let location = SharedSession.shared.currentLocation {
-            CLGeocoder().reverseGeocodeLocation(location) { (placemark, err) in
-                FirebaseService.retrieveCourts(cidade: placemark?.first?.locality) { (qDTO) in
-                    self.view.stopLoading()
-                    self.quadras = qDTO
+            FirebaseService.retrieveCourts(userLocation: location) { (qDTO) in
+                self.view.stopLoading()
+                if !self.quadras.contains(where: { (dto) -> Bool in
+                    if qDTO.documentID == dto.documentID {
+                        return true
+                    }
+                    return false
+                }) {
+                    self.quadras.sort(by: { $0.distance(to: location) < $1.distance(to: location) })
+                    self.quadras.append(qDTO)
                     self.quadrasTable.reloadData()
                 }
-            }
-        } else {
-            FirebaseService.retrieveCourts(cidade: nil) { (qDTO) in
-                self.view.stopLoading()
-                self.quadras = qDTO
-                self.quadrasTable.reloadData()
+               
             }
         }
         
@@ -74,7 +75,8 @@ extension ListaQuadrasController: UITableViewDelegate, UITableViewDataSource {
         }
         
         if let distance = current.distance {
-            cell.lbDistancia.text = "\(distance.rounded())m"
+            let distanceMeasure = Measurement(value: distance, unit: UnitLength.kilometers)
+            cell.lbDistancia.text = MeasurementFormatter().string(from: distanceMeasure)
         } else {
             cell.lbDistancia.text = nil
         }
