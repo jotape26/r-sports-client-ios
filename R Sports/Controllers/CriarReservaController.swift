@@ -18,10 +18,8 @@ class CriarReservaController: UIViewController {
     @IBOutlet weak var lblValor: UILabel!
     @IBOutlet weak var lblValorPorPessoa: UILabel!
     
-    var selectedQuadra : QuadraDTO!
-    var dataDoJogo: Date!
+    var reserva : ReservaDTO!
     
-    var jogadores = [UserDTO]()
     var datePicker: UIDatePicker = {
         let uipick = UIDatePicker()
         uipick.datePickerMode = .time
@@ -39,20 +37,20 @@ class CriarReservaController: UIViewController {
         txtJogadoresCell.delegate = self
         txtHorario.inputView = datePicker
         
-        lblQuadra.text = selectedQuadra.nome
-        lblEndereco.text = selectedQuadra.endereco
-        lblValor.text = selectedQuadra.preco?.toCurrency()
-        lblValorPorPessoa.text = selectedQuadra.preco?.toCurrency()
+        lblQuadra.text = reserva.quadra.nome
+        lblEndereco.text = reserva.quadra.endereco
+        lblValor.text = reserva.quadra.preco?.toCurrency()
+        lblValorPorPessoa.text = reserva.quadra.preco?.toCurrency()
         
         FirebaseService.retrieveUserDatabaseRef(uid: FirebaseService.getCurrentUser()?.phoneNumber ?? "") { (currentUser) in
-            self.jogadores.insert(currentUser, at: 0)
+            self.reserva.addJogador(jogador: currentUser)
             self.calcularValor()
             self.tableJogadores.reloadData()
         }
     }
     
     func calcularValor(){
-        lblValorPorPessoa.text = ((selectedQuadra.preco ?? 0.0) / Double(jogadores.count)).toCurrency()
+        lblValorPorPessoa.text = ((reserva.quadra.preco ?? 0.0) / Double(reserva.getJogadores().count)).toCurrency()
     }
     
     @objc func datepicked(_ sender: UIDatePicker) {
@@ -70,7 +68,7 @@ class CriarReservaController: UIViewController {
             if numero != FirebaseService.getCurrentUser()?.phoneNumber {
                 let user = UserDTO()
                 user.telefone = txtJogadoresCell.formatToPhone()
-                jogadores.append(user)
+                self.reserva.addJogador(jogador: user)
                 self.calcularValor()
                 tableJogadores.reloadData()
             }
@@ -89,12 +87,12 @@ class CriarReservaController: UIViewController {
 
 extension CriarReservaController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return jogadores.count
+        return reserva.getJogadores().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "JogadoresCell") as! JogadoresCell
-        cell.configurarJogador(jogador: jogadores[indexPath.row])
+        cell.configurarJogador(jogador: reserva.getJogadores()[indexPath.row])
 
         return cell
     }

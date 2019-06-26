@@ -10,8 +10,8 @@ import Foundation
 
 class ReservaDTO {
     
-    private var quadra: QuadraDTO
-    private var data: Date
+    var quadra: QuadraDTO
+    var data: Date
     private var jogadores: [UserDTO]
     
     init(quadra: QuadraDTO, data: Date) {
@@ -23,22 +23,15 @@ class ReservaDTO {
     func addJogador(jogador: UserDTO) {
         jogadores.insert(jogador, at: 0)
     }
-    
-    func getQuadra() -> QuadraDTO {
-        return quadra
-    }
-    
-    func getData() -> Date {
-        return data
-    }
-    
-    func setData(data: Date) {
-        self.data = data
+    func getJogadores() -> [UserDTO] {
+        return jogadores
     }
     
     func getExportData() {
         var exportData : [String : Any] = ["quadra" : quadra.documentID,
-                                           "data" : data]
+                                           "data" : data,
+                                           "valorTotal" : 0.0,
+                                           "valorIndividual" : 0.0]
         
         var jogadorData = [[String : Any]]()
         jogadores.forEach { (jogador) in

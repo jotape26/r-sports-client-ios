@@ -68,8 +68,7 @@ class QuadraDetailController: UIViewController {
         if let vc = segue.destination as? MapController {
             vc.quadra = selectedQuadra
         } else if let vc = segue.destination as? CriarReservaController {
-            vc.dataDoJogo = calendarView.selectedDate ?? Date()
-            vc.selectedQuadra = selectedQuadra
+            vc.reserva = ReservaDTO(quadra: selectedQuadra, data: calendarView.selectedDate ?? Date())
         }
     }
 }
