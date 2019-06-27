@@ -52,32 +52,9 @@ class QuadrasCell: UITableViewCell {
         }
     }
     
-//    func getDistanceBetween(userLocation: CLLocation?, courtAddress: String?) {
-//        if let userLocation = userLocation, let courtAddress = courtAddress {
-//            let locationHelper = CLGeocoder()
-//            locationHelper.geocodeAddressString(courtAddress) { (marks, err) in
-//                if err != nil {
-//                    self.lbDistancia.text = nil
-//                }
-//
-//                if let mark = marks {
-//                    if !mark.isEmpty {
-//                        guard let courtLocation = mark.first?.location else {
-//                            self.lbDistancia.text = nil
-//                            return
-//                        }
-//                        let distance = userLocation.distance(from: courtLocation)
-//                        self.lbDistancia.text = "\(Int(distance))m"
-//                    } else {
-//                        self.lbDistancia.text = nil
-//                    }
-//                } else {
-//                    self.lbDistancia.text = nil
-//                }
-//            }
-//        } else {
-//            self.lbDistancia.text = nil
-//        }
-//    }
+    override func prepareForReuse() {
+        imageLoader.stopAnimating()
+        self.imgQuadra.image = nil
+    }
     
 }

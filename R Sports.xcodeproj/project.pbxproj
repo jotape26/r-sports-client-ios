@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,7 @@
 		FA07BB75225BBB60007AF2D0 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07BB74225BBB60007AF2D0 /* AuthController.swift */; };
 		FA07BB78225BC394007AF2D0 /* UIWindow+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07BB77225BC394007AF2D0 /* UIWindow+Extensions.swift */; };
 		FA07BB7C225BC7AF007AF2D0 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07BB7B225BC7AF007AF2D0 /* MainTabController.swift */; };
+		FA166E9722C43D0400E0FF5E /* AlertsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA166E9622C43D0400E0FF5E /* AlertsHelper.swift */; };
 		FA2C1EE122AB7A8B0057131A /* MaskedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2C1EE022AB7A8B0057131A /* MaskedTextField.swift */; };
 		FA2C1EE322AC0A420057131A /* KapinField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2C1EE222AC0A420057131A /* KapinField.swift */; };
 		FA2C1EE522AC0A770057131A /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2C1EE422AC0A770057131A /* LoginController.swift */; };
@@ -64,6 +65,7 @@
 		FA07BB74225BBB60007AF2D0 /* AuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
 		FA07BB77225BC394007AF2D0 /* UIWindow+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extensions.swift"; sourceTree = "<group>"; };
 		FA07BB7B225BC7AF007AF2D0 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
+		FA166E9622C43D0400E0FF5E /* AlertsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsHelper.swift; sourceTree = "<group>"; };
 		FA2C1EDF22AB13AE0057131A /* R Sports.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "R Sports.entitlements"; sourceTree = "<group>"; };
 		FA2C1EE022AB7A8B0057131A /* MaskedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskedTextField.swift; sourceTree = "<group>"; };
 		FA2C1EE222AC0A420057131A /* KapinField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KapinField.swift; sourceTree = "<group>"; };
@@ -177,6 +179,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		FA166E9522C43CD500E0FF5E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FA166E9622C43D0400E0FF5E /* AlertsHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		FA3EB7DB225AEF9100866125 /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,18 +283,19 @@
 			isa = PBXGroup;
 			children = (
 				FA2C1EDF22AB13AE0057131A /* R Sports.entitlements */,
-				FA5A404C22ADC35D00E8FA8A /* Assets.xcassets */,
-				FAA49238229C99A200813E14 /* SharedSession.swift */,
-				FAD5D5DF224E8D3E00DD64DB /* AppDelegate.swift */,
-				FAD5D5EB224E8D4000DD64DB /* Info.plist */,
 				FA3EB7D9225AED5F00866125 /* GoogleService-Info.plist */,
+				FAD5D5EB224E8D4000DD64DB /* Info.plist */,
+				FAD5D5DF224E8D3E00DD64DB /* AppDelegate.swift */,
+				FAA49238229C99A200813E14 /* SharedSession.swift */,
+				FA5A404C22ADC35D00E8FA8A /* Assets.xcassets */,
 				FAD5D5E8224E8D4000DD64DB /* LaunchScreen.storyboard */,
 				FAD5D5E3224E8D3E00DD64DB /* Main.storyboard */,
 				FAD5D5F1224E995700DD64DB /* Cells */,
 				FA07BB73225BBB39007AF2D0 /* Controllers */,
-				FA07BB76225BC383007AF2D0 /* Extensions */,
-				FA58A121224E9FDD007F9C72 /* Model */,
 				FA8B55E622AAE777000BE939 /* Custom Objects */,
+				FA07BB76225BC383007AF2D0 /* Extensions */,
+				FA166E9522C43CD500E0FF5E /* Helpers */,
+				FA58A121224E9FDD007F9C72 /* Model */,
 				FA3EB7DB225AEF9100866125 /* Service */,
 			);
 			path = "R Sports";
@@ -491,6 +502,7 @@
 				FAA62195229CB0D300688353 /* QuadraDetailController.swift in Sources */,
 				FA905DE5229CBD7400F4D20E /* UserDTO.swift in Sources */,
 				FA7CE8B022AC6894007B84A7 /* OnboardingIdentityInfoController.swift in Sources */,
+				FA166E9722C43D0400E0FF5E /* AlertsHelper.swift in Sources */,
 				FA5A405122ADC77900E8FA8A /* CriarReservaController.swift in Sources */,
 				FA5A404222ADB4DB00E8FA8A /* HeaderCell.swift in Sources */,
 				FA905DE3229CBA4200F4D20E /* PerfilController.swift in Sources */,
@@ -651,7 +663,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jpapps.R-Sports";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -671,7 +683,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jpapps.R-Sports";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

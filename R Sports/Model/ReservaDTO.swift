@@ -12,7 +12,7 @@ class ReservaDTO {
     
     var quadra: QuadraDTO
     var data: Date
-    private var jogadores: [UserDTO]
+    var jogadores: [UserDTO]
     
     init(quadra: QuadraDTO, data: Date) {
         self.quadra = quadra
@@ -28,7 +28,7 @@ class ReservaDTO {
     }
     
     func getExportData() {
-        var exportData : [String : Any] = ["quadra" : quadra.documentID,
+        var exportData : [String : Any] = ["quadra" : quadra.documentID as Any,
                                            "data" : data,
                                            "valorTotal" : 0.0,
                                            "valorIndividual" : 0.0]

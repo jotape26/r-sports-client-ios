@@ -28,6 +28,28 @@ class CriarReservaController: UIViewController {
         return uipick
     }()
     
+    lazy var inputToolbar: UIToolbar = {
+        var toolbar = UIToolbar()
+        toolbar.barStyle = .default
+        toolbar.isTranslucent = true
+        toolbar.sizeToFit()
+        
+        var doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(inputToolbarDonePressed))
+        
+        doneButton.tintColor = SharedSession.shared.standardColor
+        
+        var spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        toolbar.setItems([spaceButton, doneButton], animated: false)
+        toolbar.isUserInteractionEnabled = true
+        
+        return toolbar
+    }()
+    
+    @objc func inputToolbarDonePressed() {
+        view.endEditing(true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,6 +58,7 @@ class CriarReservaController: UIViewController {
         tableJogadores.register(UINib(nibName: "JogadoresCell", bundle: nil), forCellReuseIdentifier: "JogadoresCell")
         txtJogadoresCell.delegate = self
         txtHorario.inputView = datePicker
+        txtHorario.inputAccessoryView = inputToolbar
         
         lblQuadra.text = reserva.quadra.nome
         lblEndereco.text = reserva.quadra.endereco
@@ -43,21 +66,36 @@ class CriarReservaController: UIViewController {
         lblValorPorPessoa.text = reserva.quadra.preco?.toCurrency()
         
         FirebaseService.retrieveUserDatabaseRef(uid: FirebaseService.getCurrentUser()?.phoneNumber ?? "") { (currentUser) in
-            self.reserva.addJogador(jogador: currentUser)
-            self.calcularValor()
-            self.tableJogadores.reloadData()
+            DispatchQueue.main.async {
+                self.reserva.addJogador(jogador: currentUser)
+                self.calcularValor()
+            }
         }
     }
     
     func calcularValor(){
-        lblValorPorPessoa.text = ((reserva.quadra.preco ?? 0.0) / Double(reserva.getJogadores().count)).toCurrency()
+        if !reserva.getJogadores().isEmpty {
+            lblValorPorPessoa.text = ((reserva.quadra.preco ?? 0.0) / Double(reserva.getJogadores().count)).toCurrency()
+        }
+        tableJogadores.reloadData()
     }
     
     @objc func datepicked(_ sender: UIDatePicker) {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
-        txtHorario.text = formatter.string(from: sender.date)
-        txtHorario.resignFirstResponder()
+        let hourString = formatter.string(from: sender.date)
+        
+        formatter.dateFormat = "dd/MM/yyyy"
+        let dateString = formatter.string(from: reserva.data)
+        
+        formatter.dateFormat = "dd/MM/yyyy HH:mm"
+        
+        if let date = formatter.date(from: "\(dateString) \(hourString)") {
+            reserva.data = date
+            txtHorario.text = hourString
+            
+            print(formatter.string(from: reserva.data))
+        }
     }
 
     @IBAction func btnAddClick(_ sender: Any) {
@@ -65,12 +103,22 @@ class CriarReservaController: UIViewController {
         
         let numero = txtJogadoresCell.formatToPhone()
         if numero.count == 14 {
-            if numero != FirebaseService.getCurrentUser()?.phoneNumber {
-                let user = UserDTO()
-                user.telefone = txtJogadoresCell.formatToPhone()
-                self.reserva.addJogador(jogador: user)
-                self.calcularValor()
-                tableJogadores.reloadData()
+            
+            if reserva.getJogadores().filter({ (user) -> Bool in
+                if user.telefone == numero {
+                    return true
+                }
+                return false
+            }).isEmpty {
+                if numero != FirebaseService.getCurrentUser()?.phoneNumber {
+                    let user = UserDTO()
+                    user.telefone = txtJogadoresCell.formatToPhone()
+                    self.reserva.addJogador(jogador: user)
+                    self.calcularValor()
+                    tableJogadores.reloadData()
+                }
+            } else {
+                print("fuuuck")
             }
         } else {
             txtJogadoresCell.textColor = .red
@@ -79,8 +127,13 @@ class CriarReservaController: UIViewController {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        txtJogadoresCell.text = nil
-        txtJogadoresCell.textColor = .black
+        
+        if textField == txtJogadoresCell {
+            if txtJogadoresCell.text?.isEmpty ?? false {
+                txtJogadoresCell.text = "+55"
+                txtJogadoresCell.textColor = .black
+            }
+        }
     }
     
 }
@@ -99,5 +152,23 @@ extension CriarReservaController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            // remove the item from the data model
+            reserva.jogadores.remove(at: indexPath.row)
+            
+            // delete the table view row
+            tableView.deleteRows(at: [indexPath], with: .left)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.calcularValor()
+            }
+            
+        } else if editingStyle == .insert {
+            // Not used in our example, but if you were adding a new row, this is where you would do it.
+        }
     }
 }

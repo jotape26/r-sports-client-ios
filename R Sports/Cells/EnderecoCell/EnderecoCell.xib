@@ -20,14 +20,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Endereço:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eap-Kc-LyU">
-                        <rect key="frame" x="10" y="10" width="77.5" height="21"/>
+                        <rect key="frame" x="10" y="6" width="77.5" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.078431372550000003" green="0.46274509800000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Endereço:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcQ-b2-H41">
-                        <rect key="frame" x="10" y="41" width="294" height="15.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Endereço:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcQ-b2-H41">
+                        <rect key="frame" x="10" y="30.5" width="294" height="34"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -36,9 +36,9 @@
                     <constraint firstItem="dcQ-b2-H41" firstAttribute="leading" secondItem="Eap-Kc-LyU" secondAttribute="leading" id="MqM-6f-c3t"/>
                     <constraint firstAttribute="trailing" secondItem="dcQ-b2-H41" secondAttribute="trailing" constant="16" id="Ui9-nj-tiI"/>
                     <constraint firstItem="Eap-Kc-LyU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="a4f-BP-tcy"/>
-                    <constraint firstItem="dcQ-b2-H41" firstAttribute="top" secondItem="Eap-Kc-LyU" secondAttribute="bottom" constant="10" id="bir-Jp-aLi"/>
-                    <constraint firstAttribute="bottom" secondItem="dcQ-b2-H41" secondAttribute="bottom" constant="16" id="hlR-Vq-sVj"/>
-                    <constraint firstItem="Eap-Kc-LyU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="uNy-HU-Flh"/>
+                    <constraint firstItem="dcQ-b2-H41" firstAttribute="top" secondItem="Eap-Kc-LyU" secondAttribute="bottom" constant="4" id="bir-Jp-aLi"/>
+                    <constraint firstAttribute="bottom" secondItem="dcQ-b2-H41" secondAttribute="bottom" constant="8" id="hlR-Vq-sVj"/>
+                    <constraint firstItem="Eap-Kc-LyU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="uNy-HU-Flh"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

@@ -25,6 +25,7 @@ class OnboardingCreateAccountController: UIViewController {
         // Do any additional setup after loading the view.
         btnConfirmar.layer.cornerRadius = 5.0
         btnVoltar.layer.cornerRadius = 5.0
+        txtCelNumber.delegate = self
         txtPin.properties.delegate = self
         txtPin.properties.numberOfCharacters = 6
         txtPin.reloadAppearance()
@@ -52,6 +53,14 @@ class OnboardingCreateAccountController: UIViewController {
     }
     @IBAction func btnVoltarClick(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension OnboardingImageController {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.text?.isEmpty ?? false {
+            textField.text = "55"
+        }
     }
 }
 

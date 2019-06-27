@@ -61,6 +61,7 @@ extension ListaQuadrasController: UITableViewDelegate, UITableViewDataSource {
         let current = quadras[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "QuadrasCell") as! QuadrasCell
+        cell.prepareForReuse()
         
         cell.lbNomeQuadra.text = current.nome
         cell.lbEnderecoQuadra.text = current.endereco

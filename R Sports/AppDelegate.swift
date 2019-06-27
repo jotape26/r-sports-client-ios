@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SharedSession.shared.requestUserLocation()
         Auth.auth().languageCode = Locale.current.languageCode
         Messaging.messaging().delegate = self
+        UIApplication.shared.applicationIconBadgeNumber = 0
         return true
     }
 

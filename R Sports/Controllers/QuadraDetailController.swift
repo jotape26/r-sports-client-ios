@@ -76,15 +76,15 @@ class QuadraDetailController: UIViewController {
 extension QuadraDetailController: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         
-        if date < Date() {
+        if date > Date() {
             calendarView.select(Date(), scrollToDate: true)
             calendarView.deselect(Date())
+            performSegue(withIdentifier: "DetailToReserveSegue", sender: nil)
         } else {
-            let df = DateFormatter()
-            df.dateFormat = "dd/MM/yyyy"
+            AlertsHelper.showErrorMessage(message: "Data Invalida")
         }
         
-        performSegue(withIdentifier: "DetailToReserveSegue", sender: nil)
+        
     }
 }
 
