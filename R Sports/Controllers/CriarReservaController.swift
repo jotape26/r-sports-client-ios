@@ -60,10 +60,10 @@ class CriarReservaController: UIViewController {
         txtHorario.inputView = datePicker
         txtHorario.inputAccessoryView = inputToolbar
         
-        lblQuadra.text = reserva.quadra.nome
-        lblEndereco.text = reserva.quadra.endereco
-        lblValor.text = reserva.quadra.preco?.toCurrency()
-        lblValorPorPessoa.text = reserva.quadra.preco?.toCurrency()
+        lblQuadra.text = reserva.quadra?.nome
+        lblEndereco.text = reserva.quadra?.endereco
+        lblValor.text = reserva.quadra?.preco?.toCurrency()
+        lblValorPorPessoa.text = reserva.quadra?.preco?.toCurrency()
         
         FirebaseService.retrieveUserDatabaseRef(uid: FirebaseService.getCurrentUser()?.phoneNumber ?? "") { (currentUser) in
             DispatchQueue.main.async {
@@ -75,18 +75,19 @@ class CriarReservaController: UIViewController {
     
     func calcularValor(){
         if !reserva.getJogadores().isEmpty {
-            lblValorPorPessoa.text = ((reserva.quadra.preco ?? 0.0) / Double(reserva.getJogadores().count)).toCurrency()
+            lblValorPorPessoa.text = ((reserva.quadra?.preco ?? 0.0) / Double(reserva.getJogadores().count)).toCurrency()
         }
         tableJogadores.reloadData()
     }
     
     @objc func datepicked(_ sender: UIDatePicker) {
+        guard let data = reserva.data else { return }
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
         let hourString = formatter.string(from: sender.date)
         
         formatter.dateFormat = "dd/MM/yyyy"
-        let dateString = formatter.string(from: reserva.data)
+        let dateString = formatter.string(from: data)
         
         formatter.dateFormat = "dd/MM/yyyy HH:mm"
         
@@ -94,7 +95,7 @@ class CriarReservaController: UIViewController {
             reserva.data = date
             txtHorario.text = hourString
             
-            print(formatter.string(from: reserva.data))
+            print(formatter.string(from: data))
         }
     }
 
@@ -158,7 +159,7 @@ extension CriarReservaController: UITableViewDelegate, UITableViewDataSource {
         if editingStyle == .delete {
             
             // remove the item from the data model
-            reserva.jogadores.remove(at: indexPath.row)
+            reserva.jogadores?.remove(at: indexPath.row)
             
             // delete the table view row
             tableView.deleteRows(at: [indexPath], with: .left)

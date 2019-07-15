@@ -16,6 +16,12 @@ class ReservasController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        FirebaseService.getUserReservations { (reservas) in
+            print("reservas : \(reservas)")
+        }
+    }
+    
 
     /*
     // MARK: - Navigation

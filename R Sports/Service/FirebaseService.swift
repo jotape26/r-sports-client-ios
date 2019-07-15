@@ -58,14 +58,6 @@ class FirebaseService {
         
         let request = Firestore.firestore().collection("quadras")
         let geoRequest = GeoFirestore(collectionRef: request)
-
-//        geoRequest.setLocation(geopoint: GeoPoint(latitude: -23.563699, longitude: -46.653650), forDocumentWithID: "qRni4BOLsd4ueGkq6ohm") { (error) in
-//            if let error = error {
-//                print("An error occured: \(error)")
-//            } else {
-//                print("Saved location successfully!")
-//            }
-//        }
         
         _ = geoRequest.query(withCenter: userLocation, radius: 10.0).observe(.documentEntered) { (key, _) in
             request.document(key!).getDocument(completion: { (snap, err) in
@@ -96,6 +88,36 @@ class FirebaseService {
                 guard let userData = snap?.data() else { return }
                 guard let user = UserDTO(JSON: userData) else { return }
                 success(user)
+            }
+        }
+    }
+    
+    static func getUserReservations(success: @escaping([ReservaDTO])->()) {
+        
+        let ref = Firestore.firestore().collection("users").document(FirebaseService.getCurrentUser()!.phoneNumber!)
+        
+        Firestore.firestore().collection("reservas").whereField("jogadores", arrayContains: ["valorAPagar" : 70]).getDocuments { (snap, err) in print("snap returned"); snap?.documents.forEach({ (snap) in print(snap.data()) }) }
+        
+        Firestore.firestore().collection("reservas").whereField("jogadores", arrayContains: ref).getDocuments { (snap, err) in
+            if err != nil {
+                
+            } else {
+                guard let reservasData = snap?.documents else { return }
+                var reservas = [ReservaDTO]()
+                reservasData.forEach({ (snap) in
+                    if let reserva = ReservaDTO(JSON: snap.data()) {
+                        
+                        reserva.jogadoresRef?.forEach({ (jogadorref) in
+                            jogadorref.getDocument(completion: { (snap, err) in
+                                guard let userData = snap?.data() else { return }
+                                guard let user = UserDTO(JSON: userData) else { return }
+                                reserva.jogadores?.append(user)
+                            })
+                        })
+                        reservas.append(reserva)
+                    }
+                })
+                success(reservas)
             }
         }
     }
