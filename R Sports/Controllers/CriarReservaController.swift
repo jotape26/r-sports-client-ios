@@ -111,20 +111,31 @@ class CriarReservaController: UIViewController {
                 }
                 return false
             }).isEmpty {
-                if numero != FirebaseService.getCurrentUser()?.phoneNumber {
-                    let user = UserDTO()
-                    user.telefone = txtJogadoresCell.formatToPhone()
-                    self.reserva.addJogador(jogador: user)
-                    self.calcularValor()
-                    tableJogadores.reloadData()
-                }
+                let user = UserDTO()
+                user.telefone = txtJogadoresCell.formatToPhone()
+                self.reserva.addJogador(jogador: user)
+                self.calcularValor()
+                tableJogadores.reloadData()
             } else {
-                print("fuuuck")
+                txtJogadoresCell.textColor = .red
             }
-        } else {
-            txtJogadoresCell.textColor = .red
+            
+        }
+    }
+    
+    @IBAction func btnPagamentoClick(_ sender: Any) {
+        if txtHorario.text == "" {
+            txtHorario.setTextInvalid()
+            return
         }
         
+        performSegue(withIdentifier: "ReservaToPagamentoSegue", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? PagamentoController {
+            vc.reserva = reserva
+        }
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -146,7 +157,8 @@ extension CriarReservaController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "JogadoresCell") as! JogadoresCell
-        cell.configurarJogador(jogador: reserva.getJogadores()[indexPath.row])
+//        cell.configurarJogador(jogador: reserva.getJogadores()[indexPath.row])
+        cell.phoneLabel.text = reserva.getJogadores()[indexPath.row].telefone
 
         return cell
     }

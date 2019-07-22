@@ -13,6 +13,9 @@ class ConfirmacaoController: UIViewController {
     @IBOutlet weak var imgCheck: UIImageView!
     @IBOutlet weak var btnVoltar: UIButton!
     
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblMessage: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,18 +23,25 @@ class ConfirmacaoController: UIViewController {
         imgCheck.image = imgCheck.image?.withRenderingMode(.alwaysTemplate)
         imgCheck.tintColor = #colorLiteral(red: 0.07843137255, green: 0.462745098, blue: 0.3333333333, alpha: 1)
         btnVoltar.layer.cornerRadius = 5.0
+        self.navigationItem.hidesBackButton = true
+        self.navigationItem.title = "Fazendo a Reserva..."
+        self.view.startLoading()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidAppear(_ animated: Bool) {
+        UIView.animate(withDuration: 0.3, delay: 3.0, options: .curveEaseIn, animations: {
+            self.imgCheck.alpha = 1
+            self.lblTitle.alpha = 1
+            self.lblMessage.alpha = 1
+            self.btnVoltar.alpha = 1
+        }, completion: nil)
+        
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            self.navigationItem.title = nil
+            self.view.stopLoading()
+        }
     }
-    */
     
     @IBAction func btnVoltarClick(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: true)

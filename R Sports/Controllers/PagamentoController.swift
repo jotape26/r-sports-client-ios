@@ -10,6 +10,9 @@ import UIKit
 
 class PagamentoController: UIViewController {
 
+    var reserva : ReservaDTO!
+    
+    let cardValidator = CreditCardValidator()
     @IBOutlet weak var cartaoView: UIView!
     @IBOutlet weak var txtNumeroCartao: UITextField!
     @IBOutlet weak var txtMesCartao: UITextField!
@@ -30,4 +33,14 @@ class PagamentoController: UIViewController {
         txtCVVCartao.setBottomBorder(withColor: .lightGray)
     }
 
+}
+
+extension PagamentoController {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == txtNumeroCartao, let cardNumber = textField.text {
+            if cardValidator.validate(string: cardNumber) {
+                print(cardValidator.type(from: cardNumber))
+            }
+        }
+    }
 }

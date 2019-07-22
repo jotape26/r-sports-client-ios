@@ -20,4 +20,5 @@ target 'R Sports' do
   pod 'ImageSlideshow/Alamofire'
   pod 'Geofirestore'
   pod 'SwiftMessages' 
+  pod 'NVActivityIndicatorView'
 end

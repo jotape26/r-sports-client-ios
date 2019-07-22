@@ -465,7 +465,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="RGg-jd-QWV" kind="show" id="ovr-du-b1j"/>
+                                            <action selector="btnPagamentoClick:" destination="Pct-rO-TZM" eventType="touchUpInside" id="lXl-rw-Nyu"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -651,7 +651,7 @@
                         <outlet property="tableJogadores" destination="Qkw-U8-Q9P" id="vOB-Tb-38u"/>
                         <outlet property="txtHorario" destination="eae-Mj-ibi" id="pzl-94-8Y5"/>
                         <outlet property="txtJogadoresCell" destination="qvu-N2-71w" id="3Ei-0K-FBR"/>
-                        <segue destination="RGg-jd-QWV" kind="show" id="Tl2-f1-WzE"/>
+                        <segue destination="RGg-jd-QWV" kind="show" identifier="ReservaToPagamentoSegue" id="Tl2-f1-WzE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FNv-tK-aGs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -703,7 +703,7 @@
                                         </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" textContentType="cc-number"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="cc-number"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="formatPattern" value="#### #### #### ####"/>
                                         </userDefinedRuntimeAttributes>
@@ -785,9 +785,6 @@
                                 <state key="normal" title="Confirmar Pagamento">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <connections>
-                                    <segue destination="yco-qD-fyb" kind="show" id="psN-11-OfG"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -837,21 +834,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="gMf-yH-Dpw">
-                                <rect key="frame" x="67.5" y="94" width="240" height="150"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="gMf-yH-Dpw">
+                                <rect key="frame" x="112.5" y="94" width="150" height="150"/>
                                 <color key="tintColor" red="0.078431372550000003" green="0.46274509800000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="7h8-2C-ZRS"/>
+                                    <constraint firstAttribute="width" secondItem="gMf-yH-Dpw" secondAttribute="height" multiplier="1:1" id="2My-Y0-T6a"/>
                                     <constraint firstAttribute="height" constant="150" id="TGr-eU-uTA"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pedido realizado com Sucesso!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Knt-Dx-skt">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pedido realizado com Sucesso!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Knt-Dx-skt">
                                 <rect key="frame" x="10" y="274" width="355" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yqb-05-tsD">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yqb-05-tsD">
                                 <rect key="frame" x="13.5" y="313" width="348" height="119"/>
                                 <attributedString key="attributedText">
                                     <fragment>
@@ -868,7 +865,7 @@ Você pode acompanhar os pagamentos de seus amigos na aba "Reservas".</string>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YAd-kn-mnY">
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YAd-kn-mnY">
                                 <rect key="frame" x="60" y="472" width="255" height="50"/>
                                 <color key="backgroundColor" red="0.078431372550000003" green="0.46274509800000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -902,6 +899,8 @@ Você pode acompanhar os pagamentos de seus amigos na aba "Reservas".</string>
                     <connections>
                         <outlet property="btnVoltar" destination="YAd-kn-mnY" id="xph-4Z-kuN"/>
                         <outlet property="imgCheck" destination="gMf-yH-Dpw" id="ZiR-vv-M5G"/>
+                        <outlet property="lblMessage" destination="Yqb-05-tsD" id="oOE-GY-HrN"/>
+                        <outlet property="lblTitle" destination="Knt-Dx-skt" id="Zk4-1K-bIa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="50m-z4-Fl2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1713,7 +1712,5 @@ Você pode alterar qualquer informação sua na aba “Perfil” de nosso aplica
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="FtR-Cx-3jL"/>
-        <segue reference="w0w-70-LMF"/>
-        <segue reference="Tl2-f1-WzE"/>
     </inferredMetricsTieBreakers>
 </document>

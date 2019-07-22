@@ -9,46 +9,30 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "R Sports/Service/FirebaseService.swift"
-            timestampString = "584912594.189123"
+            filePath = "R Sports/Controllers/PagamentoController.swift"
+            timestampString = "585526058.231521"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "getUserReservations(success:)"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "textFieldDidEndEditing(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static R_Sports.FirebaseService.getUserReservations(success: (Swift.Array&lt;R_Sports.ReservaDTO&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "R Sports"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/joao.leite/Documents/R%20Sports/R%20Sports/Service/FirebaseService.swift"
-                  timestampString = "584912594.4347529"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "101"
-                  endingLineNumber = "101"
-                  offsetFromSymbolStart = "1756">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in static R_Sports.FirebaseService.getUserReservations(success: (Swift.Array&lt;R_Sports.ReservaDTO&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "R Sports"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/joao.leite/Documents/R%20Sports/R%20Sports/Service/FirebaseService.swift"
-                  timestampString = "584912594.436144"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "102"
-                  endingLineNumber = "102"
-                  offsetFromSymbolStart = "76">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "R Sports/Controllers/CriarReservaController.swift"
+            timestampString = "585526112.031936"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "btnPagamentoClick(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
