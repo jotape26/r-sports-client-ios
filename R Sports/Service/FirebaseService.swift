@@ -162,16 +162,26 @@ class FirebaseService {
                               failure : @escaping()->()) {
         
         if !reserva.getExportData().isEmpty {
-            Firestore.firestore().collection("reservas").document().setData(reserva.getExportData()) { (err) in
+            let reservaDocument = Firestore.firestore().collection("reservas").document()
+            reservaDocument.setData(reserva.getExportData()) { (err) in
                 if err != nil {
                     failure()
                 } else {
+                    RSportsService.processNewReservation(reservaID: reservaDocument.documentID)
+                    FirebaseService.addReservaToUser(reservaID: reservaDocument.documentID)
                     success()
                 }
             }
         } else {
             failure()
         }
+    }
+    
+    static func addReservaToUser(reservaID : String) {
+        guard let user = Auth.auth().currentUser else { return }
+        guard let number = user.phoneNumber else { return }
+        
+        Firestore.firestore().collection("users").document(number).setData(["reservas" : [reservaID]], merge: true, completion: nil)
     }
     
     //MARK: - Storage Methods

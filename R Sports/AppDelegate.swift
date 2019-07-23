@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate : MessagingDelegate {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
-        print("Push token: \(token)")
+//        print("Push token: \(token)")
         
         print(deviceToken.description)
         if let uuid = UIDevice.current.identifierForVendor?.uuidString {
@@ -62,10 +62,15 @@ extension AppDelegate : MessagingDelegate {
         }
         Messaging.messaging().apnsToken = deviceToken
         
-        FirebaseService.setUserData(data: ["userNotificationToken" : token])
+//        FirebaseService.setUserData(data: ["userNotificationToken" : token])
         
         UserDefaults.standard.setValue(token, forKey: "ApplicationIdentifier")
         UserDefaults.standard.synchronize()
+    }
+    
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        print("Push token: \(fcmToken)")
+        FirebaseService.setUserData(data: ["userNotificationToken" : fcmToken])
     }
 }
 

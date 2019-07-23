@@ -19,6 +19,7 @@
 		FA3EB7DA225AED5F00866125 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA3EB7D9225AED5F00866125 /* GoogleService-Info.plist */; };
 		FA3EB7DD225AEFA200866125 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3EB7DC225AEFA200866125 /* FirebaseService.swift */; };
 		FA45692522E67AE000C0971B /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA45692422E67AE000C0971B /* AppConstants.swift */; };
+		FA45692722E6953100C0971B /* RSportsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA45692622E6953100C0971B /* RSportsService.swift */; };
 		FA58A124224E9FF0007F9C72 /* QuadraDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA58A123224E9FF0007F9C72 /* QuadraDTO.swift */; };
 		FA5A404222ADB4DB00E8FA8A /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5A404022ADB4DB00E8FA8A /* HeaderCell.swift */; };
 		FA5A404322ADB4DB00E8FA8A /* HeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA5A404122ADB4DB00E8FA8A /* HeaderCell.xib */; };
@@ -75,6 +76,7 @@
 		FA3EB7D9225AED5F00866125 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA3EB7DC225AEFA200866125 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		FA45692422E67AE000C0971B /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		FA45692622E6953100C0971B /* RSportsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSportsService.swift; sourceTree = "<group>"; };
 		FA58A123224E9FF0007F9C72 /* QuadraDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuadraDTO.swift; sourceTree = "<group>"; };
 		FA5A404022ADB4DB00E8FA8A /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
 		FA5A404122ADB4DB00E8FA8A /* HeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderCell.xib; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 			children = (
 				FA3EB7DC225AEFA200866125 /* FirebaseService.swift */,
 				FA7CE8AD22AC5BAF007B84A7 /* PhoneService.swift */,
+				FA45692622E6953100C0971B /* RSportsService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -500,6 +503,7 @@
 				FA07BB78225BC394007AF2D0 /* UIWindow+Extensions.swift in Sources */,
 				FA905DF4229E022E00F4D20E /* Double+Extensions.swift in Sources */,
 				FA58A124224E9FF0007F9C72 /* QuadraDTO.swift in Sources */,
+				FA45692722E6953100C0971B /* RSportsService.swift in Sources */,
 				FA8B55F422AAF6C1000BE939 /* CreditCardValidator.swift in Sources */,
 				FA905DEE229DFA5000F4D20E /* UIViewController+Extensions.swift in Sources */,
 				FA8B55F822AAF8D0000BE939 /* ConfirmacaoController.swift in Sources */,
