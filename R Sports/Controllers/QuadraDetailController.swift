@@ -23,7 +23,7 @@ class QuadraDetailController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        calendarView.tintColor = SharedSession.shared.standardColor
+        calendarView.tintColor = AppConstants.ColorConstants.defaultGreen
         calendarView.select(nil)
         
         imagensQuadra.contentScaleMode = .scaleAspectFill

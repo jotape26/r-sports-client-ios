@@ -14,7 +14,7 @@ class PagamentoController: UIViewController {
     
     let cardValidator = CreditCardValidator()
     @IBOutlet weak var cartaoView: UIView!
-    @IBOutlet weak var txtNumeroCartao: UITextField!
+    @IBOutlet weak var txtNumeroCartao: SwiftMaskTextfield!
     @IBOutlet weak var txtMesCartao: UITextField!
     @IBOutlet weak var txtCVVCartao: UITextField!
     
@@ -29,18 +29,38 @@ class PagamentoController: UIViewController {
         btnConfirmar.layer.cornerRadius = 5.0
         
         txtNumeroCartao.setBottomBorder(withColor: .lightGray)
+        txtNumeroCartao.delegate = self
         txtMesCartao.setBottomBorder(withColor: .lightGray)
         txtCVVCartao.setBottomBorder(withColor: .lightGray)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(textDidChange),
+                                               name: NSNotification.Name(rawValue: "UITextFieldTextDidChangeNotification"),
+                                               object: txtNumeroCartao)
     }
-
+    
+    @objc func textDidChange(){
+        if txtNumeroCartao.text?.count == 19 {
+            validateCard(number: txtNumeroCartao.text?.replacingOccurrences(of: " ", with: "") ?? "")
+        }
+    }
+    
+    @IBAction func confirmarClick(_ sender: Any) {
+        performSegue(withIdentifier: "PagamentoToCompleteSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? ConfirmacaoController {
+            vc.reserva = reserva
+        }
+    }
+    
 }
 
 extension PagamentoController {
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField == txtNumeroCartao, let cardNumber = textField.text {
-            if cardValidator.validate(string: cardNumber) {
-                print(cardValidator.type(from: cardNumber))
-            }
+    
+    func validateCard(number: String){
+        if cardValidator.validate(string: number) {
+            print(cardValidator.type(from: number)?.name)
         }
     }
 }

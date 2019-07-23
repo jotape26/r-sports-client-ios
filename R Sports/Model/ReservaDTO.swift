@@ -36,21 +36,26 @@ class ReservaDTO: ImmutableMappable {
         return jogadores ?? []
     }
     
-    func getExportData() {
-        var exportData : [String : Any] = ["quadra" : quadra?.documentID as Any,
-                                           "data" : data as Any,
-                                           "valorTotal" : 0.0,
-                                           "valorIndividual" : 0.0]
+    func getExportData() -> [String : Any] {
+        
+        guard let dataHora = data else { return [:] }
+        guard let donoQuadraID = quadra?.documentID else { return [:] }
+        guard let user = FirebaseService.getDocumentReference() else { return [:] }
+
+        var exportData : [String : Any] = ["dataHora" : dataHora,
+                                           "donoQuadraID" : donoQuadraID,
+                                           "duracao" : 1,
+                                           "primeiroJogador" : user]
         
         var jogadorData = [[String : Any]]()
         jogadores?.forEach { (jogador) in
-            jogadorData.append(["telefone" : jogador.telefone!,
-                                "nome" : jogador.nome!,
-                         "statusPagamento" : false])
+            jogadorData.append(["telefoneTemp" : jogador.telefone!,
+                                "statusPagamento" : false])
         }
         
         exportData.updateValue(jogadorData, forKey: "jogadores")
         
+        return exportData
     }
     
 }

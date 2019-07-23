@@ -16,13 +16,17 @@ extension UIViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+    
+    public func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.removeInvalid()
+    }
 }
 
 extension UIView {
     
     func startLoading() {
         DispatchQueue.main.async {
-            let spinView = NVActivityIndicatorView(frame: CGRect(x: self.frame.midX - 5.0, y: self.frame.midY - 5.0, width: 10, height: 10), type: .ballRotateChase, color: SharedSession.shared.standardColor, padding: 30)
+            let spinView = NVActivityIndicatorView(frame: CGRect(x: self.frame.midX - 5.0, y: self.frame.midY - 5.0, width: 10, height: 10), type: .ballRotateChase, color: AppConstants.ColorConstants.defaultGreen, padding: 30)
             spinView.startAnimating()
             self.addSubview(spinView)
         }

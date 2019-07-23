@@ -706,6 +706,9 @@
                                         <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="cc-number"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="formatPattern" value="#### #### #### ####"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="maxLengh">
+                                                <integer key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="CVV" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W9l-ff-RVe" customClass="SwiftMaskTextfield" customModule="R_Sports" customModuleProvider="target">
@@ -785,6 +788,9 @@
                                 <state key="normal" title="Confirmar Pagamento">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="confirmarClick:" destination="RGg-jd-QWV" eventType="touchUpInside" id="oko-1i-eOZ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -819,7 +825,7 @@
                         <outlet property="txtCVVCartao" destination="W9l-ff-RVe" id="z3W-yD-hL9"/>
                         <outlet property="txtMesCartao" destination="An2-2u-1AU" id="GCB-yM-fxn"/>
                         <outlet property="txtNumeroCartao" destination="cBA-bo-fiU" id="KP4-ue-GP8"/>
-                        <segue destination="yco-qD-fyb" kind="show" id="w0w-70-LMF"/>
+                        <segue destination="yco-qD-fyb" kind="show" identifier="PagamentoToCompleteSegue" id="w0w-70-LMF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S1P-da-zUH" userLabel="First Responder" sceneMemberID="firstResponder"/>

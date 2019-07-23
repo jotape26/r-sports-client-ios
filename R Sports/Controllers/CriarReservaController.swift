@@ -36,7 +36,7 @@ class CriarReservaController: UIViewController {
         
         var doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(inputToolbarDonePressed))
         
-        doneButton.tintColor = SharedSession.shared.standardColor
+        doneButton.tintColor = AppConstants.ColorConstants.defaultGreen
         
         var spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         
@@ -57,6 +57,7 @@ class CriarReservaController: UIViewController {
         tableJogadores.dataSource = self
         tableJogadores.register(UINib(nibName: "JogadoresCell", bundle: nil), forCellReuseIdentifier: "JogadoresCell")
         txtJogadoresCell.delegate = self
+        txtHorario.delegate = self
         txtHorario.inputView = datePicker
         txtHorario.inputAccessoryView = inputToolbar
         
@@ -67,6 +68,7 @@ class CriarReservaController: UIViewController {
         
         FirebaseService.retrieveUserDatabaseRef(uid: FirebaseService.getCurrentUser()?.phoneNumber ?? "") { (currentUser) in
             DispatchQueue.main.async {
+                currentUser.telefone = FirebaseService.getCurrentUser()?.phoneNumber
                 self.reserva.addJogador(jogador: currentUser)
                 self.calcularValor()
             }
@@ -117,7 +119,7 @@ class CriarReservaController: UIViewController {
                 self.calcularValor()
                 tableJogadores.reloadData()
             } else {
-                txtJogadoresCell.textColor = .red
+                txtJogadoresCell.textColor = AppConstants.ColorConstants.errorRed
             }
             
         }
@@ -138,7 +140,8 @@ class CriarReservaController: UIViewController {
         }
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
+    override func textFieldDidBeginEditing(_ textField: UITextField) {
+        super.textFieldDidBeginEditing(textField)
         
         if textField == txtJogadoresCell {
             if txtJogadoresCell.text?.isEmpty ?? false {
@@ -157,8 +160,9 @@ extension CriarReservaController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "JogadoresCell") as! JogadoresCell
-//        cell.configurarJogador(jogador: reserva.getJogadores()[indexPath.row])
-        cell.phoneLabel.text = reserva.getJogadores()[indexPath.row].telefone
+        
+        var jogador = reserva.getJogadores()[indexPath.row]
+        cell.phoneLabel.text = jogador.telefone ?? jogador.nome
 
         return cell
     }
@@ -174,9 +178,10 @@ extension CriarReservaController: UITableViewDelegate, UITableViewDataSource {
             reserva.jogadores?.remove(at: indexPath.row)
             
             // delete the table view row
-            tableView.deleteRows(at: [indexPath], with: .left)
+//            tableView.deleteRows(at: [indexPath], with: .left)
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                tableView.reloadData()
                 self.calcularValor()
             }
             

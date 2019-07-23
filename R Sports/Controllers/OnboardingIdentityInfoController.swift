@@ -55,9 +55,11 @@ class OnboardingIdentityInfoController: UIViewController {
         return true
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
+    override func textFieldDidBeginEditing(_ textField: UITextField) {
+        super.textFieldDidBeginEditing(textField)
+        
         UIView.animate(withDuration: 1) {
-            textField.backgroundColor = #colorLiteral(red: 0.06028468404, green: 0.3637206691, blue: 0.2629516992, alpha: 1)
+            textField.backgroundColor = AppConstants.ColorConstants.defaultGreen
             textField.layoutIfNeeded()
         }
     }

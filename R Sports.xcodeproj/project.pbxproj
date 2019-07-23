@@ -18,6 +18,7 @@
 		FA2C1EE722AC5A840057131A /* OnboardingCreateAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2C1EE622AC5A840057131A /* OnboardingCreateAccountController.swift */; };
 		FA3EB7DA225AED5F00866125 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA3EB7D9225AED5F00866125 /* GoogleService-Info.plist */; };
 		FA3EB7DD225AEFA200866125 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3EB7DC225AEFA200866125 /* FirebaseService.swift */; };
+		FA45692522E67AE000C0971B /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA45692422E67AE000C0971B /* AppConstants.swift */; };
 		FA58A124224E9FF0007F9C72 /* QuadraDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA58A123224E9FF0007F9C72 /* QuadraDTO.swift */; };
 		FA5A404222ADB4DB00E8FA8A /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5A404022ADB4DB00E8FA8A /* HeaderCell.swift */; };
 		FA5A404322ADB4DB00E8FA8A /* HeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA5A404122ADB4DB00E8FA8A /* HeaderCell.xib */; };
@@ -73,6 +74,7 @@
 		FA2C1EE622AC5A840057131A /* OnboardingCreateAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCreateAccountController.swift; sourceTree = "<group>"; };
 		FA3EB7D9225AED5F00866125 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA3EB7DC225AEFA200866125 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		FA45692422E67AE000C0971B /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		FA58A123224E9FF0007F9C72 /* QuadraDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuadraDTO.swift; sourceTree = "<group>"; };
 		FA5A404022ADB4DB00E8FA8A /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
 		FA5A404122ADB4DB00E8FA8A /* HeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderCell.xib; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				FA166E9622C43D0400E0FF5E /* AlertsHelper.swift */,
+				FA45692422E67AE000C0971B /* AppConstants.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -478,6 +481,7 @@
 				FA2C1EE122AB7A8B0057131A /* MaskedTextField.swift in Sources */,
 				FA8B55F622AAF7E9000BE939 /* PagamentoController.swift in Sources */,
 				FA07BB7C225BC7AF007AF2D0 /* MainTabController.swift in Sources */,
+				FA45692522E67AE000C0971B /* AppConstants.swift in Sources */,
 				FA7CE8B222AC6D88007B84A7 /* OnboardingImageController.swift in Sources */,
 				FA905DEB229DE51D00F4D20E /* CalendarCell.swift in Sources */,
 				FAB3642E22AE8FDC006ED541 /* ReservaDTO.swift in Sources */,

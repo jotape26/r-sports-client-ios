@@ -9,6 +9,8 @@
 import UIKit
 
 class ConfirmacaoController: UIViewController {
+    
+    var reserva : ReservaDTO!
 
     @IBOutlet weak var imgCheck: UIImageView!
     @IBOutlet weak var btnVoltar: UIButton!
@@ -21,7 +23,7 @@ class ConfirmacaoController: UIViewController {
 
         // Do any additional setup after loading the view.
         imgCheck.image = imgCheck.image?.withRenderingMode(.alwaysTemplate)
-        imgCheck.tintColor = #colorLiteral(red: 0.07843137255, green: 0.462745098, blue: 0.3333333333, alpha: 1)
+        imgCheck.tintColor = AppConstants.ColorConstants.defaultGreen
         btnVoltar.layer.cornerRadius = 5.0
         self.navigationItem.hidesBackButton = true
         self.navigationItem.title = "Fazendo a Reserva..."
@@ -29,17 +31,24 @@ class ConfirmacaoController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        UIView.animate(withDuration: 0.3, delay: 3.0, options: .curveEaseIn, animations: {
-            self.imgCheck.alpha = 1
-            self.lblTitle.alpha = 1
-            self.lblMessage.alpha = 1
-            self.btnVoltar.alpha = 1
-        }, completion: nil)
-        
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+        FirebaseService.createReserva(reserva: reserva, success: {
             self.navigationItem.title = nil
             self.view.stopLoading()
+            UIView.animate(withDuration: 0.3, animations: {
+                self.imgCheck.alpha = 1
+                self.lblTitle.alpha = 1
+                self.lblMessage.alpha = 1
+                self.btnVoltar.alpha = 1
+            })
+        }) {
+            self.navigationItem.title = "Erro"
+            self.view.stopLoading()
+            UIView.animate(withDuration: 0.3, animations: {
+                self.imgCheck.alpha = 1
+                self.lblTitle.alpha = 1
+                self.lblMessage.alpha = 1
+                self.btnVoltar.alpha = 1
+            })
         }
     }
     

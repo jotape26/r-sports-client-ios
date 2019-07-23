@@ -15,8 +15,6 @@ class SharedSession: NSObject {
     private let locationManager = CLLocationManager()
     var currentLocation : CLLocation?
     
-    var standardColor = #colorLiteral(red: 0.07843137255, green: 0.462745098, blue: 0.3333333333, alpha: 1)
-    
     override init() {
         super.init()
         locationManager.delegate = self

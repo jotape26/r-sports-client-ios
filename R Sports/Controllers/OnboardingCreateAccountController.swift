@@ -57,7 +57,9 @@ class OnboardingCreateAccountController: UIViewController {
 }
 
 extension OnboardingImageController {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
+    override func textFieldDidBeginEditing(_ textField: UITextField) {
+        super.textFieldDidBeginEditing(textField)
+        
         if textField.text?.isEmpty ?? false {
             textField.text = "55"
         }

@@ -22,12 +22,8 @@
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Wxp-tg-xKa">
                         <rect key="frame" x="16" y="5" width="288" height="30"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gMv-AS-Rxy">
-                                <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
-                                <color key="color" red="0.060284684040000001" green="0.3637206691" blue="0.2629516992" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="llI-bx-4ET">
-                                <rect key="frame" x="90" y="0.0" width="198" height="30"/>
+                                <rect key="frame" x="0.0" y="0.0" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -57,7 +53,6 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="loadingSpin" destination="gMv-AS-Rxy" id="54h-U9-Mis"/>
                 <outlet property="phoneLabel" destination="llI-bx-4ET" id="2dd-JH-8gc"/>
                 <outlet property="stack" destination="Wxp-tg-xKa" id="R4F-SW-WmZ"/>
             </connections>

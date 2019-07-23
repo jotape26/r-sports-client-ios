@@ -34,10 +34,24 @@ extension UITextField
     }
     
     func setTextInvalid(){
+        
+        let imageView = UIImageView(image: UIImage(named: "icons8-attention"))
+        
+        let frame = self.textInputView.frame
+        
+        let size = frame.height - 5
+        
+        imageView.frame = CGRect(x: frame.minX, y: frame.minY, width: size, height: size)
+        
         UIView.animate(withDuration: 1) {
-            self.backgroundColor = .red
-            self.layoutIfNeeded()
+            self.rightViewMode = .always
+            self.rightView = imageView
         }
+    }
+    
+    func removeInvalid() {
+        self.rightView = nil
+        self.rightViewMode = .never
     }
 }
 

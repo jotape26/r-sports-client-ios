@@ -51,6 +51,10 @@ class FirebaseService {
     static func getCurrentUser() -> User?{
         return Auth.auth().currentUser
     }
+    static func getDocumentReference() -> DocumentReference? {
+        guard let number = FirebaseService.getCurrentUser()?.phoneNumber else { return nil }
+        return Firestore.firestore().collection("users").document(number)
+    }
     
     //MARK: - Firestore Methods
     static func retrieveCourts(userLocation: CLLocation,
@@ -150,6 +154,23 @@ class FirebaseService {
             
             jogador.nome = user.nome
             found(jogador)
+        }
+    }
+    
+    static func createReserva(reserva : ReservaDTO,
+                              success : @escaping()->(),
+                              failure : @escaping()->()) {
+        
+        if !reserva.getExportData().isEmpty {
+            Firestore.firestore().collection("reservas").document().setData(reserva.getExportData()) { (err) in
+                if err != nil {
+                    failure()
+                } else {
+                    success()
+                }
+            }
+        } else {
+            failure()
         }
     }
     
