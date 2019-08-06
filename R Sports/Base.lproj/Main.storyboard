@@ -29,10 +29,17 @@
                                     <segment title="Pagos"/>
                                 </segments>
                                 <color key="tintColor" red="0.078431372550000003" green="0.46274509800000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="segmentDidChange:" destination="GJV-k0-55U" eventType="valueChanged" id="qw5-Az-gvr"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8zu-fP-xOk">
                                 <rect key="frame" x="0.0" y="120" width="375" height="498"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="GJV-k0-55U" id="088-go-peX"/>
+                                    <outlet property="delegate" destination="GJV-k0-55U" id="Kab-tx-Spa"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -49,6 +56,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Reservas" image="reservasList" id="2Ch-Dd-wjp"/>
                     <connections>
+                        <outlet property="reservasTable" destination="8zu-fP-xOk" id="djj-07-j5L"/>
+                        <outlet property="segmentStatus" destination="Hk0-IZ-TSf" id="qAi-8N-XCD"/>
                         <segue destination="Ds6-dk-3W0" kind="show" id="Jct-59-xoG"/>
                     </connections>
                 </viewController>

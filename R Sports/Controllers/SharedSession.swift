@@ -14,6 +14,7 @@ class SharedSession: NSObject {
     
     private let locationManager = CLLocationManager()
     var currentLocation : CLLocation?
+    var currentUser : UserDTO?
     
     override init() {
         super.init()

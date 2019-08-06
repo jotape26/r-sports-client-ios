@@ -16,8 +16,9 @@ import CoreLocation
 
 class FirebaseService {
     
-    //MARK: - Auth Methods
+    static var courtQuery: GFSCircleQuery?
     
+    //MARK: - Auth Methods
     static func loginWith(credential: AuthCredential,
                           register: Bool = false,
                           complete: @escaping(Bool)->()) {
@@ -51,19 +52,21 @@ class FirebaseService {
     static func getCurrentUser() -> User?{
         return Auth.auth().currentUser
     }
+    
+    //MARK: - Firestore Methods
     static func getDocumentReference() -> DocumentReference? {
         guard let number = FirebaseService.getCurrentUser()?.phoneNumber else { return nil }
         return Firestore.firestore().collection("users").document(number)
     }
     
-    //MARK: - Firestore Methods
     static func retrieveCourts(userLocation: CLLocation,
                                success: @escaping (QuadraDTO)->()){
         
         let request = Firestore.firestore().collection("quadras")
         let geoRequest = GeoFirestore(collectionRef: request)
+        courtQuery = geoRequest.query(withCenter: userLocation, radius: 10.0)
         
-        _ = geoRequest.query(withCenter: userLocation, radius: 10.0).observe(.documentEntered) { (key, _) in
+        _ = courtQuery?.observe(.documentEntered) { (key, _) in
             request.document(key!).getDocument(completion: { (snap, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
@@ -76,6 +79,10 @@ class FirebaseService {
                 }
             })
         }
+    }
+    
+    @objc static func stopCourtQuery() {
+        courtQuery?.removeAllObservers()
     }
     
     static func createUserDatabaseReference(user: User){
@@ -96,34 +103,21 @@ class FirebaseService {
         }
     }
     
-    static func getUserReservations(success: @escaping([ReservaDTO])->()) {
+    static func getUserReservations(success: @escaping([ReservaListaDTO])->()) {
         
-        let ref = Firestore.firestore().collection("users").document(FirebaseService.getCurrentUser()!.phoneNumber!)
+        var reservas = [ReservaListaDTO]()
         
-        Firestore.firestore().collection("reservas").whereField("jogadores", arrayContains: ["valorAPagar" : 70]).getDocuments { (snap, err) in print("snap returned"); snap?.documents.forEach({ (snap) in print(snap.data()) }) }
-        
-        Firestore.firestore().collection("reservas").whereField("jogadores", arrayContains: ref).getDocuments { (snap, err) in
-            if err != nil {
-                
-            } else {
-                guard let reservasData = snap?.documents else { return }
-                var reservas = [ReservaDTO]()
-                reservasData.forEach({ (snap) in
-                    if let reserva = ReservaDTO(JSON: snap.data()) {
-                        
-                        reserva.jogadoresRef?.forEach({ (jogadorref) in
-                            jogadorref.getDocument(completion: { (snap, err) in
-                                guard let userData = snap?.data() else { return }
-                                guard let user = UserDTO(JSON: userData) else { return }
-                                reserva.jogadores?.append(user)
-                            })
-                        })
-                        reservas.append(reserva)
+        SharedSession.shared.currentUser?.reservas?.forEach({ (reservaID) in
+            Firestore.firestore().collection("reservas").document(reservaID).getDocument(completion: { (snap, err) in
+                if let snapData = snap?.data(), let resDTO = ReservaListaDTO(JSON: snapData) {
+                    reservas.append(resDTO)
+                    if reservas.count == SharedSession.shared.currentUser!.reservas!.count {
+                        success(reservas)
                     }
-                })
-                success(reservas)
-            }
-        }
+                }
+            })
+        })
+        
     }
     
     static func setUserData(data: [String: Any]) {

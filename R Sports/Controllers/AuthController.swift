@@ -24,7 +24,12 @@ class AuthController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         if FirebaseService.getCurrentUser() != nil {
-            performSegue(withIdentifier: "AuthToMainSegue", sender: nil)
+            self.view.startLoading()
+            FirebaseService.retrieveUserDatabaseRef(uid: FirebaseService.getCurrentUser()!.phoneNumber!) { (user) in
+                self.view.stopLoading()
+                SharedSession.shared.currentUser = user
+                self.performSegue(withIdentifier: "AuthToMainSegue", sender: nil)
+            }
         } else {
             UIView.animate(withDuration: 1.5) {
                 self.view.layoutIfNeeded()

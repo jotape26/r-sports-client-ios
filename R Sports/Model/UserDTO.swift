@@ -21,6 +21,7 @@ class UserDTO: ImmutableMappable {
     var competitivade: String?
     var imagePath: String?
     var telefone: String?
+    var reservas : [String]?
     
     init(){}
     
@@ -34,6 +35,7 @@ class UserDTO: ImmutableMappable {
         procuraJogos = try? map.value(ProfileConstants.SEARCHING_GAMES)
         competitivade = try? map.value(ProfileConstants.COMPETITIVITY)
         imagePath = try? map.value(ProfileConstants.IMAGEPATH)
+        reservas = try? map.value(ProfileConstants.RESERVAS)
     }
 }
 
@@ -47,5 +49,6 @@ struct ProfileConstants {
     static let SEARCHING_GAMES = "searchingMatches"
     static let COMPETITIVITY = "competitivity"
     static let IMAGEPATH = "userImage"
+    static let RESERVAS = "reservas"
 }
 

@@ -39,7 +39,7 @@ class ReservaDTO: ImmutableMappable {
     func getExportData() -> [String : Any] {
         
         guard let dataHora = data else { return [:] }
-        guard let donoQuadraID = quadra?.documentID else { return [:] }
+        guard let donoQuadraID = quadra?.donoQuadraID else { return [:] }
         guard let user = FirebaseService.getDocumentReference() else { return [:] }
 
         var exportData : [String : Any] = ["dataHora" : dataHora,

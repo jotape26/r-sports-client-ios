@@ -20,6 +20,9 @@
 		FA3EB7DD225AEFA200866125 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3EB7DC225AEFA200866125 /* FirebaseService.swift */; };
 		FA45692522E67AE000C0971B /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA45692422E67AE000C0971B /* AppConstants.swift */; };
 		FA45692722E6953100C0971B /* RSportsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA45692622E6953100C0971B /* RSportsService.swift */; };
+		FA57492922F9F8F5005E015C /* NoQuadrasCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57492722F9F8F5005E015C /* NoQuadrasCell.swift */; };
+		FA57492A22F9F8F5005E015C /* NoQuadrasCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA57492822F9F8F5005E015C /* NoQuadrasCell.xib */; };
+		FA57492C22FA0CCF005E015C /* ReservaListaDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57492B22FA0CCF005E015C /* ReservaListaDTO.swift */; };
 		FA58A124224E9FF0007F9C72 /* QuadraDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA58A123224E9FF0007F9C72 /* QuadraDTO.swift */; };
 		FA5A404222ADB4DB00E8FA8A /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5A404022ADB4DB00E8FA8A /* HeaderCell.swift */; };
 		FA5A404322ADB4DB00E8FA8A /* HeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA5A404122ADB4DB00E8FA8A /* HeaderCell.xib */; };
@@ -77,6 +80,9 @@
 		FA3EB7DC225AEFA200866125 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		FA45692422E67AE000C0971B /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		FA45692622E6953100C0971B /* RSportsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSportsService.swift; sourceTree = "<group>"; };
+		FA57492722F9F8F5005E015C /* NoQuadrasCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoQuadrasCell.swift; sourceTree = "<group>"; };
+		FA57492822F9F8F5005E015C /* NoQuadrasCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoQuadrasCell.xib; sourceTree = "<group>"; };
+		FA57492B22FA0CCF005E015C /* ReservaListaDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservaListaDTO.swift; sourceTree = "<group>"; };
 		FA58A123224E9FF0007F9C72 /* QuadraDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuadraDTO.swift; sourceTree = "<group>"; };
 		FA5A404022ADB4DB00E8FA8A /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
 		FA5A404122ADB4DB00E8FA8A /* HeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderCell.xib; sourceTree = "<group>"; };
@@ -202,12 +208,22 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		FA57492622F9F8DD005E015C /* NoQuadrasCell */ = {
+			isa = PBXGroup;
+			children = (
+				FA57492722F9F8F5005E015C /* NoQuadrasCell.swift */,
+				FA57492822F9F8F5005E015C /* NoQuadrasCell.xib */,
+			);
+			path = NoQuadrasCell;
+			sourceTree = "<group>";
+		};
 		FA58A121224E9FDD007F9C72 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				FA58A123224E9FF0007F9C72 /* QuadraDTO.swift */,
 				FA905DE4229CBD7400F4D20E /* UserDTO.swift */,
 				FAB3642D22AE8FDC006ED541 /* ReservaDTO.swift */,
+				FA57492B22FA0CCF005E015C /* ReservaListaDTO.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -310,6 +326,7 @@
 		FAD5D5F1224E995700DD64DB /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				FA57492622F9F8DD005E015C /* NoQuadrasCell */,
 				FA905DE8229DE4E800F4D20E /* CalendarCell */,
 				FA5A405222ADC7A400E8FA8A /* EnderecoCell */,
 				FA5A405322ADC7AA00E8FA8A /* HeaderCell */,
@@ -396,6 +413,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA5A404D22ADC35D00E8FA8A /* Assets.xcassets in Resources */,
+				FA57492A22F9F8F5005E015C /* NoQuadrasCell.xib in Resources */,
 				FA5A404322ADB4DB00E8FA8A /* HeaderCell.xib in Resources */,
 				FAD5D5EA224E8D4000DD64DB /* LaunchScreen.storyboard in Resources */,
 				FAD5D5F6224E997300DD64DB /* QuadrasCell.xib in Resources */,
@@ -487,12 +505,14 @@
 				FA45692522E67AE000C0971B /* AppConstants.swift in Sources */,
 				FA7CE8B222AC6D88007B84A7 /* OnboardingImageController.swift in Sources */,
 				FA905DEB229DE51D00F4D20E /* CalendarCell.swift in Sources */,
+				FA57492922F9F8F5005E015C /* NoQuadrasCell.swift in Sources */,
 				FAB3642E22AE8FDC006ED541 /* ReservaDTO.swift in Sources */,
 				FA5A405A22ADC90600E8FA8A /* JogadoresCell.swift in Sources */,
 				FA7CE8B422AC7342007B84A7 /* OnboardingPlaystyleController.swift in Sources */,
 				FA7CE8AE22AC5BAF007B84A7 /* PhoneService.swift in Sources */,
 				FA3EB7DD225AEFA200866125 /* FirebaseService.swift in Sources */,
 				FAD4D4C222A4AA4F008F10F7 /* ReservasCell.swift in Sources */,
+				FA57492C22FA0CCF005E015C /* ReservaListaDTO.swift in Sources */,
 				FA5A404622ADB90000E8FA8A /* EnderecoCell.swift in Sources */,
 				FA905DE1229CB50C00F4D20E /* Date+Extensions.swift in Sources */,
 				FAD5D5E0224E8D3E00DD64DB /* AppDelegate.swift in Sources */,

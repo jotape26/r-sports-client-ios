@@ -9,8 +9,31 @@
 import Foundation
 import UIKit
 
-extension UITextField
-{
+extension UITextField {
+    
+    func useDoneToolbar() {
+        
+        let toolbar = UIToolbar()
+        toolbar.barStyle = .default
+        toolbar.isTranslucent = true
+        toolbar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(inputToolbarDonePressed))
+        
+        doneButton.tintColor = AppConstants.ColorConstants.defaultGreen
+        
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        toolbar.setItems([spaceButton, doneButton], animated: false)
+        toolbar.isUserInteractionEnabled = true
+        
+        self.inputAccessoryView = toolbar
+    }
+    
+    @objc private func inputToolbarDonePressed() {
+        self.endEditing(true)
+    }
+    
     func setBottomBorder(withColor color: UIColor)
     {
         self.borderStyle = .none

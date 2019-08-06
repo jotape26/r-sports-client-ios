@@ -18,7 +18,6 @@ class OnboardingCreateAccountController: UIViewController {
     @IBOutlet weak var txtPinHeight: NSLayoutConstraint!
     @IBOutlet weak var btnVoltar: UIButton!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,7 +25,9 @@ class OnboardingCreateAccountController: UIViewController {
         btnConfirmar.layer.cornerRadius = 5.0
         btnVoltar.layer.cornerRadius = 5.0
         txtCelNumber.delegate = self
+        txtCelNumber.useDoneToolbar()
         txtPin.properties.delegate = self
+        txtPin.useDoneToolbar()
         txtPin.properties.numberOfCharacters = 6
         txtPin.reloadAppearance()
     }
