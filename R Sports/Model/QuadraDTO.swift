@@ -23,6 +23,7 @@ class QuadraDTO : ImmutableMappable {
     var latitude: CLLocationDegrees?
     var longitude: CLLocationDegrees?
     var donoQuadraID : String?
+    var telefone : String?
     
     var location: CLLocation {
         return CLLocation(latitude: self.latitude ?? CLLocationDegrees(), longitude: self.longitude ?? CLLocationDegrees())
@@ -43,6 +44,7 @@ class QuadraDTO : ImmutableMappable {
         self.imagens = try? map.value("imagens")
         self.servicos = try? map.value("servicos")
         self.donoQuadraID = try? map.value("userId")
+        self.telefone = try? map.value("telefone")
         
         if let t = try? map.value("l") as [Double] {
             latitude = CLLocationDegrees(exactly: t[0]) ?? CLLocationDegrees()

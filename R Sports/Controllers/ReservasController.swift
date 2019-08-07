@@ -62,6 +62,13 @@ class ReservasController: UIViewController {
         applyFilter()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let cont = segue.destination as? DetalhesReservaController {
+            guard let iPath = reservasTable.indexPathForSelectedRow else { return }
+            cont.reserva = reservas[iPath.row]
+        }
+    }
+    
 }
 
 extension ReservasController: UITableViewDelegate, UITableViewDataSource {
@@ -74,12 +81,18 @@ extension ReservasController: UITableViewDelegate, UITableViewDataSource {
         
         let currentReserva = filteredReservas[indexPath.row]
         
-        cell.lbQuadra.text = currentReserva.donoQuadraID
+        cell.lbQuadra.text = currentReserva.nomeQuadra
         cell.lbData.text = currentReserva.dataHora?.formatToDefault()
         cell.lbStatus.text = currentReserva.status
         cell.lbValor.text = currentReserva.valorPago?.toCurrency()
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ListaToReservaDetailSegue", sender: nil)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     

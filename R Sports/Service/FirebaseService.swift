@@ -110,6 +110,7 @@ class FirebaseService {
         SharedSession.shared.currentUser?.reservas?.forEach({ (reservaID) in
             Firestore.firestore().collection("reservas").document(reservaID).getDocument(completion: { (snap, err) in
                 if let snapData = snap?.data(), let resDTO = ReservaListaDTO(JSON: snapData) {
+                    resDTO.docID = snap?.documentID
                     reservas.append(resDTO)
                     if reservas.count == SharedSession.shared.currentUser!.reservas!.count {
                         success(reservas)
@@ -118,6 +119,15 @@ class FirebaseService {
             })
         })
         
+    }
+    
+    static func getQuadraById(quadraID : String,
+                              success : @escaping(QuadraDTO)->()) {
+        Firestore.firestore().collection("quadras").document(quadraID).getDocument { (snap, err) in
+            if let snapData = snap?.data(), let quadra = QuadraDTO(JSON: snapData) {
+                success(quadra)
+            }
+        }
     }
     
     static func setUserData(data: [String: Any]) {

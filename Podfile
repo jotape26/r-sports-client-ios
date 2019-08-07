@@ -21,4 +21,5 @@ target 'R Sports' do
   pod 'Geofirestore'
   pod 'SwiftMessages' 
   pod 'NVActivityIndicatorView'
+  pod 'CollectionViewGridLayout'
 end

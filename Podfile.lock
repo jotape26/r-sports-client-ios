@@ -8,6 +8,7 @@ PODS:
   - BoringSSL/Implementation (10.0.6):
     - BoringSSL/Interface (= 10.0.6)
   - BoringSSL/Interface (10.0.6)
+  - CollectionViewGridLayout (2.1.0)
   - Cosmos (19.0.3)
   - Firebase (5.15.0):
     - Firebase/Core (= 5.15.0)
@@ -167,6 +168,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - CollectionViewGridLayout
   - Cosmos
   - Firebase/Auth
   - Firebase/Core
@@ -187,6 +189,7 @@ SPEC REPOS:
     - Alamofire
     - AlamofireImage
     - BoringSSL
+    - CollectionViewGridLayout
     - Cosmos
     - Firebase
     - FirebaseAnalytics
@@ -221,6 +224,7 @@ SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
   BoringSSL: e10f92a27043805c01071fe815a5cd98ae8212e7
+  CollectionViewGridLayout: f22fba04dff5c028ce20f1c29ba212e790b6f316
   Cosmos: a6fb17284281fa12cf4c85c2efecd440a215ec44
   Firebase: 8bb9268bff82374f2cbaaabb143e725743c316ae
   FirebaseAnalytics: c06f9d70577d79074214700a71fd5d39de5550fb
@@ -251,6 +255,6 @@ SPEC CHECKSUMS:
   Protobuf: 1097ca58584c8d9be81bfbf2c5ff5975648dd87a
   SwiftMessages: a952f7a9103d9aeab93730a2861d2d8fcdd8758f
 
-PODFILE CHECKSUM: 4b51c2238847d2772b9ca26fb88321aa7f92bcf5
+PODFILE CHECKSUM: b3db738a3c7ffe38f58321c6fb153f7df942d279
 
 COCOAPODS: 1.7.5
