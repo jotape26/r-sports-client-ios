@@ -69,6 +69,8 @@ class QuadraDetailController: UIViewController {
             vc.quadra = selectedQuadra
         } else if let vc = segue.destination as? CriarReservaController {
             vc.reserva = ReservaDTO(quadra: selectedQuadra, data: calendarView.selectedDate ?? Date())
+        } else if let vc = segue.destination as? QuadraServicosController {
+            vc.quadra = selectedQuadra
         }
     }
 }
@@ -123,6 +125,8 @@ extension QuadraDetailController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.row == 0 {
             performSegue(withIdentifier: "DetailToMapSegue", sender: nil)
+        } else if indexPath.row == 2 {
+            performSegue(withIdentifier: "DetailToServicosSegue", sender: nil)
         }
     }
     
