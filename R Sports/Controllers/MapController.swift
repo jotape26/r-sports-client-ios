@@ -26,16 +26,28 @@ class MapController: UIViewController {
     }
     
     func createQuadraPin(){
-        let manager = CLGeocoder()
-        manager.geocodeAddressString(quadra.endereco ?? "") { (placemarks, err) in
-            
-            let annt = MKPlacemark(placemark: placemarks!.first!)
-            self.mapView.addAnnotation(annt)
-            
-            self.mapView.setCenter(placemarks!.first!.location!.coordinate, animated: true)
-            
-            self.mapView.setRegion(MKCoordinateRegion(center: annt.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)), animated: true)
+        guard let location = quadra.location else {
+            performError()
+            return
         }
+        
+        let manager = CLGeocoder()
+        
+        manager.reverseGeocodeLocation(location) { (placemarks, err) in
+            if let placemark = placemarks?.first, let center = placemark.location?.coordinate {
+                let annt = MKPlacemark(placemark: placemark)
+                self.mapView.addAnnotation(annt)
+                self.mapView.setCenter(center, animated: true)
+                self.mapView.setRegion(MKCoordinateRegion(center: annt.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)), animated: true)
+                
+            } else {
+                self.performError()
+            }
+        }
+    }
+    
+    func performError(){
+        self.navigationController?.popViewController(animated: true)
     }
 
 }

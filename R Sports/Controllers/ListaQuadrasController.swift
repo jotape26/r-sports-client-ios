@@ -115,12 +115,12 @@ extension ListaQuadrasController: UITableViewDelegate, UITableViewDataSource {
                 cell.downloadImage(path: path)
             }
             
-            if let distance = current.distance {
-                let distanceMeasure = Measurement(value: distance, unit: UnitLength.kilometers)
-                cell.lbDistancia.text = MeasurementFormatter().string(from: distanceMeasure)
-            } else {
-                cell.lbDistancia.text = nil
-            }
+//            if let distance = current.distance {
+//                let distanceMeasure = Measurement(value: distance, unit: UnitLength.kilometers)
+//                cell.lbDistancia.text = MeasurementFormatter().string(from: distanceMeasure)
+//            } else {
+//                cell.lbDistancia.text = nil
+//            }
             
             
             return cell

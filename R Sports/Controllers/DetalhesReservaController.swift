@@ -58,6 +58,15 @@ class DetalhesReservaController: UIViewController {
         btnTelefone.setTitle(reserva.quadra?.telefone, for: .normal)
         jogadoresCollection.reloadData()
     }
+    
+    @IBAction func btnEnderecoClick(_ sender: Any) {
+        performSegue(withIdentifier: "ReservaToMapSegue", sender: nil)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? MapController {
+            vc.quadra = reserva.quadra
+        }
+    }
 }
 
 extension DetalhesReservaController : UICollectionViewDelegate, UICollectionViewDataSource {

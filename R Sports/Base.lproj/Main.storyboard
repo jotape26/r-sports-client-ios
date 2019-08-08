@@ -250,6 +250,9 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="276" height="47.5"/>
                                                         <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <state key="normal" title="Endereco"/>
+                                                        <connections>
+                                                            <action selector="btnEnderecoClick:" destination="Ds6-dk-3W0" eventType="touchUpInside" id="DJh-wa-QHg"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CvB-fR-l5u">
                                                         <rect key="frame" x="0.0" y="47.5" width="276" height="47.5"/>
@@ -318,6 +321,7 @@
                         <outlet property="lbReservaStatus" destination="W9e-PE-dvu" id="Keb-5U-xHY"/>
                         <outlet property="lbTotalPago" destination="Atg-Ab-5vq" id="KLy-Fl-gE1"/>
                         <outlet property="lbTotalPessoa" destination="ATe-Jd-kNi" id="3CG-hU-hIS"/>
+                        <segue destination="ISD-Ce-D0Y" kind="show" identifier="ReservaToMapSegue" id="W0s-dS-FZM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="58J-bM-nJA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1971,5 +1975,6 @@ Você pode alterar qualquer informação sua na aba “Perfil” de nosso aplica
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="FtR-Cx-3jL"/>
+        <segue reference="W0s-dS-FZM"/>
     </inferredMetricsTieBreakers>
 </document>

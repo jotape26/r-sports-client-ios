@@ -17,21 +17,29 @@ class QuadraDTO : ImmutableMappable {
     var rating: Double?
     var preco: Double?
     var imagens: [String]?
-    var distance: Double?
+    var distance: Double {
+        get {
+            guard let location = self.location else { return 0 }
+            let dist = location.distance(from: location)
+            return dist
+        }
+    }
     var servicos : [String]?
     var documentID: String?
-    var latitude: CLLocationDegrees?
-    var longitude: CLLocationDegrees?
+    var coordinates = [Double]()
     var donoQuadraID : String?
     var telefone : String?
     
-    var location: CLLocation {
-        return CLLocation(latitude: self.latitude ?? CLLocationDegrees(), longitude: self.longitude ?? CLLocationDegrees())
+    var location: CLLocation? {
+        get{
+            guard !coordinates.isEmpty, coordinates.count == 2 else { return nil }
+            return CLLocation(latitude: coordinates[0], longitude: coordinates[1])
+        }
     }
     
     func distance(to location: CLLocation) -> CLLocationDistance {
-        let dist = location.distance(from: self.location)
-        distance = dist.magnitude
+        guard let location = self.location else { return 0 }
+        let dist = location.distance(from: location)
         return dist
     }
     
@@ -47,8 +55,9 @@ class QuadraDTO : ImmutableMappable {
         self.telefone = try? map.value("telefone")
         
         if let t = try? map.value("l") as [Double] {
-            latitude = CLLocationDegrees(exactly: t[0]) ?? CLLocationDegrees()
-            longitude = CLLocationDegrees(exactly: t[1]) ?? CLLocationDegrees()
+            t.forEach { (cord) in
+                coordinates.append(cord)
+            }
         }
     }
 }
