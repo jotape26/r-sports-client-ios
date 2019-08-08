@@ -911,10 +911,10 @@
             </objects>
             <point key="canvasLocation" x="3080.8000000000002" y="796.55172413793105"/>
         </scene>
-        <!--View Controller-->
+        <!--Quadra Servicos Controller-->
         <scene sceneID="P0B-qc-R1p">
             <objects>
-                <viewController id="Wsh-sS-2tI" sceneMemberID="viewController">
+                <viewController id="Wsh-sS-2tI" customClass="QuadraServicosController" customModule="R_Sports" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hyh-Ab-uIj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -922,6 +922,10 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ht3-9e-AhM">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Wsh-sS-2tI" id="1gQ-VC-QId"/>
+                                    <outlet property="delegate" destination="Wsh-sS-2tI" id="fVW-zL-PaD"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -933,6 +937,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="No6-bj-L0b"/>
                     </view>
+                    <connections>
+                        <outlet property="tableInformacoes" destination="Ht3-9e-AhM" id="jSI-KQ-cm1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5oO-Zx-8My" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
