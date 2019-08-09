@@ -185,7 +185,13 @@ class FirebaseService {
         guard let user = Auth.auth().currentUser else { return }
         guard let number = user.phoneNumber else { return }
         
-        Firestore.firestore().collection("users").document(number).setData(["reservas" : [reservaID]], merge: true, completion: nil)
+        let reference = FirebaseService.getDocumentReference()
+        
+        _ = reference?.getDocument(completion: { (snap, err) in
+            guard let userData = snap?.data(), let user = UserDTO(JSON: userData) else { return }
+            user.reservas?.append(reservaID)
+            reference?.setData(["reservas" : user.reservas ?? []], merge: true)
+        })
     }
     
     //MARK: - Storage Methods

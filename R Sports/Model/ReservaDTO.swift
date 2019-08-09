@@ -16,6 +16,11 @@ class ReservaDTO: ImmutableMappable {
     var data: Date?
     var jogadoresRef : [DocumentReference]?
     var jogadores: [UserDTO]?
+    var valor : Double {
+        get {
+            return (quadra?.preco ?? 0.0 / Double(jogadores?.count ?? 0))
+        }
+    }
     
     init(quadra: QuadraDTO, data: Date) {
         self.quadra = quadra
@@ -42,17 +47,24 @@ class ReservaDTO: ImmutableMappable {
         guard let donoQuadraID = quadra?.donoQuadraID else { return [:] }
         guard let quadraID = quadra?.documentID else { return [:] }
         guard let user = FirebaseService.getDocumentReference() else { return [:] }
+        guard let nome = quadra?.nome else { return [:] }
+        guard let preco = quadra?.preco else { return [:] }
 
         var exportData : [String : Any] = ["dataHora" : dataHora,
                                            "donoQuadraID" : donoQuadraID,
                                            "quadraID" : quadraID,
                                            "duracao" : 1,
-                                           "primeiroJogador" : user]
+                                           "primeiroJogador" : user,
+                                           "status" : "Pendente",
+                                           "valorTotal" : preco,
+                                           "valorPago": valor,
+                                           "nomeQuadra" : nome]
         
         var jogadorData = [[String : Any]]()
         jogadores?.forEach { (jogador) in
-            jogadorData.append(["telefoneTemp" : jogador.telefone!,
-                                "statusPagamento" : false])
+                jogadorData.append(["telefoneTemp" : jogador.telefone!,
+                                    "statusPagamento" : jogador.telefone! == FirebaseService.getCurrentUser()!.phoneNumber! ? true : false])
+            
         }
         
         exportData.updateValue(jogadorData, forKey: "jogadores")
