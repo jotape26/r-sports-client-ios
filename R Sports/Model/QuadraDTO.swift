@@ -19,8 +19,9 @@ class QuadraDTO : ImmutableMappable {
     var imagens: [String]?
     var distance: Double {
         get {
-            guard let location = self.location else { return 0 }
-            let dist = location.distance(from: location)
+            guard let userLocation = SharedSession.shared.currentLocation else { return 0 }
+            guard let quadraLocation = self.location else { return 0 }
+            let dist = userLocation.distance(from: quadraLocation)
             return dist
         }
     }

@@ -25,6 +25,7 @@ class QuadraDetailController: UIViewController {
         // Do any additional setup after loading the view.
         calendarView.tintColor = AppConstants.ColorConstants.defaultGreen
         calendarView.select(nil)
+        calendarView.delegate = self
         
         imagensQuadra.contentScaleMode = .scaleAspectFill
         imagensQuadra.slideshowInterval = 5.0
@@ -68,25 +69,44 @@ class QuadraDetailController: UIViewController {
         if let vc = segue.destination as? MapController {
             vc.quadra = selectedQuadra
         } else if let vc = segue.destination as? CriarReservaController {
-            vc.reserva = ReservaDTO(quadra: selectedQuadra, data: calendarView.selectedDate ?? Date())
+            if let data = calendarView.selectedDate {
+                vc.reserva = ReservaDTO(quadra: selectedQuadra, data: data)
+                calendarView.deselect(data)
+            }
         } else if let vc = segue.destination as? QuadraServicosController {
             vc.quadra = selectedQuadra
         }
     }
 }
 
-extension QuadraDetailController: FSCalendarDelegate {
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        
-        if date > Date() {
-            calendarView.select(Date(), scrollToDate: true)
-            calendarView.deselect(Date())
-            performSegue(withIdentifier: "DetailToReserveSegue", sender: nil)
+extension QuadraDetailController: FSCalendarDelegate, FSCalendarDelegateAppearance {
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
+        if Calendar.current.isDateInToday(date) {
+            return .white
+        } else {
+            if date < Date() {
+                return .lightGray
+            } else {
+                return .black
+            }
+        }
+    }
+    
+    func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
+        if Calendar.current.isDateInToday(date) || date > Date() {
+            return true
         } else {
             AlertsHelper.showErrorMessage(message: "Data Invalida")
+            return false
         }
+    }
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         
-        
+        if Calendar.current.isDateInToday(date) || date > Date(){
+            calendarView.select(Date(), scrollToDate: true)
+            performSegue(withIdentifier: "DetailToReserveSegue", sender: nil)
+        }
     }
 }
 
@@ -108,9 +128,13 @@ extension QuadraDetailController: UITableViewDelegate, UITableViewDataSource {
                 cell.titleLabel.text = "Informações da Quadra"
             } else if indexPath.row == 2 {
                 cell.titleLabel.text = "Serviços"
-                selectedQuadra.servicos?.forEach({ (servico) in
-                    if servico == "churrasqueira" {
-                        cell.addImageToIconStack(image: UIImage(named: "barbecue")!)
+                selectedQuadra.servicos?.forEach({ (servicoQuadra) in
+                    if let servico = ServicosQuadrasServerOptions(rawValue: servicoQuadra) {
+                        for svDefault in AppConstants.ArrayServicosDefault {
+                            if svDefault.type == servico {
+                                cell.addImageToIconStack(image: svDefault.getImage())
+                            }
+                        }
                     }
                 })
             }

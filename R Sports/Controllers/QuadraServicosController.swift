@@ -24,6 +24,21 @@ class ServicoQuadra {
         self.type = type
         self.description = description
     }
+    
+    func getImage() -> UIImage {
+        switch type! {
+        case .kBAR :
+            return UIImage(named: "bar")!
+        case .kVESTIARIO:
+            return UIImage(named: "locker")!
+        case .kARBITRO:
+            return UIImage(named: "referee")!
+        case .kCHURRASQUEIRA:
+            return UIImage(named: "grill")!
+        case .kESTACIONAMENTO:
+            return UIImage(named: "parking")!
+        }
+    }
 }
 
 class QuadraServicosController: UIViewController {
@@ -65,6 +80,7 @@ extension QuadraServicosController : UITableViewDelegate, UITableViewDataSource 
         
         cell.lbServicoTitle.text = servicos[indexPath.row].type.rawValue.capitalized
         cell.lbServicoDesc.text = servicos[indexPath.row].description
+        cell.imgServico.image = servicos[indexPath.row].getImage()
         return cell
     }
 

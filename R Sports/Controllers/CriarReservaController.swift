@@ -47,6 +47,9 @@ class CriarReservaController: UIViewController {
     }()
     
     @objc func inputToolbarDonePressed() {
+        if !datePicker.isSelected {
+            datepicked(datePicker)
+        }
         view.endEditing(true)
     }
     
@@ -161,7 +164,7 @@ extension CriarReservaController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "JogadoresCell") as! JogadoresCell
         
-        var jogador = reserva.getJogadores()[indexPath.row]
+        let jogador = reserva.getJogadores()[indexPath.row]
         cell.phoneLabel.text = jogador.telefone ?? jogador.nome
 
         return cell

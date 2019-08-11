@@ -23,4 +23,16 @@ class AlertsHelper {
         }
     }
     
+    static func showMessage(message: String){
+        SwiftMessages.show {
+            let messageView = MessageView.viewFromNib(layout: .messageView)
+            messageView.configureTheme(Theme.success)
+            messageView.configureIcon(withSize: CGSize(width: 0, height: 0))
+            messageView.titleLabel?.text = nil
+            messageView.bodyLabel?.text = message
+            messageView.button?.removeFromSuperview()
+            return messageView
+        }
+    }
+    
 }

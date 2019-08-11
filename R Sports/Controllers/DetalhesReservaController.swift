@@ -41,9 +41,6 @@ class DetalhesReservaController: UIViewController {
         }
     }
     
-    @IBAction func btnNotificarClick(_ sender: Any) {
-    }
-    
     func finishLoading(){
         self.view.stopLoading()
         
@@ -57,6 +54,14 @@ class DetalhesReservaController: UIViewController {
         btnEndereco.setTitle(reserva.quadra?.endereco, for: .normal)
         btnTelefone.setTitle(reserva.quadra?.telefone, for: .normal)
         jogadoresCollection.reloadData()
+    }
+    
+    @IBAction func btnNotificarClick(_ sender: Any) {
+        self.view.startLoading()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.view.stopLoading()
+            AlertsHelper.showMessage(message: "Jogadores notificados!")
+        }
     }
     
     @IBAction func btnEnderecoClick(_ sender: Any) {
