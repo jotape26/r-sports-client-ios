@@ -17,11 +17,12 @@ class PagamentoController: UIViewController {
     let cardValidator = CreditCardValidator()
     @IBOutlet weak var cartaoView: UIView!
     @IBOutlet weak var txtNumeroCartao: SwiftMaskTextfield!
-    @IBOutlet weak var txtMesCartao: UITextField!
-    @IBOutlet weak var txtCVVCartao: UITextField!
+    @IBOutlet weak var txtMesCartao: SwiftMaskTextfield!
+    @IBOutlet weak var txtCVVCartao: SwiftMaskTextfield!
     @IBOutlet weak var txtNomeTitular: UITextField!
     @IBOutlet weak var txtCPF: UITextField!
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var btnConfirmar: UIButton!
     
     override func viewDidLoad() {
@@ -34,9 +35,7 @@ class PagamentoController: UIViewController {
         
         txtNumeroCartao.setBottomBorder(withColor: .lightGray)
         txtNumeroCartao.delegate = self
-        txtMesCartao.setBottomBorder(withColor: .lightGray)
         txtMesCartao.delegate = self
-        txtCVVCartao.setBottomBorder(withColor: .lightGray)
         txtCVVCartao.delegate = self
         
         txtNomeTitular.delegate = self
@@ -47,8 +46,8 @@ class PagamentoController: UIViewController {
                                                name: NSNotification.Name(rawValue: "UITextFieldTextDidChangeNotification"),
                                                object: txtNumeroCartao)
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 
     }
     
@@ -88,42 +87,43 @@ extension PagamentoController {
         }
     }
     
-//    // MARK: - KEYBOARD OBSERVER
-//    @objc func keyboardWillShow(notification: NSNotification){
-//        //Need to calculate keyboard exact size due to Apple suggestions
-//        self.scrollView.isScrollEnabled = true
-//        var info = notification.userInfo!
-//        let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-//        let contentInsets : UIEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize!.height, right: 0.0)
-//
-//        self.scrollView.contentInset = contentInsets
-//        self.scrollView.scrollIndicatorInsets = contentInsets
-//
-//        var aRect : CGRect = self.view.frame
-//        aRect.size.height -= keyboardSize!.height
-//        if let activeField = self.activeField {
-//            if (!aRect.contains(activeField.frame.origin)){
-//                self.scrollView.scrollRectToVisible(activeField.frame, animated: true)
-//            }
-//        }
-//    }
-//
-//    @objc func keyboardWillHide(notification: NSNotification){
-//        //Once keyboard disappears, restore original positions
-//        var info = notification.userInfo!
-//        let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-//        let contentInsets : UIEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: -keyboardSize!.height, right: 0.0)
-//        self.scrollView.contentInset = contentInsets
-//        self.scrollView.scrollIndicatorInsets = contentInsets
-//        self.view.endEditing(true)
-//        self.scrollView.isScrollEnabled = false
-//    }
-//
-//    func textFieldDidBeginEditing(_ textField: UITextField){
-//        activeField = textField
-//    }
-//
-//    func textFieldDidEndEditing(_ textField: UITextField){
-//        activeField = nil
-//    }
+    // MARK: - KEYBOARD OBSERVER
+    @objc func keyboardWillShow(notification: NSNotification){
+        //Need to calculate keyboard exact size due to Apple suggestions
+        self.scrollView.isScrollEnabled = true
+        var info = notification.userInfo!
+        let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+        let contentInsets : UIEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize!.height, right: 0.0)
+
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
+
+        var aRect : CGRect = self.view.frame
+        aRect.size.height -= keyboardSize!.height
+        if let activeField = self.activeField {
+            if (!aRect.contains(activeField.frame.origin)){
+                self.scrollView.scrollRectToVisible(activeField.frame, animated: true)
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification){
+        //Once keyboard disappears, restore original positions
+        var info = notification.userInfo!
+        let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+        let contentInsets : UIEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: -keyboardSize!.height, right: 0.0)
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
+        self.view.endEditing(true)
+        self.scrollView.isScrollEnabled = false
+    }
+
+    override func textFieldDidBeginEditing(_ textField: UITextField){
+        super.textFieldDidBeginEditing(textField)
+        activeField = textField
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField){
+        activeField = nil
+    }
 }

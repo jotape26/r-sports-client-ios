@@ -115,7 +115,7 @@ extension ListaQuadrasController: UITableViewDelegate, UITableViewDataSource {
                 cell.downloadImage(path: path)
             }
             
-            let distanceMeasure = Measurement(value: current.distance, unit: UnitLength.meters)
+            let distanceMeasure = Measurement(value: current.distance.rounded(toPlaces: 2), unit: UnitLength.meters)
             cell.lbDistancia.text = MeasurementFormatter().string(for: distanceMeasure)
 
             return cell
@@ -124,11 +124,7 @@ extension ListaQuadrasController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if error == 1 {
-            return UITableView.automaticDimension
-        } else {
-            return 110.0
-        }
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
