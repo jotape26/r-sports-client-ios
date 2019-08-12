@@ -10,6 +10,16 @@ import Foundation
 import UIKit
 import NVActivityIndicatorView
 
+extension UIButton {
+    func addRightImage(image: UIImage, offset: CGFloat) {
+        self.setImage(image, for: .normal)
+        self.imageView?.translatesAutoresizingMaskIntoConstraints = false
+        self.imageView?.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0.0).isActive = true
+        self.imageView?.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -offset).isActive = true
+//        self.titleLabel?.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0.0).isActive = true
+    }
+}
+
 extension UIViewController: UITextFieldDelegate {
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {

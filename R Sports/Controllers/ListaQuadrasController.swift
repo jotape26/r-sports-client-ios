@@ -150,7 +150,7 @@ extension ListaQuadrasController: UITableViewDelegate, UITableViewDataSource {
             cell.prepareForReuse()
             
             cell.lbNomeQuadra.text = current.nome
-            cell.lbEnderecoQuadra.text = current.endereco
+            cell.lbEnderecoQuadra.text = "\(current.endereco ?? "") \(current.numeroEndereco ?? "")"
             
             cell.lbPrecoQuadra.text = current.preco?.toCurrency()
             

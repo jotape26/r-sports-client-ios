@@ -20,10 +20,77 @@ class PagamentoController: UIViewController {
     @IBOutlet weak var txtMesCartao: SwiftMaskTextfield!
     @IBOutlet weak var txtCVVCartao: SwiftMaskTextfield!
     @IBOutlet weak var txtNomeTitular: UITextField!
-    @IBOutlet weak var txtCPF: UITextField!
+    @IBOutlet weak var txtCPF: SwiftMaskTextfield!
+    
+    
+    @IBOutlet weak var lbNome: UITextField!
+    @IBOutlet weak var lbCPF: UITextField!
+    @IBOutlet weak var lbNumero: UITextField!
+    @IBOutlet weak var lbData: UITextField!
+    @IBOutlet weak var lbCVV: UITextField!
+    
+    
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var btnConfirmar: UIButton!
+    
+    lazy var inputToolbar: UIToolbar = {
+        var toolbar = UIToolbar()
+        toolbar.barStyle = .default
+        toolbar.isTranslucent = true
+        toolbar.sizeToFit()
+        
+        var nextButton : UIBarButtonItem = {
+            let btn = UIBarButtonItem(title: "Avançar", style: .plain, target: self, action: #selector(nextPressed))
+            btn.tintColor = AppConstants.ColorConstants.defaultGreen
+            return btn
+        }()
+        
+        var previousButton : UIBarButtonItem = {
+            let btn = UIBarButtonItem(title: "Voltar", style: .plain, target: self, action: #selector(previousPressed))
+            btn.tintColor = AppConstants.ColorConstants.defaultGreen
+            return btn
+        }()
+        
+        var spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        toolbar.setItems([spaceButton, previousButton, spaceButton, nextButton, spaceButton], animated: false)
+        toolbar.isUserInteractionEnabled = true
+        
+        return toolbar
+    }()
+    
+    @objc func nextPressed() {
+        if txtNumeroCartao.isFirstResponder {
+            scrollView.scrollRectToVisible(txtMesCartao.frame, animated: true)
+            txtMesCartao.becomeFirstResponder()
+        } else if txtMesCartao.isFirstResponder {
+            scrollView.scrollRectToVisible(txtCVVCartao.frame, animated: true)
+            txtCVVCartao.becomeFirstResponder()
+        } else if txtCVVCartao.isFirstResponder {
+            scrollView.scrollRectToVisible(txtNomeTitular.frame, animated: true)
+            txtNomeTitular.becomeFirstResponder()
+        } else if txtNomeTitular.isFirstResponder {
+            scrollView.scrollRectToVisible(txtCPF.frame, animated: true)
+            txtCPF.becomeFirstResponder()
+        }
+    }
+    
+    @objc func previousPressed() {
+        if txtCPF.isFirstResponder {
+            scrollView.scrollRectToVisible(txtNomeTitular.frame, animated: true)
+            txtNomeTitular.becomeFirstResponder()
+        } else if txtNomeTitular.isFirstResponder {
+            scrollView.scrollRectToVisible(txtCVVCartao.frame, animated: true)
+            txtCVVCartao.becomeFirstResponder()
+        } else if txtCVVCartao.isFirstResponder {
+            scrollView.scrollRectToVisible(txtMesCartao.frame, animated: true)
+            txtMesCartao.becomeFirstResponder()
+        } else if txtMesCartao.isFirstResponder {
+            scrollView.scrollRectToVisible(txtNumeroCartao.frame, animated: true)
+            txtNumeroCartao.becomeFirstResponder()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,21 +100,25 @@ class PagamentoController: UIViewController {
         cartaoView.layer.cornerRadius = 5.0
         btnConfirmar.layer.cornerRadius = 5.0
         
-        txtNumeroCartao.setBottomBorder(withColor: .lightGray)
         txtNumeroCartao.delegate = self
         txtMesCartao.delegate = self
         txtCVVCartao.delegate = self
-        
         txtNomeTitular.delegate = self
         txtCPF.delegate = self
+        
+        txtNumeroCartao.inputAccessoryView = inputToolbar
+        txtMesCartao.inputAccessoryView = inputToolbar
+        txtCVVCartao.inputAccessoryView = inputToolbar
+        txtNomeTitular.inputAccessoryView = inputToolbar
+        txtCPF.inputAccessoryView = inputToolbar
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(textDidChange),
                                                name: NSNotification.Name(rawValue: "UITextFieldTextDidChangeNotification"),
                                                object: txtNumeroCartao)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 
     }
     
@@ -87,35 +158,52 @@ extension PagamentoController {
         }
     }
     
-    // MARK: - KEYBOARD OBSERVER
-    @objc func keyboardWillShow(notification: NSNotification){
-        //Need to calculate keyboard exact size due to Apple suggestions
-        self.scrollView.isScrollEnabled = true
-        var info = notification.userInfo!
-        let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-        let contentInsets : UIEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize!.height, right: 0.0)
-
-        self.scrollView.contentInset = contentInsets
-        self.scrollView.scrollIndicatorInsets = contentInsets
-
-        var aRect : CGRect = self.view.frame
-        aRect.size.height -= keyboardSize!.height
-        if let activeField = self.activeField {
-            if (!aRect.contains(activeField.frame.origin)){
-                self.scrollView.scrollRectToVisible(activeField.frame, animated: true)
-            }
+//    // MARK: - KEYBOARD OBSERVER
+//    @objc func keyboardWillShow(notification: NSNotification){
+//        //Need to calculate keyboard exact size due to Apple suggestions
+//        self.scrollView.isScrollEnabled = true
+//        var info = notification.userInfo!
+//        let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+//        let contentInsets : UIEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize!.height, right: 0.0)
+//
+//        self.scrollView.contentInset = contentInsets
+//        self.scrollView.scrollIndicatorInsets = contentInsets
+//
+//        var aRect : CGRect = self.view.frame
+//        aRect.size.height -= keyboardSize!.height
+//        if let activeField = self.activeField {
+//            if (!aRect.contains(activeField.frame.origin)){
+//                self.scrollView.scrollRectToVisible(activeField.frame, animated: true)
+//            }
+//        }
+//    }
+//
+//    @objc func keyboardWillHide(notification: NSNotification){
+//        //Once keyboard disappears, restore original positions
+//        var info = notification.userInfo!
+//        let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+//        let contentInsets : UIEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: -keyboardSize!.height, right: 0.0)
+//        self.scrollView.contentInset = contentInsets
+//        self.scrollView.scrollIndicatorInsets = contentInsets
+//        self.view.endEditing(true)
+//        self.scrollView.isScrollEnabled = false
+//
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    
+        if textField == txtNumeroCartao {
+            lbNumero.text = (txtNumeroCartao.text! as NSString).replacingCharacters(in: range, with: string)
+        } else if textField == txtMesCartao {
+            lbData.text = (txtMesCartao.text! as NSString).replacingCharacters(in: range, with: string)
+        } else if textField == txtCVVCartao {
+            lbCVV.text = (txtCVVCartao.text! as NSString).replacingCharacters(in: range, with: string)
+        } else if textField == txtNomeTitular {
+            lbNome.text = (txtNomeTitular.text! as NSString).replacingCharacters(in: range, with: string)
+        } else if textField == txtCPF {
+            lbCPF.text = (txtCPF.text! as NSString).replacingCharacters(in: range, with: string)
         }
-    }
-
-    @objc func keyboardWillHide(notification: NSNotification){
-        //Once keyboard disappears, restore original positions
-        var info = notification.userInfo!
-        let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-        let contentInsets : UIEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: -keyboardSize!.height, right: 0.0)
-        self.scrollView.contentInset = contentInsets
-        self.scrollView.scrollIndicatorInsets = contentInsets
-        self.view.endEditing(true)
-        self.scrollView.isScrollEnabled = false
+        
+        return true
     }
 
     override func textFieldDidBeginEditing(_ textField: UITextField){

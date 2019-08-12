@@ -18,7 +18,6 @@ class MainTabController: UITabBarController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        selectedIndex = 1
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -9,13 +9,15 @@
 import Foundation
 import UIKit
 
-extension UIImageView {
-    
+extension UIView {
     func setRounded() {
         let radius = self.frame.width / 2
         self.layer.cornerRadius = radius
         self.layer.masksToBounds = true
     }
+}
+
+extension UIImageView {
     
     func downloadImage(from url: URL) {
         print("Download Started")

@@ -9,15 +9,37 @@
 import UIKit
 import FSCalendar
 import ImageSlideshow
+import Presentr
+import Cosmos
 
 class QuadraDetailController: UIViewController {
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var calendarView: FSCalendar!
     @IBOutlet weak var imagensQuadra: ImageSlideshow!
-    @IBOutlet weak var tableInformacoes: UITableView!
+    @IBOutlet weak var servicosCollection: UICollectionView!
+    @IBOutlet weak var lbNome: UILabel!
+    @IBOutlet weak var ratingView: CosmosView!
+    @IBOutlet weak var btnEndereco: UIButton!
     
     var selectedQuadra: QuadraDTO!
     let refDate = Date()
+    var servicos = [ServicoQuadra]()
+    var imagens = [UIImage]()
+    
+    private let presenter: Presentr = {
+        let width = ModalSize.fluid(percentage: 0.9)
+        let height = ModalSize.fluid(percentage: 0.25)
+        let center = ModalCenterPosition.center
+        let customType = PresentationType.custom(width: width, height: height, center: center)
+        
+        let customPresenter = Presentr(presentationType: customType)
+        customPresenter.transitionType = .coverVerticalFromTop
+        customPresenter.dismissTransitionType = .coverVerticalFromTop
+        customPresenter.roundCorners = true
+        customPresenter.backgroundColor = .clear
+        return customPresenter
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,28 +50,38 @@ class QuadraDetailController: UIViewController {
         calendarView.delegate = self
         
         imagensQuadra.contentScaleMode = .scaleAspectFill
-        imagensQuadra.slideshowInterval = 5.0
+        imagensQuadra.slideshowInterval = 3.0
         
-        tableInformacoes.register(UINib(nibName: "HeaderCell", bundle: nil), forCellReuseIdentifier: "HeaderCell")
-        tableInformacoes.register(UINib(nibName: "EnderecoCell", bundle: nil), forCellReuseIdentifier: "EnderecoCell")
-        tableInformacoes.delegate = self
-        tableInformacoes.dataSource = self
-        tableInformacoes.isScrollEnabled = false
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: 800)
+        
+        lbNome.text = selectedQuadra.nome
+        ratingView.rating = selectedQuadra.rating ?? 5.0
+        
+        let end = "\(selectedQuadra.endereco ?? "") \(selectedQuadra.numeroEndereco ?? "")"
+        btnEndereco.setTitle(end, for: .normal)
         
         self.navigationItem.backBarButtonItem?.title = ""
         self.navigationItem.title = selectedQuadra.nome
         
-        var imagens = [UIImage]()
-        
         imagensQuadra.startLoading()
+        selectedQuadra.servicos?.forEach({ (servicoQuadra) in
+            if let servico = ServicosQuadrasServerOptions(rawValue: servicoQuadra) {
+                for svDefault in AppConstants.ArrayServicosDefault {
+                    if svDefault.type == servico {
+                        servicos.append(svDefault)
+                    }
+                }
+            }
+        })
+        
         selectedQuadra.imagens?.forEach({ (imageURL) in
             guard let docID = selectedQuadra.documentID else { return }
             let path = "imagensQuadras/\(docID)/\(imageURL)"
             FirebaseService.getCourtImage(path: path, success: { (image) in
-                imagens.append(image)
+                self.imagens.append(image)
                 
-                if imagens.count == self.selectedQuadra.imagens?.count {
-                    self.displayImages(images: imagens)
+                if self.imagens.count == self.selectedQuadra.imagens?.count {
+                    self.displayImages(images: self.imagens)
                 }
             }, failure: {})
         })
@@ -76,6 +108,10 @@ class QuadraDetailController: UIViewController {
         } else if let vc = segue.destination as? QuadraServicosController {
             vc.quadra = selectedQuadra
         }
+    }
+    
+    @IBAction func btnEnderecoClick(_ sender: Any) {
+        performSegue(withIdentifier: "DetailToMapSegue", sender: nil)
     }
 }
 
@@ -110,48 +146,60 @@ extension QuadraDetailController: FSCalendarDelegate, FSCalendarDelegateAppearan
     }
 }
 
-extension QuadraDetailController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+extension QuadraDetailController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return servicos.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ServicosCollectionCell", for: indexPath) as! ServicosCollectionCell
         
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "EnderecoCell") as! EnderecoCell
-            cell.enderecoLabel.text = "\(selectedQuadra.endereco ?? "") \n\(selectedQuadra.cidade ?? "")"
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell") as! HeaderCell
-            
-            if indexPath.row == 1 {
-                cell.titleLabel.text = "Informações da Quadra"
-            } else if indexPath.row == 2 {
-                cell.titleLabel.text = "Serviços"
-                selectedQuadra.servicos?.forEach({ (servicoQuadra) in
-                    if let servico = ServicosQuadrasServerOptions(rawValue: servicoQuadra) {
-                        for svDefault in AppConstants.ArrayServicosDefault {
-                            if svDefault.type == servico {
-                                cell.addImageToIconStack(image: svDefault.getImage())
-                            }
-                        }
-                    }
-                })
-            }
-            
-            cell.accessoryType = .disclosureIndicator
-            
-            return cell
-        }
+        cell.lbServico.text = servicos[indexPath.row].type.rawValue.capitalized
+        cell.imgServico.image = servicos[indexPath.row].getImage()
+        
+        return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.row == 0 {
-            performSegue(withIdentifier: "DetailToMapSegue", sender: nil)
-        } else if indexPath.row == 2 {
-            performSegue(withIdentifier: "DetailToServicosSegue", sender: nil)
-        }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
+        let controller = ServicoController.create(servico: servicos[indexPath.row])
+        customPresentViewController(presenter, viewController: controller, animated: true)
     }
-    
 }
+
+//extension QuadraDetailController: UITableViewDelegate, UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return 3
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//
+//        if indexPath.row == 0 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "EnderecoCell") as! EnderecoCell
+//            cell.enderecoLabel.text = "\(selectedQuadra.endereco ?? "") \n\(selectedQuadra.cidade ?? "")"
+//            return cell
+//        } else {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell") as! HeaderCell
+//
+//            if indexPath.row == 1 {
+//                cell.titleLabel.text = "Informações da Quadra"
+//            } else if indexPath.row == 2 {
+//                cell.titleLabel.text = "Serviços"
+//            }
+//
+//            cell.accessoryType = .disclosureIndicator
+//
+//            return cell
+//        }
+//    }
+//
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        tableView.deselectRow(at: indexPath, animated: true)
+//        if indexPath.row == 0 {
+//        } else if indexPath.row == 2 {
+//            performSegue(withIdentifier: "DetailToServicosSegue", sender: nil)
+//        }
+//    }
+//
+//}

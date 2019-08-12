@@ -13,6 +13,7 @@ import CoreLocation
 class QuadraDTO : ImmutableMappable {
     var nome: String?
     var endereco: String?
+    var numeroEndereco : String?
     var cidade: String?
     var rating: Double?
     var preco: Double?
@@ -47,6 +48,7 @@ class QuadraDTO : ImmutableMappable {
     required init(map: Map) throws {
         self.nome = try? map.value("nome")
         self.endereco = try? map.value("endereco")
+        self.numeroEndereco = try? map.value("number")
         self.cidade = try? map.value("cidade")
         self.rating = try? map.value("rating")
         self.preco = try? map.value("preco")

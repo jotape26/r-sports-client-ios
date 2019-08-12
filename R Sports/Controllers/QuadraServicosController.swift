@@ -70,18 +70,18 @@ class QuadraServicosController: UIViewController {
 
 }
 
-extension QuadraServicosController : UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return servicos.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ServicosCell", for: indexPath) as! ServicosCell
-        
-        cell.lbServicoTitle.text = servicos[indexPath.row].type.rawValue.capitalized
-        cell.lbServicoDesc.text = servicos[indexPath.row].description
-        cell.imgServico.image = servicos[indexPath.row].getImage()
-        return cell
-    }
-
-}
+//extension QuadraServicosController : UITableViewDelegate, UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return servicos.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "ServicosCell", for: indexPath) as! ServicosCell
+//
+//        cell.lbServicoTitle.text = servicos[indexPath.row].type.rawValue.capitalized
+//        cell.lbServicoDesc.text = servicos[indexPath.row].description
+//        cell.imgServico.image = servicos[indexPath.row].getImage()
+//        return cell
+//    }
+//
+//}
