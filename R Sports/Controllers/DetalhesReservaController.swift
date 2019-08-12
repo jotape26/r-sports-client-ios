@@ -58,7 +58,12 @@ class DetalhesReservaController: UIViewController {
     
     @IBAction func btnNotificarClick(_ sender: Any) {
         self.view.startLoading()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        guard let docID = reserva.docID else {
+            self.view.stopLoading()
+            return
+        }
+        
+        RSportsService.notifyUsers(reservaID: docID) {
             self.view.stopLoading()
             AlertsHelper.showMessage(message: "Jogadores notificados!")
         }

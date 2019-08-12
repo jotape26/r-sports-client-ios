@@ -35,4 +35,10 @@ class AlertsHelper {
         }
     }
     
+    static func showSystemAlert(title: String? = nil, description: String? = nil, view: UIViewController) {
+        let alert = UIAlertController(title: title, message: description, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        view.present(alert, animated: true, completion: nil)
+    }
+    
 }

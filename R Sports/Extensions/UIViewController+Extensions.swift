@@ -24,6 +24,20 @@ extension UIViewController: UITextFieldDelegate {
 
 extension UIView {
     
+    func startStandardLoading(){
+        let act = UIActivityIndicatorView(style: .whiteLarge)
+        act.frame = CGRect(x: self.frame.midX - 20, y: self.frame.midY - 20, width: 20, height: 20)
+        self.addSubview(act)
+    }
+    
+    func stopStandardLoading() {
+        for view in self.subviews {
+            if let spin = view as? UIActivityIndicatorView {
+                spin.removeFromSuperview()
+            }
+        }
+    }
+    
     func startLoading() {
         DispatchQueue.main.async {
             let spinView = NVActivityIndicatorView(frame: CGRect(x: self.frame.midX - 5.0, y: self.frame.midY - 5.0, width: 10, height: 10), type: .ballRotateChase, color: AppConstants.ColorConstants.defaultGreen, padding: 30)
@@ -39,13 +53,5 @@ extension UIView {
                 spin.removeFromSuperview()
             }
         }
-    }
-}
-
-class AlertBroker {
-    static func showAlert(title: String? = nil, description: String? = nil, view: UIViewController) {
-        let alert = UIAlertController(title: title, message: description, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        view.present(alert, animated: true, completion: nil)
     }
 }

@@ -29,6 +29,10 @@ class ReservasController: UIViewController {
         reservasTable.register(UINib(nibName: "ReservasCell", bundle: nil), forCellReuseIdentifier: "ReservasCell")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.topViewController?.navigationItem.rightBarButtonItem = nil
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         FirebaseService.getUserReservations { (reservas) in
             self.reservas = reservas

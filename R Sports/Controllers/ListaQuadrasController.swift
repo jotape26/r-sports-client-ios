@@ -7,20 +7,40 @@
 //
 
 import UIKit
-import CoreLocation
+import Presentr
 
 class ListaQuadrasController: UIViewController{
     
     @IBOutlet weak var quadrasTable: UITableView!
     
+    private let presenter: Presentr = {
+        let width = ModalSize.fluid(percentage: 0.9)
+        let height = ModalSize.fluid(percentage: 0.3)
+        let center = ModalCenterPosition.topCenter
+        let customType = PresentationType.custom(width: width, height: height, center: center)
+        
+        let customPresenter = Presentr(presentationType: customType)
+        customPresenter.transitionType = .coverVerticalFromTop
+        customPresenter.dismissTransitionType = .coverVerticalFromTop
+        customPresenter.roundCorners = true
+        customPresenter.backgroundColor = .clear
+        return customPresenter
+    }()
+    
+    private let viewModel = QuadrasFiltrosViewModel()
     private var quadras = [QuadraDTO]()
     private var timer : Timer?
-    private var error = 0
+    private var error = false
     private let refreshControl: UIRefreshControl = {
         let refresh = UIRefreshControl()
         refresh.tintColor = AppConstants.ColorConstants.defaultGreen
         refresh.attributedTitle = NSAttributedString(string: "Procurando quadras perto de você", attributes: [.foregroundColor : AppConstants.ColorConstants.defaultGreen])
         return refresh
+    }()
+    
+    private lazy var filtersButton : UIBarButtonItem = {
+        let btn = UIBarButtonItem(image: UIImage(named: "filter"), style: .plain, target: self, action: #selector(filtersButtonClick))
+        return btn
     }()
     
     override func viewDidLoad() {
@@ -34,20 +54,42 @@ class ListaQuadrasController: UIViewController{
         
         refreshControl.beginRefreshing()
         startPooling()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.topViewController?.navigationItem.rightBarButtonItem = filtersButton
+    }
+    
+    @objc func filtersButtonClick() {
         
+        let t = FiltrosQuadrasController.create(vm: viewModel, caller: self)
+        
+        customPresentViewController(presenter, viewController: t, animated: true)
+    }
+    
+    func t() {
+        self.refreshControl.beginRefreshing()
+        if quadrasTable.contentOffset.y == 0 {
+            UIView.animate(withDuration: 0.25) {
+                self.quadrasTable.contentOffset = CGPoint(x: 0, y: -self.refreshControl.frame.size.height)
+            }
+        }
     }
     
     @objc func startPooling() {
-        error = 0
+        error = false
         self.quadrasTable.reloadData()
+        t()
         if let location = SharedSession.shared.currentLocation {
             
-            timer = Timer.scheduledTimer(timeInterval: 10,
+            timer = Timer.scheduledTimer(timeInterval: 6,
                                          target: self,
-                                         selector: #selector(stopPooling),
-                                         userInfo: nil, repeats: true)
+                                         selector: #selector(stopPoolingWithError),
+                                         userInfo: nil, repeats: false)
             
-            FirebaseService.retrieveCourts(userLocation: location) { (qDTO) in
+            FirebaseService.retrieveCourts(userLocation: location,
+                                           maximumDistance: Double(viewModel.distancia),
+                                           minimumRating: Double(viewModel.rating)) { (qDTO) in
                 self.refreshControl.endRefreshing()
                 self.timer?.invalidate()
                 self.timer = nil
@@ -58,8 +100,8 @@ class ListaQuadrasController: UIViewController{
                     }
                     return false
                 }) {
-                    self.quadras.sort(by: { $0.distance(to: location) < $1.distance(to: location) })
                     self.quadras.append(qDTO)
+                    self.quadras.sort(by: { $0.distance(to: location) > $1.distance(to: location) })
                     self.quadrasTable.reloadData()
                 }
                 
@@ -67,10 +109,14 @@ class ListaQuadrasController: UIViewController{
         }
     }
     
-    @objc func stopPooling() {
+    @objc func stopPoolingWithError() {
         self.refreshControl.endRefreshing()
-        FirebaseService.stopCourtQuery()
-        error = 1
+        error = true
+        self.quadrasTable.reloadData()
+    }
+    
+    func stopPooling() {
+        self.refreshControl.endRefreshing()
         self.quadrasTable.reloadData()
     }
     
@@ -86,7 +132,7 @@ class ListaQuadrasController: UIViewController{
 
 extension ListaQuadrasController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if error == 1 {
+        if error {
             return 1
         } else {
             return quadras.count
@@ -95,7 +141,7 @@ extension ListaQuadrasController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if error == 1 {
+        if error {
             return tableView.dequeueReusableCell(withIdentifier: "NoQuadrasCell")!
         } else {
             let current = quadras[indexPath.row]
@@ -132,4 +178,14 @@ extension ListaQuadrasController: UITableViewDelegate, UITableViewDataSource {
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
+}
+
+extension ListaQuadrasController : FiltrosQuadrasDelegate {
+    func filtrosDidChange() {
+        self.stopPooling()
+        self.quadras.removeAll()
+        self.startPooling()
+    }
+    
+    
 }

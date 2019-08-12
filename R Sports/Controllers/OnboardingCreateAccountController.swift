@@ -48,7 +48,7 @@ class OnboardingCreateAccountController: UIViewController {
                 
                 _ = self.txtPin.becomeFirstResponder()
             }) { error in
-                AlertBroker.showAlert(title: "Error", description: error.localizedDescription, view: self)
+                AlertsHelper.showSystemAlert(title: "Error", description: error.localizedDescription, view: self)
                 self.view.stopLoading()
             }
     }

@@ -22,4 +22,5 @@ target 'R Sports' do
   pod 'SwiftMessages' 
   pod 'NVActivityIndicatorView'
   pod 'CollectionViewGridLayout'
+  pod 'Presentr'
 end

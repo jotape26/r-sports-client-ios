@@ -20,6 +20,11 @@ class AuthController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         btnLogin.layer.cornerRadius = 5.0
+        
+        if UserDefaults.standard.integer(forKey: "quadraLastUsedDistance") == 0 {
+            UserDefaults.standard.set(50, forKey: "quadraLastUsedDistance")
+            UserDefaults.standard.set(1, forKey: "quadraLastUsedRating")
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -41,7 +41,7 @@ class LoginController: UIViewController {
                 })
             }
         }) { error in
-            AlertBroker.showAlert(title: "Error", description: error.localizedDescription, view: self)
+            AlertsHelper.showSystemAlert(title: "Error", description: error.localizedDescription, view: self)
             self.view.stopLoading()
         }
         

@@ -60,11 +60,13 @@ class FirebaseService {
     }
     
     static func retrieveCourts(userLocation: CLLocation,
+                               maximumDistance : Double,
+                               minimumRating : Double,
                                success: @escaping (QuadraDTO)->()){
         
         let request = Firestore.firestore().collection("quadras")
         let geoRequest = GeoFirestore(collectionRef: request)
-        courtQuery = geoRequest.query(withCenter: userLocation, radius: 10.0)
+        courtQuery = geoRequest.query(withCenter: userLocation, radius: maximumDistance)
         
         _ = courtQuery?.observe(.documentEntered) { (key, _) in
             request.document(key!).getDocument(completion: { (snap, err) in
@@ -74,7 +76,9 @@ class FirebaseService {
                     if let doc = snap.data() {
                         guard let quadra = QuadraDTO(JSON: doc) else { return }
                         quadra.documentID = key!
-                        success(quadra)
+                        if quadra.rating ?? 0 >= minimumRating {
+                            success(quadra)
+                        }
                     }
                 }
             })
@@ -172,7 +176,7 @@ class FirebaseService {
                     failure()
                 } else {
                     RSportsService.processNewReservation(reservaID: reservaDocument.documentID)
-                    FirebaseService.addReservaToUser(reservaID: reservaDocument.documentID)
+//                    FirebaseService.addReservaToUser(reservaID: reservaDocument.documentID)
                     success()
                 }
             }
@@ -181,18 +185,19 @@ class FirebaseService {
         }
     }
     
-    static func addReservaToUser(reservaID : String) {
-        guard let user = Auth.auth().currentUser else { return }
-        guard let number = user.phoneNumber else { return }
-        
-        let reference = FirebaseService.getDocumentReference()
-        
-        _ = reference?.getDocument(completion: { (snap, err) in
-            guard let userData = snap?.data(), let user = UserDTO(JSON: userData) else { return }
-            user.reservas?.append(reservaID)
-            reference?.setData(["reservas" : user.reservas ?? []], merge: true)
-        })
-    }
+//    static func addReservaToUser(reservaID : String) {
+//        guard let user = Auth.auth().currentUser else { return }
+//        guard let number = user.phoneNumber else { return }
+//
+//        let reference = FirebaseService.getDocumentReference()
+//
+//        _ = reference?.getDocument(completion: { (snap, err) in
+//            guard let userData = snap?.data(), let user = UserDTO(JSON: userData) else { return }
+//            user.reservas?.append(reservaID)
+//            SharedSession.shared.currentUser = user
+//            reference?.setData(["reservas" : user.reservas ?? []], merge: true)
+//        })
+//    }
     
     //MARK: - Storage Methods
     static func getCourtImage(path: String,

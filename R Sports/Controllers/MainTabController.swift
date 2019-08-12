@@ -11,6 +11,8 @@ import UserNotifications
 import GoogleSignIn
 
 class MainTabController: UITabBarController {
+    
+    var timer : Timer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,17 +24,18 @@ class MainTabController: UITabBarController {
     override func viewDidAppear(_ animated: Bool) {
         self.title = tabBar.selectedItem?.title
         registerForRemoteNotification()
+        
+        timer = Timer.scheduledTimer(timeInterval: 5,
+                             target: self,
+                             selector: #selector(startReservasPooling),
+                             userInfo: nil, repeats: true)
+        
+        startReservasPooling()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    deinit {
+        timer?.invalidate()
     }
-    */
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         self.title = item.title
@@ -54,6 +57,14 @@ class MainTabController: UITabBarController {
             DispatchQueue.main.async {
                 UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil))
                 UIApplication.shared.registerForRemoteNotifications()
+            }
+        }
+    }
+    
+    @objc func startReservasPooling() {
+        if let phone = FirebaseService.getCurrentUser()?.phoneNumber {
+            FirebaseService.retrieveUserDatabaseRef(uid: phone) { (user) in
+                SharedSession.shared.currentUser = user
             }
         }
     }

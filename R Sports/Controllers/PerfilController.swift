@@ -12,19 +12,15 @@ import Firebase
 class PerfilController: UIViewController {
 
     //TextFields
-    @IBOutlet weak var txtIdade: UITextField!
-    @IBOutlet weak var txtGenero: UITextField!
-    @IBOutlet weak var txtNome: UITextField!
-    @IBOutlet weak var txtPosicao: UITextField!
+    @IBOutlet weak var txtNome: UILabel!
+    @IBOutlet weak var txtPosicao: UILabel!
     @IBOutlet weak var txtTotalJogos: UITextField!
-    @IBOutlet weak var txtProcuraJogos: UITextField!
-    @IBOutlet weak var txtCompetitividade: UITextField!
     
     //Image
     @IBOutlet weak var userImage: UIImageView!
     
-    //Button
-    @IBOutlet weak var btnEdit: UIButton!
+    //TableView
+    @IBOutlet weak var infoTable: UITableView!
     
     var user: UserDTO? {
         didSet {
@@ -32,40 +28,28 @@ class PerfilController: UIViewController {
         }
     }
     
-    var editState = false {
-        didSet {
-            toggleEditState()
-        }
-    }
+    var informacoesTitle = ["Idade", "Genero", "Celular", "E-mail", "Competitividade", "Procura Jogos Abertos?"]
+    
+    var informacoesData = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         userImage.setRounded()
-        btnEdit.layer.cornerRadius = 5.0
+        userImage.layer.borderWidth = 5.0
+        userImage.layer.borderColor = AppConstants.ColorConstants.highlightGreen.cgColor
         
-        toggleEditState()
-        
-        txtIdade.setBottomBorder(withColor: UIColor.lightGray)
-        txtGenero.setBottomBorder(withColor: UIColor.lightGray)
-        txtNome.setBottomBorder(withColor: UIColor.lightGray)
-        txtPosicao.setBottomBorder(withColor: UIColor.lightGray)
-        txtTotalJogos.setBottomBorder(withColor: UIColor.lightGray)
-        txtProcuraJogos.setBottomBorder(withColor: UIColor.lightGray)
-        txtCompetitividade.setBottomBorder(withColor: UIColor.lightGray)
+        infoTable.register(UINib(nibName: "DadosUsuarioCell", bundle: nil), forCellReuseIdentifier: "DadosUsuarioCell")
+        infoTable.register(UINib(nibName: "LogoffCell", bundle: nil), forCellReuseIdentifier: "LogoffCell")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.topViewController?.navigationItem.rightBarButtonItem = nil
     }
     
     override func viewDidAppear(_ animated: Bool) {
         self.view.startLoading()
         requestUserData()
-    }
-    
-    func toggleEditState(){
-        txtNome.isEnabled = editState
-        txtPosicao.isEnabled = editState
-        txtTotalJogos.isEnabled = editState
-        txtProcuraJogos.isEnabled = editState
-        txtCompetitividade.isEnabled = editState
     }
     
     
@@ -75,43 +59,73 @@ class PerfilController: UIViewController {
         
         FirebaseService.retrieveUserDatabaseRef(uid: number, success: { (refUser) in
             self.user = refUser
-            self.view.stopLoading()
         })
     }
     
     func updateValores(){
         if let photoURL = user?.imagePath {
-            userImage.startLoading()
-            FirebaseService.getUserImage(path: photoURL, success: { (image) in
-                self.userImage.image = image
-                self.userImage.stopLoading()
+            FirebaseService.getUserImage(path: photoURL, success: { [weak self] (image) in
+                
+                guard let weakSelf = self else { return }
+                weakSelf.userImage.image = image
+                
+                weakSelf.informacoesData.append(weakSelf.user?.idade?.description ?? "")
+                weakSelf.informacoesData.append(weakSelf.user?.genero ?? "")
+                weakSelf.informacoesData.append(FirebaseService.getCurrentUser()?.phoneNumber ?? "")
+                weakSelf.informacoesData.append(weakSelf.user?.email ?? "")
+                weakSelf.informacoesData.append(weakSelf.user?.competitivade ?? "")
+                
+                if weakSelf.user?.procuraJogos ?? false {
+                    weakSelf.informacoesData.append("Sim")
+                } else {
+                    weakSelf.informacoesData.append("Não")
+                }
+                
+                weakSelf.txtNome.text = weakSelf.user?.nome
+                weakSelf.txtPosicao.text = weakSelf.user?.posicao
+                weakSelf.txtTotalJogos.text = "\(weakSelf.user?.totalJogos?.description ?? "0") jogos"
+                
+                weakSelf.view.stopLoading()
+                weakSelf.infoTable.reloadData()
             }) {
-                self.userImage.stopLoading()
+                self.view.stopLoading()
             }
         }
+    }
+    
+    @IBAction func voltarBtnClick(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension PerfilController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        txtIdade.text = user?.idade?.description
-        txtNome.text = user?.nome
-        txtGenero.text = user?.genero
-        txtPosicao.text = user?.posicao
-        txtTotalJogos.text = user?.totalJogos?.description
-        
-        if user?.procuraJogos ?? false {
-            txtProcuraJogos.text = "Sim"
+        if informacoesData.isEmpty {
+            return 0
         } else {
-            txtProcuraJogos.text = "Não"
+            return informacoesData.count + 1
         }
         
-        txtCompetitividade.text = user?.competitivade
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        if indexPath.row != 6 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DadosUsuarioCell", for: indexPath) as! DadosUsuarioCell
+            
+            cell.lbTitulo.text = informacoesTitle[indexPath.row]
+            cell.lbDetalhe.text = informacoesData[indexPath.row]
+            
+            return cell
+        } else {
+            return tableView.dequeueReusableCell(withIdentifier: "LogoffCell", for: indexPath) as! LogoffCell
+        }
     }
     
-    @IBAction func editBtnClick(_ sender: Any) {
-        editState = true
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
     
-    @IBAction func testButton(_ sender: Any) {
-        FirebaseService.logoutUser()
-    }
-
+    
 }
