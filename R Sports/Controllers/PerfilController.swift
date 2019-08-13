@@ -63,34 +63,27 @@ class PerfilController: UIViewController {
     }
     
     func updateValores(){
-        if let photoURL = user?.imagePath {
-            FirebaseService.getUserImage(path: photoURL, success: { [weak self] (image) in
-                
-                guard let weakSelf = self else { return }
-                weakSelf.userImage.image = image
-                
-                weakSelf.informacoesData.append(weakSelf.user?.idade?.description ?? "")
-                weakSelf.informacoesData.append(weakSelf.user?.genero ?? "")
-                weakSelf.informacoesData.append(FirebaseService.getCurrentUser()?.phoneNumber ?? "")
-                weakSelf.informacoesData.append(weakSelf.user?.email ?? "")
-                weakSelf.informacoesData.append(weakSelf.user?.competitivade ?? "")
-                
-                if weakSelf.user?.procuraJogos ?? false {
-                    weakSelf.informacoesData.append("Sim")
-                } else {
-                    weakSelf.informacoesData.append("Não")
-                }
-                
-                weakSelf.txtNome.text = weakSelf.user?.nome
-                weakSelf.txtPosicao.text = weakSelf.user?.posicao
-                weakSelf.txtTotalJogos.text = "\(weakSelf.user?.totalJogos?.description ?? "0") jogos"
-                
-                weakSelf.view.stopLoading()
-                weakSelf.infoTable.reloadData()
-            }) {
-                self.view.stopLoading()
-            }
+        
+        self.userImage.image = FilesManager.getProfilePicFromDisk()
+        
+        self.informacoesData.append(self.user?.idade?.description ?? "")
+        self.informacoesData.append(self.user?.genero ?? "")
+        self.informacoesData.append(FirebaseService.getCurrentUser()?.phoneNumber ?? "")
+        self.informacoesData.append(self.user?.email ?? "")
+        self.informacoesData.append(self.user?.competitivade ?? "")
+        
+        if self.user?.procuraJogos ?? false {
+            self.informacoesData.append("Sim")
+        } else {
+            self.informacoesData.append("Não")
         }
+        
+        self.txtNome.text = self.user?.nome
+        self.txtPosicao.text = self.user?.posicao
+        self.txtTotalJogos.text = "\(self.user?.totalJogos?.description ?? "0") jogos"
+        
+        self.view.stopLoading()
+        self.infoTable.reloadData()
     }
     
     @IBAction func voltarBtnClick(_ sender: Any) {

@@ -29,4 +29,21 @@ class RSportsService {
             print(dataRes.data?.description as Any)
         }
     }
+    
+    static func registerPayment(reservaID : String, userPhone: String, success : @escaping()->(), failure: @escaping()->()) {
+        
+        let parameters = ["documentID" : reservaID,
+                          "userPhone": userPhone]
+        
+        Alamofire.request("https://r-sports-services.herokuapp.com/registerPayment", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseString { (dataRes) in
+            
+            if dataRes.error != nil {
+                failure()
+            } else {
+                print(dataRes.data?.description as Any)
+                success()
+            }
+            
+        }
+    }
 }

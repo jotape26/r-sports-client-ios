@@ -51,19 +51,9 @@ extension OnboardingImageController: UIImagePickerControllerDelegate, UINavigati
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
-            
-            self.imgProfile.startAnimating()
-            FirebaseService.saveUserImage(userImage: image, success: {
-                //Success
-                DispatchQueue.main.async {
-                    self.imgProfile.image = image
-                    self.imgProfile.stopAnimating()
-                    
-                }
-            }) {
-                //Failure
-                self.imgProfile.stopAnimating()
-            }
+            self.imgProfile.image = image
+            FilesManager.saveImageToDisk(image: image)
+            FirebaseService.saveUserImage(userImage: image, success: {}) {}
         }
         
         dismiss(animated: true, completion: nil)

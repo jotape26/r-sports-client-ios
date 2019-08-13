@@ -192,12 +192,9 @@
                                     <constraint firstAttribute="height" constant="40" id="vp5-wB-GFE"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Notificar Jogadores">
+                                <state key="normal" title="-">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <connections>
-                                    <action selector="btnNotificarClick:" destination="Ds6-dk-3W0" eventType="touchUpInside" id="wxq-AU-E8h"/>
-                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i6S-Yi-iTm">
                                 <rect key="frame" x="0.0" y="537" width="375" height="130"/>
@@ -321,6 +318,7 @@
                         <outlet property="lbTotalPago" destination="Atg-Ab-5vq" id="KLy-Fl-gE1"/>
                         <outlet property="lbTotalPessoa" destination="ATe-Jd-kNi" id="3CG-hU-hIS"/>
                         <segue destination="ISD-Ce-D0Y" kind="show" identifier="ReservaToMapSegue" id="W0s-dS-FZM"/>
+                        <segue destination="RGg-jd-QWV" kind="show" identifier="DetalheReservaToPagamentoSegue" id="GG4-Qv-Eis"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="58J-bM-nJA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -760,7 +758,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wHO-bP-uOE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2085.5999999999999" y="796.10194902548733"/>
+            <point key="canvasLocation" x="2086" y="946"/>
         </scene>
         <!--Map Controller-->
         <scene sceneID="fPn-eX-cs5">
@@ -1067,19 +1065,19 @@
                                         <subviews>
                                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nome" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JX1-FR-ex1">
                                                 <rect key="frame" x="0.0" y="0.0" width="295" height="37.5"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="CPF" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zcE-VW-Q7R">
                                                 <rect key="frame" x="0.0" y="37.5" width="295" height="37.5"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Numero do Cartão" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nBB-aV-8dL">
                                                 <rect key="frame" x="0.0" y="75" width="295" height="37.5"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -1088,13 +1086,13 @@
                                                 <subviews>
                                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Data Validade" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4s5-F5-B20">
                                                         <rect key="frame" x="0.0" y="0.0" width="147.5" height="37.5"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="CVV" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xV5-WO-P3i">
                                                         <rect key="frame" x="147.5" y="0.0" width="147.5" height="37.5"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -1103,7 +1101,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.078431372550000003" green="0.46274509800000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="ocF-iP-v9B" firstAttribute="top" secondItem="CqE-4h-Uhk" secondAttribute="top" id="Dud-09-GlV"/>
                                     <constraint firstAttribute="bottom" secondItem="ocF-iP-v9B" secondAttribute="bottom" id="Mbm-Kz-1jz"/>
@@ -1186,7 +1184,7 @@
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbN-eU-U3D">
                                 <rect key="frame" x="60" y="334" width="255" height="50"/>
-                                <color key="backgroundColor" red="0.078431372550000003" green="0.46274509800000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.5450980392" green="0.7843137255" blue="0.42745098040000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="fML-RY-eGV"/>
                                 </constraints>
@@ -1198,7 +1196,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.078431372550000003" green="0.46274509800000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="CqE-4h-Uhk" firstAttribute="top" secondItem="Z8B-Ro-79q" secondAttribute="top" constant="20" id="65S-MH-L4X"/>
                             <constraint firstItem="cbN-eU-U3D" firstAttribute="centerX" secondItem="KxX-xO-QXT" secondAttribute="centerX" id="7AO-rI-IK7"/>
@@ -1207,7 +1205,6 @@
                             <constraint firstItem="FX9-Gj-hPw" firstAttribute="trailing" secondItem="Z8B-Ro-79q" secondAttribute="trailing" id="Es3-uW-b0d"/>
                             <constraint firstItem="ntc-mn-plI" firstAttribute="width" secondItem="KxX-xO-QXT" secondAttribute="width" id="FTE-cb-Ivg"/>
                             <constraint firstItem="cbN-eU-U3D" firstAttribute="top" secondItem="FX9-Gj-hPw" secondAttribute="bottom" constant="30" id="SoE-YO-slJ"/>
-                            <constraint firstItem="Z8B-Ro-79q" firstAttribute="trailing" secondItem="cbN-eU-U3D" secondAttribute="trailing" constant="60" id="lsL-VD-AW9"/>
                             <constraint firstItem="CqE-4h-Uhk" firstAttribute="leading" secondItem="Z8B-Ro-79q" secondAttribute="leading" constant="30" id="nx6-sa-Uqs"/>
                             <constraint firstItem="FX9-Gj-hPw" firstAttribute="top" secondItem="CqE-4h-Uhk" secondAttribute="bottom" constant="30" id="qIF-c6-GLU"/>
                             <constraint firstItem="FX9-Gj-hPw" firstAttribute="leading" secondItem="Z8B-Ro-79q" secondAttribute="leading" id="vmt-Hq-qIa"/>
@@ -1232,6 +1229,7 @@
                         <outlet property="txtNomeTitular" destination="W3x-Ip-TPf" id="CUE-f2-3yE"/>
                         <outlet property="txtNumeroCartao" destination="ntc-mn-plI" id="dWV-RT-qBW"/>
                         <segue destination="yco-qD-fyb" kind="show" identifier="PagamentoToCompleteSegue" id="w0w-70-LMF"/>
+                        <segue destination="azv-mW-FnI" kind="show" identifier="PagamentoReservaListaToCompleteSegue" id="QYS-uH-Y6g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S1P-da-zUH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2115,6 +2113,87 @@ Você pode alterar qualquer informação sua na aba “Perfil” de nosso aplica
             </objects>
             <point key="canvasLocation" x="-964" y="1566.5667166416792"/>
         </scene>
+        <!--Confirmacao Reserva Lista Controller-->
+        <scene sceneID="cO8-GM-K8s">
+            <objects>
+                <viewController id="azv-mW-FnI" customClass="ConfirmacaoReservaListaController" customModule="R_Sports" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fSG-0w-ghV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="DND-NO-xFe">
+                                <rect key="frame" x="112.5" y="94" width="150" height="150"/>
+                                <color key="tintColor" red="0.078431372550000003" green="0.46274509800000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="C4b-BI-o1y"/>
+                                    <constraint firstAttribute="width" secondItem="DND-NO-xFe" secondAttribute="height" multiplier="1:1" id="tui-HG-8B4"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pedido realizado com Sucesso!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBW-ai-8k1">
+                                <rect key="frame" x="10" y="274" width="355" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TAV-N1-WgB">
+                                <rect key="frame" x="13.5" y="313" width="348" height="119"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">Em breve você receberá um email com as informações referentes ao pagamento e seus amigos serão notificados da nova reserva! 
+
+Você pode acompanhar os pagamentos de seus amigos na aba "Reservas".</string>
+                                        <attributes>
+                                            <color key="NSBackgroundColor" red="1" green="1" blue="0.99970999999999999" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HbH-uk-MJ6">
+                                <rect key="frame" x="60" y="472" width="255" height="50"/>
+                                <color key="backgroundColor" red="0.078431372550000003" green="0.46274509800000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="pPc-GV-Mlf"/>
+                                </constraints>
+                                <state key="normal" title="Voltar ao Inicio">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnVoltarClick:" destination="azv-mW-FnI" eventType="touchUpInside" id="vjZ-Lc-ZFB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="QOn-ph-EEy" firstAttribute="trailing" secondItem="HbH-uk-MJ6" secondAttribute="trailing" constant="60" id="1h9-Kh-XvE"/>
+                            <constraint firstItem="TAV-N1-WgB" firstAttribute="top" secondItem="kBW-ai-8k1" secondAttribute="bottom" constant="15" id="9r5-RY-osp"/>
+                            <constraint firstItem="HbH-uk-MJ6" firstAttribute="top" secondItem="TAV-N1-WgB" secondAttribute="bottom" constant="40" id="LXQ-hv-eYB"/>
+                            <constraint firstItem="DND-NO-xFe" firstAttribute="top" secondItem="QOn-ph-EEy" secondAttribute="top" constant="30" id="M1x-l7-4Ef"/>
+                            <constraint firstItem="DND-NO-xFe" firstAttribute="centerX" secondItem="fSG-0w-ghV" secondAttribute="centerX" id="M9P-di-iA8"/>
+                            <constraint firstItem="HbH-uk-MJ6" firstAttribute="leading" secondItem="QOn-ph-EEy" secondAttribute="leading" constant="60" id="N3b-FF-D6c"/>
+                            <constraint firstItem="kBW-ai-8k1" firstAttribute="top" secondItem="DND-NO-xFe" secondAttribute="bottom" constant="30" id="QRd-MX-Nt3"/>
+                            <constraint firstItem="kBW-ai-8k1" firstAttribute="leading" secondItem="QOn-ph-EEy" secondAttribute="leading" constant="10" id="Ugh-xH-rjh"/>
+                            <constraint firstItem="QOn-ph-EEy" firstAttribute="trailing" secondItem="kBW-ai-8k1" secondAttribute="trailing" constant="10" id="gKa-aq-hw4"/>
+                            <constraint firstItem="TAV-N1-WgB" firstAttribute="centerX" secondItem="fSG-0w-ghV" secondAttribute="centerX" id="hDu-2m-y0e"/>
+                            <constraint firstItem="TAV-N1-WgB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fSG-0w-ghV" secondAttribute="leading" constant="10" id="raJ-Su-6MB"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TAV-N1-WgB" secondAttribute="trailing" constant="10" id="sXO-nW-TC2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="QOn-ph-EEy"/>
+                    </view>
+                    <connections>
+                        <outlet property="btnVoltar" destination="HbH-uk-MJ6" id="At7-gs-gsH"/>
+                        <outlet property="imgCheck" destination="DND-NO-xFe" id="5fB-Nv-JKo"/>
+                        <outlet property="lblMessage" destination="TAV-N1-WgB" id="tgY-6d-WIC"/>
+                        <outlet property="lblTitle" destination="kBW-ai-8k1" id="Bef-lM-IY3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1W5-qg-Gwv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4617" y="112"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ball-white" width="33.333332061767578" height="33.333332061767578"/>
@@ -2129,6 +2208,7 @@ Você pode alterar qualquer informação sua na aba “Perfil” de nosso aplica
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="FtR-Cx-3jL"/>
-        <segue reference="5IF-BH-8AJ"/>
+        <segue reference="GG4-Qv-Eis"/>
+        <segue reference="W0s-dS-FZM"/>
     </inferredMetricsTieBreakers>
 </document>

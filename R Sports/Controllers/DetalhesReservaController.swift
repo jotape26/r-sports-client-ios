@@ -24,6 +24,9 @@ class DetalhesReservaController: UIViewController {
     @IBOutlet weak var btnTelefone: UIButton!
     
     @IBOutlet weak var jogadoresCollection: UICollectionView!
+    
+    var loggedUserPaidStatus: Bool!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,12 +54,33 @@ class DetalhesReservaController: UIViewController {
         lbTotalPago.text = reserva.valorPago?.toCurrency()
         lbTotalPessoa.text = reserva.jogadores?.first?.valorAPagar?.toCurrency()
         
+        reserva.jogadores?.forEach({ (jogador) in
+            if jogador.user?.documentID == FirebaseService.getCurrentUser()?.phoneNumber {
+                loggedUserPaidStatus = jogador.statusPagamento ?? false
+            }
+        })
+        updateButton()
+        
         btnEndereco.setTitle(reserva.quadra?.endereco, for: .normal)
         btnTelefone.setTitle(reserva.quadra?.telefone, for: .normal)
         jogadoresCollection.reloadData()
     }
     
-    @IBAction func btnNotificarClick(_ sender: Any) {
+    func updateButton(){
+        if loggedUserPaidStatus {
+            btnNotificar.setTitle("Notificar Jogadores", for: .normal)
+            btnNotificar.addTarget(self, action: #selector(btnNotificarClick(_:)), for: .touchUpInside)
+        } else {
+            btnNotificar.setTitle("Realizar Pagamento", for: .normal)
+            btnNotificar.addTarget(self, action: #selector(btnPagarClick(_:)), for: .touchUpInside)
+        }
+    }
+    
+    @objc func btnPagarClick(_ sender: Any) {
+        performSegue(withIdentifier: "DetalheReservaToPagamentoSegue", sender: nil)
+    }
+    
+    @objc func btnNotificarClick(_ sender: Any) {
         self.view.startLoading()
         guard let docID = reserva.docID else {
             self.view.stopLoading()
@@ -72,9 +96,12 @@ class DetalhesReservaController: UIViewController {
     @IBAction func btnEnderecoClick(_ sender: Any) {
         performSegue(withIdentifier: "ReservaToMapSegue", sender: nil)
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? MapController {
             vc.quadra = reserva.quadra
+        } else if let vc = segue.destination as? PagamentoController {
+            vc.reservaLista = reserva
         }
     }
 }
