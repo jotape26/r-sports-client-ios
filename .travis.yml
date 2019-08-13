@@ -2,3 +2,8 @@ language: swift
 xcode_workspace: R Sports.xcworkspace # path to your xcodeproj folder
 xcode_scheme: R Sports
 xcode_destination: platform=iOS Simulator,OS=12.2,name=iPhone X
+
+before_install:
+- gem install cocoapods-acknowledgements
+- gem install cocoapods
+- pod update
