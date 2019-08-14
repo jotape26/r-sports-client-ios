@@ -44,12 +44,12 @@ class PerfilController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.topViewController?.navigationItem.rightBarButtonItem = nil
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        self.view.startLoading()
-        requestUserData()
+        if let cUser = SharedSession.shared.currentUser {
+            self.user = cUser
+        } else {
+            self.view.startLoading()
+            requestUserData()
+        }
     }
     
     
