@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import Firebase
 import ObjectMapper
 
 class UserDTO: ImmutableMappable {
     
     var nome: String?
     var email: String?
-    var idade: Int?
+    var idade: Date?
     var genero: String?
     var posicao: String?
     var totalJogos: Int?
@@ -41,7 +42,7 @@ class UserDTO: ImmutableMappable {
 
 struct ProfileConstants {
     static let NAME = "userName"
-    static let AGE = "userAge"
+    static let AGE = "userDOB"
     static let EMAIL = "userEmail"
     static let GENDER = "userGender"
     static let POSITION = "userPosition"

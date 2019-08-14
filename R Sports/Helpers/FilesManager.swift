@@ -13,18 +13,18 @@ class FilesManager {
         do {
             let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
             let fileURL = documentsURL.appendingPathComponent("profilePic.png")
-            if let pngImageData = image.pngData() {
-                try pngImageData.write(to: fileURL, options: .atomic)
+            if let jpegImageData = image.jpegData(compressionQuality: 1.0) {
+                try jpegImageData.write(to: fileURL, options: .atomic)
             }
         } catch { }
     }
     
-    static func getProfilePicFromDisk() -> UIImage {
+    static func getProfilePicFromDisk() -> UIImage? {
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let filePath = documentsURL.appendingPathComponent("profilePic.png").path
         if FileManager.default.fileExists(atPath: filePath) {
-            return UIImage(contentsOfFile: filePath) ?? UIImage(named: "genericProfile")!
+            return UIImage(contentsOfFile: filePath)
         }
-        return UIImage(named: "genericProfile")!
+        return nil
     }
 }

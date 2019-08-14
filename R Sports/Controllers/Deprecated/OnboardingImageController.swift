@@ -21,16 +21,7 @@ class OnboardingImageController: UIViewController {
     }
     
     @IBAction func btnAdicionarClick(_ sender: Any) {
-        let photos = PHPhotoLibrary.authorizationStatus()
-        if photos == .notDetermined {
-            PHPhotoLibrary.requestAuthorization({status in
-                if status == .authorized{
-                    self.presentPickerView()
-                }
-            })
-        } else if photos == .authorized {
-            self.presentPickerView()
-        }
+        
     }
     
     func presentPickerView(){

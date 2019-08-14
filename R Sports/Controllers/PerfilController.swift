@@ -28,7 +28,7 @@ class PerfilController: UIViewController {
         }
     }
     
-    var informacoesTitle = ["Idade", "Genero", "Celular", "E-mail", "Competitividade", "Procura Jogos Abertos?"]
+    var informacoesTitle = ["Idade", "Celular", "E-mail", "Competitividade", "Procura Jogos Abertos?"]
     
     var informacoesData = [String]()
     
@@ -63,11 +63,30 @@ class PerfilController: UIViewController {
     }
     
     func updateValores(){
-        
         self.userImage.image = FilesManager.getProfilePicFromDisk()
         
-        self.informacoesData.append(self.user?.idade?.description ?? "")
-        self.informacoesData.append(self.user?.genero ?? "")
+        if let dt = self.user?.idade {
+            let form = DateComponentsFormatter()
+            form.maximumUnitCount = 2
+            form.unitsStyle = .positional
+            form.allowedUnits = [.year]
+            
+            if let str = form.string(from: dt, to: Date()) {
+                if let time = Int(str.replacingOccurrences(of: "y", with: "")) {
+                    self.informacoesData.append("\(time.description) anos")
+                } else {
+                    self.informacoesData.append("-")
+                }
+            } else {
+                self.informacoesData.append("-")
+            }
+        } else {
+            self.informacoesData.append("-")
+        }
+
+//        INCLUIR GENERO?
+//        self.informacoesData.append(self.user?.genero ?? "")
+        
         self.informacoesData.append(FirebaseService.getCurrentUser()?.phoneNumber ?? "")
         self.informacoesData.append(self.user?.email ?? "")
         self.informacoesData.append(self.user?.competitivade ?? "")
@@ -104,7 +123,7 @@ extension PerfilController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.row != 6 {
+        if indexPath.row != 5 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DadosUsuarioCell", for: indexPath) as! DadosUsuarioCell
             
             cell.lbTitulo.text = informacoesTitle[indexPath.row]
