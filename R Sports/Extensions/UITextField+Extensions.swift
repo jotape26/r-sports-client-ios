@@ -51,6 +51,7 @@ extension UITextField {
             phone = phone.replacingOccurrences(of: "(", with: "")
             phone = phone.replacingOccurrences(of: ")", with: "")
             phone = phone.replacingOccurrences(of: "-", with: "")
+            phone = "+\(phone)"
             return phone
         }
         return ""

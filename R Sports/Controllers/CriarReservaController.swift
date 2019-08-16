@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import NKVPhonePicker
 
 class CriarReservaController: UIViewController {
     
     @IBOutlet weak var tableJogadores: UITableView!
-    @IBOutlet weak var txtJogadoresCell: SwiftMaskTextfield!
+    @IBOutlet weak var txtJogadoresCell: NKVPhonePickerTextField!
     @IBOutlet weak var txtHorario: UITextField!
     @IBOutlet weak var lblQuadra: UILabel!
     @IBOutlet weak var lblEndereco: UILabel!
@@ -60,6 +61,7 @@ class CriarReservaController: UIViewController {
         tableJogadores.dataSource = self
         tableJogadores.register(UINib(nibName: "JogadoresCell", bundle: nil), forCellReuseIdentifier: "JogadoresCell")
         txtJogadoresCell.delegate = self
+        configurePhoneTextField(txtJogadoresCell)
         txtHorario.delegate = self
         txtHorario.inputView = datePicker
         txtHorario.inputAccessoryView = inputToolbar

@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import NVActivityIndicatorView
+import NKVPhonePicker
 
 extension UIButton {
     func addRightImage(image: UIImage, offset: CGFloat) {
@@ -29,6 +30,13 @@ extension UIViewController: UITextFieldDelegate {
     
     public func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.removeInvalid()
+    }
+    
+    public func configurePhoneTextField(_ textField : NKVPhonePickerTextField) {
+        let country = Country.init(countryCode: "BR", phoneExtension: "+55")
+        textField.customPhoneFormats = ["BR" : "## (##) #####-####"]
+        textField.favoriteCountriesLocaleIdentifiers = ["BR"]
+        textField.country = country
     }
 }
 

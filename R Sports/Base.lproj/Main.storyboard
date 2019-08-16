@@ -528,12 +528,6 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="05C-La-gxC">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tw4-hK-2Tz" customClass="ImageSlideshow" customModule="ImageSlideshow">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="180" id="ZLw-L3-NQo"/>
-                                                </constraints>
-                                            </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="olc-uH-h8I">
                                                 <rect key="frame" x="15" y="195" width="345" height="24"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -682,6 +676,12 @@
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tw4-hK-2Tz" customClass="ImageSlideshow" customModule="ImageSlideshow">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="180" id="ZLw-L3-NQo"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -929,7 +929,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ci-WZ-aJI">
                                         <rect key="frame" x="0.0" y="163" width="375" height="70"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="+ ## (##) #####-####" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qvu-N2-71w" customClass="SwiftMaskTextfield" customModule="R_Sports" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qvu-N2-71w" customClass="NKVPhonePickerTextField" customModule="NKVPhonePicker">
                                                 <rect key="frame" x="16" y="40.5" width="301" height="19.5"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1431,7 +1431,7 @@ Você pode acompanhar os pagamentos de seus amigos na aba "Reservas".</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eQM-zB-m4i" customClass="SwiftMaskTextfield" customModule="R_Sports" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eQM-zB-m4i" customClass="NKVPhonePickerTextField" customModule="NKVPhonePicker">
                                 <rect key="frame" x="16" y="120" width="343" height="40"/>
                                 <color key="backgroundColor" red="0.060284684037982136" green="0.36372066906598988" blue="0.26295169916147015" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -1606,7 +1606,7 @@ Você pode acompanhar os pagamentos de seus amigos na aba "Reservas".</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="set-xm-yel" customClass="SwiftMaskTextfield" customModule="R_Sports" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="set-xm-yel" customClass="NKVPhonePickerTextField" customModule="NKVPhonePicker">
                                 <rect key="frame" x="16" y="130" width="343" height="30"/>
                                 <color key="backgroundColor" red="0.060284684040000001" green="0.3637206691" blue="0.2629516992" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2444,9 +2444,9 @@ Você pode acompanhar os pagamentos de seus amigos na aba "Reservas".</string>
         <image name="soccerGoal" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="i1j-tb-fnW"/>
+        <segue reference="gqh-5a-n0A"/>
         <segue reference="FtR-Cx-3jL"/>
-        <segue reference="GG4-Qv-Eis"/>
+        <segue reference="Tl2-f1-WzE"/>
         <segue reference="5IF-BH-8AJ"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -8,10 +8,11 @@
 
 import UIKit
 import FirebaseAuth
+import NKVPhonePicker
 
 class OnboardingCreateAccountController: UIViewController {
 
-    @IBOutlet weak var txtCelNumber: SwiftMaskTextfield!
+    @IBOutlet weak var txtCelNumber: NKVPhonePickerTextField!
     @IBOutlet weak var txtPin: KAPinField!
     @IBOutlet weak var btnConfirmar: UIButton!
     @IBOutlet weak var labelPinHeight: NSLayoutConstraint!
@@ -30,6 +31,7 @@ class OnboardingCreateAccountController: UIViewController {
         txtPin.useDoneToolbar()
         txtPin.properties.numberOfCharacters = 6
         txtPin.reloadAppearance()
+        configurePhoneTextField(txtCelNumber)
     }
 
     @IBAction func btnConfirmarClick(_ sender: Any) {

@@ -23,4 +23,5 @@ target 'R Sports' do
   pod 'NVActivityIndicatorView'
   pod 'CollectionViewGridLayout'
   pod 'Presentr'
+  pod 'NKVPhonePicker', :git => "https://github.com/NikKovIos/NKVPhonePicker.git"
 end

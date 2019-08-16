@@ -157,6 +157,7 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - NKVPhonePicker (2.1.0)
   - NVActivityIndicatorView (4.7.0):
     - NVActivityIndicatorView/Presenter (= 4.7.0)
   - NVActivityIndicatorView/Presenter (4.7.0)
@@ -181,6 +182,7 @@ DEPENDENCIES:
   - GoogleSignIn
   - ImageSlideshow
   - ImageSlideshow/Alamofire
+  - NKVPhonePicker (from `https://github.com/NikKovIos/NKVPhonePicker.git`)
   - NVActivityIndicatorView
   - ObjectMapper
   - Presentr
@@ -223,6 +225,15 @@ SPEC REPOS:
     - Protobuf
     - SwiftMessages
 
+EXTERNAL SOURCES:
+  NKVPhonePicker:
+    :git: https://github.com/NikKovIos/NKVPhonePicker.git
+
+CHECKOUT OPTIONS:
+  NKVPhonePicker:
+    :commit: 321f5eb1e6598940060aacf842578c6f9c9333ef
+    :git: https://github.com/NikKovIos/NKVPhonePicker.git
+
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
@@ -253,12 +264,13 @@ SPEC CHECKSUMS:
   ImageSlideshow: 197130fe349aafa9446f54277c792551d41eadf9
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  NKVPhonePicker: 28ea127fb6a9c380e34dc1c56d38afc6fa09f143
   NVActivityIndicatorView: b19ddab2576f805cbe0fb2306cba3476e09a1dea
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
   Presentr: 7078d7eb5d1661ebeaae60c9e42a1e534de1b993
   Protobuf: 1097ca58584c8d9be81bfbf2c5ff5975648dd87a
   SwiftMessages: a952f7a9103d9aeab93730a2861d2d8fcdd8758f
 
-PODFILE CHECKSUM: 42c2a7ea8db8a1e2eab0ce71ccde2197f5550e2f
+PODFILE CHECKSUM: f65f5b95bc51f484b9a360e5d5b1a81bb9db11fd
 
 COCOAPODS: 1.7.3

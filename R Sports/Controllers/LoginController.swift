@@ -8,10 +8,12 @@
 
 import UIKit
 import FirebaseAuth
+import CoreLocation
+import NKVPhonePicker
 
 class LoginController: UIViewController {
     
-    @IBOutlet weak var txtCelNumber: SwiftMaskTextfield!
+    @IBOutlet weak var txtCelNumber: NKVPhonePickerTextField!
     @IBOutlet weak var txtPin: KAPinField!
     @IBOutlet weak var lblPin: UILabel!
     @IBOutlet weak var btnConfirm: UIButton!
@@ -24,8 +26,11 @@ class LoginController: UIViewController {
         txtPin.properties.delegate = self
         txtPin.properties.numberOfCharacters = 6
         txtPin.reloadAppearance()
+        txtCelNumber.delegate = self
+        txtCelNumber.phonePickerDelegate = self
         btnConfirm.layer.cornerRadius = 5.0
         btnVoltar.layer.cornerRadius = 5.0
+        configurePhoneTextField(txtCelNumber)
     }
     
     @IBAction func btnEntrarClick(_ sender: Any) {

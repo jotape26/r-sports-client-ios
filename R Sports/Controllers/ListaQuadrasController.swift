@@ -51,13 +51,11 @@ class ListaQuadrasController: UIViewController{
         refreshControl.addTarget(self, action: #selector(startPooling), for: .valueChanged)
         quadrasTable.refreshControl = refreshControl
         // Do any additional setup after loading the view.
-        
-        refreshControl.beginRefreshing()
-        startPooling()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.topViewController?.navigationItem.rightBarButtonItem = filtersButton
+        startPooling(firstTime: true)
     }
     
     @objc func filtersButtonClick() {
@@ -68,7 +66,7 @@ class ListaQuadrasController: UIViewController{
     }
     
     func t() {
-        self.refreshControl.beginRefreshing()
+       
         if quadrasTable.contentOffset.y == 0 {
             UIView.animate(withDuration: 0.25) {
                 self.quadrasTable.contentOffset = CGPoint(x: 0, y: -self.refreshControl.frame.size.height)
@@ -76,10 +74,16 @@ class ListaQuadrasController: UIViewController{
         }
     }
     
-    @objc func startPooling() {
+    @objc func startPooling(firstTime: Bool) {
         error = false
         self.quadrasTable.reloadData()
-        t()
+        
+        if firstTime {
+            self.view.startLoading()
+        } else {
+            self.refreshControl.beginRefreshing()
+        }
+        
         if let location = SharedSession.shared.currentLocation {
             
             timer = Timer.scheduledTimer(timeInterval: 6,
@@ -90,27 +94,31 @@ class ListaQuadrasController: UIViewController{
             FirebaseService.retrieveCourts(userLocation: location,
                                            maximumDistance: Double(viewModel.distancia),
                                            minimumRating: Double(viewModel.rating)) { (qDTO) in
-                self.refreshControl.endRefreshing()
-                self.timer?.invalidate()
-                self.timer = nil
-                
-                if !self.quadras.contains(where: { (dto) -> Bool in
-                    if qDTO.documentID == dto.documentID {
-                        return true
-                    }
-                    return false
-                }) {
-                    self.quadras.append(qDTO)
-                    self.quadras.sort(by: { $0.distance(to: location) > $1.distance(to: location) })
-                    self.quadrasTable.reloadData()
-                }
-                
+                                            if firstTime {
+                                                self.view.stopLoading()
+                                            } else {
+                                                self.refreshControl.endRefreshing()
+                                            }
+                                            self.timer?.invalidate()
+                                            self.timer = nil
+                                            
+                                            if !self.quadras.contains(where: { (dto) -> Bool in
+                                                if qDTO.documentID == dto.documentID {
+                                                    return true
+                                                }
+                                                return false
+                                            }) {
+                                                self.quadras.append(qDTO)
+                                                self.quadras.sort(by: { $0.distance(to: location) > $1.distance(to: location) })
+                                                self.quadrasTable.reloadData()
+                                            }
             }
         }
     }
     
     @objc func stopPoolingWithError() {
         self.refreshControl.endRefreshing()
+        self.view.stopLoading()
         error = true
         self.quadrasTable.reloadData()
     }
@@ -163,7 +171,7 @@ extension ListaQuadrasController: UITableViewDelegate, UITableViewDataSource {
             
             let distanceMeasure = Measurement(value: current.distance.rounded(toPlaces: 2), unit: UnitLength.meters)
             cell.lbDistancia.text = MeasurementFormatter().string(for: distanceMeasure)
-
+            
             return cell
         }
     }
@@ -184,7 +192,7 @@ extension ListaQuadrasController : FiltrosQuadrasDelegate {
     func filtrosDidChange() {
         self.stopPooling()
         self.quadras.removeAll()
-        self.startPooling()
+        self.startPooling(firstTime: true)
     }
     
     
