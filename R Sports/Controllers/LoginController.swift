@@ -36,6 +36,7 @@ class LoginController: UIViewController {
     @IBAction func btnEntrarClick(_ sender: Any) {
         self.view.startLoading()
         PhoneService.sendVerificationCode(phoneNumber: txtCelNumber.formatToPhone(), success: {
+            UserDefaults.standard.set(self.txtCelNumber.formatToPhone(), forKey: "lastUsedPhone")
             DispatchQueue.main.async {
                 UIView.animate(withDuration: 0.3, animations: {
                     self.view.stopLoading()

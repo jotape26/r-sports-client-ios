@@ -20,6 +20,10 @@ class FilesManager {
     }
     
     static func getProfilePicFromDisk() -> UIImage? {
+        if SharedSession.shared.currentUser?.telefone != UserDefaults.standard.string(forKey: "lastUsedPhone") {
+            return nil
+        }
+        
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let filePath = documentsURL.appendingPathComponent("profilePic.png").path
         if FileManager.default.fileExists(atPath: filePath) {
