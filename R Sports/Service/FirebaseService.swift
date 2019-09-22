@@ -125,8 +125,21 @@ class FirebaseService {
         
     }
     
-    static func getUserTimes() {
-        var times = [String]()
+    static func getUserTimes(success: @escaping([TimeDTO])->()) {
+        var times = [TimeDTO]()
+        
+        SharedSession.shared.currentUser?.times?.forEach({ (timeID) in
+            Firestore.firestore().collection("times").document(timeID).getDocument(completion: { (snap, err) in
+                if let snapData = snap?.data(), let timeDTO = TimeDTO(JSON: snapData) {
+                    timeDTO.timeID = snap?.documentID
+                    times.append(timeDTO)
+                    
+                    if times.count == SharedSession.shared.currentUser!.times!.count {
+                        success(times)
+                    }
+                }
+            })
+        })
     }
     
     static func getQuadraById(quadraID : String,
@@ -251,6 +264,25 @@ class FirebaseService {
             FirebaseService.setUserData(data: userData)
             success()
             
+        }
+    }
+    
+    static func saveTimeImage(image: UIImage,
+                              timeID: String,
+                              success: @escaping(String)->(),
+                              failure: @escaping()->()) {
+        
+        guard let photoData = image.jpegData(compressionQuality: 1.0) else { return }
+        
+        Storage.storage().reference(withPath: "timesImages/\(timeID)/profilePic.jpg").putData(photoData, metadata: nil) { metadata, error in
+            
+            guard let metadata = metadata, let path = metadata.path else {
+                // Uh-oh, an error occurred!
+                failure()
+                return
+            }
+            
+            success(path)
         }
     }
     

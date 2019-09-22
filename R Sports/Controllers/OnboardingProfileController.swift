@@ -196,11 +196,11 @@ class OnboardingProfileController: UIViewController {
         
         let alert = UIAlertController(title: "Importar Imagem", message: "Selecione a fonte da imagem:", preferredStyle: .actionSheet)
         
-        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (_) in
+        alert.addAction(UIAlertAction(title: "Câmera", style: .default, handler: { (_) in
             let viewController = UIImagePickerController()
             viewController.delegate = self
             viewController.sourceType = .camera
-            viewController.allowsEditing = false
+            viewController.allowsEditing = true
             self.present(viewController, animated: true, completion: nil)
         }))
         
@@ -208,7 +208,7 @@ class OnboardingProfileController: UIViewController {
             let viewController = UIImagePickerController()
             viewController.delegate = self
             viewController.sourceType = .photoLibrary
-            viewController.allowsEditing = false
+            viewController.allowsEditing = true
             self.present(viewController, animated: true, completion: nil)
         }))
         

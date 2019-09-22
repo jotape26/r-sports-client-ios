@@ -79,6 +79,18 @@ extension UITextField {
     }
 }
 
+extension String {
+    func formatToPhone() -> String {
+        var phone = self
+        phone = phone.replacingOccurrences(of: " ", with: "")
+        phone = phone.replacingOccurrences(of: "(", with: "")
+        phone = phone.replacingOccurrences(of: ")", with: "")
+        phone = phone.replacingOccurrences(of: "-", with: "")
+        phone = phone.replacingOccurrences(of: "+", with: "")
+        return phone
+    }
+}
+
 extension UIToolbar {
     
     func ToolbarPiker(mySelect : Selector) -> UIToolbar {

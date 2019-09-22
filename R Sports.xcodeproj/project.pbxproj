@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		7BBC3302A4E98AD50D1A303F /* Pods_R_Sports.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 352CAB3898F08E1E9B654E98 /* Pods_R_Sports.framework */; };
+		FA0098C42337E2CB000BC738 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0098C32337E2CB000BC738 /* File.swift */; };
+		FA0098C82337E577000BC738 /* TimesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0098C62337E577000BC738 /* TimesCell.swift */; };
+		FA0098C92337E577000BC738 /* TimesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA0098C72337E577000BC738 /* TimesCell.xib */; };
+		FA0098CB2337F1A3000BC738 /* CriarTimeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0098CA2337F1A3000BC738 /* CriarTimeController.swift */; };
 		FA07BB75225BBB60007AF2D0 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07BB74225BBB60007AF2D0 /* AuthController.swift */; };
 		FA07BB78225BC394007AF2D0 /* UIWindow+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07BB77225BC394007AF2D0 /* UIWindow+Extensions.swift */; };
 		FA07BB7C225BC7AF007AF2D0 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07BB7B225BC7AF007AF2D0 /* MainTabController.swift */; };
@@ -88,6 +92,10 @@
 		352CAB3898F08E1E9B654E98 /* Pods_R_Sports.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_R_Sports.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DA11FD8174833CE6EF6E589 /* Pods-R Sports.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-R Sports.debug.xcconfig"; path = "Target Support Files/Pods-R Sports/Pods-R Sports.debug.xcconfig"; sourceTree = "<group>"; };
 		CCD0E545A97311F421D932F3 /* Pods-R Sports.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-R Sports.release.xcconfig"; path = "Target Support Files/Pods-R Sports/Pods-R Sports.release.xcconfig"; sourceTree = "<group>"; };
+		FA0098C32337E2CB000BC738 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		FA0098C62337E577000BC738 /* TimesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesCell.swift; sourceTree = "<group>"; };
+		FA0098C72337E577000BC738 /* TimesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimesCell.xib; sourceTree = "<group>"; };
+		FA0098CA2337F1A3000BC738 /* CriarTimeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriarTimeController.swift; sourceTree = "<group>"; };
 		FA07BB74225BBB60007AF2D0 /* AuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
 		FA07BB77225BC394007AF2D0 /* UIWindow+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extensions.swift"; sourceTree = "<group>"; };
 		FA07BB7B225BC7AF007AF2D0 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
@@ -196,6 +204,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		FA0098C52337E55B000BC738 /* TimesCell */ = {
+			isa = PBXGroup;
+			children = (
+				FA0098C62337E577000BC738 /* TimesCell.swift */,
+				FA0098C72337E577000BC738 /* TimesCell.xib */,
+			);
+			path = TimesCell;
+			sourceTree = "<group>";
+		};
 		FA07BB73225BBB39007AF2D0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,6 +237,7 @@
 				FA418AB423037D48007B2F53 /* OnboardingProfileController.swift */,
 				FA7D48C023304A490044D85D /* MatchmakeController.swift */,
 				FA7D48C22337D5290044D85D /* TimesController.swift */,
+				FA0098CA2337F1A3000BC738 /* CriarTimeController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -318,6 +336,7 @@
 				FA905DE4229CBD7400F4D20E /* UserDTO.swift */,
 				FAB3642D22AE8FDC006ED541 /* ReservaDTO.swift */,
 				FA57492B22FA0CCF005E015C /* ReservaListaDTO.swift */,
+				FA0098C32337E2CB000BC738 /* File.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -456,6 +475,7 @@
 		FAD5D5F1224E995700DD64DB /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				FA0098C52337E55B000BC738 /* TimesCell */,
 				FA7D48BB233048970044D85D /* EventosCell */,
 				FA418AAE23024B9F007B2F53 /* ServicosCollectionCell */,
 				FA418AAD23024B8F007B2F53 /* LogoffCell */,
@@ -557,6 +577,7 @@
 				FA3EB7DA225AED5F00866125 /* GoogleService-Info.plist in Resources */,
 				FA418AAC23010830007B2F53 /* LogoffCell.xib in Resources */,
 				FA418AA8230101B7007B2F53 /* DadosUsuarioCell.xib in Resources */,
+				FA0098C92337E577000BC738 /* TimesCell.xib in Resources */,
 				FAF515032300B0A700C7ADD0 /* FiltrosQuadrasController.xib in Resources */,
 				FAD5D5E5224E8D3E00DD64DB /* Main.storyboard in Resources */,
 				FA5A405B22ADC90600E8FA8A /* JogadoresCell.xib in Resources */,
@@ -654,8 +675,10 @@
 				FA5A405A22ADC90600E8FA8A /* JogadoresCell.swift in Sources */,
 				FA7CE8B422AC7342007B84A7 /* OnboardingPlaystyleController.swift in Sources */,
 				FAC8EE4222FB506B00EC7812 /* JogadoresStatusCell.swift in Sources */,
+				FA0098CB2337F1A3000BC738 /* CriarTimeController.swift in Sources */,
 				FA418AB523037D48007B2F53 /* OnboardingProfileController.swift in Sources */,
 				FA9A1C382301E804001661ED /* ServicoController.swift in Sources */,
+				FA0098C82337E577000BC738 /* TimesCell.swift in Sources */,
 				FA9A1C322301D270001661ED /* ServicosCollectionCell.swift in Sources */,
 				FA7CE8AE22AC5BAF007B84A7 /* PhoneService.swift in Sources */,
 				FA3EB7DD225AEFA200866125 /* FirebaseService.swift in Sources */,
@@ -688,6 +711,7 @@
 				FA7CE8B022AC6894007B84A7 /* OnboardingIdentityInfoController.swift in Sources */,
 				FA166E9722C43D0400E0FF5E /* AlertsHelper.swift in Sources */,
 				FA5A405122ADC77900E8FA8A /* CriarReservaController.swift in Sources */,
+				FA0098C42337E2CB000BC738 /* File.swift in Sources */,
 				FA5A404222ADB4DB00E8FA8A /* HeaderCell.swift in Sources */,
 				FA905DE3229CBA4200F4D20E /* PerfilController.swift in Sources */,
 			);
