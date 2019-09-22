@@ -160,7 +160,7 @@ extension ListaQuadrasController: UITableViewDelegate, UITableViewDataSource {
             cell.lbNomeQuadra.text = current.nome
             cell.lbEnderecoQuadra.text = "\(current.endereco ?? "") \(current.numeroEndereco ?? "")"
             
-            cell.lbPrecoQuadra.text = current.preco?.toCurrency()
+            cell.lbPrecoQuadra.text = current.getTodayPrice()?.toCurrency()
             
             cell.ratingQuadra.rating = Double(current.rating ?? 0)
             

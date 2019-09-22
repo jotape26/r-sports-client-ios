@@ -16,7 +16,7 @@ class QuadraDTO : ImmutableMappable {
     var numeroEndereco : String?
     var cidade: String?
     var rating: Double?
-    var preco: Double?
+    var preco: [Double]?
     var imagens: [String]?
     var distance: Double {
         get {
@@ -62,5 +62,10 @@ class QuadraDTO : ImmutableMappable {
                 coordinates.append(cord)
             }
         }
+    }
+    
+    func getTodayPrice() -> Double? {
+        let cal = Calendar.current
+        return preco?[cal.component(.day, from: Date()) - 1]
     }
 }

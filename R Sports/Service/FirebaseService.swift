@@ -125,6 +125,10 @@ class FirebaseService {
         
     }
     
+    static func getUserTimes() {
+        var times = [String]()
+    }
+    
     static func getQuadraById(quadraID : String,
                               success : @escaping(QuadraDTO)->()) {
         Firestore.firestore().collection("quadras").document(quadraID).getDocument { (snap, err) in

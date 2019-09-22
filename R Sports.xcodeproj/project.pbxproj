@@ -44,6 +44,10 @@
 		FA7CE8B022AC6894007B84A7 /* OnboardingIdentityInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7CE8AF22AC6894007B84A7 /* OnboardingIdentityInfoController.swift */; };
 		FA7CE8B222AC6D88007B84A7 /* OnboardingImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7CE8B122AC6D88007B84A7 /* OnboardingImageController.swift */; };
 		FA7CE8B422AC7342007B84A7 /* OnboardingPlaystyleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7CE8B322AC7342007B84A7 /* OnboardingPlaystyleController.swift */; };
+		FA7D48BE233048D00044D85D /* EventosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7D48BC233048D00044D85D /* EventosCell.swift */; };
+		FA7D48BF233048D00044D85D /* EventosCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA7D48BD233048D00044D85D /* EventosCell.xib */; };
+		FA7D48C123304A490044D85D /* MatchmakeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7D48C023304A490044D85D /* MatchmakeController.swift */; };
+		FA7D48C32337D5290044D85D /* TimesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7D48C22337D5290044D85D /* TimesController.swift */; };
 		FA8B55E522AAD989000BE939 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B55E422AAD989000BE939 /* MapController.swift */; };
 		FA8B55F422AAF6C1000BE939 /* CreditCardValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B55F322AAF6C1000BE939 /* CreditCardValidator.swift */; };
 		FA8B55F622AAF7E9000BE939 /* PagamentoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B55F522AAF7E9000BE939 /* PagamentoController.swift */; };
@@ -121,6 +125,10 @@
 		FA7CE8AF22AC6894007B84A7 /* OnboardingIdentityInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingIdentityInfoController.swift; sourceTree = "<group>"; };
 		FA7CE8B122AC6D88007B84A7 /* OnboardingImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingImageController.swift; sourceTree = "<group>"; };
 		FA7CE8B322AC7342007B84A7 /* OnboardingPlaystyleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OnboardingPlaystyleController.swift; path = ../OnboardingPlaystyleController.swift; sourceTree = "<group>"; };
+		FA7D48BC233048D00044D85D /* EventosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventosCell.swift; sourceTree = "<group>"; };
+		FA7D48BD233048D00044D85D /* EventosCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventosCell.xib; sourceTree = "<group>"; };
+		FA7D48C023304A490044D85D /* MatchmakeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchmakeController.swift; sourceTree = "<group>"; };
+		FA7D48C22337D5290044D85D /* TimesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesController.swift; sourceTree = "<group>"; };
 		FA8B55E422AAD989000BE939 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 		FA8B55F322AAF6C1000BE939 /* CreditCardValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardValidator.swift; sourceTree = "<group>"; };
 		FA8B55F522AAF7E9000BE939 /* PagamentoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagamentoController.swift; sourceTree = "<group>"; };
@@ -210,6 +218,8 @@
 				FAC8EE3822FB4BC300EC7812 /* DetalhesReservaController.swift */,
 				FAC8EE4422FC8D2900EC7812 /* QuadraServicosController.swift */,
 				FA418AB423037D48007B2F53 /* OnboardingProfileController.swift */,
+				FA7D48C023304A490044D85D /* MatchmakeController.swift */,
+				FA7D48C22337D5290044D85D /* TimesController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -348,6 +358,15 @@
 			path = FiltrosQuadrasController;
 			sourceTree = "<group>";
 		};
+		FA7D48BB233048970044D85D /* EventosCell */ = {
+			isa = PBXGroup;
+			children = (
+				FA7D48BC233048D00044D85D /* EventosCell.swift */,
+				FA7D48BD233048D00044D85D /* EventosCell.xib */,
+			);
+			path = EventosCell;
+			sourceTree = "<group>";
+		};
 		FA8B55E622AAE777000BE939 /* Custom Objects */ = {
 			isa = PBXGroup;
 			children = (
@@ -437,6 +456,7 @@
 		FAD5D5F1224E995700DD64DB /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				FA7D48BB233048970044D85D /* EventosCell */,
 				FA418AAE23024B9F007B2F53 /* ServicosCollectionCell */,
 				FA418AAD23024B8F007B2F53 /* LogoffCell */,
 				FA418AA423010192007B2F53 /* DadosUsuarioCell */,
@@ -531,6 +551,7 @@
 				FA57492A22F9F8F5005E015C /* NoQuadrasCell.xib in Resources */,
 				FA5A404322ADB4DB00E8FA8A /* HeaderCell.xib in Resources */,
 				FAD5D5EA224E8D4000DD64DB /* LaunchScreen.storyboard in Resources */,
+				FA7D48BF233048D00044D85D /* EventosCell.xib in Resources */,
 				FAD5D5F6224E997300DD64DB /* QuadrasCell.xib in Resources */,
 				FA9A1C392301E804001661ED /* ServicoController.xib in Resources */,
 				FA3EB7DA225AED5F00866125 /* GoogleService-Info.plist in Resources */,
@@ -611,6 +632,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA7D48BE233048D00044D85D /* EventosCell.swift in Sources */,
 				FAC8EE3922FB4BC300EC7812 /* DetalhesReservaController.swift in Sources */,
 				FA905DF2229E004400F4D20E /* ReservasController.swift in Sources */,
 				FA8B55E522AAD989000BE939 /* MapController.swift in Sources */,
@@ -623,6 +645,7 @@
 				FA2C1EE122AB7A8B0057131A /* MaskedTextField.swift in Sources */,
 				FA8B55F622AAF7E9000BE939 /* PagamentoController.swift in Sources */,
 				FA07BB7C225BC7AF007AF2D0 /* MainTabController.swift in Sources */,
+				FA7D48C123304A490044D85D /* MatchmakeController.swift in Sources */,
 				FA45692522E67AE000C0971B /* AppConstants.swift in Sources */,
 				FA7CE8B222AC6D88007B84A7 /* OnboardingImageController.swift in Sources */,
 				FA905DEB229DE51D00F4D20E /* CalendarCell.swift in Sources */,
@@ -659,6 +682,7 @@
 				FA905DEE229DFA5000F4D20E /* UIViewController+Extensions.swift in Sources */,
 				FA8B55F822AAF8D0000BE939 /* ConfirmacaoController.swift in Sources */,
 				FAA62195229CB0D300688353 /* QuadraDetailController.swift in Sources */,
+				FA7D48C32337D5290044D85D /* TimesController.swift in Sources */,
 				FA418AB123024BFC007B2F53 /* ConfirmacaoReservaListaController.swift in Sources */,
 				FA905DE5229CBD7400F4D20E /* UserDTO.swift in Sources */,
 				FA7CE8B022AC6894007B84A7 /* OnboardingIdentityInfoController.swift in Sources */,

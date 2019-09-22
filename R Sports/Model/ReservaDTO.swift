@@ -43,7 +43,7 @@ class ReservaDTO: ImmutableMappable {
         guard let quadraID = quadra?.documentID else { return [:] }
         guard let user = FirebaseService.getDocumentReference() else { return [:] }
         guard let nome = quadra?.nome else { return [:] }
-        guard let preco = quadra?.preco else { return [:] }
+        guard let preco = quadra?.getTodayPrice() else { return [:] }
         let valor = preco / Double(jogadores!.count)
 
         var exportData : [String : Any] = ["dataHora" : dataHora,

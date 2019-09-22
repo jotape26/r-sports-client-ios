@@ -68,8 +68,8 @@ class CriarReservaController: UIViewController {
         
         lblQuadra.text = reserva.quadra?.nome
         lblEndereco.text = reserva.quadra?.endereco
-        lblValor.text = reserva.quadra?.preco?.toCurrency()
-        lblValorPorPessoa.text = reserva.quadra?.preco?.toCurrency()
+        lblValor.text = reserva.quadra?.getTodayPrice()?.toCurrency()
+        lblValorPorPessoa.text = reserva.quadra?.getTodayPrice()?.toCurrency()
         
         FirebaseService.retrieveUserDatabaseRef(uid: FirebaseService.getCurrentUser()?.phoneNumber ?? "") { (currentUser) in
             DispatchQueue.main.async {
@@ -82,7 +82,11 @@ class CriarReservaController: UIViewController {
     
     func calcularValor(){
         if !reserva.getJogadores().isEmpty {
-            lblValorPorPessoa.text = ((reserva.quadra?.preco ?? 0.0) / Double(reserva.getJogadores().count)).toCurrency()
+            
+            if let preco = reserva.quadra?.getTodayPrice() {
+                lblValorPorPessoa.text = (preco / Double(reserva.getJogadores().count)).toCurrency()
+            }
+            
         }
         tableJogadores.reloadData()
     }
