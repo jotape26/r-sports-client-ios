@@ -17,8 +17,10 @@ class CriarTimeController: UIViewController {
     @IBOutlet weak var tableJogadores: UITableView!
     @IBOutlet weak var btnCriarTime: UIButton!
     @IBOutlet weak var txtTelefone: NKVPhonePickerTextField!
+    @IBOutlet weak var txtNomeTime: UITextField!
     
-    var jogadores = [UserDTO]()
+    var jogadores = [JogadorTimeDTO]()
+    var genericImage = UIImage(named: "genericProfile")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,19 +29,42 @@ class CriarTimeController: UIViewController {
         tableJogadores.register(UINib(nibName: "JogadoresCell", bundle: nil), forCellReuseIdentifier: "JogadoresCell")
         
         if let user = SharedSession.shared.currentUser {
-            jogadores.append(user)
+            let jogador = JogadorTimeDTO()
+            jogador.nome = user.nome
+            jogador.telefone = user.telefone
+            jogadores.append(jogador)
         }
         
         txtTelefone.delegate = self
+        txtNomeTime.delegate = self
         
         btnCriarTime.layer.cornerRadius = 5.0
         imgBrasao.setRounded()
+        imgBrasao.image = genericImage
         imgBrasao.layer.borderWidth = 5.0
         imgBrasao.layer.borderColor = AppConstants.ColorConstants.highlightGreen.cgColor
     }
     
     @IBAction func btnCriarClick(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        guard let nome = txtNomeTime.text else {
+            txtNomeTime.setTextInvalid()
+            return
+        }
+        guard let image = imgBrasao.image, image != genericImage else {
+            //TODO IMAGE ERROR
+            return
+        }
+        
+        let time = TimeDTO()
+        time.nome = nome
+        time.jogadores = jogadores
+        
+        FirebaseService.createTime(time: time,
+                                   brasao: image, success: {
+                                    self.dismiss(animated: true, completion: nil)
+        }) {
+            //TODO ERROR
+        }
     }
     
     @IBAction func btnImagemClick(_ sender: Any) {
@@ -63,7 +88,7 @@ class CriarTimeController: UIViewController {
                 picker.delegate = self
                 self.present(picker, animated: true, completion: nil)
             } else if phoneNumber.count == 13 {
-                let jogador = UserDTO()
+                let jogador = JogadorTimeDTO()
                 jogador.telefone = "+\(phoneNumber)"
                 jogadores.append(jogador)
                 
@@ -138,7 +163,7 @@ class CriarTimeController: UIViewController {
             }
         }
         
-        let jogador = UserDTO()
+        let jogador = JogadorTimeDTO()
         jogador.nome = toContact
         jogador.telefone = "+\(updatedNumber)"
         jogadores.append(jogador)

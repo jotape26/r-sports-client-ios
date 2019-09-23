@@ -42,7 +42,8 @@ class FirebaseService {
             let authVC = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! AuthController
             authVC.modalTransitionStyle = .crossDissolve
             
-            UIApplication.shared.keyWindow?.visibleViewController()?.present(authVC, animated: true, completion: nil)
+            UIApplication.shared.keyWindow?.rootViewController = authVC
+//            UIApplication.shared.keyWindow?.visibleViewController()?.present(authVC, animated: true, completion: nil)
             
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
@@ -202,21 +203,47 @@ class FirebaseService {
         }
     }
     
-//    static func addReservaToUser(reservaID : String) {
-//        guard let user = Auth.auth().currentUser else { return }
-//        guard let number = user.phoneNumber else { return }
-//
-//        let reference = FirebaseService.getDocumentReference()
-//
-//        _ = reference?.getDocument(completion: { (snap, err) in
-//            guard let userData = snap?.data(), let user = UserDTO(JSON: userData) else { return }
-//            user.reservas?.append(reservaID)
-//            SharedSession.shared.currentUser = user
-//            reference?.setData(["reservas" : user.reservas ?? []], merge: true)
-//        })
-//    }
+    static func createTime(time : TimeDTO,
+                           brasao: UIImage,
+                           success : @escaping()->(),
+                           failure : @escaping()->()) {
+        
+        
+        let document = Firestore.firestore().collection("times").document()
+        
+        
+        FirebaseService.setTimeImage(docID: document.documentID, brasao: brasao, success: {
+            
+            var data = time.getCreationData()
+            data.updateValue("brasaoTime.jpg", forKey: "imagemBrasao")
+            
+            document.setData(data) { (err) in
+                if err != nil {
+                    failure()
+                } else {
+                    success()
+                }
+            }
+        }) {
+            failure()
+        }
+    }
     
     //MARK: - Storage Methods
+    static func setTimeImage(docID: String,
+                             brasao: UIImage,
+                             success : @escaping()->(),
+                             failure : @escaping()->()) {
+        guard let photoData = brasao.jpegData(compressionQuality: 1.0) else { failure(); return }
+        Storage.storage().reference(withPath: "timesImages/\(docID)/brasaoTime.jpg").putData(photoData, metadata: .none) { meta, err in
+            if err != nil {
+                failure()
+            } else {
+                success()
+            }
+        }
+    }
+    
     static func getCourtImage(path: String,
                               success: @escaping(UIImage)->(),
                               failure: @escaping()->()){

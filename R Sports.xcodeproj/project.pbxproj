@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7BBC3302A4E98AD50D1A303F /* Pods_R_Sports.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 352CAB3898F08E1E9B654E98 /* Pods_R_Sports.framework */; };
-		FA0098C42337E2CB000BC738 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0098C32337E2CB000BC738 /* File.swift */; };
+		FA0098C42337E2CB000BC738 /* JogadorTimeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0098C32337E2CB000BC738 /* JogadorTimeDTO.swift */; };
 		FA0098C82337E577000BC738 /* TimesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0098C62337E577000BC738 /* TimesCell.swift */; };
 		FA0098C92337E577000BC738 /* TimesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA0098C72337E577000BC738 /* TimesCell.xib */; };
 		FA0098CB2337F1A3000BC738 /* CriarTimeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0098CA2337F1A3000BC738 /* CriarTimeController.swift */; };
@@ -92,7 +92,7 @@
 		352CAB3898F08E1E9B654E98 /* Pods_R_Sports.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_R_Sports.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DA11FD8174833CE6EF6E589 /* Pods-R Sports.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-R Sports.debug.xcconfig"; path = "Target Support Files/Pods-R Sports/Pods-R Sports.debug.xcconfig"; sourceTree = "<group>"; };
 		CCD0E545A97311F421D932F3 /* Pods-R Sports.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-R Sports.release.xcconfig"; path = "Target Support Files/Pods-R Sports/Pods-R Sports.release.xcconfig"; sourceTree = "<group>"; };
-		FA0098C32337E2CB000BC738 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		FA0098C32337E2CB000BC738 /* JogadorTimeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JogadorTimeDTO.swift; sourceTree = "<group>"; };
 		FA0098C62337E577000BC738 /* TimesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesCell.swift; sourceTree = "<group>"; };
 		FA0098C72337E577000BC738 /* TimesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimesCell.xib; sourceTree = "<group>"; };
 		FA0098CA2337F1A3000BC738 /* CriarTimeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriarTimeController.swift; sourceTree = "<group>"; };
@@ -336,7 +336,7 @@
 				FA905DE4229CBD7400F4D20E /* UserDTO.swift */,
 				FAB3642D22AE8FDC006ED541 /* ReservaDTO.swift */,
 				FA57492B22FA0CCF005E015C /* ReservaListaDTO.swift */,
-				FA0098C32337E2CB000BC738 /* File.swift */,
+				FA0098C32337E2CB000BC738 /* JogadorTimeDTO.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -711,7 +711,7 @@
 				FA7CE8B022AC6894007B84A7 /* OnboardingIdentityInfoController.swift in Sources */,
 				FA166E9722C43D0400E0FF5E /* AlertsHelper.swift in Sources */,
 				FA5A405122ADC77900E8FA8A /* CriarReservaController.swift in Sources */,
-				FA0098C42337E2CB000BC738 /* File.swift in Sources */,
+				FA0098C42337E2CB000BC738 /* JogadorTimeDTO.swift in Sources */,
 				FA5A404222ADB4DB00E8FA8A /* HeaderCell.swift in Sources */,
 				FA905DE3229CBA4200F4D20E /* PerfilController.swift in Sources */,
 			);
