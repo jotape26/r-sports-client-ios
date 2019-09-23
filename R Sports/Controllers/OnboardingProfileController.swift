@@ -152,7 +152,8 @@ class OnboardingProfileController: UIViewController {
                                              ProfileConstants.EMAIL : txtEmail.text ?? "",
                                              ProfileConstants.POSITION : txtPosicao.text ?? "",
                                              ProfileConstants.COMPETITIVITY : txtCompetitividade.text ?? "",
-                                             ProfileConstants.SEARCHING_GAMES : segmentPartidas.selectedSegmentIndex == 1 ? true : false]
+                                             ProfileConstants.SEARCHING_GAMES : segmentPartidas.selectedSegmentIndex == 1 ? true : false,
+                                             "times" : []]
             
             if let date = form.date(from: txtDataNascimento.text ?? "") {
                 userData.updateValue(date, forKey: ProfileConstants.AGE)

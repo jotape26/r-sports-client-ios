@@ -33,6 +33,7 @@ class AuthController: UIViewController {
             FirebaseService.retrieveUserDatabaseRef(uid: FirebaseService.getCurrentUser()!.phoneNumber!) { (user) in
                 self.view.stopLoading()
                 SharedSession.shared.currentUser = user
+                SharedSession.shared.currentUser?.telefone = FirebaseService.getCurrentUser()!.phoneNumber!
                 self.performSegue(withIdentifier: "AuthToMainSegue", sender: nil)
             }
         } else {

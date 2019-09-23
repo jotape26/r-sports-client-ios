@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol TimesUpdateDelegate {
+    func didUpdateTimes()
+}
+
 class TimesController: UIViewController {
 
     @IBOutlet weak var alertView: UIView!
@@ -23,17 +27,35 @@ class TimesController: UIViewController {
         
         timesTable.register(UINib(nibName: "TimesCell", bundle: nil), forCellReuseIdentifier: "TimesCell")
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.topViewController?.navigationItem.rightBarButtonItem = nil
+        validateTimes()
+    }
+    
+    @IBAction func criarTimesClick(_ sender: Any) {
+        performSegue(withIdentifier: "CreateTimeSegue", sender: nil)
+    }
+    
+    fileprivate func validateTimes() {
         if !(SharedSession.shared.currentUser?.times?.isEmpty ?? true) {
+            alertView.isHidden = false
+            self.view.startLoading()
             FirebaseService.getUserTimes { (userTimes) in
+                self.view.stopLoading()
                 self.times = userTimes
+                self.timesTable.reloadData()
             }
         } else {
             alertView.isHidden = false
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.topViewController?.navigationItem.rightBarButtonItem = nil
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let contrl = segue.destination as? CriarTimeController {
+            
+        }
     }
 
 }
@@ -47,6 +69,10 @@ extension TimesController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TimesCell") as! TimesCell
         return cell
     }
-    
-    
+}
+
+extension TimesController: TimesUpdateDelegate {
+    func didUpdateTimes() {
+        validateTimes()
+    }
 }

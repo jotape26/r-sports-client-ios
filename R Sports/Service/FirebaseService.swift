@@ -205,23 +205,27 @@ class FirebaseService {
     
     static func createTime(time : TimeDTO,
                            brasao: UIImage,
-                           success : @escaping()->(),
+                           success : @escaping(String)->(),
                            failure : @escaping()->()) {
         
+        var data = time.getCreationData()
+        guard !data.isEmpty else {
+            failure()
+            return
+        }
         
         let document = Firestore.firestore().collection("times").document()
         
         
         FirebaseService.setTimeImage(docID: document.documentID, brasao: brasao, success: {
-            
-            var data = time.getCreationData()
+
             data.updateValue("brasaoTime.jpg", forKey: "imagemBrasao")
             
             document.setData(data) { (err) in
                 if err != nil {
                     failure()
                 } else {
-                    success()
+                    success(document.documentID)
                 }
             }
         }) {

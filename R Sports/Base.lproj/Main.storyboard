@@ -573,7 +573,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <segue destination="RhT-cG-Yfg" kind="showDetail" id="0ME-Al-bVl"/>
+                                                            <action selector="criarTimesClick:" destination="hzN-zs-Quf" eventType="touchUpInside" id="7lb-ST-nhC"/>
                                                         </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hu2-wR-Pah">
@@ -617,6 +617,7 @@
                         <outlet property="alertView" destination="t8j-oz-rO5" id="ezi-Im-HJa"/>
                         <outlet property="btnCriarTime" destination="9H2-AE-kc5" id="8nA-3i-Rr9"/>
                         <outlet property="timesTable" destination="N1L-jf-3zu" id="On1-qx-atQ"/>
+                        <segue destination="RhT-cG-Yfg" kind="showDetail" identifier="CreateTimeSegue" id="MyO-FE-P9M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kYq-aq-6Jz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -759,7 +760,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="n7b-Lb-Dli" firstAttribute="bottom" secondItem="Dow-yP-9tW" secondAttribute="bottom" id="5kG-fZ-q8v"/>
                             <constraint firstItem="yOb-cc-DUv" firstAttribute="leading" secondItem="n7b-Lb-Dli" secondAttribute="leading" id="CbF-Ht-s0r"/>
@@ -784,7 +785,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ahE-aT-guZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2141.5999999999999" y="2961.7691154422791"/>
+            <point key="canvasLocation" x="2142" y="3063"/>
         </scene>
         <!--Matchmake-->
         <scene sceneID="hTc-ku-hbX">
@@ -826,13 +827,13 @@
             <objects>
                 <viewController id="5Hq-Hu-S6c" customClass="QuadraDetailController" customModule="R_Sports" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5PW-Ou-3sP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="845"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="865"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" ambiguous="YES" bounces="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ngy-E1-FC0">
-                                <rect key="frame" x="0.0" y="64" width="375" height="801"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" bounces="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ngy-E1-FC0">
+                                <rect key="frame" x="0.0" y="44" width="375" height="821"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="05C-La-gxC">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="05C-La-gxC">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="olc-uH-h8I">
@@ -841,13 +842,13 @@
                                                 <color key="textColor" red="0.078431372550000003" green="0.46274509800000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Estrutura" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1d5-GZ-WJs">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estrutura" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1d5-GZ-WJs">
                                                 <rect key="frame" x="15" y="337" width="345" height="24"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h5s-yc-rVU" customClass="CosmosView" customModule="Cosmos">
+                                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h5s-yc-rVU" customClass="CosmosView" customModule="Cosmos">
                                                 <rect key="frame" x="15" y="224" width="130" height="20"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
@@ -865,13 +866,13 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Reservar" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mNU-Wy-Rt9">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reservar" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mNU-Wy-Rt9">
                                                 <rect key="frame" x="15" y="536" width="360" height="24"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hGL-lF-QF0" customClass="FSCalendar">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hGL-lF-QF0" customClass="FSCalendar">
                                                 <rect key="frame" x="0.0" y="570" width="375" height="230"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
@@ -893,7 +894,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OhH-aO-d1x">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OhH-aO-d1x">
                                                 <rect key="frame" x="0.0" y="371" width="375" height="150"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
@@ -962,7 +963,7 @@
                                                     <outlet property="delegate" destination="5Hq-Hu-S6c" id="UXD-39-HyS"/>
                                                 </connections>
                                             </collectionView>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gW2-7d-xia">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gW2-7d-xia">
                                                 <rect key="frame" x="15" y="288" width="345" height="34"/>
                                                 <state key="normal" title="jdvkjsd">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -971,13 +972,13 @@
                                                     <action selector="btnEnderecoClick:" destination="5Hq-Hu-S6c" eventType="touchUpInside" id="o3U-gc-Kfz"/>
                                                 </connections>
                                             </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="njc-Tl-5lK">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="njc-Tl-5lK">
                                                 <rect key="frame" x="326" y="288" width="34" height="34"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="njc-Tl-5lK" secondAttribute="height" multiplier="1:1" id="BZN-Il-VOy"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Endereço" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPb-ma-Ohz">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Endereço" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPb-ma-Ohz">
                                                 <rect key="frame" x="15" y="254" width="345" height="24"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2229,11 +2230,11 @@ Você pode acompanhar os pagamentos de seus amigos na aba "Reservas".</string>
             <objects>
                 <viewController id="O7P-qU-wT1" customClass="OnboardingProfileController" customModule="R_Sports" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mCD-jP-bPY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="843"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="823"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lmD-A5-3Aj">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="843"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="823"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CvN-Ak-cVL">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="851"/>
@@ -2580,7 +2581,7 @@ Você pode acompanhar os pagamentos de seus amigos na aba "Reservas".</string>
             <objects>
                 <viewController id="FOp-hI-cAV" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6NS-Xd-ZpK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agora é só combinar seu primeiro jogo!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="shs-Bb-YkP">

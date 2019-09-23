@@ -32,11 +32,10 @@ class TimeDTO: ImmutableMappable {
             var jog : [String : Any] = [:]
             
             if index == 0 {
-                if let phone = jogador.telefone, let nome = jogador.telefone {
-                    jog.updateValue(phone, forKey: "telefone")
-                    jog.updateValue(nome, forKey: "nome")
-                    jog.updateValue(false, forKey: "pendente")
-                }
+                guard let phone = jogador.telefone, let nome = jogador.nome else { return [:] }
+                jog.updateValue(phone, forKey: "telefone")
+                jog.updateValue(nome, forKey: "nome")
+                jog.updateValue(false, forKey: "pendente")
             } else {
                 if let phone = jogador.telefone {
                     jog.updateValue(phone, forKey: "telefone")

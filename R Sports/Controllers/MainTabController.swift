@@ -23,13 +23,6 @@ class MainTabController: UITabBarController {
     override func viewDidAppear(_ animated: Bool) {
         self.title = tabBar.selectedItem?.title
         registerForRemoteNotification()
-        
-        timer = Timer.scheduledTimer(timeInterval: 5,
-                             target: self,
-                             selector: #selector(startReservasPooling),
-                             userInfo: nil, repeats: true)
-        
-        startReservasPooling()
     }
     
     deinit {
@@ -56,14 +49,6 @@ class MainTabController: UITabBarController {
             DispatchQueue.main.async {
                 UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil))
                 UIApplication.shared.registerForRemoteNotifications()
-            }
-        }
-    }
-    
-    @objc func startReservasPooling() {
-        if let phone = FirebaseService.getCurrentUser()?.phoneNumber {
-            FirebaseService.retrieveUserDatabaseRef(uid: phone) { (user) in
-                SharedSession.shared.currentUser = user
             }
         }
     }

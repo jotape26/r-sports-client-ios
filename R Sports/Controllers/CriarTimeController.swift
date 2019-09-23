@@ -21,6 +21,7 @@ class CriarTimeController: UIViewController {
     
     var jogadores = [JogadorTimeDTO]()
     var genericImage = UIImage(named: "genericProfile")
+    var updateDelegate : TimesUpdateDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,9 +60,15 @@ class CriarTimeController: UIViewController {
         time.nome = nome
         time.jogadores = jogadores
         
+        self.view.startLoading()
         FirebaseService.createTime(time: time,
-                                   brasao: image, success: {
-                                    self.dismiss(animated: true, completion: nil)
+                                   brasao: image, success: { docID in
+                                    SharedSession.shared.currentUser?.times?.append(docID)
+                                    FirebaseService.setUserData(data: ["times" : SharedSession.shared.currentUser?.times ?? []])
+                                    self.view.stopLoading()
+                                    self.dismiss(animated: true, completion: {
+                                        self.updateDelegate?.didUpdateTimes()
+                                    })
         }) {
             //TODO ERROR
         }
