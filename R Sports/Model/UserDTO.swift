@@ -22,8 +22,11 @@ class UserDTO: ImmutableMappable {
     var competitivade: String?
     var imagePath: String?
     var telefone: String?
-    var reservas : [String]?
-    var times : [String]?
+    var reservas: [String]?
+    var times: [String: String]?
+    var gols: Int?
+    var assistencias: Int?
+    var timesTemp: [String]?
     
     init(){}
     
@@ -39,6 +42,9 @@ class UserDTO: ImmutableMappable {
         imagePath = try? map.value(ProfileConstants.IMAGEPATH)
         reservas = try? map.value(ProfileConstants.RESERVAS)
         times = try? map.value("times")
+        timesTemp = try? map.value("timesTemp")
+        gols = try? map.value("gols")
+        assistencias = try? map.value("assistencias")
     }
 }
 

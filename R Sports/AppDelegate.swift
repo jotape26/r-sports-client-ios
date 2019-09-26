@@ -24,6 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SharedSession.shared.requestUserLocation()
         Auth.auth().languageCode = Locale.current.languageCode
         Messaging.messaging().delegate = self
+        
+        UNUserNotificationCenter.current().delegate = self
+
         UIApplication.shared.applicationIconBadgeNumber = 0
         return true
     }
@@ -49,7 +52,74 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
 }
+
+extension AppDelegate : UNUserNotificationCenterDelegate {
+    
+    // Receive displayed notifications for iOS 10 devices.
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        let userInfo = notification.request.content.userInfo
+        
+        // With swizzling disabled you must let Messaging know about the message, for Analytics
+         Messaging.messaging().appDidReceiveMessage(userInfo)
+        // Print message ID.
+        if let messageID = userInfo["gcm.message_id"] {
+            print("Message ID: \(messageID)")
+        }
+        
+        // Print full message.
+        print(userInfo)
+        
+//        NotificationHandler().handlePush(payload: userInfo.toJSONString(), onIdle: false)
+        
+        // Change this to your preferred presentation option
+        completionHandler([[.alert, .badge, .sound]])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        // If you are receiving a notification message while your app is in the background,
+        // this callback will not be fired till the user taps on the notification launching the application.
+        // TODO: Handle data of notification
+        let userInfo = response.notification.request.content.userInfo
+        
+        // Print message ID.
+        if let messageID = userInfo["gcm.message_id"] {
+            print("Message ID: \(messageID)")
+        }
+        // Print full message.
+        print("PUSH RECIEVED: \(userInfo.description)")
+        
+        RSNotifications.hasPush = true
+        RSNotifications.payload = userInfo as? [String : Any]
+        
+        completionHandler()
+    }
+}
+class RSNotifications {
+    
+    static var hasPush = false
+    static var payload : [String : Any]?
+    
+    static func performPush() {
+        
+        if let payload = payload {
+            if let timeID = payload["teamID"] as? String {
+                print("TIME ID: \(timeID)")
+            } else if let reservaID = payload["reservaID"] as? String{
+                print("RESERVA ID: \(reservaID)")
+            }
+        }
+        RSNotifications.hasPush = false
+        RSNotifications.payload = nil
+    }
+}
+
 
 extension AppDelegate : MessagingDelegate {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {

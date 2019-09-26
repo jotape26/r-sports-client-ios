@@ -28,11 +28,14 @@ class TimesController: UIViewController {
         btnCriarTime.layer.cornerRadius = 5.0
         
         timesTable.register(UINib(nibName: "TimesCell", bundle: nil), forCellReuseIdentifier: "TimesCell")
+        validateTimes()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.topViewController?.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "group-icon"), style: .plain, target: self, action: #selector(clickTime))
-        validateTimes()
+        
+        let btn = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(clickTime))
+        
+        self.navigationController?.topViewController?.navigationItem.rightBarButtonItem = btn
     }
     
     @IBAction func criarTimesClick(_ sender: Any) {
@@ -56,11 +59,36 @@ class TimesController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let contrl = segue.destination as? CriarTimeController {
             contrl.updateDelegate = self
+        } else if let contrl = segue.destination as? TimeDetalhesController {
+            contrl.selectedTime = times[timesTable.indexPathForSelectedRow?.row ?? 0]
         }
     }
     
     @objc func clickTime() {
-        criarTimesClick(self)
+        
+        if let timesPend = SharedSession.shared.currentUser?.timesTemp, !timesPend.isEmpty {
+            
+            let alert = UIAlertController(title: "Adicionar Time", message: "Você possui convites para times em aberto. Você gostaria de ver os convites ou criar um novo time?", preferredStyle: .actionSheet)
+            
+            alert.addAction(UIAlertAction(title: "Ver convites", style: .default, handler: { (act) in
+                self.convitesTimesClick()
+            }))
+            alert.addAction(UIAlertAction(title: "Criar novo time", style: .default, handler: { (act) in
+                self.criarTimesClick(self)
+            }))
+            
+            DispatchQueue.main.async {
+                self.present(alert, animated: true, completion: nil)
+            }
+            
+            
+        } else {
+            criarTimesClick(self)
+        }
+    }
+    
+    func convitesTimesClick() {
+        performSegue(withIdentifier: "ListaToConvitesSegue", sender: nil)
     }
     
 
@@ -87,10 +115,18 @@ extension TimesController: UITableViewDelegate, UITableViewDataSource {
             cell.lblJogadores.text = "\(nOfPlayers) jogadores."
         }
         
-        
-        cell.getTimeImage(docID: currentTeam.timeID ?? "")
+        currentTeam.getImage { (image) in
+            cell.imgTime.image = image
+        }
 
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        performSegue(withIdentifier: "ListaToTimeSegue", sender: nil)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

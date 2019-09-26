@@ -12,7 +12,7 @@ class PagamentoController: UIViewController {
     
     var currentFrame : CGRect?
     var activeField: UITextField?
-    var reserva : ReservaDTO!
+    var reserva : CriacaoReservaDTO!
     var reservaLista : ReservaListaDTO!
     
     let cardValidator = CreditCardValidator()

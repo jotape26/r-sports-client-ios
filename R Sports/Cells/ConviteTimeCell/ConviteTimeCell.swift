@@ -1,5 +1,5 @@
 //
-//  TimesCell.swift
+//  ConviteTimeCell.swift
 //  R Sports
 //
 //  Created by João Pedro Leite on 22/09/19.
@@ -8,12 +8,13 @@
 
 import UIKit
 
-class TimesCell: UITableViewCell {
-
+class ConviteTimeCell: UITableViewCell {
+    
     @IBOutlet weak var imgTime: UIImageView!
-    @IBOutlet weak var lblNome: UILabel!
-    @IBOutlet weak var lblJogadores: UILabel!
-    @IBOutlet weak var lblHistorico: UILabel!
+    @IBOutlet weak var nomeTime: UILabel!
+    @IBOutlet weak var lblConvite: UILabel!
+    @IBOutlet weak var btnRecusar: UIButton!
+    @IBOutlet weak var btnAceitar: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -10,7 +10,7 @@ import UIKit
 
 class ConfirmacaoController: UIViewController {
     
-    var reserva : ReservaDTO!
+    var reserva : CriacaoReservaDTO!
 
     @IBOutlet weak var imgCheck: UIImageView!
     @IBOutlet weak var btnVoltar: UIButton!

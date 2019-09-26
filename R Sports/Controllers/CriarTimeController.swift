@@ -52,7 +52,7 @@ class CriarTimeController: UIViewController {
             return
         }
         
-        if imgBrasao.image != genericImage || !forceNoImage  {
+        if imgBrasao.image == genericImage && !forceNoImage  {
             let alert = UIAlertController(title: "Atenção", message: "Deseja criar um time sem definir uma imagem de perfil?", preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "Sim", style: .default, handler: { (act) in
                 self.forceNoImage = true
@@ -75,12 +75,17 @@ class CriarTimeController: UIViewController {
         self.view.startLoading()
         FirebaseService.createTime(time: time,
                                    brasao: imgBrasao.image, success: { docID in
-                                    SharedSession.shared.currentUser?.times?.append(docID)
-                                    FirebaseService.setUserData(data: ["times" : SharedSession.shared.currentUser?.times ?? []])
-                                    self.view.stopLoading()
-                                    self.dismiss(animated: true, completion: {
-                                        self.updateDelegate?.didUpdateTimes()
-                                    })
+                                    RSportsService.createNewTime(timeID: docID) {
+                                        SharedSession.shared.currentUser?.times?.updateValue(docID, forKey: nome)
+                                        FirebaseService.setUserData(data: ["times" : SharedSession.shared.currentUser?.times ?? [:]])
+                                        self.view.stopLoading()
+                                        DispatchQueue.main.async {
+                                            self.dismiss(animated: true, completion: {
+                                                self.updateDelegate?.didUpdateTimes()
+                                            })
+                                        }
+                                    }
+                                    
         }) {
             AlertsHelper.showErrorMessage(message: "Ocorreu uma falha de comunicação com nossos servidores. Por favor, tente novamente.")
         }

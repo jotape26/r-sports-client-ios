@@ -12,7 +12,7 @@ extension Double {
     func toCurrency() -> String {
         let form = NumberFormatter()
         form.numberStyle = .currency
-        form.currencySymbol = "R$"
+        form.currencySymbol = "R$ "
         
         return "\(form.string(from: NSNumber(value: self)) ?? "")"
     }

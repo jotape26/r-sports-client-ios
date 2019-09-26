@@ -72,6 +72,12 @@
 		FA9A1C392301E804001661ED /* ServicoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9A1C372301E804001661ED /* ServicoController.xib */; };
 		FAA49239229C99A200813E14 /* SharedSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA49238229C99A200813E14 /* SharedSession.swift */; };
 		FAA62195229CB0D300688353 /* QuadraDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA62194229CB0D300688353 /* QuadraDetailController.swift */; };
+		FAB1E10D233D120B001E88F1 /* TimeDetalhesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB1E10C233D120B001E88F1 /* TimeDetalhesController.swift */; };
+		FAB1E111233D1562001E88F1 /* JogadorTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB1E10F233D1562001E88F1 /* JogadorTimeCell.swift */; };
+		FAB1E112233D1562001E88F1 /* JogadorTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB1E110233D1562001E88F1 /* JogadorTimeCell.xib */; };
+		FAB1E117233D3ED9001E88F1 /* ConviteTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB1E115233D3ED9001E88F1 /* ConviteTimeCell.xib */; };
+		FAB1E118233D3ED9001E88F1 /* ConviteTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB1E116233D3ED9001E88F1 /* ConviteTimeCell.swift */; };
+		FAB1E11A233D40A1001E88F1 /* ConvitesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB1E119233D40A1001E88F1 /* ConvitesController.swift */; };
 		FAB3642E22AE8FDC006ED541 /* ReservaDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB3642D22AE8FDC006ED541 /* ReservaDTO.swift */; };
 		FAC8EE3922FB4BC300EC7812 /* DetalhesReservaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC8EE3822FB4BC300EC7812 /* DetalhesReservaController.swift */; };
 		FAC8EE4222FB506B00EC7812 /* JogadoresStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC8EE4022FB506B00EC7812 /* JogadoresStatusCell.swift */; };
@@ -157,6 +163,12 @@
 		FA9A1C372301E804001661ED /* ServicoController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServicoController.xib; sourceTree = "<group>"; };
 		FAA49238229C99A200813E14 /* SharedSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SharedSession.swift; path = Controllers/SharedSession.swift; sourceTree = "<group>"; };
 		FAA62194229CB0D300688353 /* QuadraDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuadraDetailController.swift; sourceTree = "<group>"; };
+		FAB1E10C233D120B001E88F1 /* TimeDetalhesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDetalhesController.swift; sourceTree = "<group>"; };
+		FAB1E10F233D1562001E88F1 /* JogadorTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JogadorTimeCell.swift; sourceTree = "<group>"; };
+		FAB1E110233D1562001E88F1 /* JogadorTimeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JogadorTimeCell.xib; sourceTree = "<group>"; };
+		FAB1E115233D3ED9001E88F1 /* ConviteTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConviteTimeCell.xib; sourceTree = "<group>"; };
+		FAB1E116233D3ED9001E88F1 /* ConviteTimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConviteTimeCell.swift; sourceTree = "<group>"; };
+		FAB1E119233D40A1001E88F1 /* ConvitesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvitesController.swift; sourceTree = "<group>"; };
 		FAB3642D22AE8FDC006ED541 /* ReservaDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservaDTO.swift; sourceTree = "<group>"; };
 		FAC8EE3822FB4BC300EC7812 /* DetalhesReservaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalhesReservaController.swift; sourceTree = "<group>"; };
 		FAC8EE4022FB506B00EC7812 /* JogadoresStatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JogadoresStatusCell.swift; sourceTree = "<group>"; };
@@ -238,6 +250,8 @@
 				FA7D48C023304A490044D85D /* MatchmakeController.swift */,
 				FA7D48C22337D5290044D85D /* TimesController.swift */,
 				FA0098CA2337F1A3000BC738 /* CriarTimeController.swift */,
+				FAB1E10C233D120B001E88F1 /* TimeDetalhesController.swift */,
+				FAB1E119233D40A1001E88F1 /* ConvitesController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -424,6 +438,24 @@
 			path = ServicoController;
 			sourceTree = "<group>";
 		};
+		FAB1E10E233D14B5001E88F1 /* JogadorTimeCell */ = {
+			isa = PBXGroup;
+			children = (
+				FAB1E10F233D1562001E88F1 /* JogadorTimeCell.swift */,
+				FAB1E110233D1562001E88F1 /* JogadorTimeCell.xib */,
+			);
+			path = JogadorTimeCell;
+			sourceTree = "<group>";
+		};
+		FAB1E113233D3E98001E88F1 /* ConviteTimeCell */ = {
+			isa = PBXGroup;
+			children = (
+				FAB1E116233D3ED9001E88F1 /* ConviteTimeCell.swift */,
+				FAB1E115233D3ED9001E88F1 /* ConviteTimeCell.xib */,
+			);
+			path = ConviteTimeCell;
+			sourceTree = "<group>";
+		};
 		FAC8EE3A22FB4F3C00EC7812 /* JogadoresStatusCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -475,6 +507,8 @@
 		FAD5D5F1224E995700DD64DB /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				FAB1E113233D3E98001E88F1 /* ConviteTimeCell */,
+				FAB1E10E233D14B5001E88F1 /* JogadorTimeCell */,
 				FA0098C52337E55B000BC738 /* TimesCell */,
 				FA7D48BB233048970044D85D /* EventosCell */,
 				FA418AAE23024B9F007B2F53 /* ServicosCollectionCell */,
@@ -576,8 +610,10 @@
 				FA9A1C392301E804001661ED /* ServicoController.xib in Resources */,
 				FA3EB7DA225AED5F00866125 /* GoogleService-Info.plist in Resources */,
 				FA418AAC23010830007B2F53 /* LogoffCell.xib in Resources */,
+				FAB1E117233D3ED9001E88F1 /* ConviteTimeCell.xib in Resources */,
 				FA418AA8230101B7007B2F53 /* DadosUsuarioCell.xib in Resources */,
 				FA0098C92337E577000BC738 /* TimesCell.xib in Resources */,
+				FAB1E112233D1562001E88F1 /* JogadorTimeCell.xib in Resources */,
 				FAF515032300B0A700C7ADD0 /* FiltrosQuadrasController.xib in Resources */,
 				FAD5D5E5224E8D3E00DD64DB /* Main.storyboard in Resources */,
 				FA5A405B22ADC90600E8FA8A /* JogadoresCell.xib in Resources */,
@@ -676,6 +712,7 @@
 				FA7CE8B422AC7342007B84A7 /* OnboardingPlaystyleController.swift in Sources */,
 				FAC8EE4222FB506B00EC7812 /* JogadoresStatusCell.swift in Sources */,
 				FA0098CB2337F1A3000BC738 /* CriarTimeController.swift in Sources */,
+				FAB1E118233D3ED9001E88F1 /* ConviteTimeCell.swift in Sources */,
 				FA418AB523037D48007B2F53 /* OnboardingProfileController.swift in Sources */,
 				FA9A1C382301E804001661ED /* ServicoController.swift in Sources */,
 				FA0098C82337E577000BC738 /* TimesCell.swift in Sources */,
@@ -686,6 +723,7 @@
 				FA57492C22FA0CCF005E015C /* ReservaListaDTO.swift in Sources */,
 				FA418AAB23010830007B2F53 /* LogoffCell.swift in Sources */,
 				FA5A404622ADB90000E8FA8A /* EnderecoCell.swift in Sources */,
+				FAB1E111233D1562001E88F1 /* JogadorTimeCell.swift in Sources */,
 				FA9A1C342301E018001661ED /* ButtonWithImage.swift in Sources */,
 				FA905DE1229CB50C00F4D20E /* Date+Extensions.swift in Sources */,
 				FA418AB323025C3D007B2F53 /* FilesManager.swift in Sources */,
@@ -696,6 +734,7 @@
 				FA2C1EE322AC0A420057131A /* KapinField.swift in Sources */,
 				FA2C1EE722AC5A840057131A /* OnboardingCreateAccountController.swift in Sources */,
 				FAF515022300B0A700C7ADD0 /* FiltrosQuadrasController.swift in Sources */,
+				FAB1E11A233D40A1001E88F1 /* ConvitesController.swift in Sources */,
 				FAC8EE4522FC8D2900EC7812 /* QuadraServicosController.swift in Sources */,
 				FA07BB78225BC394007AF2D0 /* UIWindow+Extensions.swift in Sources */,
 				FA905DF4229E022E00F4D20E /* Double+Extensions.swift in Sources */,
@@ -703,6 +742,7 @@
 				FA45692722E6953100C0971B /* RSportsService.swift in Sources */,
 				FA8B55F422AAF6C1000BE939 /* CreditCardValidator.swift in Sources */,
 				FA905DEE229DFA5000F4D20E /* UIViewController+Extensions.swift in Sources */,
+				FAB1E10D233D120B001E88F1 /* TimeDetalhesController.swift in Sources */,
 				FA8B55F822AAF8D0000BE939 /* ConfirmacaoController.swift in Sources */,
 				FAA62195229CB0D300688353 /* QuadraDetailController.swift in Sources */,
 				FA7D48C32337D5290044D85D /* TimesController.swift in Sources */,

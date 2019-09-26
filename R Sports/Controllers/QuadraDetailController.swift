@@ -23,6 +23,7 @@ class QuadraDetailController: UIViewController {
     @IBOutlet weak var btnReservarTime: UIButton!
     
     var selectedQuadra: QuadraDTO!
+    var selectedTime: TimeDTO?
     let refDate = Date()
     var servicos = [ServicoQuadra]()
     var imagens = [UIImage]()
@@ -101,6 +102,12 @@ class QuadraDetailController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let contrl = segue.destination as? CriarReservaController {
             contrl.quadra = selectedQuadra
+            
+            if let time = selectedTime {
+                contrl.time = time
+            }
+        } else if let contrl = segue.destination as? MapController {
+            contrl.quadra = selectedQuadra
         }
     }
     
@@ -109,7 +116,7 @@ class QuadraDetailController: UIViewController {
     }
     
     @IBAction func btnSoloClick(_ sender: Any) {
-        let alert = UIAlertController(title: "Reservar Sozinho", message: "Essa opção permite que a reserva feita integralmente no seu nome. Não se preocupe, você poderá convidar participantes após a criação da reserva.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Reservar Sozinho", message: "Essa opção permite que a reserva feita integralmente no seu nome. Não se preocupe, você poderá convidar participantes após a criação da reserva.", preferredStyle: .actionSheet)
         
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) in
             self.performSegue(withIdentifier: "DetailToReserveSegue", sender: nil)
@@ -121,7 +128,27 @@ class QuadraDetailController: UIViewController {
     }
     
     @IBAction func btnTimeClick(_ sender: Any) {
-        //TODO DIALOG TIME
+        let alert = UIAlertController(title: "Reservar com Time", message: "Selecione o time que você gostaria de convidar para jogar:", preferredStyle: .alert)
+        
+        for time in SharedSession.shared.currentUser?.times ?? [:] {
+            alert.addAction(UIAlertAction(title: time.key, style: .default, handler: { [weak self] (_) in
+                
+                self?.view.startLoading()
+                FirebaseService.getTime(docID: time.value, success: { (selectTime) in
+                    self?.view.stopLoading()
+                    
+                    self?.selectedTime = selectTime
+                    self?.performSegue(withIdentifier: "DetailToReserveSegue", sender: nil)
+                }) {
+                    AlertsHelper.showErrorMessage(message: "Não foi possivel baixar as informações do seu time. Por favor, tente novamente.")
+                }
+
+            }))
+        }
+
+        alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

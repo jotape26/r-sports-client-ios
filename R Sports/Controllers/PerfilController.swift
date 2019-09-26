@@ -15,6 +15,8 @@ class PerfilController: UIViewController {
     @IBOutlet weak var txtNome: UILabel!
     @IBOutlet weak var txtPosicao: UILabel!
     @IBOutlet weak var txtTotalJogos: UITextField!
+    @IBOutlet weak var txtTotalGols: UILabel!
+    @IBOutlet weak var txtTotalAssists: UILabel!
     
     //Image
     @IBOutlet weak var userImage: UIImageView!
@@ -63,7 +65,17 @@ class PerfilController: UIViewController {
     }
     
     func updateValores(){
-        self.userImage.image = FilesManager.getProfilePicFromDisk()
+        
+        if let fileImage = FilesManager.getProfilePicFromDisk() {
+            self.userImage.image = fileImage
+        } else {
+            FirebaseService.getUserImage(number: user?.telefone ?? "", success: { (serverImage) in
+                self.userImage.image = serverImage
+                FilesManager.saveImageToDisk(image: serverImage)
+            }) {
+                self.userImage.image = UIImage(named: "generic-profile")
+            }
+        }
         
         if let dt = self.user?.idade {
             let form = DateComponentsFormatter()
@@ -99,7 +111,11 @@ class PerfilController: UIViewController {
         
         self.txtNome.text = self.user?.nome
         self.txtPosicao.text = self.user?.posicao
-        self.txtTotalJogos.text = "\(self.user?.totalJogos?.description ?? "0") jogos"
+        self.txtTotalJogos.text = "\(self.user?.reservas?.count ?? 0) jogos."
+        
+        self.txtTotalGols.text = "\(self.user?.gols ?? 0) gols."
+        
+        self.txtTotalAssists.text = "\(self.user?.gols ?? 0) assists."
         
         self.view.stopLoading()
         self.infoTable.reloadData()
@@ -116,12 +132,18 @@ extension PerfilController: UITableViewDelegate, UITableViewDataSource {
         if informacoesData.isEmpty {
             return 0
         } else {
-            return informacoesData.count + 1
+            return 6
         }
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard indexPath.row <= 5 else {
+            let cell = UITableViewCell()
+            cell.backgroundColor = .clear
+            return cell
+        }
         
         if indexPath.row != 5 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DadosUsuarioCell", for: indexPath) as! DadosUsuarioCell

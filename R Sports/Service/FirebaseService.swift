@@ -128,18 +128,36 @@ class FirebaseService {
     
     static func getUserTimes(success: @escaping([TimeDTO])->()) {
         var times = [TimeDTO]()
-        
-        SharedSession.shared.currentUser?.times?.forEach({ (timeID) in
-            Firestore.firestore().collection("times").document(timeID).getDocument(completion: { (snap, err) in
-                if let snapData = snap?.data(), let timeDTO = TimeDTO(JSON: snapData) {
-                    timeDTO.timeID = snap?.documentID
-                    times.append(timeDTO)
-                    
-                    if times.count == SharedSession.shared.currentUser!.times!.count {
-                        success(times)
+        if SharedSession.shared.currentUser?.times?.isEmpty ?? true {
+            success(times)
+        } else {
+            for time in SharedSession.shared.currentUser?.times ?? [:] {
+                Firestore.firestore().collection("times").document(time.value).getDocument(completion: { (snap, err) in
+                    if let snapData = snap?.data(), let timeDTO = TimeDTO(JSON: snapData) {
+                        timeDTO.timeID = snap?.documentID
+                        times.append(timeDTO)
+                        
+                        if times.count == SharedSession.shared.currentUser!.times!.count {
+                            success(times)
+                        }
                     }
-                }
-            })
+                })
+            }
+        }
+    }
+    
+    static func getTime(docID: String,
+                        success: @escaping(TimeDTO)->(),
+                        failure: @escaping()->()) {
+
+        
+        Firestore.firestore().collection("times").document(docID).getDocument(completion: { (snap, err) in
+            if let snapData = snap?.data(), let timeDTO = TimeDTO(JSON: snapData) {
+                timeDTO.timeID = snap?.documentID
+                success(timeDTO)
+            } else {
+                failure()
+            }
         })
     }
     
@@ -183,7 +201,7 @@ class FirebaseService {
         }
     }
     
-    static func createReserva(reserva : ReservaDTO,
+    static func createReserva(reserva : CriacaoReservaDTO,
                               success : @escaping()->(),
                               failure : @escaping()->()) {
         
@@ -194,7 +212,6 @@ class FirebaseService {
                     failure()
                 } else {
                     RSportsService.processNewReservation(reservaID: reservaDocument.documentID)
-//                    FirebaseService.addReservaToUser(reservaID: reservaDocument.documentID)
                     success()
                 }
             }
@@ -287,10 +304,10 @@ class FirebaseService {
         }
     }
     
-    static func getUserImage(path: String,
+    static func getUserImage(number: String,
                               success: @escaping(UIImage)->(),
                               failure: @escaping()->()){
-        Storage.storage().reference(withPath: path).getData(maxSize: 1 * 4096 * 4096) { (data, err) in
+        Storage.storage().reference(withPath: "userImages/\(number)/profilePic.jpg").getData(maxSize: 1 * 4096 * 4096) { (data, err) in
             if let err = err {
                 print("Error downloading image: \(err)")
             } else if let data = data {

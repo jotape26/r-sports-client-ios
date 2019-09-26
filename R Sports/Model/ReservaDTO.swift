@@ -8,7 +8,63 @@
 
 import Foundation
 import Firebase
+import FirebaseFirestore
 import ObjectMapper
+
+class CriacaoReservaDTO {
+    var quadra: QuadraDTO!
+    var data: Date!
+    var duracao: Int!
+    var time: TimeDTO?
+    
+    init(quadra: QuadraDTO, data: Date, duracao: Int) {
+        self.quadra = quadra
+        self.data = data
+        self.duracao = duracao
+    }
+    
+    func getExportData() -> [String : Any] {
+        
+        guard let dataHora = data else { return [:] }
+        guard let donoQuadraID = quadra?.donoQuadraID else { return [:] }
+        guard let quadraID = quadra?.documentID else { return [:] }
+        guard let user = FirebaseService.getDocumentReference() else { return [:] }
+        guard let nome = quadra?.nome else { return [:] }
+        guard let preco = quadra?.getTodayPrice() else { return [:] }
+        
+        var exportData = [String : Any]()
+        if let selTime = time {
+            
+            let valor = preco / Double(selTime.getJogadoresConfirmedNumber())
+            
+            exportData = ["dataHora" : dataHora,
+                          "duracao" : duracao!,
+                          "donoQuadraID" : donoQuadraID,
+                          "quadraID" : quadraID,
+                          "primeiroJogador" : user,
+                          "timeID" : selTime.timeID!,
+                          "singlePayer" : false,
+                          "status" : "Pendente",
+                          "valorTotal" : preco,
+                          "valorPago": valor,
+                          "nomeQuadra" : nome]
+        } else {
+            exportData = ["dataHora" : dataHora,
+                          "duracao" : duracao!,
+                          "donoQuadraID" : donoQuadraID,
+                          "quadraID" : quadraID,
+                          "primeiroJogador" : user,
+                          "timeID" : "",
+                          "singlePayer" : true,
+                          "status" : "Pago",
+                          "valorTotal" : preco,
+                          "valorPago": preco,
+                          "nomeQuadra" : nome]
+        }
+        
+        return exportData
+    }
+}
 
 class ReservaDTO: ImmutableMappable {
     
@@ -35,43 +91,4 @@ class ReservaDTO: ImmutableMappable {
     func getJogadores() -> [UserDTO] {
         return jogadores ?? []
     }
-    
-    func getExportData() -> [String : Any] {
-        
-        guard let dataHora = data else { return [:] }
-        guard let donoQuadraID = quadra?.donoQuadraID else { return [:] }
-        guard let quadraID = quadra?.documentID else { return [:] }
-        guard let user = FirebaseService.getDocumentReference() else { return [:] }
-        guard let nome = quadra?.nome else { return [:] }
-        guard let preco = quadra?.getTodayPrice() else { return [:] }
-        let valor = preco / Double(jogadores!.count)
-
-        var exportData : [String : Any] = ["dataHora" : dataHora,
-                                           "donoQuadraID" : donoQuadraID,
-                                           "quadraID" : quadraID,
-                                           "duracao" : 1,
-                                           "primeiroJogador" : user,
-                                           "status" : "Pendente",
-                                           "valorTotal" : preco,
-                                           "valorPago": valor,
-                                           "nomeQuadra" : nome]
-        
-        var jogadorData = [[String : Any]]()
-        jogadores?.forEach { (jogador) in
-            if jogador.telefone! == FirebaseService.getCurrentUser()!.phoneNumber! {
-                jogadorData.append(["statusPagamento": true,
-                                    "user" : user,
-                                    "valorAPagar" : valor,
-                                    "userName" : jogador.nome!])
-            } else {
-                jogadorData.append(["telefoneTemp" : jogador.telefone!,
-                                    "statusPagamento" : false])
-            }
-        }
-        
-        exportData.updateValue(jogadorData, forKey: "jogadores")
-        
-        return exportData
-    }
-    
 }

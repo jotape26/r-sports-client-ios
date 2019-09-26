@@ -9,6 +9,21 @@
 import UIKit
 import ObjectMapper
 
+class EstatisticaDTO {
+    var jogador: JogadorTimeDTO?
+    var gols: Int?
+    var assistencias: Int?
+}
+
+class PartidaDTO {
+    var reserva: ReservaDTO?
+    var estatisticas: [EstatisticaDTO]?
+}
+
+protocol ImageObserver {
+    func didFinishDownloading()
+}
+
 class TimeDTO: ImmutableMappable {
     
     init(){}
@@ -17,14 +32,38 @@ class TimeDTO: ImmutableMappable {
         nome = try? map.value("nome")
         jogadores = try? map.value("jogadores")
         partidas = try? map.value("partidas")
+        
+        jogadores?.sort(by: { (jog1, jog2) -> Bool in
+            if jog1.pendente == false || jog2.pendente == true {
+                return true
+            }
+            return false
+        })
+        
+        criadorName = try? map.value("criadorName")
     }
     
     var nome: String?
     var jogadores: [JogadorTimeDTO]?
     var partidas: [String]?
     var timeID : String?
+    var timeImage: UIImage? {
+        didSet {
+            observers.forEach { (observer) in
+                observer.didFinishDownloading()
+            }
+        }
+    }
+    
+    var isDownloadingImage = false
+    var observers = [ImageObserver]()
+    
+    var criadorName: String?
     
     func getCreationData() -> [String: Any] {
+        
+        var params : [String: Any] =  ["nome" : self.nome ?? "",
+        "partidas": []]
         
         var jogadoresArr = [[String:Any]]()
         
@@ -36,6 +75,10 @@ class TimeDTO: ImmutableMappable {
                 jog.updateValue(phone, forKey: "telefone")
                 jog.updateValue(nome, forKey: "nome")
                 jog.updateValue(false, forKey: "pendente")
+                
+                params.updateValue(nome, forKey: "criadorName")
+                params.updateValue(phone, forKey: "criadorNumber")
+                
             } else {
                 if let phone = jogador.telefone {
                     jog.updateValue(phone, forKey: "telefone")
@@ -48,12 +91,33 @@ class TimeDTO: ImmutableMappable {
             }
         }
         
-        
-        let params : [String: Any] =  ["nome" : self.nome ?? "",
-                                       "partidas": [],
-                                       "jogadores" : jogadoresArr]
+        params.updateValue(jogadoresArr, forKey: "jogadores")
         
         return params
+    }
+    
+    
+    func getImage(saveCallback: @escaping(UIImage)->()) {
+        self.isDownloadingImage = true
+        FirebaseService.getTimeImage(docID: timeID ?? "", success: { (image) in
+            self.isDownloadingImage = false
+            self.timeImage = image
+            saveCallback(image)
+        }) {}
+    }
+    
+    func getJogadoresConfirmed() -> String {
+        let jog = self.jogadores?.filter({$0.pendente == false}).count ?? 1
+        
+        if jog == 1 {
+            return "1 Jogador"
+        } else {
+            return "\(jog) Jogadores"
+        }
+    }
+    
+    func getJogadoresConfirmedNumber() -> Int {
+        return self.jogadores?.filter({$0.pendente == false}).count ?? 1
     }
 }
 
@@ -62,6 +126,9 @@ class JogadorTimeDTO: ImmutableMappable {
     var telefone : String?
     var pendente: Bool = true
     var docRef : String?
+    var golsNoTime: Int?
+    var assistsNoTime: Int?
+    var partidasNoTime: Int?
     
     init() {}
     
@@ -70,5 +137,8 @@ class JogadorTimeDTO: ImmutableMappable {
         telefone = try? map.value("telefone")
         pendente = (try? map.value("pendente")) ?? true
         docRef = try map.value("documentID")
+        golsNoTime = try? map.value("golsNoTime")
+        assistsNoTime = try? map.value("assistsNoTime")
+        partidasNoTime = try? map.value("partidasNoTime")
     }
 }

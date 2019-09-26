@@ -10,13 +10,25 @@ import Foundation
 import Alamofire
 
 class RSportsService {
+    
+    static func createNewTime(timeID : String,
+                            success : @escaping()->()) {
+        
+        let parameters = ["timeID" : timeID]
+        
+        Alamofire.request("https://r-sports-services.herokuapp.com/createNewTeam", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseString { (dataRes) in
+            print(dataRes.data?.description as Any)
+            success()
+        }
+    }
+    
     static func notifyUsers(reservaID : String,
                             success : @escaping()->()) {
         
         let parameters = ["documentID" : reservaID]
         
         Alamofire.request("https://r-sports-services.herokuapp.com/notifyUsers", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseString { (dataRes) in
-            print(dataRes.data?.description as? Any)
+            print(dataRes.data?.description as Any)
             success()
         }
     }
