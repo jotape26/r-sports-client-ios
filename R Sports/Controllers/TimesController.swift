@@ -18,6 +18,8 @@ class TimesController: UIViewController {
     @IBOutlet weak var timesTable: UITableView!
     @IBOutlet weak var btnCriarTime: UIButton!
     
+//    fileprivate var btnCriarOnNav: UIBarButtonItem =
+    
     var times = [TimeDTO]()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,11 +28,10 @@ class TimesController: UIViewController {
         btnCriarTime.layer.cornerRadius = 5.0
         
         timesTable.register(UINib(nibName: "TimesCell", bundle: nil), forCellReuseIdentifier: "TimesCell")
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.topViewController?.navigationItem.rightBarButtonItem = nil
+        self.navigationController?.topViewController?.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "group-icon"), style: .plain, target: self, action: #selector(clickTime))
         validateTimes()
     }
     
@@ -39,24 +40,29 @@ class TimesController: UIViewController {
     }
     
     fileprivate func validateTimes() {
-        if !(SharedSession.shared.currentUser?.times?.isEmpty ?? true) {
-            alertView.isHidden = false
-            self.view.startLoading()
-            FirebaseService.getUserTimes { (userTimes) in
-                self.view.stopLoading()
-                self.times = userTimes
+        FirebaseService.getUserTimes { (userTimes) in
+            self.view.stopLoading()
+            self.times.removeAll()
+            self.times = userTimes
+            
+            if self.times.isEmpty {
+                self.alertView.isHidden = false
+            } else {
                 self.timesTable.reloadData()
             }
-        } else {
-            alertView.isHidden = false
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let contrl = segue.destination as? CriarTimeController {
-            
+            contrl.updateDelegate = self
         }
     }
+    
+    @objc func clickTime() {
+        criarTimesClick(self)
+    }
+    
 
 }
 
@@ -67,6 +73,23 @@ extension TimesController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TimesCell") as! TimesCell
+        cell.prepareForReuse()
+        
+        let currentTeam = times[indexPath.row]
+        
+        cell.lblNome.text = currentTeam.nome
+        
+        let nOfPlayers = currentTeam.jogadores?.filter({$0.pendente == false}).count ?? 0
+        
+        if nOfPlayers == 1 {
+            cell.lblJogadores.text = "\(nOfPlayers) jogador."
+        } else {
+            cell.lblJogadores.text = "\(nOfPlayers) jogadores."
+        }
+        
+        
+        cell.getTimeImage(docID: currentTeam.timeID ?? "")
+
         return cell
     }
 }

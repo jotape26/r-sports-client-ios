@@ -204,7 +204,7 @@ class FirebaseService {
     }
     
     static func createTime(time : TimeDTO,
-                           brasao: UIImage,
+                           brasao: UIImage?,
                            success : @escaping(String)->(),
                            failure : @escaping()->()) {
         
@@ -217,10 +217,22 @@ class FirebaseService {
         let document = Firestore.firestore().collection("times").document()
         
         
-        FirebaseService.setTimeImage(docID: document.documentID, brasao: brasao, success: {
+        if let brasao = brasao {
+            FirebaseService.setTimeImage(docID: document.documentID, brasao: brasao, success: {
 
-            data.updateValue("brasaoTime.jpg", forKey: "imagemBrasao")
-            
+                data.updateValue("brasaoTime.jpg", forKey: "imagemBrasao")
+                
+                document.setData(data) { (err) in
+                    if err != nil {
+                        failure()
+                    } else {
+                        success(document.documentID)
+                    }
+                }
+            }) {
+                failure()
+            }
+        } else {
             document.setData(data) { (err) in
                 if err != nil {
                     failure()
@@ -228,9 +240,8 @@ class FirebaseService {
                     success(document.documentID)
                 }
             }
-        }) {
-            failure()
         }
+        
     }
     
     //MARK: - Storage Methods
@@ -248,10 +259,24 @@ class FirebaseService {
         }
     }
     
+    static func getTimeImage(docID: String,
+                              success: @escaping(UIImage)->(),
+                              failure: @escaping()->()){
+        Storage.storage().reference(withPath: "timesImages/\(docID)/brasaoTime.jpg").getData(maxSize: 1 * 4096 * 4096) { (data, err) in
+            if let err = err {
+                print("Error downloading image: \(err)")
+            } else if let data = data {
+                if let courtImage = UIImage(data: data) {
+                    success(courtImage)
+                }
+            }
+        }
+    }
+    
     static func getCourtImage(path: String,
                               success: @escaping(UIImage)->(),
                               failure: @escaping()->()){
-        Storage.storage().reference(withPath: path).getData(maxSize: 1 * 2048 * 2048) { (data, err) in
+        Storage.storage().reference(withPath: path).getData(maxSize: 1 * 4096 * 4096) { (data, err) in
             if let err = err {
                 print("Error downloading image: \(err)")
             } else if let data = data {
@@ -265,7 +290,7 @@ class FirebaseService {
     static func getUserImage(path: String,
                               success: @escaping(UIImage)->(),
                               failure: @escaping()->()){
-        Storage.storage().reference(withPath: path).getData(maxSize: 1 * 2048 * 2048) { (data, err) in
+        Storage.storage().reference(withPath: path).getData(maxSize: 1 * 4096 * 4096) { (data, err) in
             if let err = err {
                 print("Error downloading image: \(err)")
             } else if let data = data {

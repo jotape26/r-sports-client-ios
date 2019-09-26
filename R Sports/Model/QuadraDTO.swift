@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseFirestore
 import ObjectMapper
 import CoreLocation
 
@@ -51,7 +52,7 @@ class QuadraDTO : ImmutableMappable {
         self.numeroEndereco = try? map.value("number")
         self.cidade = try? map.value("cidade")
         self.rating = try? map.value("rating")
-        self.preco = try? map.value("preco")
+        self.preco = try? map.value("precos")
         self.imagens = try? map.value("imagens")
         self.servicos = try? map.value("servicos")
         self.donoQuadraID = try? map.value("userId")
@@ -66,6 +67,6 @@ class QuadraDTO : ImmutableMappable {
     
     func getTodayPrice() -> Double? {
         let cal = Calendar.current
-        return preco?[cal.component(.day, from: Date()) - 1]
+        return preco?[cal.component(.weekday, from: Date()) - 1]
     }
 }

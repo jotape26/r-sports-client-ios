@@ -14,13 +14,13 @@ import Cosmos
 
 class QuadraDetailController: UIViewController {
     
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var calendarView: FSCalendar!
     @IBOutlet weak var imagensQuadra: ImageSlideshow!
     @IBOutlet weak var servicosCollection: UICollectionView!
     @IBOutlet weak var lbNome: UILabel!
     @IBOutlet weak var ratingView: CosmosView!
     @IBOutlet weak var btnEndereco: UIButton!
+    @IBOutlet weak var btnReservarSolo: UIButton!
+    @IBOutlet weak var btnReservarTime: UIButton!
     
     var selectedQuadra: QuadraDTO!
     let refDate = Date()
@@ -45,15 +45,16 @@ class QuadraDetailController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        calendarView.tintColor = AppConstants.ColorConstants.defaultGreen
-        calendarView.select(nil)
-        calendarView.delegate = self
+//        calendarView.tintColor = AppConstants.ColorConstants.defaultGreen
+//        calendarView.select(nil)
+//        calendarView.delegate = self
         
         imagensQuadra.contentScaleMode = .scaleAspectFill
         imagensQuadra.slideshowInterval = 3.0
         
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: 800)
-        
+        btnReservarSolo.layer.cornerRadius = 5.0
+        btnReservarTime.layer.cornerRadius = 5.0
+
         lbNome.text = selectedQuadra.nome
         ratingView.rating = selectedQuadra.rating ?? 5.0
         
@@ -98,53 +99,62 @@ class QuadraDetailController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? MapController {
-            vc.quadra = selectedQuadra
-        } else if let vc = segue.destination as? CriarReservaController {
-            if let data = calendarView.selectedDate {
-                vc.reserva = ReservaDTO(quadra: selectedQuadra, data: data)
-                calendarView.deselect(data)
-            }
-        } else if let vc = segue.destination as? QuadraServicosController {
-            vc.quadra = selectedQuadra
+        if let contrl = segue.destination as? CriarReservaController {
+            contrl.quadra = selectedQuadra
         }
     }
     
     @IBAction func btnEnderecoClick(_ sender: Any) {
         performSegue(withIdentifier: "DetailToMapSegue", sender: nil)
     }
+    
+    @IBAction func btnSoloClick(_ sender: Any) {
+        let alert = UIAlertController(title: "Reservar Sozinho", message: "Essa opção permite que a reserva feita integralmente no seu nome. Não se preocupe, você poderá convidar participantes após a criação da reserva.", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) in
+            self.performSegue(withIdentifier: "DetailToReserveSegue", sender: nil)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func btnTimeClick(_ sender: Any) {
+        //TODO DIALOG TIME
+    }
 }
 
-extension QuadraDetailController: FSCalendarDelegate, FSCalendarDelegateAppearance {
-    
-    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
-        if Calendar.current.isDateInToday(date) {
-            return .white
-        } else {
-            if date < Date() {
-                return .lightGray
-            } else {
-                return .black
-            }
-        }
-    }
-    
-    func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
-        if Calendar.current.isDateInToday(date) || date > Date() {
-            return true
-        } else {
-            AlertsHelper.showErrorMessage(message: "Data Invalida")
-            return false
-        }
-    }
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        
-        if Calendar.current.isDateInToday(date) || date > Date(){
-            calendarView.select(Date(), scrollToDate: true)
-            performSegue(withIdentifier: "DetailToReserveSegue", sender: nil)
-        }
-    }
-}
+//extension QuadraDetailController: FSCalendarDelegate, FSCalendarDelegateAppearance {
+//
+//    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
+//        if Calendar.current.isDateInToday(date) {
+//            return .white
+//        } else {
+//            if date < Date() {
+//                return .lightGray
+//            } else {
+//                return .black
+//            }
+//        }
+//    }
+//
+//    func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
+//        if Calendar.current.isDateInToday(date) || date > Date() {
+//            return true
+//        } else {
+//            AlertsHelper.showErrorMessage(message: "Data Invalida")
+//            return false
+//        }
+//    }
+//    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+//
+//        if Calendar.current.isDateInToday(date) || date > Date(){
+//            calendarView.select(Date(), scrollToDate: true)
+//            performSegue(withIdentifier: "DetailToReserveSegue", sender: nil)
+//        }
+//    }
+//}
 
 extension QuadraDetailController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

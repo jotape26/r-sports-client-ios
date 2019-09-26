@@ -26,7 +26,7 @@ class TimeDTO: ImmutableMappable {
     
     func getCreationData() -> [String: Any] {
         
-        var jogadoresArr : [[String:Any]] = [[:]]
+        var jogadoresArr = [[String:Any]]()
         
         for (index, jogador) in (jogadores ?? []).enumerated() {
             var jog : [String : Any] = [:]

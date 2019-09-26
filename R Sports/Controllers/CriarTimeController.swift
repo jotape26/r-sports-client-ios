@@ -22,6 +22,7 @@ class CriarTimeController: UIViewController {
     var jogadores = [JogadorTimeDTO]()
     var genericImage = UIImage(named: "genericProfile")
     var updateDelegate : TimesUpdateDelegate?
+    var forceNoImage = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,19 +41,30 @@ class CriarTimeController: UIViewController {
         txtNomeTime.delegate = self
         
         btnCriarTime.layer.cornerRadius = 5.0
-        imgBrasao.setRounded()
         imgBrasao.image = genericImage
+        imgBrasao.setRounded()
         imgBrasao.layer.borderWidth = 5.0
         imgBrasao.layer.borderColor = AppConstants.ColorConstants.highlightGreen.cgColor
     }
-    
     @IBAction func btnCriarClick(_ sender: Any) {
         guard let nome = txtNomeTime.text else {
             txtNomeTime.setTextInvalid()
             return
         }
-        guard let image = imgBrasao.image, image != genericImage else {
-            //TODO IMAGE ERROR
+        
+        if imgBrasao.image != genericImage || !forceNoImage  {
+            let alert = UIAlertController(title: "Atenção", message: "Deseja criar um time sem definir uma imagem de perfil?", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Sim", style: .default, handler: { (act) in
+                self.forceNoImage = true
+                self.btnCriarClick(act)
+            }))
+            alert.addAction(UIAlertAction(title: "Não", style: .default, handler: { (act) in
+                
+            }))
+            
+            DispatchQueue.main.async {
+                self.present(alert, animated: true, completion: nil)
+            }
             return
         }
         
@@ -62,7 +74,7 @@ class CriarTimeController: UIViewController {
         
         self.view.startLoading()
         FirebaseService.createTime(time: time,
-                                   brasao: image, success: { docID in
+                                   brasao: imgBrasao.image, success: { docID in
                                     SharedSession.shared.currentUser?.times?.append(docID)
                                     FirebaseService.setUserData(data: ["times" : SharedSession.shared.currentUser?.times ?? []])
                                     self.view.stopLoading()
@@ -70,7 +82,7 @@ class CriarTimeController: UIViewController {
                                         self.updateDelegate?.didUpdateTimes()
                                     })
         }) {
-            //TODO ERROR
+            AlertsHelper.showErrorMessage(message: "Ocorreu uma falha de comunicação com nossos servidores. Por favor, tente novamente.")
         }
     }
     
@@ -98,6 +110,8 @@ class CriarTimeController: UIViewController {
                 let jogador = JogadorTimeDTO()
                 jogador.telefone = "+\(phoneNumber)"
                 jogadores.append(jogador)
+                
+                txtTelefone.text == "55"
                 
                 DispatchQueue.main.async {
                     self.tableJogadores.reloadData()

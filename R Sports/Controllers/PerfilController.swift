@@ -29,7 +29,7 @@ class PerfilController: UIViewController {
     }
     
     var informacoesTitle = ["Idade", "Celular", "E-mail", "Competitividade", "Procura Jogos Abertos?"]
-    
+    var imgs = ["birthday-icon", "phone-icon", "email-icon", "battle-icon", "group-icon-large"]
     var informacoesData = [String]()
     
     override func viewDidLoad() {
@@ -128,6 +128,7 @@ extension PerfilController: UITableViewDelegate, UITableViewDataSource {
             
             cell.lbTitulo.text = informacoesTitle[indexPath.row]
             cell.lbDetalhe.text = informacoesData[indexPath.row]
+            cell.imgIcon.image = UIImage(named: imgs[indexPath.row])
             
             return cell
         } else {
@@ -138,6 +139,7 @@ extension PerfilController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    
     
     
 }

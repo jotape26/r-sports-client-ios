@@ -26,4 +26,19 @@ class TimesCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imgTime.setRounded()
+        imgTime.layer.borderWidth = 5.0
+        imgTime.layer.borderColor = AppConstants.ColorConstants.highlightGreen.cgColor
+    }
+    
+    func getTimeImage(docID: String) {
+        FirebaseService.getTimeImage(docID: docID, success: { (image) in
+            self.imgTime.image = image
+        }) {
+            self.imgTime.image = UIImage(named: "group-icon-large")
+        }
+    }
+    
 }
