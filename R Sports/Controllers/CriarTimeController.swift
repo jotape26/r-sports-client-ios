@@ -76,13 +76,13 @@ class CriarTimeController: UIViewController {
         FirebaseService.createTime(time: time,
                                    brasao: imgBrasao.image, success: { docID in
                                     RSportsService.createNewTime(timeID: docID) {
-                                        SharedSession.shared.currentUser?.times?.updateValue(docID, forKey: nome)
-                                        FirebaseService.setUserData(data: ["times" : SharedSession.shared.currentUser?.times ?? [:]])
-                                        self.view.stopLoading()
-                                        DispatchQueue.main.async {
-                                            self.dismiss(animated: true, completion: {
-                                                self.updateDelegate?.didUpdateTimes()
-                                            })
+                                        SharedSession.shared.reloadUser {
+                                            DispatchQueue.main.async {
+                                                self.view.stopLoading()
+                                                self.dismiss(animated: true, completion: {
+                                                    self.updateDelegate?.didUpdateTimes()
+                                                })
+                                            }
                                         }
                                     }
                                     

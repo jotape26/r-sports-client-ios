@@ -26,6 +26,7 @@ class TimeDetalhesController: UIViewController {
         // Do any additional setup after loading the view.
         
         tbDetalhes.register(UINib(nibName: "JogadorTimeCell", bundle: nil), forCellReuseIdentifier: "JogadorTimeCell")
+        tbDetalhes.register(UINib(nibName: "PartidaCell", bundle: nil), forCellReuseIdentifier: "PartidaCell")
         
         lblNomeTime.text = selectedTime.nome
         lblJogadores.text = selectedTime.getJogadoresConfirmed()
@@ -50,31 +51,51 @@ class TimeDetalhesController: UIViewController {
 extension TimeDetalhesController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if segmentTipoEstatistica.selectedSegmentIndex == 0 {
-            return 0
+            return selectedTime.partidas?.count ?? 0
         } else {
             return selectedTime.jogadores?.count ?? 0
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "JogadorTimeCell") as! JogadorTimeCell
-        cell.prepareForReuse()
         
-        let jogador = selectedTime.jogadores?[indexPath.row]
-        
-        if jogador?.pendente ?? true {
-            cell.txtNome.text = jogador?.telefone
-            cell.playerStillPending()
+        if segmentTipoEstatistica.selectedSegmentIndex == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PartidaCell") as! PartidaCell
+            cell.prepareForReuse()
+            
+            let partidas = selectedTime.partidas?[indexPath.row]
+            
+            cell.txtNomeQuadra.text = partidas?.quadraObj?.nome
+            cell.txtDataPartida.text = partidas?.dataHora?.formatToDefault()
+            
+            return cell
         } else {
-            cell.txtNome.text = jogador?.nome
-            cell.txtPartidas.text = (jogador?.partidasNoTime ?? 0).description
+            let cell = tableView.dequeueReusableCell(withIdentifier: "JogadorTimeCell") as! JogadorTimeCell
+            cell.prepareForReuse()
             
-            cell.txtGols.text = (jogador?.golsNoTime ?? 0).description
+            let jogador = selectedTime.jogadores?[indexPath.row]
             
-            cell.txtAssistencias.text = (jogador?.assistsNoTime ?? 0).description
+            if jogador?.pendente ?? true {
+                cell.txtNome.text = jogador?.telefone
+                cell.playerStillPending()
+            } else {
+                cell.txtNome.text = jogador?.nome
+                cell.txtPartidas.text = (jogador?.partidasNoTime ?? 0).description
+                
+                cell.txtGols.text = (jogador?.golsNoTime ?? 0).description
+                
+                cell.txtAssistencias.text = (jogador?.assistsNoTime ?? 0).description
+            }
+            
+            return cell
         }
-        
-        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if segmentTipoEstatistica.selectedSegmentIndex == 0 {
+            
+        }
     }
 }
 

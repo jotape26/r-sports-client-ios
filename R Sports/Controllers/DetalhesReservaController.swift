@@ -25,7 +25,7 @@ class DetalhesReservaController: UIViewController {
     
     @IBOutlet weak var jogadoresCollection: UICollectionView!
     
-    var loggedUserPaidStatus: Bool!
+    var loggedUserPaidStatus: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()

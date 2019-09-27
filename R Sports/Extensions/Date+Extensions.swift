@@ -19,7 +19,7 @@ public extension Date {
     
     func formatToDefault() -> String {
         let form = DateFormatter()
-        form.dateFormat = "HH:mm dd/MM/yyyy"
+        form.dateFormat = "dd/MM/yyyy HH:mm"
         return form.string(from: self)
     }
 }

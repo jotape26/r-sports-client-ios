@@ -54,12 +54,18 @@
                                 <state key="normal" title="Recusar">
                                     <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="recusarClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="z4r-PU-e9j"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAc-2d-a9q">
                                 <rect key="frame" x="160.5" y="0.0" width="140.5" height="51"/>
                                 <state key="normal" title="Aceitar">
                                     <color key="titleColor" red="0.078431372550000003" green="0.46274509800000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="aceitarClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8ou-Hx-E4H"/>
+                                </connections>
                             </button>
                         </subviews>
                     </stackView>

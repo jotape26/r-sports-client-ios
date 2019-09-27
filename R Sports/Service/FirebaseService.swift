@@ -103,6 +103,7 @@ class FirebaseService {
             } else {
                 guard let userData = snap?.data() else { return }
                 guard let user = UserDTO(JSON: userData) else { return }
+                user.telefone = uid
                 success(user)
             }
         }
@@ -124,6 +125,28 @@ class FirebaseService {
             })
         })
         
+    }
+    
+    static func getReservation(reserva: String,
+                               success: @escaping(ReservaListaDTO)->()) {
+        
+        Firestore.firestore().collection("reservas").document(reserva).getDocument(completion: { (snap, err) in
+            if let snapData = snap?.data(), let resDTO = ReservaListaDTO(JSON: snapData) {
+                resDTO.docID = snap?.documentID
+                success(resDTO)
+            }
+        })
+    }
+    
+    static func getCourt(quadra: String,
+                         success: @escaping(QuadraDTO)->()) {
+        
+        Firestore.firestore().collection("quadras").document(quadra).getDocument(completion: { (snap, err) in
+            if let snapData = snap?.data(), let resDTO = QuadraDTO(JSON: snapData) {
+                resDTO.documentID = snap?.documentID
+                success(resDTO)
+            }
+        })
     }
     
     static func getUserTimes(success: @escaping([TimeDTO])->()) {

@@ -36,6 +36,8 @@ class TimesController: UIViewController {
         let btn = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(clickTime))
         
         self.navigationController?.topViewController?.navigationItem.rightBarButtonItem = btn
+        
+        validateTimes()
     }
     
     @IBAction func criarTimesClick(_ sender: Any) {
@@ -43,6 +45,7 @@ class TimesController: UIViewController {
     }
     
     fileprivate func validateTimes() {
+        self.alertView.isHidden = true
         FirebaseService.getUserTimes { (userTimes) in
             self.view.stopLoading()
             self.times.removeAll()

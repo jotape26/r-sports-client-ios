@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestore
 import ObjectMapper
 
 class EstatisticaDTO {
@@ -15,9 +17,24 @@ class EstatisticaDTO {
     var assistencias: Int?
 }
 
-class PartidaDTO {
-    var reserva: ReservaDTO?
-    var estatisticas: [EstatisticaDTO]?
+class PartidaDTO: ImmutableMappable {
+    required init(map: Map) throws {
+        reserva = try? map.value("reserva")
+        dataHora = try? map.value("data")
+        quadraID = try? map.value("quadra")
+        
+        if let quadraID = quadraID {
+            FirebaseService.getCourt(quadra: quadraID) { (quad) in
+                self.quadraObj = quad
+            }
+        }
+    }
+    
+    var reserva: DocumentReference?
+    var quadraID: String?
+    var quadraObj: QuadraDTO?
+    var dataHora: Date?
+
 }
 
 protocol ImageObserver {
@@ -45,7 +62,7 @@ class TimeDTO: ImmutableMappable {
     
     var nome: String?
     var jogadores: [JogadorTimeDTO]?
-    var partidas: [String]?
+    var partidas: [PartidaDTO]?
     var timeID : String?
     var timeImage: UIImage? {
         didSet {
@@ -75,6 +92,8 @@ class TimeDTO: ImmutableMappable {
                 jog.updateValue(phone, forKey: "telefone")
                 jog.updateValue(nome, forKey: "nome")
                 jog.updateValue(false, forKey: "pendente")
+                jog.updateValue(0, forKey: "golsNoTime")
+                jog.updateValue(0, forKey: "assistsNoTime")
                 
                 params.updateValue(nome, forKey: "criadorName")
                 params.updateValue(phone, forKey: "criadorNumber")

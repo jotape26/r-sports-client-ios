@@ -18,7 +18,7 @@
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Hk0-IZ-TSf">
                                 <rect key="frame" x="16" y="54" width="343" height="31"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Lba-bE-DrK"/>
                                 </constraints>
@@ -27,7 +27,7 @@
                                     <segment title="Pendentes"/>
                                     <segment title="Pagos"/>
                                 </segments>
-                                <color key="tintColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="selectedSegmentTintColor" red="0.078431372550000003" green="0.46274509800000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="segmentDidChange:" destination="GJV-k0-55U" eventType="valueChanged" id="qw5-Az-gvr"/>
@@ -781,12 +781,13 @@
                                     <segment title="Partidas"/>
                                     <segment title="Jogadores"/>
                                 </segments>
+                                <color key="selectedSegmentTintColor" red="0.078431372550000003" green="0.46274509800000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="segmentChanged:" destination="ej7-FY-uWc" eventType="valueChanged" id="HUX-0h-QSG"/>
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CSr-8g-pBs">
-                                <rect key="frame" x="0.0" y="191" width="375" height="456"/>
+                                <rect key="frame" x="0.0" y="196" width="375" height="451"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="ej7-FY-uWc" id="nAc-bw-ZEk"/>
@@ -796,7 +797,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="CSr-8g-pBs" firstAttribute="top" secondItem="Ixy-Ni-RYt" secondAttribute="bottom" id="0CM-jJ-41V"/>
+                            <constraint firstItem="CSr-8g-pBs" firstAttribute="top" secondItem="Ixy-Ni-RYt" secondAttribute="bottom" constant="5" id="0CM-jJ-41V"/>
                             <constraint firstItem="mI2-0x-7mG" firstAttribute="trailing" secondItem="Q9f-rT-Sau" secondAttribute="trailing" id="4mc-jf-xmp"/>
                             <constraint firstItem="Ixy-Ni-RYt" firstAttribute="leading" secondItem="Q9f-rT-Sau" secondAttribute="leading" constant="15" id="4t4-6g-5Db"/>
                             <constraint firstItem="mI2-0x-7mG" firstAttribute="leading" secondItem="Q9f-rT-Sau" secondAttribute="leading" id="Ls7-uG-uXj"/>
@@ -846,7 +847,17 @@
                             <outlet property="delegate" destination="fdB-GI-EEz" id="Qs9-qc-ES9"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Convites" id="k5P-Ua-GAJ"/>
+                    <navigationItem key="navigationItem" title="Convites" id="k5P-Ua-GAJ">
+                        <barButtonItem key="rightBarButtonItem" title="Voltar" id="oFh-V5-o3R">
+                            <color key="tintColor" red="0.078431372550000003" green="0.46274509800000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="btnVoltarClick:" destination="fdB-GI-EEz" id="JOL-ZK-gOk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="btnVoltar" destination="oFh-V5-o3R" id="fdh-Qx-hKx"/>
+                    </connections>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="5020" y="3036"/>

@@ -24,6 +24,13 @@ class SharedSession: NSObject {
     static var shared : SharedSession = {
         return SharedSession()
     }()
+    
+    func reloadUser(done: @escaping()->()) {
+        FirebaseService.retrieveUserDatabaseRef(uid: FirebaseService.getCurrentUser()!.phoneNumber!) { (user) in
+            SharedSession.shared.currentUser = user
+            done()
+        }
+    }
 }
 
 extension SharedSession: CLLocationManagerDelegate {

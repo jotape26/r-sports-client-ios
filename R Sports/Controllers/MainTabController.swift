@@ -20,6 +20,10 @@ class MainTabController: UITabBarController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        SharedSession.shared.reloadUser(done: {})
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         self.title = tabBar.selectedItem?.title
         registerForRemoteNotification()
