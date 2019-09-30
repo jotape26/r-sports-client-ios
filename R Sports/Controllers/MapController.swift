@@ -12,6 +12,7 @@ import MapKit
 class MapController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
+    var mkMark : MKMapItem?
     
     var quadra: QuadraDTO!
     
@@ -19,10 +20,13 @@ class MapController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        mapView.delegate = self
         mapView.showsUserLocation = true
         self.title = quadra.nome
         createQuadraPin()
+    }
+    
+    @IBAction func rotaBtnClick(_ sender: Any) {
+        mkMark?.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
     }
     
     func createQuadraPin(){
@@ -33,9 +37,16 @@ class MapController: UIViewController {
         
         let manager = CLGeocoder()
         
+        self.view.startLoading()
         manager.reverseGeocodeLocation(location) { (placemarks, err) in
+            self.view.stopLoading()
             if let placemark = placemarks?.first, let center = placemark.location?.coordinate {
                 let annt = MKPlacemark(placemark: placemark)
+                
+                
+                
+                self.mkMark = MKMapItem(placemark: MKPlacemark(placemark: placemark))
+
                 self.mapView.addAnnotation(annt)
                 self.mapView.setCenter(center, animated: true)
                 self.mapView.setRegion(MKCoordinateRegion(center: annt.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)), animated: true)
@@ -50,8 +61,4 @@ class MapController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
 
-}
-
-extension MapController: MKMapViewDelegate {
-    
 }

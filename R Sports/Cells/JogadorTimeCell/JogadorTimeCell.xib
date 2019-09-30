@@ -13,18 +13,18 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="230" id="KGk-i7-Jjw" customClass="JogadorTimeCell" customModule="R_Sports" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="385" height="230"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="385" height="230"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Duy-GF-Tuu">
-                        <rect key="frame" x="15" y="10" width="355" height="125"/>
+                        <rect key="frame" x="15" y="10" width="245" height="100"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SlK-La-MuX">
-                        <rect key="frame" x="15" y="175" width="355" height="50"/>
+                        <rect key="frame" x="15" y="150" width="355" height="50"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="m8w-4v-5X2">
                                 <rect key="frame" x="0.0" y="0.0" width="355" height="50"/>
@@ -168,7 +168,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Esse jogador ainda não aceitou entrar no time." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V7V-n6-1kn">
-                        <rect key="frame" x="15" y="145" width="355" height="25"/>
+                        <rect key="frame" x="15" y="120" width="355" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="1pF-rR-1F0"/>
                         </constraints>
@@ -176,15 +176,25 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cq1-w1-bD3">
+                        <rect key="frame" x="270" y="10" width="100" height="100"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="100" id="eSo-fM-u40"/>
+                            <constraint firstAttribute="width" secondItem="cq1-w1-bD3" secondAttribute="height" multiplier="1:1" id="mJM-rD-0oA"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="V7V-n6-1kn" firstAttribute="trailing" secondItem="Duy-GF-Tuu" secondAttribute="trailing" id="0Xe-tJ-7vY"/>
                     <constraint firstAttribute="trailing" secondItem="SlK-La-MuX" secondAttribute="trailing" constant="15" id="3Br-1x-68H"/>
+                    <constraint firstItem="V7V-n6-1kn" firstAttribute="trailing" secondItem="cq1-w1-bD3" secondAttribute="trailing" id="3EE-jV-3OY"/>
+                    <constraint firstItem="cq1-w1-bD3" firstAttribute="top" secondItem="Duy-GF-Tuu" secondAttribute="top" id="3sO-0g-UBT"/>
                     <constraint firstItem="Duy-GF-Tuu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="KMx-ft-AFt"/>
                     <constraint firstItem="V7V-n6-1kn" firstAttribute="top" secondItem="Duy-GF-Tuu" secondAttribute="bottom" constant="10" id="Mwv-qo-ygx"/>
                     <constraint firstItem="SlK-La-MuX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Xes-Mx-hRR"/>
-                    <constraint firstAttribute="trailing" secondItem="Duy-GF-Tuu" secondAttribute="trailing" constant="15" id="fCt-A4-aZm"/>
+                    <constraint firstItem="cq1-w1-bD3" firstAttribute="bottom" secondItem="Duy-GF-Tuu" secondAttribute="bottom" id="dax-gg-vhV"/>
+                    <constraint firstAttribute="trailing" secondItem="cq1-w1-bD3" secondAttribute="trailing" constant="15" id="fmB-CM-sug"/>
                     <constraint firstItem="Duy-GF-Tuu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="gEw-7l-9Rb"/>
+                    <constraint firstItem="cq1-w1-bD3" firstAttribute="leading" secondItem="Duy-GF-Tuu" secondAttribute="trailing" constant="10" id="qG7-L0-Lhd"/>
                     <constraint firstItem="SlK-La-MuX" firstAttribute="top" secondItem="V7V-n6-1kn" secondAttribute="bottom" constant="5" id="rks-x5-HLI"/>
                     <constraint firstAttribute="bottom" secondItem="SlK-La-MuX" secondAttribute="bottom" constant="5" id="y2c-en-PKJ"/>
                     <constraint firstItem="V7V-n6-1kn" firstAttribute="leading" secondItem="Duy-GF-Tuu" secondAttribute="leading" id="y9o-8J-MfN"/>
@@ -192,6 +202,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="imgTrophy" destination="cq1-w1-bD3" id="86G-VP-HRQ"/>
                 <outlet property="lblDisclaimerHeight" destination="1pF-rR-1F0" id="oon-Rh-GQ1"/>
                 <outlet property="statsHeight" destination="iAB-ty-mv5" id="kxd-Rp-40r"/>
                 <outlet property="statsView" destination="SlK-La-MuX" id="p0N-vL-19j"/>

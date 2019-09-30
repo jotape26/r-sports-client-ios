@@ -284,6 +284,23 @@ class FirebaseService {
         
     }
     
+    static func getEventos(success : @escaping([EventoDTO])->()) {
+        Firestore.firestore().collection("eventos").getDocuments { (snap, err) in
+            if let docs = snap?.documents {
+                var events = [EventoDTO]()
+                
+                docs.forEach { (docSnap) in
+                    if let event = try? EventoDTO(JSON: docSnap.data()) {
+                        event.documentID = docSnap.documentID
+                        events.append(event)
+                    }
+                }
+                
+                success(events)
+            }
+        }
+    }
+    
     //MARK: - Storage Methods
     static func setTimeImage(docID: String,
                              brasao: UIImage,
@@ -303,6 +320,20 @@ class FirebaseService {
                               success: @escaping(UIImage)->(),
                               failure: @escaping()->()){
         Storage.storage().reference(withPath: "timesImages/\(docID)/brasaoTime.jpg").getData(maxSize: 1 * 4096 * 4096) { (data, err) in
+            if let err = err {
+                print("Error downloading image: \(err)")
+            } else if let data = data {
+                if let courtImage = UIImage(data: data) {
+                    success(courtImage)
+                }
+            }
+        }
+    }
+    
+    static func getEventoImage(docID: String,
+                              success: @escaping(UIImage)->(),
+                              failure: @escaping()->()){
+        Storage.storage().reference(withPath: "eventosImages/\(docID)/imgCapa.jpg").getData(maxSize: 1 * 4096 * 4096) { (data, err) in
             if let err = err {
                 print("Error downloading image: \(err)")
             } else if let data = data {

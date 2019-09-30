@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="acX-PJ-0bn">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
@@ -370,7 +370,7 @@
             <objects>
                 <viewController storyboardIdentifier="PerfilController" id="kov-vc-EUQ" customClass="PerfilController" customModule="R_Sports" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3vZ-n9-wH5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NPG-wa-3hg">
@@ -395,28 +395,16 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QAb-Lx-FHt">
-                                        <rect key="frame" x="324" y="40" width="41" height="30"/>
-                                        <state key="normal" title="Voltar">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="voltarBtnClick:" destination="kov-vc-EUQ" eventType="touchUpInside" id="F6B-6R-sLc"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.078431372550000003" green="0.46274509800000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="Zf6-Hn-EsS" firstAttribute="centerX" secondItem="NPG-wa-3hg" secondAttribute="centerX" id="6sH-GU-oYa"/>
                                     <constraint firstItem="WFB-L2-rfp" firstAttribute="top" secondItem="Zf6-Hn-EsS" secondAttribute="bottom" constant="10" id="Eas-kn-5x1"/>
-                                    <constraint firstItem="QAb-Lx-FHt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Zf6-Hn-EsS" secondAttribute="trailing" constant="8" symbolic="YES" id="GIF-tz-zr3"/>
                                     <constraint firstItem="zir-0c-8TY" firstAttribute="top" secondItem="WFB-L2-rfp" secondAttribute="bottom" constant="10" id="Iz9-QB-lPA"/>
-                                    <constraint firstItem="QAb-Lx-FHt" firstAttribute="top" secondItem="NPG-wa-3hg" secondAttribute="top" constant="40" id="MDK-bK-cNB"/>
                                     <constraint firstItem="zir-0c-8TY" firstAttribute="centerX" secondItem="NPG-wa-3hg" secondAttribute="centerX" id="Odu-Vn-OyL"/>
                                     <constraint firstAttribute="bottom" secondItem="zir-0c-8TY" secondAttribute="bottom" constant="10" id="Qip-CG-Q4w"/>
                                     <constraint firstItem="WFB-L2-rfp" firstAttribute="centerX" secondItem="NPG-wa-3hg" secondAttribute="centerX" id="Sm7-H9-YoO"/>
-                                    <constraint firstItem="Zf6-Hn-EsS" firstAttribute="top" secondItem="NPG-wa-3hg" secondAttribute="top" constant="20" id="TWF-p7-ARA"/>
-                                    <constraint firstAttribute="trailing" secondItem="QAb-Lx-FHt" secondAttribute="trailing" constant="10" id="kPQ-SX-XEO"/>
+                                    <constraint firstItem="Zf6-Hn-EsS" firstAttribute="top" secondItem="NPG-wa-3hg" secondAttribute="top" constant="20" id="Tp8-LG-kVd"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EAJ-ah-mq8">
@@ -564,7 +552,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lJE-pX-BRH">
-                                <rect key="frame" x="0.0" y="215" width="375" height="432"/>
+                                <rect key="frame" x="0.0" y="215" width="375" height="452"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="kov-vc-EUQ" id="Zhu-6A-fuM"/>
@@ -583,7 +571,7 @@
                             <constraint firstItem="lJE-pX-BRH" firstAttribute="top" secondItem="EAJ-ah-mq8" secondAttribute="bottom" id="fkL-Og-TEt"/>
                             <constraint firstItem="lJE-pX-BRH" firstAttribute="leading" secondItem="Lab-Zp-puj" secondAttribute="leading" id="iS8-my-SPP"/>
                             <constraint firstItem="Lab-Zp-puj" firstAttribute="trailing" secondItem="lJE-pX-BRH" secondAttribute="trailing" id="uRE-dE-5mB"/>
-                            <constraint firstItem="NPG-wa-3hg" firstAttribute="top" secondItem="3vZ-n9-wH5" secondAttribute="top" id="xYY-yh-3Fc"/>
+                            <constraint firstItem="NPG-wa-3hg" firstAttribute="top" secondItem="Lab-Zp-puj" secondAttribute="top" id="xYY-yh-3Fc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Lab-Zp-puj"/>
                     </view>
@@ -826,7 +814,6 @@
         <!--Convites-->
         <scene sceneID="udP-zu-SYQ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ikc-os-lMd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tableViewController id="fdB-GI-EEz" customClass="ConvitesController" customModule="R_Sports" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="oY1-Dk-jhp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
@@ -859,6 +846,7 @@
                         <outlet property="btnVoltar" destination="oFh-V5-o3R" id="fdh-Qx-hKx"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ikc-os-lMd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5020" y="3036"/>
         </scene>
@@ -1042,15 +1030,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cdF-ve-JOD">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="574"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="eeA-6b-Lwo" id="hZq-3n-fZN"/>
                                     <outlet property="delegate" destination="eeA-6b-Lwo" id="1hs-eQ-dc9"/>
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="cdF-ve-JOD" firstAttribute="top" secondItem="Bga-BR-z42" secondAttribute="top" id="9mX-kY-f2R"/>
                             <constraint firstItem="Bga-BR-z42" firstAttribute="trailing" secondItem="cdF-ve-JOD" secondAttribute="trailing" id="CKY-fU-wWP"/>
@@ -1060,13 +1048,14 @@
                         <viewLayoutGuide key="safeArea" id="Bga-BR-z42"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Matchmake" image="arrows" id="5hg-4p-lA2"/>
+                    <navigationItem key="navigationItem" id="o5x-6z-rkP"/>
                     <connections>
                         <outlet property="eventosTable" destination="cdF-ve-JOD" id="P6v-hA-Zhb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5rc-HV-Bhi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="521" y="2292"/>
+            <point key="canvasLocation" x="559" y="2232"/>
         </scene>
         <!--Quadra-->
         <scene sceneID="zfj-oH-vwv">
@@ -1327,7 +1316,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yE8-ya-QpJ"/>
                     </view>
-                    <navigationItem key="navigationItem" id="PiY-4v-h3p"/>
+                    <navigationItem key="navigationItem" id="PiY-4v-h3p">
+                        <barButtonItem key="rightBarButtonItem" title="Rotas" style="plain" id="onZ-m6-qRd">
+                            <connections>
+                                <action selector="rotaBtnClick:" destination="ISD-Ce-D0Y" id="Kzn-nj-HMI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="V8H-lv-gPk" id="Suh-bc-5N2"/>
                     </connections>
@@ -2116,11 +2111,6 @@ Você pode acompanhar os pagamentos de seus amigos na aba "Reservas".</string>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="TWM-tv-Bfl">
                         <barButtonItem key="backBarButtonItem" title=" " id="pL0-Sr-Etd"/>
-                        <barButtonItem key="leftBarButtonItem" image="perfilIcon" id="z6g-oO-g4h">
-                            <connections>
-                                <segue destination="kov-vc-EUQ" kind="presentation" id="23x-nF-H5A"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Yft-ax-PeB">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -2129,9 +2119,11 @@ Você pode acompanhar os pagamentos de seus amigos na aba "Reservas".</string>
                         <color key="selectedImageTintColor" red="0.078431372550000003" green="0.46274509800000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="3hi-SD-Nw6"/>
+                        <segue destination="kov-vc-EUQ" kind="relationship" relationship="viewControllers" id="evU-Mh-dax"/>
                         <segue destination="GJV-k0-55U" kind="relationship" relationship="viewControllers" id="SNu-Kj-Poc"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="3hi-SD-Nw6"/>
                         <segue destination="hzN-zs-Quf" kind="relationship" relationship="viewControllers" id="Vpd-wk-DUF"/>
+                        <segue destination="eeA-6b-Lwo" kind="relationship" relationship="viewControllers" id="hUT-ap-YUZ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w4O-Wl-AVu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2494,11 +2486,11 @@ Você pode acompanhar os pagamentos de seus amigos na aba "Reservas".</string>
             <objects>
                 <viewController id="O7P-qU-wT1" customClass="OnboardingProfileController" customModule="R_Sports" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mCD-jP-bPY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="823"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="843"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lmD-A5-3Aj">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="823"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="843"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CvN-Ak-cVL">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="851"/>
@@ -2845,7 +2837,7 @@ Você pode acompanhar os pagamentos de seus amigos na aba "Reservas".</string>
             <objects>
                 <viewController id="FOp-hI-cAV" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6NS-Xd-ZpK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agora é só combinar seu primeiro jogo!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="shs-Bb-YkP">
@@ -2991,7 +2983,6 @@ Você pode acompanhar os pagamentos de seus amigos na aba "Reservas".</string>
         <!--Navigation Controller-->
         <scene sceneID="Hax-Ga-ijC">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6Ib-wK-gk2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="te2-mG-aKn" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iFi-JK-0Dm">
@@ -3006,6 +2997,7 @@ Você pode acompanhar os pagamentos de seus amigos na aba "Reservas".</string>
                         <segue destination="fdB-GI-EEz" kind="relationship" relationship="rootViewController" id="ctE-Ya-TuA"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Ib-wK-gk2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4114" y="3037"/>
         </scene>
@@ -3028,6 +3020,7 @@ Você pode acompanhar os pagamentos de seus amigos na aba "Reservas".</string>
         <image name="whistle-icon-white" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="evU-Mh-dax"/>
         <segue reference="i1j-tb-fnW"/>
         <segue reference="3CZ-oF-Gbr"/>
         <segue reference="Tl2-f1-WzE"/>

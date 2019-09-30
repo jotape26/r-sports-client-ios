@@ -50,6 +50,14 @@ class TimeDTO: ImmutableMappable {
         jogadores = try? map.value("jogadores")
         partidas = try? map.value("partidas")
         
+        
+        jogadores?.sort(by: { (jog1, jog2) -> Bool in
+            if jog1.golsNoTime ?? 0 < jog2.golsNoTime ?? 0 {
+                return true
+            }
+            return false
+        })
+        
         jogadores?.sort(by: { (jog1, jog2) -> Bool in
             if jog1.pendente == false || jog2.pendente == true {
                 return true

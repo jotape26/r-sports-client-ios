@@ -14,6 +14,8 @@ class EventosCell: UITableViewCell {
     @IBOutlet weak var lblNomeEvento: UILabel!
     @IBOutlet weak var lblData: UILabel!
     @IBOutlet weak var lblPosicao: UILabel!
+    @IBOutlet weak var imgQuadra: UIImageView!
+    @IBOutlet weak var imgEvento: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

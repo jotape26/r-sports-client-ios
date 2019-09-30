@@ -28,7 +28,6 @@
 		FA418AAC23010830007B2F53 /* LogoffCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA418AAA23010830007B2F53 /* LogoffCell.xib */; };
 		FA418AB123024BFC007B2F53 /* ConfirmacaoReservaListaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA418AB023024BFC007B2F53 /* ConfirmacaoReservaListaController.swift */; };
 		FA418AB323025C3D007B2F53 /* FilesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA418AB223025C3D007B2F53 /* FilesManager.swift */; };
-		FA418AB523037D48007B2F53 /* OnboardingProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA418AB423037D48007B2F53 /* OnboardingProfileController.swift */; };
 		FA418ABB23039983007B2F53 /* OnboardingProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA418ABA23039983007B2F53 /* OnboardingProfileController.swift */; };
 		FA45692522E67AE000C0971B /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA45692422E67AE000C0971B /* AppConstants.swift */; };
 		FA45692722E6953100C0971B /* RSportsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA45692622E6953100C0971B /* RSportsService.swift */; };
@@ -121,7 +120,6 @@
 		FA418AAA23010830007B2F53 /* LogoffCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoffCell.xib; sourceTree = "<group>"; };
 		FA418AB023024BFC007B2F53 /* ConfirmacaoReservaListaController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmacaoReservaListaController.swift; sourceTree = "<group>"; };
 		FA418AB223025C3D007B2F53 /* FilesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesManager.swift; sourceTree = "<group>"; };
-		FA418AB423037D48007B2F53 /* OnboardingProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingProfileController.swift; sourceTree = "<group>"; };
 		FA418ABA23039983007B2F53 /* OnboardingProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingProfileController.swift; sourceTree = "<group>"; };
 		FA45692422E67AE000C0971B /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		FA45692622E6953100C0971B /* RSportsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSportsService.swift; sourceTree = "<group>"; };
@@ -255,7 +253,6 @@
 				FA7D48C22337D5290044D85D /* TimesController.swift */,
 				FA418AB7230393A3007B2F53 /* Deprecated */,
 				FA418AAF23024BB5007B2F53 /* Popup Controllers */,
-				FA418AB423037D48007B2F53 /* OnboardingProfileController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -729,7 +726,6 @@
 				FAC8EE4222FB506B00EC7812 /* JogadoresStatusCell.swift in Sources */,
 				FA0098CB2337F1A3000BC738 /* CriarTimeController.swift in Sources */,
 				FAB1E118233D3ED9001E88F1 /* ConviteTimeCell.swift in Sources */,
-				FA418AB523037D48007B2F53 /* OnboardingProfileController.swift in Sources */,
 				FA9A1C382301E804001661ED /* ServicoController.swift in Sources */,
 				FA0098C82337E577000BC738 /* TimesCell.swift in Sources */,
 				FA9A1C322301D270001661ED /* ServicosCollectionCell.swift in Sources */,

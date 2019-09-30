@@ -17,6 +17,7 @@ class JogadorTimeCell: UITableViewCell {
     @IBOutlet weak var lblDisclaimerHeight: NSLayoutConstraint!
     @IBOutlet weak var statsView: UIView!
     @IBOutlet weak var statsHeight: NSLayoutConstraint!
+    @IBOutlet weak var imgTrophy: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,6 +34,7 @@ class JogadorTimeCell: UITableViewCell {
         statsHeight.constant = 50
         statsView.isHidden = false
         lblDisclaimerHeight.constant = 0
+        imgTrophy.image = nil
     }
     
     func playerStillPending(){

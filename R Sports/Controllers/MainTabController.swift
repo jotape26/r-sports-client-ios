@@ -22,6 +22,7 @@ class MainTabController: UITabBarController {
     
     override func viewWillAppear(_ animated: Bool) {
         SharedSession.shared.reloadUser(done: {})
+        selectedIndex = 2
     }
     
     override func viewDidAppear(_ animated: Bool) {

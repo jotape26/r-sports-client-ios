@@ -75,6 +75,12 @@ extension TimeDetalhesController: UITableViewDelegate, UITableViewDataSource {
             
             let jogador = selectedTime.jogadores?[indexPath.row]
             
+            if indexPath.row == 0 {
+                cell.imgTrophy.image = UIImage(named: "trophy-icon-white")
+            } else {
+                cell.imgTrophy.isHidden = true
+            }
+            
             if jogador?.pendente ?? true {
                 cell.txtNome.text = jogador?.telefone
                 cell.playerStillPending()
@@ -91,11 +97,42 @@ extension TimeDetalhesController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if segmentTipoEstatistica.selectedSegmentIndex == 0 {
             
+        } else {
+            
+            let player = selectedTime.jogadores?[indexPath.row]
+            
+            if isUserTeamAdmin() {
+                let alert = UIAlertController(title: "Alterar estatisticas", message: "Digite o numero de gols e assistencias para o jogador: \(player?.nome ?? "")", preferredStyle: .alert)
+                
+                alert.addTextField { (customTextField) in
+                    customTextField.placeholder = "Gols"
+                }
+                
+                alert.addTextField { (customTextField) in
+                    customTextField.placeholder = "Assistencias"
+                }
+                
+                alert.addAction(UIAlertAction(title: "Confirmar", style: .default, handler: { (act) in
+                    //TODO HANDLE
+                }))
+                
+                alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
+                
+                self.present(alert, animated: true, completion: nil)
+            }
         }
+    }
+    
+    fileprivate func isUserTeamAdmin() -> Bool {
+        return true
     }
 }
 

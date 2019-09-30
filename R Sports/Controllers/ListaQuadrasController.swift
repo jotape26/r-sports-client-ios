@@ -51,11 +51,11 @@ class ListaQuadrasController: UIViewController{
         refreshControl.addTarget(self, action: #selector(startPooling), for: .valueChanged)
         quadrasTable.refreshControl = refreshControl
         // Do any additional setup after loading the view.
+        startPooling(firstTime: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.topViewController?.navigationItem.rightBarButtonItem = filtersButton
-        startPooling(firstTime: true)
     }
     
     @objc func filtersButtonClick() {

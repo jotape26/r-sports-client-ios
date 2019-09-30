@@ -7,54 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0432546B-7F45-4879-85BD-72C9A4E0C83B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "R Sports/Service/FirebaseService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "333"
-            endingLineNumber = "333"
-            landmarkName = "getCourtImage(path:success:failure:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "0432546B-7F45-4879-85BD-72C9A4E0C83B - 84caf33e1faa6f4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static R_Sports.FirebaseService.getUserImage(number: Swift.String, success: (__C.UIImage) -&gt; (), failure: () -&gt; ()) -&gt; ()"
-                  moduleName = "R Sports"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/joao.leite/Documents/Faculdade/TCC/r-sports-client-ios/R%20Sports/Service/FirebaseService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "333"
-                  endingLineNumber = "333"
-                  offsetFromSymbolStart = "252">
-               </Location>
-               <Location
-                  uuid = "0432546B-7F45-4879-85BD-72C9A4E0C83B - 70780f7065761793"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in static R_Sports.FirebaseService.getUserImage(number: Swift.String, success: (__C.UIImage) -&gt; (), failure: () -&gt; ()) -&gt; ()"
-                  moduleName = "R Sports"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/joao.leite/Documents/Faculdade/TCC/r-sports-client-ios/R%20Sports/Service/FirebaseService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "334"
-                  endingLineNumber = "334"
-                  offsetFromSymbolStart = "268">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "30E149BB-BE3B-4F77-8E35-C49FA8073D3D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
